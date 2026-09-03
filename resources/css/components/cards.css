@@ -1,0 +1,7 @@
+.nv-card {
+    border: 1px solid rgba(30, 34, 38, 0.08);
+    border-radius: var(--nv-radius-lg);
+    background: var(--nv-white);
+    box-shadow: var(--nv-shadow-soft);
+    overflow: hidden;
+}

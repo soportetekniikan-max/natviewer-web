@@ -1,0 +1,42 @@
+.nv-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 48px;
+    padding: 0.85rem 1.25rem;
+    border: 0;
+    border-radius: 999px;
+    font-weight: 800;
+    line-height: 1;
+    transition:
+        transform var(--nv-transition),
+        background-color var(--nv-transition),
+        color var(--nv-transition),
+        box-shadow var(--nv-transition);
+}
+
+.nv-button-primary {
+    background: var(--nv-orange);
+    color: var(--nv-white);
+    box-shadow: 0 14px 32px rgba(234, 87, 28, 0.25);
+}
+
+.nv-button-primary:hover,
+.nv-button-primary:focus {
+    background: #d94f19;
+    color: var(--nv-white);
+    transform: translateY(-2px);
+}
+
+.nv-button-dark {
+    background: var(--nv-dark);
+    color: var(--nv-white);
+}
+
+.nv-button-dark:hover,
+.nv-button-dark:focus {
+    background: var(--nv-green);
+    color: var(--nv-white);
+    transform: translateY(-2px);
+}
