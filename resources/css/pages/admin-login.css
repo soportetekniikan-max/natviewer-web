@@ -1,1 +1,265 @@
-/* Admin login styles will be added in the admin layout phase. */
+.nv-admin-body {
+    min-height: 100vh;
+    background: #f1f2f1;
+}
+
+.nv-admin-main {
+    min-height: 100vh;
+}
+
+/* LOGIN */
+
+.nv-admin-login {
+    display: grid;
+    min-height: 100vh;
+    place-items: center;
+    padding: 2rem 1rem;
+    background:
+        radial-gradient(
+            circle at top right,
+            rgba(62, 84, 71, 0.5),
+            transparent 35%
+        ),
+        var(--nv-deep);
+}
+
+.nv-admin-login-card {
+    width: min(100%, 460px);
+    overflow: hidden;
+    border-radius: var(--nv-radius-lg);
+    background: var(--nv-white);
+    box-shadow: var(--nv-shadow-strong);
+}
+
+.nv-admin-login-brand {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 90px;
+    padding: 1.3rem 1.7rem;
+    background: var(--nv-dark);
+}
+
+.nv-admin-login-brand img {
+    width: 145px;
+    max-height: 45px;
+    object-fit: contain;
+}
+
+.nv-admin-login-brand span {
+    color: rgba(255, 255, 255, 0.65);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.nv-admin-login-content {
+    padding: 2rem;
+}
+
+.nv-admin-login-content h1 {
+    margin-bottom: 0.65rem;
+    font-size: clamp(1.8rem, 5vw, 2.4rem);
+}
+
+.nv-admin-login-form {
+    display: grid;
+    gap: 1.15rem;
+    margin-top: 1.75rem;
+}
+
+.nv-admin-login-form label {
+    display: block;
+    margin-bottom: 0.4rem;
+    color: var(--nv-dark);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.nv-admin-login-form .form-control {
+    min-height: 48px;
+    border-color: rgba(30, 34, 38, 0.15);
+}
+
+.nv-admin-login-form .form-control:focus {
+    border-color: var(--nv-orange);
+    box-shadow: 0 0 0 3px rgba(234, 87, 28, 0.12);
+}
+
+.nv-admin-remember {
+    display: flex !important;
+    align-items: center;
+    gap: 0.55rem;
+    margin: 0 !important;
+    font-weight: 500 !important;
+}
+
+/* HEADER ADMIN */
+
+.nv-admin-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--nv-deep);
+}
+
+.nv-admin-header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 72px;
+    padding: 0 1rem;
+}
+
+.nv-admin-brand {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.nv-admin-brand img {
+    width: 130px;
+    max-height: 42px;
+    object-fit: contain;
+}
+
+.nv-admin-brand span {
+    color: rgba(255, 255, 255, 0.6);
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.nv-admin-user {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    color: var(--nv-white);
+    font-size: 0.85rem;
+}
+
+.nv-admin-user form {
+    margin: 0;
+}
+
+.nv-admin-logout {
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--nv-radius-sm);
+    background: transparent;
+    color: var(--nv-white);
+    padding: 0.55rem 0.8rem;
+}
+
+/* DASHBOARD */
+
+.nv-admin-dashboard {
+    padding: 2rem;
+}
+
+.nv-admin-page-header {
+    margin-bottom: 2rem;
+}
+
+.nv-admin-page-header h1 {
+    margin-bottom: 0.5rem;
+}
+
+.nv-admin-stats {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.nv-admin-stats article {
+    padding: 1.4rem;
+    border: 1px solid rgba(30, 34, 38, 0.08);
+    border-radius: var(--nv-radius-md);
+    background: var(--nv-white);
+}
+
+.nv-admin-stats span {
+    display: block;
+    margin-bottom: 0.75rem;
+    color: var(--nv-gray);
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.nv-admin-stats strong {
+    color: var(--nv-dark);
+    font-size: 2rem;
+}
+
+.nv-admin-panel {
+    overflow: hidden;
+    border: 1px solid rgba(30, 34, 38, 0.08);
+    border-radius: var(--nv-radius-md);
+    background: var(--nv-white);
+}
+
+.nv-admin-panel-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(30, 34, 38, 0.08);
+}
+
+.nv-admin-panel-header h2 {
+    margin-bottom: 0.35rem;
+    font-size: 1.35rem;
+}
+
+.nv-admin-panel-header p {
+    margin: 0;
+}
+
+.nv-admin-panel .table {
+    margin: 0;
+}
+
+.nv-admin-panel th,
+.nv-admin-panel td {
+    padding: 1rem 1.5rem;
+}
+
+.nv-admin-status {
+    display: inline-flex;
+    border-radius: 100px;
+    background: rgba(234, 87, 28, 0.12);
+    color: var(--nv-orange);
+    padding: 0.35rem 0.65rem;
+    font-size: 0.75rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.nv-admin-empty {
+    padding: 2rem 1.5rem;
+    color: var(--nv-gray);
+}
+
+@media (max-width: 991.98px) {
+    .nv-admin-stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .nv-admin-dashboard {
+        padding: 1.25rem;
+    }
+
+    .nv-admin-stats {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-admin-user > span {
+        display: none;
+    }
+
+    .nv-admin-login-content {
+        padding: 1.5rem;
+    }
+}
