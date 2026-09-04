@@ -4,17 +4,6 @@
 @section('meta_description', __('public.seo.home_description'))
 
 @php
-    /*
-    |--------------------------------------------------------------------------
-    | Helpers de presentación
-    |--------------------------------------------------------------------------
-    |
-    | Por ahora viven en esta vista para mantener esta fase simple.
-    | Más adelante podremos moverlos a ViewModels / Presenters si crece
-    | la lógica de presentación del catálogo.
-    |
-    */
-
     $localized = static function ($model, string $field) use ($locale) {
         if (! $model) {
             return null;
@@ -90,12 +79,6 @@
         };
     };
 
-    /*
-    |--------------------------------------------------------------------------
-    | Producto destacado
-    |--------------------------------------------------------------------------
-    */
-
     $featuredProduct = $products->first();
 
     $featuredVariants = $featuredProduct
@@ -110,16 +93,6 @@
         : null;
 
     $defaultCurrency = $contactSettings?->default_currency ?? 'COP';
-
-    /*
-    |--------------------------------------------------------------------------
-    | Catálogo plano
-    |--------------------------------------------------------------------------
-    |
-    | Transformamos producto -> variantes en una colección que permite
-    | generar una tarjeta comercial por cada variante.
-    |
-    */
 
     $catalogVariants = $products->flatMap(function ($product) {
         return $product->variants->map(function ($variant) use ($product) {
@@ -136,13 +109,9 @@
         <div class="container">
             <div class="nv-hero-grid">
                 <div class="nv-hero-copy">
-                    <span class="nv-eyebrow">
-                        {{ __('public.hero.eyebrow') }}
-                    </span>
+                    <span class="nv-eyebrow">{{ __('public.hero.eyebrow') }}</span>
 
-                    <h1>
-                        {{ __('public.hero.title') }}
-                    </h1>
+                    <h1>{{ __('public.hero.title') }}</h1>
 
                     <p class="nv-hero-lead">
                         {{ __('public.hero.text') }}
@@ -150,38 +119,26 @@
 
                     <div class="nv-hero-tags">
                         @if ($firstHeroVariant)
-                            <span>
-                                {{ $variantShortLabel($firstHeroVariant) }}
-                            </span>
+                            <span>{{ $variantShortLabel($firstHeroVariant) }}</span>
                         @endif
 
                         @if ($secondHeroVariant)
-                            <span>
-                                {{ $variantShortLabel($secondHeroVariant) }}
-                            </span>
+                            <span>{{ $variantShortLabel($secondHeroVariant) }}</span>
                         @endif
 
                         @if ($heroGlass)
-                            <span>
-                                {{ $heroGlass }}
-                            </span>
+                            <span>{{ $heroGlass }}</span>
                         @endif
 
                         <span>Outdoor</span>
                     </div>
 
                     <div class="nv-hero-actions">
-                        <a
-                            href="#products"
-                            class="nv-button nv-button-primary"
-                        >
+                        <a href="#products" class="nv-button nv-button-primary">
                             {{ __('public.hero.primary_button') }}
                         </a>
 
-                        <a
-                            href="#contact"
-                            class="nv-button nv-button-outline"
-                        >
+                        <a href="#contact" class="nv-button nv-button-outline">
                             {{ __('public.hero.secondary_button') }}
                         </a>
                     </div>
@@ -189,9 +146,7 @@
 
                 <aside class="nv-hero-showcase">
                     <div class="nv-hero-showcase-header">
-                        <span>
-                            {{ __('public.hero.card_label') }}
-                        </span>
+                        <span>{{ __('public.hero.card_label') }}</span>
 
                         <strong>
                             {{ $featuredProduct
@@ -208,9 +163,7 @@
                         >
 
                         <div>
-                            <span>
-                                {{ __('public.hero.panel_kicker') }}
-                            </span>
+                            <span>{{ __('public.hero.panel_kicker') }}</span>
 
                             <h2>
                                 {{ $featuredProduct
@@ -228,9 +181,7 @@
                                     : '8×42' }}
                             </strong>
 
-                            <span>
-                                {{ __('public.hero.spec_1') }}
-                            </span>
+                            <span>{{ __('public.hero.spec_1') }}</span>
                         </div>
 
                         <div>
@@ -240,19 +191,12 @@
                                     : '10×42' }}
                             </strong>
 
-                            <span>
-                                {{ __('public.hero.spec_2') }}
-                            </span>
+                            <span>{{ __('public.hero.spec_2') }}</span>
                         </div>
 
                         <div>
-                            <strong>
-                                {{ $defaultCurrency }}
-                            </strong>
-
-                            <span>
-                                {{ __('public.hero.spec_3') }}
-                            </span>
+                            <strong>{{ $defaultCurrency }}</strong>
+                            <span>{{ __('public.hero.spec_3') }}</span>
                         </div>
                     </div>
                 </aside>
@@ -260,68 +204,64 @@
         </div>
     </section>
 
-    <section
-        class="nv-home-strip"
-        id="specs"
-    >
+    <section class="nv-home-strip" id="specs">
         <div class="container">
             <div class="nv-strip-grid">
                 <div>
-                    <strong>
-                        {{ $heroGlass ?: 'UD' }}
-                    </strong>
-
-                    <span>
-                        {{ __('public.strip.item_1') }}
-                    </span>
+                    <strong>{{ $heroGlass ?: 'UD' }}</strong>
+                    <span>{{ __('public.strip.item_1') }}</span>
                 </div>
 
                 <div>
                     <strong>Coated</strong>
-
-                    <span>
-                        {{ __('public.strip.item_2') }}
-                    </span>
+                    <span>{{ __('public.strip.item_2') }}</span>
                 </div>
 
                 <div>
                     <strong>3 m</strong>
-
-                    <span>
-                        {{ __('public.strip.item_3') }}
-                    </span>
+                    <span>{{ __('public.strip.item_3') }}</span>
                 </div>
 
                 <div>
                     <strong>Outdoor</strong>
-
-                    <span>
-                        {{ __('public.strip.item_4') }}
-                    </span>
+                    <span>{{ __('public.strip.item_4') }}</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section
-        class="nv-home-section"
-        id="products"
-    >
+    <section class="nv-home-section" id="products">
         <div class="container">
+            @if (session('quote_success'))
+                <div
+                    class="alert nv-quote-alert nv-quote-alert-success"
+                    role="alert"
+                >
+                    {{ session('quote_success') }}
+                </div>
+            @endif
+
+            @if ($errors->any())
+                <div
+                    class="alert nv-quote-alert nv-quote-alert-error"
+                    role="alert"
+                >
+                    {{ $locale === 'en'
+                        ? 'Please review the quote form fields.'
+                        : 'Revisa los campos del formulario de cotización.' }}
+                </div>
+            @endif
+
             <div class="nv-section-header nv-section-header-split">
                 <div>
                     <span class="nv-eyebrow">
                         {{ __('public.products.eyebrow') }}
                     </span>
 
-                    <h2>
-                        {{ __('public.products.title') }}
-                    </h2>
+                    <h2>{{ __('public.products.title') }}</h2>
                 </div>
 
-                <p>
-                    {{ __('public.products.text') }}
-                </p>
+                <p>{{ __('public.products.text') }}</p>
             </div>
 
             <div class="row g-4">
@@ -375,13 +315,9 @@
                                 </div>
 
                                 <div class="nv-product-media-content">
-                                    <strong>
-                                        {{ $variantName }}
-                                    </strong>
+                                    <strong>{{ $variantName }}</strong>
 
-                                    <p>
-                                        {{ $productDescription }}
-                                    </p>
+                                    <p>{{ $productDescription }}</p>
                                 </div>
                             </div>
 
@@ -390,13 +326,9 @@
                                     {{ $categoryName }}
                                 </span>
 
-                                <h3>
-                                    {{ $productTitle }}
-                                </h3>
+                                <h3>{{ $productTitle }}</h3>
 
-                                <p>
-                                    {{ $productDescription }}
-                                </p>
+                                <p>{{ $productDescription }}</p>
 
                                 <div class="nv-product-data">
                                     <div>
@@ -420,15 +352,19 @@
                                     </div>
                                 </div>
 
-                                <a
-                                    href="#contact"
-                                    class="nv-button nv-button-primary"
+                                <button
+                                    type="button"
+                                    class="nv-button nv-button-primary nv-quote-trigger"
+                                    data-bs-toggle="modal"
+                                    data-bs-target="#quoteModal"
                                     data-quote-product="{{ $product->id }}"
                                     data-quote-variant="{{ $variant->id }}"
                                     data-quote-sku="{{ $variant->sku }}"
+                                    data-quote-product-name="{{ $localized($product, 'name') }}"
+                                    data-quote-variant-name="{{ $variantName }}"
                                 >
                                     {{ __('public.products.quote_button') }}
-                                </a>
+                                </button>
                             </div>
                         </article>
                     </div>
@@ -455,62 +391,34 @@
                     {{ __('public.benefits.eyebrow') }}
                 </span>
 
-                <h2>
-                    {{ __('public.benefits.title') }}
-                </h2>
+                <h2>{{ __('public.benefits.title') }}</h2>
 
-                <p>
-                    {{ __('public.benefits.text') }}
-                </p>
+                <p>{{ __('public.benefits.text') }}</p>
             </div>
 
             <div class="nv-benefits-grid">
                 <article class="nv-benefit-card">
                     <span>01</span>
-
-                    <h3>
-                        {{ __('public.benefits.item_1_title') }}
-                    </h3>
-
-                    <p>
-                        {{ __('public.benefits.item_1_text') }}
-                    </p>
+                    <h3>{{ __('public.benefits.item_1_title') }}</h3>
+                    <p>{{ __('public.benefits.item_1_text') }}</p>
                 </article>
 
                 <article class="nv-benefit-card">
                     <span>02</span>
-
-                    <h3>
-                        {{ __('public.benefits.item_2_title') }}
-                    </h3>
-
-                    <p>
-                        {{ __('public.benefits.item_2_text') }}
-                    </p>
+                    <h3>{{ __('public.benefits.item_2_title') }}</h3>
+                    <p>{{ __('public.benefits.item_2_text') }}</p>
                 </article>
 
                 <article class="nv-benefit-card">
                     <span>03</span>
-
-                    <h3>
-                        {{ __('public.benefits.item_3_title') }}
-                    </h3>
-
-                    <p>
-                        {{ __('public.benefits.item_3_text') }}
-                    </p>
+                    <h3>{{ __('public.benefits.item_3_title') }}</h3>
+                    <p>{{ __('public.benefits.item_3_text') }}</p>
                 </article>
 
                 <article class="nv-benefit-card">
                     <span>04</span>
-
-                    <h3>
-                        {{ __('public.benefits.item_4_title') }}
-                    </h3>
-
-                    <p>
-                        {{ __('public.benefits.item_4_text') }}
-                    </p>
+                    <h3>{{ __('public.benefits.item_4_title') }}</h3>
+                    <p>{{ __('public.benefits.item_4_text') }}</p>
                 </article>
             </div>
         </div>
@@ -527,41 +435,283 @@
                         {{ __('public.included.eyebrow') }}
                     </span>
 
-                    <h2>
-                        {{ __('public.included.title') }}
-                    </h2>
+                    <h2>{{ __('public.included.title') }}</h2>
 
-                    <p>
-                        {{ __('public.included.text') }}
-                    </p>
+                    <p>{{ __('public.included.text') }}</p>
                 </div>
 
                 <div class="nv-info-list">
-                    <span>
-                        {{ __('public.included.item_1') }}
-                    </span>
-
-                    <span>
-                        {{ __('public.included.item_2') }}
-                    </span>
-
-                    <span>
-                        {{ __('public.included.item_3') }}
-                    </span>
-
-                    <span>
-                        {{ __('public.included.item_4') }}
-                    </span>
-
-                    <span>
-                        {{ __('public.included.item_5') }}
-                    </span>
-
-                    <span>
-                        {{ __('public.included.item_6') }}
-                    </span>
+                    <span>{{ __('public.included.item_1') }}</span>
+                    <span>{{ __('public.included.item_2') }}</span>
+                    <span>{{ __('public.included.item_3') }}</span>
+                    <span>{{ __('public.included.item_4') }}</span>
+                    <span>{{ __('public.included.item_5') }}</span>
+                    <span>{{ __('public.included.item_6') }}</span>
                 </div>
             </div>
         </div>
     </section>
+
+    <div
+        class="modal fade nv-quote-modal"
+        id="quoteModal"
+        tabindex="-1"
+        aria-labelledby="quoteModalLabel"
+        aria-hidden="true"
+        data-has-errors="{{ $errors->any() ? 'true' : 'false' }}"
+        data-old-variant="{{ old('product_variant_id') }}"
+    >
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form
+                    method="POST"
+                    action="{{ route('quotes.store', ['locale' => $locale]) }}"
+                    id="quoteForm"
+                >
+                    @csrf
+
+                    <input
+                        type="hidden"
+                        name="product_id"
+                        id="quoteProductId"
+                        value="{{ old('product_id') }}"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="product_variant_id"
+                        id="quoteVariantId"
+                        value="{{ old('product_variant_id') }}"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="utm_source"
+                        value="{{ request()->query('utm_source') }}"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="utm_medium"
+                        value="{{ request()->query('utm_medium') }}"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="utm_campaign"
+                        value="{{ request()->query('utm_campaign') }}"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="utm_term"
+                        value="{{ request()->query('utm_term') }}"
+                    >
+
+                    <input
+                        type="hidden"
+                        name="utm_content"
+                        value="{{ request()->query('utm_content') }}"
+                    >
+
+                    <div class="modal-header">
+                        <div>
+                            <span class="nv-eyebrow">
+                                {{ $locale === 'en'
+                                    ? 'Request a quote'
+                                    : 'Solicitar cotización' }}
+                            </span>
+
+                            <h2
+                                class="modal-title"
+                                id="quoteModalLabel"
+                            >
+                                {{ $locale === 'en'
+                                    ? 'Tell us how to contact you'
+                                    : 'Cuéntanos cómo contactarte' }}
+                            </h2>
+                        </div>
+
+                        <button
+                            type="button"
+                            class="btn-close"
+                            data-bs-dismiss="modal"
+                            aria-label="{{ $locale === 'en' ? 'Close' : 'Cerrar' }}"
+                        ></button>
+                    </div>
+
+                    <div class="modal-body">
+                        <div class="nv-quote-selection">
+                            <span>
+                                {{ $locale === 'en'
+                                    ? 'Selected product'
+                                    : 'Producto seleccionado' }}
+                            </span>
+
+                            <strong id="quoteSelectedProduct">
+                                Natviewer Falco
+                            </strong>
+
+                            <strong id="quoteSelectedVariant"></strong>
+                        </div>
+
+                        <div class="nv-quote-fields">
+                            <div class="nv-quote-field">
+                                <label for="customerName">
+                                    {{ $locale === 'en'
+                                        ? 'Name *'
+                                        : 'Nombre *' }}
+                                </label>
+
+                                <input
+                                    type="text"
+                                    id="customerName"
+                                    name="customer_name"
+                                    value="{{ old('customer_name') }}"
+                                    maxlength="150"
+                                    autocomplete="name"
+                                    required
+                                    class="@error('customer_name') is-invalid @enderror"
+                                >
+
+                                @error('customer_name')
+                                    <p class="nv-quote-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+                            </div>
+
+                            <div class="nv-quote-field">
+                                <label for="customerPhone">
+                                    {{ $locale === 'en'
+                                        ? 'Phone *'
+                                        : 'Teléfono *' }}
+                                </label>
+
+                                <input
+                                    type="tel"
+                                    id="customerPhone"
+                                    name="customer_phone"
+                                    value="{{ old('customer_phone') }}"
+                                    maxlength="40"
+                                    autocomplete="tel"
+                                    required
+                                    class="@error('customer_phone') is-invalid @enderror"
+                                >
+
+                                @error('customer_phone')
+                                    <p class="nv-quote-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+                            </div>
+
+                            <div class="nv-quote-field">
+                                <label for="customerEmail">
+                                    {{ $locale === 'en'
+                                        ? 'Email'
+                                        : 'Correo electrónico' }}
+                                </label>
+
+                                <input
+                                    type="email"
+                                    id="customerEmail"
+                                    name="customer_email"
+                                    value="{{ old('customer_email') }}"
+                                    maxlength="255"
+                                    autocomplete="email"
+                                    class="@error('customer_email') is-invalid @enderror"
+                                >
+
+                                @error('customer_email')
+                                    <p class="nv-quote-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+                            </div>
+
+                            <div class="nv-quote-field">
+                                <label for="quoteQuantity">
+                                    {{ $locale === 'en'
+                                        ? 'Quantity'
+                                        : 'Cantidad' }}
+                                </label>
+
+                                <input
+                                    type="number"
+                                    id="quoteQuantity"
+                                    name="quantity"
+                                    min="1"
+                                    max="99"
+                                    value="{{ old('quantity', 1) }}"
+                                    required
+                                    class="@error('quantity') is-invalid @enderror"
+                                >
+
+                                @error('quantity')
+                                    <p class="nv-quote-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+                            </div>
+
+                            <div class="nv-quote-field nv-quote-field-full">
+                                <label for="customerMessage">
+                                    {{ $locale === 'en'
+                                        ? 'Message'
+                                        : 'Mensaje' }}
+                                </label>
+
+                                <textarea
+                                    id="customerMessage"
+                                    name="customer_message"
+                                    maxlength="2000"
+                                    placeholder="{{ $locale === 'en'
+                                        ? 'Tell us anything else you would like to know.'
+                                        : 'Cuéntanos qué más te gustaría saber.' }}"
+                                >{{ old('customer_message') }}</textarea>
+
+                                @error('customer_message')
+                                    <p class="nv-quote-error">
+                                        {{ $message }}
+                                    </p>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <p class="nv-quote-note">
+                            {{ $locale === 'en'
+                                ? 'Submitting this form registers your quote request. If WhatsApp is available, you will then continue there.'
+                                : 'Al enviar este formulario registraremos tu solicitud. Si WhatsApp está disponible, luego continuarás allí.' }}
+                        </p>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button
+                            type="button"
+                            class="nv-button nv-button-outline"
+                            data-bs-dismiss="modal"
+                        >
+                            {{ $locale === 'en'
+                                ? 'Cancel'
+                                : 'Cancelar' }}
+                        </button>
+
+                        <button
+                            type="submit"
+                            class="nv-button nv-button-primary"
+                            id="quoteSubmitButton"
+                            data-loading-text="{{ $locale === 'en'
+                                ? 'Sending...'
+                                : 'Enviando...' }}"
+                        >
+                            {{ $locale === 'en'
+                                ? 'Request quote'
+                                : 'Solicitar cotización' }}
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
