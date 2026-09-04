@@ -1,1 +1,88 @@
-/* Footer styles will be added in the public layout phase. */
+.nv-site-footer {
+    padding: 4.8rem 0 1.35rem;
+    background:
+        radial-gradient(circle at top right, rgba(234, 87, 28, 0.18), transparent 34rem),
+        linear-gradient(135deg, var(--nv-deep), var(--nv-dark));
+    color: var(--nv-white);
+}
+
+.nv-footer-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
+    gap: clamp(2rem, 5vw, 4rem);
+    align-items: start;
+    padding-bottom: 2.6rem;
+}
+
+.nv-footer-logo {
+    display: block;
+    width: 260px;
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 1.25rem;
+    object-fit: contain;
+}
+
+.nv-site-footer p {
+    max-width: 34rem;
+    margin: 0;
+    color: rgba(237, 236, 237, 0.72);
+}
+
+.nv-footer-card {
+    padding: 1.45rem;
+    border: 1px solid rgba(237, 236, 237, 0.1);
+    border-radius: 1.5rem;
+    background: rgba(237, 236, 237, 0.055);
+}
+
+.nv-footer-card > span {
+    display: inline-flex;
+    margin-bottom: 0.8rem;
+    color: var(--nv-orange);
+    font-size: 0.76rem;
+    font-weight: 900;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.nv-site-footer h2 {
+    margin: 0 0 0.85rem;
+    color: var(--nv-white);
+    font-size: clamp(1.6rem, 2.5vw, 2.3rem);
+    letter-spacing: -0.04em;
+}
+
+.nv-site-footer .nv-button {
+    margin-top: 1.25rem;
+}
+
+.nv-footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(237, 236, 237, 0.1);
+    color: rgba(237, 236, 237, 0.58);
+    font-size: 0.88rem;
+}
+
+@media (max-width: 767.98px) {
+    .nv-site-footer {
+        padding-top: 3.2rem;
+    }
+
+    .nv-footer-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-footer-logo {
+        width: 230px;
+    }
+
+    .nv-footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+}

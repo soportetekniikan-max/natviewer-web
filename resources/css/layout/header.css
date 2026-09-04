@@ -1,1 +1,52 @@
-/* Header styles will be added in the public layout phase. */
+.nv-site-header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: rgba(18, 33, 33, 0.94);
+    border-bottom: 1px solid rgba(237, 236, 237, 0.08);
+    backdrop-filter: blur(18px);
+}
+
+.nv-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    min-height: 82px;
+    gap: 1.25rem;
+}
+
+.nv-brand {
+    display: inline-flex;
+    align-items: center;
+    flex: 0 0 auto;
+    width: 248px;
+    max-width: 36vw;
+}
+
+.nv-brand-logo {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+@media (max-width: 991.98px) {
+    .nv-navbar {
+        min-height: auto;
+        padding-top: 0.9rem;
+        padding-bottom: 0.9rem;
+        flex-wrap: wrap;
+    }
+
+    .nv-brand {
+        width: 220px;
+        max-width: 58vw;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .nv-brand {
+        width: 190px;
+        max-width: 60vw;
+    }
+}

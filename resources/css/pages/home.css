@@ -1,1 +1,534 @@
-/* Home page styles will be added in the public layout phase. */
+.nv-home-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: clamp(3.8rem, 6vw, 5.8rem) 0;
+    background:
+        radial-gradient(circle at 76% 18%, rgba(234, 87, 28, 0.16), transparent 22rem),
+        radial-gradient(circle at 10% 86%, rgba(62, 84, 71, 0.34), transparent 28rem),
+        linear-gradient(135deg, #122121 0%, #1e2226 58%, #26372f 100%);
+}
+
+.nv-home-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.16;
+    background-image:
+        linear-gradient(rgba(237, 236, 237, 0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(237, 236, 237, 0.07) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, black, transparent 82%);
+}
+
+.nv-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.12fr) minmax(330px, 0.72fr);
+    gap: clamp(2rem, 5vw, 4.5rem);
+    align-items: center;
+}
+
+.nv-hero-copy {
+    max-width: 820px;
+}
+
+.nv-home-hero h1 {
+    max-width: 840px;
+    margin: 0 0 1.15rem;
+    color: var(--nv-white);
+    font-size: clamp(3rem, 6.4vw, 6.4rem);
+    font-weight: 900;
+    line-height: 0.91;
+    letter-spacing: -0.085em;
+}
+
+.nv-hero-lead {
+    max-width: 620px;
+    margin: 0;
+    color: rgba(237, 236, 237, 0.78);
+    font-size: clamp(1rem, 1.35vw, 1.15rem);
+}
+
+.nv-hero-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-top: 1.35rem;
+}
+
+.nv-hero-tags span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid rgba(237, 236, 237, 0.14);
+    border-radius: 999px;
+    background: rgba(237, 236, 237, 0.06);
+    color: rgba(237, 236, 237, 0.82);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    backdrop-filter: blur(12px);
+}
+
+.nv-hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.85rem;
+    margin-top: 1.8rem;
+}
+
+/* Compact premium hero card */
+.nv-hero-showcase {
+    position: relative;
+    overflow: hidden;
+    max-width: 470px;
+    margin-left: auto;
+    padding: 1.15rem;
+    border: 1px solid rgba(237, 236, 237, 0.12);
+    border-radius: 1.75rem;
+    background:
+        radial-gradient(circle at top right, rgba(234, 87, 28, 0.15), transparent 14rem),
+        linear-gradient(160deg, rgba(237, 236, 237, 0.095), rgba(237, 236, 237, 0.035)),
+        rgba(18, 33, 33, 0.58);
+    box-shadow: 0 28px 76px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(18px);
+}
+
+.nv-hero-showcase::before {
+    content: "";
+    position: absolute;
+    inset: 0.9rem;
+    border: 1px solid rgba(237, 236, 237, 0.09);
+    border-radius: 1.25rem;
+    pointer-events: none;
+}
+
+.nv-hero-showcase-header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+    margin-bottom: 2.25rem;
+}
+
+.nv-hero-showcase-header span,
+.nv-hero-showcase-header strong {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0.48rem 0.7rem;
+    border: 1px solid rgba(237, 236, 237, 0.14);
+    border-radius: 999px;
+    background: rgba(18, 33, 33, 0.38);
+    color: rgba(237, 236, 237, 0.84);
+    font-size: 0.68rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.nv-hero-showcase-brand {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 1.1rem;
+    margin-bottom: 2.2rem;
+}
+
+.nv-hero-showcase-logo {
+    width: min(100%, 275px);
+    height: auto;
+}
+
+.nv-hero-showcase-brand span {
+    display: inline-flex;
+    margin-bottom: 0.5rem;
+    color: var(--nv-orange);
+    font-size: 0.74rem;
+    font-weight: 900;
+    letter-spacing: 0.14em;
+    line-height: 1;
+    text-transform: uppercase;
+}
+
+.nv-hero-showcase-brand h2 {
+    max-width: 24rem;
+    margin: 0;
+    color: var(--nv-white);
+    font-size: clamp(2rem, 3.6vw, 3.45rem);
+    font-weight: 900;
+    line-height: 0.94;
+    letter-spacing: -0.075em;
+}
+
+.nv-hero-showcase-specs {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.65rem;
+}
+
+.nv-hero-showcase-specs div {
+    padding: 0.78rem;
+    border: 1px solid rgba(237, 236, 237, 0.1);
+    border-radius: 0.95rem;
+    background: rgba(237, 236, 237, 0.055);
+}
+
+.nv-hero-showcase-specs strong {
+    display: block;
+    color: var(--nv-white);
+    font-size: 0.95rem;
+    line-height: 1;
+}
+
+.nv-hero-showcase-specs span {
+    display: block;
+    margin-top: 0.28rem;
+    color: rgba(237, 236, 237, 0.58);
+    font-size: 0.74rem;
+    line-height: 1.35;
+}
+
+/* Technical strip */
+.nv-home-strip {
+    padding: 1.15rem 0;
+    background: var(--nv-white);
+    border-bottom: 1px solid rgba(30, 34, 38, 0.08);
+}
+
+.nv-strip-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.9rem;
+}
+
+.nv-strip-grid div {
+    padding: 0.95rem;
+    border-radius: 1rem;
+    background: rgba(62, 84, 71, 0.07);
+}
+
+.nv-strip-grid strong {
+    display: block;
+    color: var(--nv-dark);
+    font-size: 1.05rem;
+    line-height: 1;
+}
+
+.nv-strip-grid span {
+    display: block;
+    margin-top: 0.35rem;
+    color: rgba(30, 34, 38, 0.62);
+    font-size: 0.84rem;
+}
+
+/* Sections */
+.nv-home-section {
+    padding: clamp(4rem, 8vw, 6.5rem) 0;
+    background: #f4f2ef;
+}
+
+.nv-section-header {
+    max-width: 780px;
+    margin-bottom: 2.4rem;
+}
+
+.nv-section-header-split {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.72fr);
+    gap: 2rem;
+    max-width: none;
+    align-items: end;
+}
+
+.nv-section-header h2 {
+    margin: 0;
+    font-size: clamp(2.2rem, 4.5vw, 4.5rem);
+}
+
+.nv-section-header p {
+    margin: 0;
+}
+
+/* Product cards */
+.nv-product-card {
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid rgba(30, 34, 38, 0.08);
+    border-radius: 2rem;
+    background: var(--nv-white);
+    box-shadow: 0 24px 70px rgba(18, 33, 33, 0.1);
+}
+
+.nv-product-media {
+    position: relative;
+    display: flex;
+    min-height: 285px;
+    padding: 1.25rem;
+    overflow: hidden;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.nv-product-media::before {
+    content: "";
+    position: absolute;
+    inset: 1rem;
+    border: 1px solid rgba(237, 236, 237, 0.12);
+    border-radius: 1.45rem;
+    pointer-events: none;
+}
+
+.nv-product-media-green {
+    background:
+        radial-gradient(circle at 78% 24%, rgba(234, 87, 28, 0.22), transparent 13rem),
+        linear-gradient(135deg, var(--nv-green), var(--nv-deep));
+}
+
+.nv-product-media-dark {
+    background:
+        radial-gradient(circle at 78% 24%, rgba(237, 236, 237, 0.12), transparent 13rem),
+        linear-gradient(135deg, var(--nv-dark), #2f4639);
+}
+
+.nv-product-media-header {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: space-between;
+    gap: 0.75rem;
+}
+
+.nv-product-media-header span {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0.52rem 0.75rem;
+    border: 1px solid rgba(237, 236, 237, 0.16);
+    border-radius: 999px;
+    background: rgba(18, 33, 33, 0.42);
+    color: var(--nv-white);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    line-height: 1;
+    text-transform: uppercase;
+    backdrop-filter: blur(10px);
+}
+
+.nv-product-media-content {
+    position: relative;
+    z-index: 1;
+    max-width: 27rem;
+}
+
+.nv-product-media-content strong {
+    display: block;
+    color: var(--nv-white);
+    font-size: clamp(2.1rem, 3.7vw, 3.55rem);
+    font-weight: 900;
+    line-height: 0.95;
+    letter-spacing: -0.075em;
+}
+
+.nv-product-media-content p {
+    max-width: 21rem;
+    margin: 0.75rem 0 0;
+    color: rgba(237, 236, 237, 0.7);
+}
+
+.nv-product-body {
+    padding: 1.5rem;
+}
+
+.nv-product-category {
+    display: inline-flex;
+    margin-bottom: 0.75rem;
+    color: var(--nv-orange);
+    font-size: 0.72rem;
+    font-weight: 900;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+}
+
+.nv-product-body h3 {
+    margin: 0 0 0.75rem;
+    font-size: clamp(1.55rem, 2.2vw, 2.2rem);
+}
+
+.nv-product-body p {
+    margin-bottom: 1.2rem;
+}
+
+.nv-product-data {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.75rem;
+    margin-bottom: 1.35rem;
+}
+
+.nv-product-data div {
+    padding: 0.9rem;
+    border-radius: 1rem;
+    background: rgba(62, 84, 71, 0.08);
+}
+
+.nv-product-data strong {
+    display: block;
+    color: var(--nv-dark);
+    font-size: 0.92rem;
+}
+
+.nv-product-data span {
+    display: block;
+    margin-top: 0.25rem;
+    color: rgba(30, 34, 38, 0.58);
+    font-size: 0.78rem;
+}
+
+/* Benefits */
+.nv-home-benefits {
+    background: var(--nv-white);
+}
+
+.nv-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+}
+
+.nv-benefit-card {
+    min-height: 250px;
+    padding: 1.4rem;
+    border: 1px solid rgba(30, 34, 38, 0.08);
+    border-radius: 1.5rem;
+    background:
+        linear-gradient(180deg, rgba(62, 84, 71, 0.08), transparent),
+        #ffffff;
+}
+
+.nv-benefit-card span {
+    display: inline-flex;
+    margin-bottom: 2.1rem;
+    color: var(--nv-orange);
+    font-size: 0.9rem;
+    font-weight: 900;
+}
+
+.nv-benefit-card h3 {
+    margin: 0 0 0.75rem;
+    font-size: 1.25rem;
+}
+
+.nv-benefit-card p {
+    margin: 0;
+    font-size: 0.95rem;
+}
+
+/* Info CTA */
+.nv-info-section {
+    background: #f4f2ef;
+}
+
+.nv-info-card {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(300px, 0.75fr);
+    gap: 2rem;
+    align-items: center;
+    padding: clamp(1.5rem, 4vw, 3rem);
+    border-radius: 2.2rem;
+    background:
+        radial-gradient(circle at top right, rgba(234, 87, 28, 0.16), transparent 22rem),
+        linear-gradient(135deg, var(--nv-deep), var(--nv-dark));
+    box-shadow: var(--nv-shadow-strong);
+}
+
+.nv-info-card h2 {
+    margin: 0 0 1rem;
+    color: var(--nv-white);
+    font-size: clamp(2rem, 4vw, 4rem);
+}
+
+.nv-info-card p {
+    max-width: 640px;
+    margin: 0;
+    color: rgba(237, 236, 237, 0.74);
+}
+
+.nv-info-list {
+    display: grid;
+    gap: 0.75rem;
+}
+
+.nv-info-list span {
+    display: flex;
+    align-items: center;
+    min-height: 48px;
+    padding: 0.8rem 1rem;
+    border: 1px solid rgba(237, 236, 237, 0.1);
+    border-radius: 999px;
+    background: rgba(237, 236, 237, 0.06);
+    color: rgba(237, 236, 237, 0.86);
+    font-weight: 800;
+}
+
+/* Responsive */
+@media (max-width: 991.98px) {
+    .nv-hero-grid,
+    .nv-section-header-split,
+    .nv-info-card {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-hero-showcase {
+        max-width: none;
+        margin-left: 0;
+    }
+
+    .nv-strip-grid,
+    .nv-benefits-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 575.98px) {
+    .nv-home-hero {
+        padding: 3.2rem 0;
+    }
+
+    .nv-home-hero h1 {
+        font-size: clamp(2.65rem, 16vw, 4rem);
+    }
+
+    .nv-hero-actions,
+    .nv-hero-actions .nv-button {
+        width: 100%;
+    }
+
+    .nv-hero-actions {
+        flex-direction: column;
+    }
+
+    .nv-hero-showcase-specs,
+    .nv-product-data,
+    .nv-strip-grid,
+    .nv-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-hero-showcase-brand h2,
+    .nv-product-media-content strong {
+        font-size: clamp(2.15rem, 13vw, 3.2rem);
+    }
+
+    .nv-product-media {
+        min-height: 245px;
+    }
+}

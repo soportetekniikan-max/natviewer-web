@@ -1,1 +1,96 @@
-/* Navigation styles will be added in the public layout phase. */
+.nv-nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(0.8rem, 1.7vw, 1.45rem);
+}
+
+.nv-nav-links a {
+    position: relative;
+    color: rgba(237, 236, 237, 0.74);
+    font-size: 0.9rem;
+    font-weight: 800;
+    line-height: 1;
+    text-decoration: none;
+    transition: color var(--nv-transition);
+}
+
+.nv-nav-links a::after {
+    content: "";
+    position: absolute;
+    right: 0;
+    bottom: -0.42rem;
+    left: 0;
+    height: 2px;
+    border-radius: 999px;
+    background: var(--nv-orange);
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform var(--nv-transition);
+}
+
+.nv-nav-links a:hover,
+.nv-nav-links a:focus {
+    color: var(--nv-white);
+}
+
+.nv-nav-links a:hover::after,
+.nv-nav-links a:focus::after {
+    transform: scaleX(1);
+}
+
+.nv-nav-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    flex: 0 0 auto;
+}
+
+.nv-lang-switch {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 44px;
+    min-height: 44px;
+    border: 1px solid rgba(237, 236, 237, 0.14);
+    border-radius: 999px;
+    color: rgba(237, 236, 237, 0.84);
+    font-size: 0.78rem;
+    font-weight: 900;
+    letter-spacing: 0.08em;
+    text-decoration: none;
+    transition:
+        background-color var(--nv-transition),
+        color var(--nv-transition),
+        border-color var(--nv-transition);
+}
+
+.nv-lang-switch:hover,
+.nv-lang-switch:focus {
+    border-color: rgba(234, 87, 28, 0.48);
+    background: rgba(234, 87, 28, 0.12);
+    color: var(--nv-white);
+}
+
+@media (max-width: 991.98px) {
+    .nv-nav-links {
+        order: 3;
+        width: 100%;
+        justify-content: flex-start;
+        overflow-x: auto;
+        padding-top: 0.35rem;
+        padding-bottom: 0.25rem;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .nv-nav-actions {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .nv-header-cta {
+        flex: 1;
+    }
+}
