@@ -3,6 +3,7 @@
 namespace App\Http\Requests\Admin;
 
 use App\Models\Product;
+use App\Models\ProductVariant;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -15,7 +16,9 @@ class UpdateProductRequest extends FormRequest
 
     protected function prepareForValidation(): void
     {
-        $variants = collect($this->input('variants', []))
+        $variants = collect(
+            $this->input('variants', [])
+        )
             ->map(function ($variant) {
                 if (isset($variant['currency'])) {
                     $variant['currency'] = strtoupper(
@@ -108,15 +111,19 @@ class UpdateProductRequest extends FormRequest
                 'required',
                 'integer',
                 'distinct',
-                Rule::exists('product_variants', 'id')
-                    ->where(function ($query) use ($product) {
+                Rule::exists(
+                    'product_variants',
+                    'id'
+                )->where(
+                    function ($query) use ($product) {
                         if ($product) {
                             $query->where(
                                 'product_id',
                                 $product->id
                             );
                         }
-                    }),
+                    }
+                ),
             ],
 
             'variants.*.name_es' => [
@@ -158,16 +165,34 @@ class UpdateProductRequest extends FormRequest
             'variants.*.stock_status' => [
                 'required',
                 Rule::in([
-                    'in_stock',
-                    'out_of_stock',
-                    'backorder',
-                    'unknown',
+                    ProductVariant::STOCK_IN_STOCK,
+                    ProductVariant::STOCK_OUT_OF_STOCK,
+                    ProductVariant::STOCK_BACKORDER,
+                    ProductVariant::STOCK_UNKNOWN,
                 ]),
             ],
 
             'variants.*.is_active' => [
                 'required',
                 'boolean',
+            ],
+
+            'variants.*.specifications' => [
+                'nullable',
+                'array',
+                'max:30',
+            ],
+
+            'variants.*.specifications.*.key' => [
+                'nullable',
+                'string',
+                'max:100',
+            ],
+
+            'variants.*.specifications.*.value' => [
+                'nullable',
+                'string',
+                'max:500',
             ],
         ];
     }
@@ -198,6 +223,15 @@ class UpdateProductRequest extends FormRequest
 
             'variants.*.stock_quantity.min' =>
                 'El stock no puede ser negativo.',
+
+            'variants.*.specifications.max' =>
+                'Cada variante puede tener máximo 30 especificaciones.',
+
+            'variants.*.specifications.*.key.max' =>
+                'El nombre de la especificación es demasiado largo.',
+
+            'variants.*.specifications.*.value.max' =>
+                'El valor de la especificación es demasiado largo.',
         ];
     }
 }

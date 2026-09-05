@@ -1,24 +1,36 @@
 import { Modal } from 'bootstrap';
+import './admin-products';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const quoteModalElement = document.getElementById('quoteModal');
+    const quoteModalElement =
+        document.getElementById('quoteModal');
 
     if (!quoteModalElement) {
         return;
     }
 
-    const quoteForm = document.getElementById('quoteForm');
+    const quoteForm =
+        document.getElementById('quoteForm');
 
-    const productInput = document.getElementById('quoteProductId');
-    const variantInput = document.getElementById('quoteVariantId');
+    const productInput =
+        document.getElementById('quoteProductId');
 
-    const selectedProduct = document.getElementById('quoteSelectedProduct');
-    const selectedVariant = document.getElementById('quoteSelectedVariant');
+    const variantInput =
+        document.getElementById('quoteVariantId');
 
-    const submitButton = document.getElementById('quoteSubmitButton');
+    const selectedProduct =
+        document.getElementById('quoteSelectedProduct');
+
+    const selectedVariant =
+        document.getElementById('quoteSelectedVariant');
+
+    const submitButton =
+        document.getElementById('quoteSubmitButton');
 
     const triggers = Array.from(
-        document.querySelectorAll('.nv-quote-trigger')
+        document.querySelectorAll(
+            '.nv-quote-trigger'
+        )
     );
 
     const populateModal = (trigger) => {
@@ -26,8 +38,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        productInput.value = trigger.dataset.quoteProduct || '';
-        variantInput.value = trigger.dataset.quoteVariant || '';
+        productInput.value =
+            trigger.dataset.quoteProduct || '';
+
+        variantInput.value =
+            trigger.dataset.quoteVariant || '';
 
         selectedProduct.textContent =
             trigger.dataset.quoteProductName || '';
@@ -36,41 +51,60 @@ document.addEventListener('DOMContentLoaded', () => {
             trigger.dataset.quoteVariantName || '';
     };
 
-    quoteModalElement.addEventListener('show.bs.modal', (event) => {
-        if (event.relatedTarget) {
-            populateModal(event.relatedTarget);
+    quoteModalElement.addEventListener(
+        'show.bs.modal',
+        (event) => {
+            if (event.relatedTarget) {
+                populateModal(
+                    event.relatedTarget
+                );
+            }
         }
-    });
+    );
 
     const hasValidationErrors =
-        quoteModalElement.dataset.hasErrors === 'true';
+        quoteModalElement.dataset.hasErrors
+        === 'true';
 
     const oldVariantId =
-        quoteModalElement.dataset.oldVariant || '';
+        quoteModalElement.dataset.oldVariant
+        || '';
 
     if (hasValidationErrors) {
-        const previousTrigger = triggers.find(
-            (trigger) =>
-                trigger.dataset.quoteVariant === oldVariantId
-        );
+        const previousTrigger =
+            triggers.find(
+                (trigger) =>
+                    trigger.dataset.quoteVariant
+                    === oldVariantId
+            );
 
         if (previousTrigger) {
-            populateModal(previousTrigger);
+            populateModal(
+                previousTrigger
+            );
         }
 
-        Modal.getOrCreateInstance(quoteModalElement).show();
+        Modal
+            .getOrCreateInstance(
+                quoteModalElement
+            )
+            .show();
     }
 
     if (quoteForm && submitButton) {
-        quoteForm.addEventListener('submit', () => {
-            submitButton.disabled = true;
+        quoteForm.addEventListener(
+            'submit',
+            () => {
+                submitButton.disabled = true;
 
-            const loadingText =
-                submitButton.dataset.loadingText;
+                const loadingText =
+                    submitButton.dataset.loadingText;
 
-            if (loadingText) {
-                submitButton.textContent = loadingText;
+                if (loadingText) {
+                    submitButton.textContent =
+                        loadingText;
+                }
             }
-        });
+        );
     }
 });

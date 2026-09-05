@@ -2,14 +2,17 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class ProductImage extends Model
 {
+    use HasFactory;
+
     protected $fillable = [
         'product_id',
-        'product_variant_id',
+        'variant_id',
         'disk',
         'path',
         'alt_es',
@@ -21,6 +24,8 @@ class ProductImage extends Model
     protected function casts(): array
     {
         return [
+            'product_id' => 'integer',
+            'variant_id' => 'integer',
             'is_primary' => 'boolean',
             'sort_order' => 'integer',
         ];
@@ -35,7 +40,7 @@ class ProductImage extends Model
     {
         return $this->belongsTo(
             ProductVariant::class,
-            'product_variant_id'
+            'variant_id'
         );
     }
 }

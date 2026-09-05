@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuoteRequestController;
 use Illuminate\Support\Facades\Route;
@@ -75,6 +76,29 @@ Route::prefix('admin')
                 '/products/{product}',
                 [ProductController::class, 'update']
             )->name('products.update');
+
+            Route::post(
+                '/products/{product}/images',
+                [ProductImageController::class, 'store']
+            )->name('products.images.store');
+
+            Route::put(
+                '/products/{product}/images/{image}',
+                [ProductImageController::class, 'update']
+            )->name('products.images.update');
+
+            Route::patch(
+                '/products/{product}/images/{image}/primary',
+                [
+                    ProductImageController::class,
+                    'setPrimary',
+                ]
+            )->name('products.images.primary');
+
+            Route::delete(
+                '/products/{product}/images/{image}',
+                [ProductImageController::class, 'destroy']
+            )->name('products.images.destroy');
 
             Route::post(
                 '/logout',

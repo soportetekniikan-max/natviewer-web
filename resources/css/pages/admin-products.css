@@ -48,12 +48,16 @@
 
 .nv-admin-action-link {
     display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
     border-radius: var(--nv-radius-sm);
     background: rgba(234, 87, 28, 0.1);
     color: var(--nv-orange);
     padding: 0.5rem 0.75rem;
     font-size: 0.82rem;
     font-weight: 800;
+    cursor: pointer;
 }
 
 .nv-admin-action-link:hover {
@@ -130,10 +134,15 @@
     font-weight: 700;
 }
 
+.nv-admin-field small {
+    color: var(--nv-gray);
+    font-size: 0.78rem;
+}
+
 .nv-admin-field .form-control,
 .nv-admin-field .form-select {
-    border-color: rgba(30, 34, 38, 0.15);
     min-height: 46px;
+    border-color: rgba(30, 34, 38, 0.15);
 }
 
 .nv-admin-field textarea.form-control {
@@ -169,7 +178,7 @@
 
 .nv-admin-variants {
     display: grid;
-    gap: 1rem;
+    gap: 1.25rem;
     padding: 1.5rem;
 }
 
@@ -223,6 +232,236 @@
     padding-bottom: 2rem;
 }
 
+/* EDIT NAVIGATION */
+
+.nv-admin-edit-navigation {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.nv-admin-edit-navigation a {
+    border: 1px solid rgba(30, 34, 38, 0.1);
+    border-radius: 100px;
+    background: var(--nv-white);
+    color: var(--nv-dark);
+    padding: 0.55rem 0.9rem;
+    font-size: 0.82rem;
+    font-weight: 700;
+}
+
+.nv-admin-edit-navigation a:hover {
+    border-color: var(--nv-orange);
+    color: var(--nv-orange);
+}
+
+/* SPECIFICATIONS */
+
+.nv-admin-specifications {
+    padding: 0 1.5rem 1.5rem;
+}
+
+.nv-admin-specifications-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(30, 34, 38, 0.08);
+}
+
+.nv-admin-specifications-header h3 {
+    margin-bottom: 0.25rem;
+    font-size: 1rem;
+}
+
+.nv-admin-specifications-header p {
+    margin: 0;
+    color: var(--nv-gray);
+    font-size: 0.82rem;
+}
+
+.nv-admin-spec-list {
+    display: grid;
+    gap: 0.75rem;
+    margin-top: 1rem;
+}
+
+.nv-admin-spec-row {
+    display: grid;
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr)
+        auto;
+    gap: 0.75rem;
+    align-items: end;
+}
+
+.nv-admin-spec-remove-wrap {
+    display: flex;
+    align-items: flex-end;
+}
+
+.nv-admin-spec-remove {
+    min-height: 46px;
+    border: 1px solid rgba(178, 48, 48, 0.2);
+    border-radius: var(--nv-radius-sm);
+    background: rgba(178, 48, 48, 0.08);
+    color: #a62929;
+    padding: 0.55rem 0.8rem;
+    font-size: 0.8rem;
+    font-weight: 700;
+}
+
+.nv-admin-spec-remove:hover {
+    background: #a62929;
+    color: var(--nv-white);
+}
+
+/* IMAGES */
+
+.nv-admin-images-section {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.nv-admin-image-upload {
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(30, 34, 38, 0.08);
+}
+
+.nv-admin-image-upload h3 {
+    margin-bottom: 0;
+    font-size: 1.05rem;
+}
+
+.nv-admin-image-upload-form {
+    margin-top: 0.5rem;
+}
+
+.nv-admin-image-upload-form .nv-admin-form-grid {
+    padding-right: 0;
+    padding-left: 0;
+}
+
+.nv-admin-image-upload-actions {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.nv-admin-gallery {
+    display: grid;
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(0, 1fr)
+        );
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.nv-admin-image-card {
+    overflow: hidden;
+    border: 1px solid rgba(30, 34, 38, 0.1);
+    border-radius: var(--nv-radius-md);
+    background: var(--nv-white);
+}
+
+.nv-admin-image-preview {
+    position: relative;
+    aspect-ratio: 4 / 3;
+    overflow: hidden;
+    background: var(--nv-light);
+}
+
+.nv-admin-image-preview img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.nv-admin-primary-badge {
+    position: absolute;
+    top: 0.75rem;
+    left: 0.75rem;
+    border-radius: 100px;
+    background: var(--nv-orange);
+    color: var(--nv-white);
+    padding: 0.35rem 0.65rem;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.nv-admin-image-meta-form {
+    display: grid;
+    gap: 0.8rem;
+    padding: 1rem;
+}
+
+.nv-admin-image-save {
+    min-height: 42px;
+    border: 0;
+    border-radius: var(--nv-radius-sm);
+    background: var(--nv-green);
+    color: var(--nv-white);
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.nv-admin-image-save:hover {
+    background: var(--nv-deep);
+}
+
+.nv-admin-image-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding: 0 1rem 1rem;
+}
+
+.nv-admin-image-actions form {
+    margin: 0;
+}
+
+.nv-admin-image-primary-button,
+.nv-admin-image-delete {
+    min-height: 38px;
+    border-radius: var(--nv-radius-sm);
+    padding: 0.45rem 0.7rem;
+    font-size: 0.76rem;
+    font-weight: 800;
+}
+
+.nv-admin-image-primary-button {
+    border: 1px solid rgba(234, 87, 28, 0.25);
+    background: rgba(234, 87, 28, 0.08);
+    color: var(--nv-orange);
+}
+
+.nv-admin-image-primary-button:hover {
+    background: var(--nv-orange);
+    color: var(--nv-white);
+}
+
+.nv-admin-image-delete {
+    border: 1px solid rgba(178, 48, 48, 0.2);
+    background: rgba(178, 48, 48, 0.08);
+    color: #a62929;
+}
+
+.nv-admin-image-delete:hover {
+    background: #a62929;
+    color: var(--nv-white);
+}
+
+@media (max-width: 1199.98px) {
+    .nv-admin-gallery {
+        grid-template-columns:
+            repeat(2, minmax(0, 1fr));
+    }
+}
+
 @media (max-width: 767.98px) {
     .nv-admin-header-left {
         gap: 0.75rem;
@@ -243,5 +482,26 @@
 
     .nv-admin-field-full {
         grid-column: auto;
+    }
+
+    .nv-admin-edit-navigation {
+        overflow-x: auto;
+    }
+
+    .nv-admin-specifications-header {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .nv-admin-spec-row {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-admin-spec-remove-wrap {
+        justify-content: flex-end;
+    }
+
+    .nv-admin-gallery {
+        grid-template-columns: 1fr;
     }
 }

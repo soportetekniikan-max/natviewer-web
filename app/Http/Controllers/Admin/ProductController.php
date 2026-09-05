@@ -20,7 +20,10 @@ class ProductController extends Controller
                 'category',
                 'brand',
             ])
-            ->withCount('variants')
+            ->withCount([
+                'variants',
+                'images',
+            ])
             ->orderByDesc('is_featured')
             ->orderBy('name_es')
             ->paginate(20);
@@ -35,7 +38,19 @@ class ProductController extends Controller
         $product->load([
             'category',
             'brand',
-            'variants',
+
+            'variants' => function ($query) {
+                $query
+                    ->orderBy('sort_order')
+                    ->orderBy('id');
+            },
+
+            'images' => function ($query) {
+                $query
+                    ->orderByDesc('is_primary')
+                    ->orderBy('sort_order')
+                    ->orderBy('id');
+            },
         ]);
 
         $categories = Category::query()
@@ -99,21 +114,33 @@ class ProductController extends Controller
                     (bool) $validated['is_featured'],
             ]);
 
-            foreach ($validated['variants'] as $variantData) {
+            foreach (
+                $validated['variants']
+                as $variantData
+            ) {
                 $variant = $product
                     ->variants()
-                    ->whereKey($variantData['id'])
+                    ->whereKey(
+                        $variantData['id']
+                    )
                     ->firstOrFail();
 
                 $manageStock = (bool)
                     $variantData['manage_stock'];
+
+                $specifications =
+                    $this->normalizeSpecifications(
+                        $variantData['specifications']
+                            ?? []
+                    );
 
                 $variant->update([
                     'name_es' =>
                         $variantData['name_es'],
 
                     'name_en' =>
-                        $variantData['name_en'] ?? null,
+                        $variantData['name_en']
+                            ?? null,
 
                     'price' =>
                         $variantData['price'] !== null
@@ -129,7 +156,10 @@ class ProductController extends Controller
 
                     'stock_quantity' =>
                         $manageStock
-                            ? ($variantData['stock_quantity'] ?? null)
+                            ? (
+                                $variantData['stock_quantity']
+                                ?? null
+                            )
                             : null,
 
                     'stock_status' =>
@@ -137,15 +167,45 @@ class ProductController extends Controller
 
                     'is_active' =>
                         (bool) $variantData['is_active'],
+
+                    'specifications' =>
+                        $specifications,
                 ]);
             }
         });
 
         return redirect()
-            ->route('admin.products.edit', $product)
+            ->route(
+                'admin.products.edit',
+                $product
+            )
             ->with(
                 'success',
                 'Producto actualizado correctamente.'
             );
+    }
+
+    private function normalizeSpecifications(
+        array $rows
+    ): array {
+        $specifications = [];
+
+        foreach ($rows as $row) {
+            $key = trim(
+                (string) ($row['key'] ?? '')
+            );
+
+            $value = trim(
+                (string) ($row['value'] ?? '')
+            );
+
+            if ($key === '' || $value === '') {
+                continue;
+            }
+
+            $specifications[$key] = $value;
+        }
+
+        return $specifications;
     }
 }
