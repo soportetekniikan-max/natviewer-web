@@ -13,10 +13,17 @@
                 <h1>Productos</h1>
 
                 <p>
-                    Gestiona la información comercial,
-                    precios y stock del catálogo Natviewer.
+                    Gestiona productos, variantes,
+                    imágenes, precios y stock.
                 </p>
             </div>
+
+            <a
+                href="{{ route('admin.products.create') }}"
+                class="nv-button nv-button-primary"
+            >
+                + Nuevo producto
+            </a>
         </div>
 
         @if (session('success'))
@@ -50,6 +57,7 @@
                                 <th>Marca</th>
                                 <th>Categoría</th>
                                 <th>Variantes</th>
+                                <th>Imágenes</th>
                                 <th>Estado</th>
                                 <th>Destacado</th>
                                 <th></th>
@@ -84,6 +92,10 @@
                                     </td>
 
                                     <td>
+                                        {{ $product->images_count }}
+                                    </td>
+
+                                    <td>
                                         <span
                                             class="nv-admin-status nv-admin-status-{{ $product->status }}"
                                         >
@@ -95,13 +107,33 @@
                                         {{ $product->is_featured ? 'Sí' : 'No' }}
                                     </td>
 
-                                    <td class="text-end">
-                                        <a
-                                            href="{{ route('admin.products.edit', $product) }}"
-                                            class="nv-admin-action-link"
-                                        >
-                                            Editar
-                                        </a>
+                                    <td>
+                                        <div class="d-flex gap-2 justify-content-end">
+                                            <a
+                                                href="{{ route('admin.products.edit', $product) }}"
+                                                class="nv-admin-action-link"
+                                            >
+                                                Editar
+                                            </a>
+
+                                            @if ($product->status !== 'archived')
+                                                <form
+                                                    method="POST"
+                                                    action="{{ route('admin.products.archive', $product) }}"
+                                                    onsubmit="return confirm('¿Archivar este producto? No se eliminarán sus datos, imágenes, variantes ni cotizaciones.');"
+                                                >
+                                                    @csrf
+                                                    @method('PATCH')
+
+                                                    <button
+                                                        type="submit"
+                                                        class="btn btn-sm btn-outline-secondary"
+                                                    >
+                                                        Archivar
+                                                    </button>
+                                                </form>
+                                            @endif
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

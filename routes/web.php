@@ -62,10 +62,26 @@ Route::prefix('admin')
                 [DashboardController::class, 'index']
             )->name('dashboard');
 
+            /*
+            |--------------------------------------------------------------------------
+            | Productos
+            |--------------------------------------------------------------------------
+            */
+
             Route::get(
                 '/products',
                 [ProductController::class, 'index']
             )->name('products.index');
+
+            Route::get(
+                '/products/create',
+                [ProductController::class, 'create']
+            )->name('products.create');
+
+            Route::post(
+                '/products',
+                [ProductController::class, 'store']
+            )->name('products.store');
 
             Route::get(
                 '/products/{product}/edit',
@@ -76,6 +92,17 @@ Route::prefix('admin')
                 '/products/{product}',
                 [ProductController::class, 'update']
             )->name('products.update');
+
+            Route::patch(
+                '/products/{product}/archive',
+                [ProductController::class, 'archive']
+            )->name('products.archive');
+
+            /*
+            |--------------------------------------------------------------------------
+            | Imágenes de producto
+            |--------------------------------------------------------------------------
+            */
 
             Route::post(
                 '/products/{product}/images',
@@ -99,6 +126,12 @@ Route::prefix('admin')
                 '/products/{product}/images/{image}',
                 [ProductImageController::class, 'destroy']
             )->name('products.images.destroy');
+
+            /*
+            |--------------------------------------------------------------------------
+            | Sesión
+            |--------------------------------------------------------------------------
+            */
 
             Route::post(
                 '/logout',
