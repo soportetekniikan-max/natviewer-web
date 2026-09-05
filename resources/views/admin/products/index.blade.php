@@ -108,9 +108,22 @@
                                     </td>
 
                                     <td>
-                                        <div class="d-flex gap-2 justify-content-end">
+                                        <div class="d-flex gap-2 justify-content-end flex-wrap">
                                             <a
-                                                href="{{ route('admin.products.edit', $product) }}"
+                                                href="{{ route(
+                                                    'admin.products.variants.index',
+                                                    $product
+                                                ) }}"
+                                                class="nv-admin-action-link"
+                                            >
+                                                Variantes
+                                            </a>
+
+                                            <a
+                                                href="{{ route(
+                                                    'admin.products.edit',
+                                                    $product
+                                                ) }}"
                                                 class="nv-admin-action-link"
                                             >
                                                 Editar
@@ -119,8 +132,11 @@
                                             @if ($product->status !== 'archived')
                                                 <form
                                                     method="POST"
-                                                    action="{{ route('admin.products.archive', $product) }}"
-                                                    onsubmit="return confirm('¿Archivar este producto? No se eliminarán sus datos, imágenes, variantes ni cotizaciones.');"
+                                                    action="{{ route(
+                                                        'admin.products.archive',
+                                                        $product
+                                                    ) }}"
+                                                    onsubmit="return confirm('¿Archivar este producto? No se eliminarán sus datos.');"
                                                 >
                                                     @csrf
                                                     @method('PATCH')

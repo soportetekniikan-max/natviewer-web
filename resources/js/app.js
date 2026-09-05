@@ -1,5 +1,7 @@
 import { Modal } from 'bootstrap';
+
 import './admin-products';
+import './admin-variants';
 
 document.addEventListener('DOMContentLoaded', () => {
     const quoteModalElement =
@@ -19,13 +21,19 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('quoteVariantId');
 
     const selectedProduct =
-        document.getElementById('quoteSelectedProduct');
+        document.getElementById(
+            'quoteSelectedProduct'
+        );
 
     const selectedVariant =
-        document.getElementById('quoteSelectedVariant');
+        document.getElementById(
+            'quoteSelectedVariant'
+        );
 
     const submitButton =
-        document.getElementById('quoteSubmitButton');
+        document.getElementById(
+            'quoteSubmitButton'
+        );
 
     const triggers = Array.from(
         document.querySelectorAll(
@@ -39,16 +47,20 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         productInput.value =
-            trigger.dataset.quoteProduct || '';
+            trigger.dataset.quoteProduct
+            || '';
 
         variantInput.value =
-            trigger.dataset.quoteVariant || '';
+            trigger.dataset.quoteVariant
+            || '';
 
         selectedProduct.textContent =
-            trigger.dataset.quoteProductName || '';
+            trigger.dataset.quoteProductName
+            || '';
 
         selectedVariant.textContent =
-            trigger.dataset.quoteVariantName || '';
+            trigger.dataset.quoteVariantName
+            || '';
     };
 
     quoteModalElement.addEventListener(
