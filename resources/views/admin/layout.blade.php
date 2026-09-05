@@ -28,17 +28,35 @@
         <header class="nv-admin-header">
             <div class="container-fluid">
                 <div class="nv-admin-header-inner">
-                    <a
-                        href="{{ route('admin.dashboard') }}"
-                        class="nv-admin-brand"
-                    >
-                        <img
-                            src="{{ asset('images/logo-natviewer-white.png') }}"
-                            alt="Natviewer"
+                    <div class="nv-admin-header-left">
+                        <a
+                            href="{{ route('admin.dashboard') }}"
+                            class="nv-admin-brand"
                         >
+                            <img
+                                src="{{ asset('images/logo-natviewer-white.png') }}"
+                                alt="Natviewer"
+                            >
 
-                        <span>Admin</span>
-                    </a>
+                            <span>Admin</span>
+                        </a>
+
+                        <nav class="nv-admin-nav">
+                            <a
+                                href="{{ route('admin.dashboard') }}"
+                                class="{{ request()->routeIs('admin.dashboard') ? 'is-active' : '' }}"
+                            >
+                                Dashboard
+                            </a>
+
+                            <a
+                                href="{{ route('admin.products.index') }}"
+                                class="{{ request()->routeIs('admin.products.*') ? 'is-active' : '' }}"
+                            >
+                                Productos
+                            </a>
+                        </nav>
+                    </div>
 
                     <div class="nv-admin-user">
                         <span>

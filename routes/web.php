@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuoteRequestController;
 use Illuminate\Support\Facades\Route;
@@ -17,8 +18,10 @@ Route::redirect('/', '/es');
 Route::prefix('{locale}')
     ->whereIn('locale', ['es', 'en'])
     ->group(function () {
-        Route::get('/', HomeController::class)
-            ->name('home');
+        Route::get(
+            '/',
+            HomeController::class
+        )->name('home');
 
         Route::post(
             '/quotes',
@@ -57,6 +60,21 @@ Route::prefix('admin')
                 '/',
                 [DashboardController::class, 'index']
             )->name('dashboard');
+
+            Route::get(
+                '/products',
+                [ProductController::class, 'index']
+            )->name('products.index');
+
+            Route::get(
+                '/products/{product}/edit',
+                [ProductController::class, 'edit']
+            )->name('products.edit');
+
+            Route::put(
+                '/products/{product}',
+                [ProductController::class, 'update']
+            )->name('products.update');
 
             Route::post(
                 '/logout',

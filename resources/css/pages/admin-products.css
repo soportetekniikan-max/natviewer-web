@@ -1,0 +1,247 @@
+.nv-admin-header-left {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nv-admin-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.35rem;
+}
+
+.nv-admin-nav a {
+    border-radius: var(--nv-radius-sm);
+    color: rgba(255, 255, 255, 0.68);
+    padding: 0.55rem 0.8rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    transition: var(--nv-transition);
+}
+
+.nv-admin-nav a:hover,
+.nv-admin-nav a.is-active {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--nv-white);
+}
+
+.nv-admin-page-header-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+}
+
+.nv-admin-product-name {
+    display: grid;
+    gap: 0.2rem;
+}
+
+.nv-admin-product-name strong {
+    color: var(--nv-dark);
+}
+
+.nv-admin-product-name span {
+    color: var(--nv-gray);
+    font-size: 0.78rem;
+}
+
+.nv-admin-action-link {
+    display: inline-flex;
+    border-radius: var(--nv-radius-sm);
+    background: rgba(234, 87, 28, 0.1);
+    color: var(--nv-orange);
+    padding: 0.5rem 0.75rem;
+    font-size: 0.82rem;
+    font-weight: 800;
+}
+
+.nv-admin-action-link:hover {
+    background: var(--nv-orange);
+    color: var(--nv-white);
+}
+
+.nv-admin-status-draft {
+    background: rgba(111, 114, 118, 0.12);
+    color: var(--nv-gray);
+}
+
+.nv-admin-status-published {
+    background: rgba(62, 84, 71, 0.12);
+    color: var(--nv-green);
+}
+
+.nv-admin-status-archived {
+    background: rgba(30, 34, 38, 0.1);
+    color: var(--nv-dark);
+}
+
+.nv-admin-pagination {
+    padding: 1.25rem 1.5rem;
+    border-top: 1px solid rgba(30, 34, 38, 0.08);
+}
+
+.nv-admin-product-form {
+    display: grid;
+    gap: 1.5rem;
+}
+
+.nv-admin-form-card {
+    overflow: hidden;
+    border: 1px solid rgba(30, 34, 38, 0.08);
+    border-radius: var(--nv-radius-md);
+    background: var(--nv-white);
+}
+
+.nv-admin-form-card-header {
+    padding: 1.4rem 1.5rem;
+    border-bottom: 1px solid rgba(30, 34, 38, 0.08);
+}
+
+.nv-admin-form-card-header h2 {
+    margin-bottom: 0.35rem;
+    font-size: 1.35rem;
+}
+
+.nv-admin-form-card-header p {
+    margin: 0;
+}
+
+.nv-admin-form-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.25rem;
+    padding: 1.5rem;
+}
+
+.nv-admin-field {
+    display: grid;
+    align-content: start;
+    gap: 0.45rem;
+}
+
+.nv-admin-field-full {
+    grid-column: 1 / -1;
+}
+
+.nv-admin-field > label {
+    color: var(--nv-dark);
+    font-size: 0.88rem;
+    font-weight: 700;
+}
+
+.nv-admin-field .form-control,
+.nv-admin-field .form-select {
+    border-color: rgba(30, 34, 38, 0.15);
+    min-height: 46px;
+}
+
+.nv-admin-field textarea.form-control {
+    min-height: auto;
+}
+
+.nv-admin-field .form-control:focus,
+.nv-admin-field .form-select:focus {
+    border-color: var(--nv-orange);
+    box-shadow: 0 0 0 3px rgba(234, 87, 28, 0.1);
+}
+
+.nv-admin-toggle {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-height: 46px;
+    margin: 0;
+    cursor: pointer;
+}
+
+.nv-admin-toggle input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--nv-orange);
+}
+
+.nv-admin-toggle span {
+    color: var(--nv-dark);
+    font-size: 0.88rem;
+    font-weight: 600;
+}
+
+.nv-admin-variants {
+    display: grid;
+    gap: 1rem;
+    padding: 1.5rem;
+}
+
+.nv-admin-variant-card {
+    overflow: hidden;
+    border: 1px solid rgba(30, 34, 38, 0.1);
+    border-radius: var(--nv-radius-md);
+    background: #fafafa;
+}
+
+.nv-admin-variant-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: 1rem 1.5rem;
+    border-bottom: 1px solid rgba(30, 34, 38, 0.08);
+    background: var(--nv-light);
+}
+
+.nv-admin-variant-header div {
+    display: grid;
+    gap: 0.15rem;
+}
+
+.nv-admin-variant-header div span {
+    color: var(--nv-gray);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.nv-admin-variant-header strong {
+    color: var(--nv-dark);
+}
+
+.nv-admin-variant-header > span {
+    border-radius: 100px;
+    background: rgba(62, 84, 71, 0.1);
+    color: var(--nv-green);
+    padding: 0.35rem 0.65rem;
+    font-size: 0.72rem;
+    font-weight: 800;
+}
+
+.nv-admin-form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 0.75rem;
+    padding-bottom: 2rem;
+}
+
+@media (max-width: 767.98px) {
+    .nv-admin-header-left {
+        gap: 0.75rem;
+    }
+
+    .nv-admin-nav {
+        display: none;
+    }
+
+    .nv-admin-page-header-actions {
+        align-items: flex-start;
+        flex-direction: column;
+    }
+
+    .nv-admin-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-admin-field-full {
+        grid-column: auto;
+    }
+}
