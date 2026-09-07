@@ -9,8 +9,8 @@
     >
 
     <meta
-        name="robots"
-        content="noindex, nofollow"
+        name="csrf-token"
+        content="{{ csrf_token() }}"
     >
 
     <title>
@@ -19,49 +19,162 @@
 
     @vite([
         'resources/css/app.css',
-        'resources/js/app.js'
+        'resources/js/app.js',
     ])
 </head>
 
-<body class="nv-admin-body">
+<body class="bg-light">
     @auth
-        <header class="nv-admin-header">
-            <div class="container-fluid">
-                <div class="nv-admin-header-inner">
-                    <div class="nv-admin-header-left">
-                        <a
-                            href="{{ route('admin.dashboard') }}"
-                            class="nv-admin-brand"
-                        >
-                            <img
-                                src="{{ asset('images/logo-natviewer-white.png') }}"
-                                alt="Natviewer"
-                            >
+        <header
+            class="navbar navbar-expand-lg navbar-dark shadow-sm"
+            style="background-color: #122121;"
+        >
+            <div class="container-fluid px-4">
+                <a
+                    href="{{ route('admin.dashboard') }}"
+                    class="navbar-brand d-flex align-items-center"
+                >
+                    <img
+                        src="{{ asset('images/logo-natviewer-white.png') }}"
+                        alt="Natviewer"
+                        style="
+                            max-height: 38px;
+                            width: auto;
+                        "
+                    >
+                </a>
 
-                            <span>Admin</span>
-                        </a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-bs-toggle="collapse"
+                    data-bs-target="#adminNavigation"
+                    aria-controls="adminNavigation"
+                    aria-expanded="false"
+                    aria-label="Abrir navegación"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                        <nav class="nv-admin-nav">
+                <div
+                    class="collapse navbar-collapse"
+                    id="adminNavigation"
+                >
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        {{-- DASHBOARD --}}
+                        <li class="nav-item">
                             <a
                                 href="{{ route('admin.dashboard') }}"
-                                class="{{ request()->routeIs('admin.dashboard') ? 'is-active' : '' }}"
+                                class="
+                                    nav-link
+                                    {{ request()->routeIs('admin.dashboard')
+                                        ? 'active fw-semibold'
+                                        : '' }}
+                                "
                             >
                                 Dashboard
                             </a>
+                        </li>
 
+                        {{-- CATÁLOGO --}}
+                        <li class="nav-item dropdown">
                             <a
-                                href="{{ route('admin.products.index') }}"
-                                class="{{ request()->routeIs('admin.products.*') ? 'is-active' : '' }}"
+                                href="#"
+                                class="
+                                    nav-link
+                                    dropdown-toggle
+                                    {{ request()->routeIs(
+                                        'admin.products.*',
+                                        'admin.categories.*',
+                                        'admin.brands.*'
+                                    )
+                                        ? 'active fw-semibold'
+                                        : '' }}
+                                "
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
                             >
-                                Productos
+                                Catálogo
                             </a>
-                        </nav>
-                    </div>
 
-                    <div class="nv-admin-user">
-                        <span>
-                            {{ auth()->user()->name }}
-                        </span>
+                            <ul class="dropdown-menu shadow">
+                                <li>
+                                    <a
+                                        href="{{ route('admin.products.index') }}"
+                                        class="
+                                            dropdown-item
+                                            {{ request()->routeIs(
+                                                'admin.products.*'
+                                            )
+                                                ? 'active'
+                                                : '' }}
+                                        "
+                                    >
+                                        Productos
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        href="{{ route('admin.categories.index') }}"
+                                        class="
+                                            dropdown-item
+                                            {{ request()->routeIs(
+                                                'admin.categories.*'
+                                            )
+                                                ? 'active'
+                                                : '' }}
+                                        "
+                                    >
+                                        Categorías
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a
+                                        href="{{ route('admin.brands.index') }}"
+                                        class="
+                                            dropdown-item
+                                            {{ request()->routeIs(
+                                                'admin.brands.*'
+                                            )
+                                                ? 'active'
+                                                : '' }}
+                                        "
+                                    >
+                                        Marcas
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <div
+                        class="
+                            d-flex
+                            align-items-center
+                            gap-3
+                            text-white
+                        "
+                    >
+                        <div
+                            class="
+                                d-none
+                                d-lg-flex
+                                flex-column
+                                text-end
+                                small
+                            "
+                        >
+                            <strong>
+                                {{ auth()->user()->name }}
+                            </strong>
+
+                            <span class="opacity-75">
+                                Administrador
+                            </span>
+                        </div>
 
                         <form
                             method="POST"
@@ -71,7 +184,11 @@
 
                             <button
                                 type="submit"
-                                class="nv-admin-logout"
+                                class="
+                                    btn
+                                    btn-sm
+                                    btn-outline-light
+                                "
                             >
                                 Cerrar sesión
                             </button>
@@ -82,7 +199,7 @@
         </header>
     @endauth
 
-    <main class="nv-admin-main">
+    <main>
         @yield('content')
     </main>
 </body>

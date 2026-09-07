@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin\BrandController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
@@ -141,6 +143,68 @@ Route::prefix('admin')
                 '/products/{product}/images/{image}',
                 [ProductImageController::class, 'destroy']
             )->name('products.images.destroy');
+
+            /*
+            |--------------------------------------------------------------------------
+            | Categorías
+            |--------------------------------------------------------------------------
+            */
+
+            Route::get(
+                '/categories',
+                [CategoryController::class, 'index']
+            )->name('categories.index');
+
+            Route::post(
+                '/categories',
+                [CategoryController::class, 'store']
+            )->name('categories.store');
+
+            Route::get(
+                '/categories/{category}/edit',
+                [CategoryController::class, 'edit']
+            )->name('categories.edit');
+
+            Route::put(
+                '/categories/{category}',
+                [CategoryController::class, 'update']
+            )->name('categories.update');
+
+            Route::patch(
+                '/categories/{category}/toggle',
+                [CategoryController::class, 'toggleStatus']
+            )->name('categories.toggle');
+
+            /*
+            |--------------------------------------------------------------------------
+            | Marcas
+            |--------------------------------------------------------------------------
+            */
+
+            Route::get(
+                '/brands',
+                [BrandController::class, 'index']
+            )->name('brands.index');
+
+            Route::post(
+                '/brands',
+                [BrandController::class, 'store']
+            )->name('brands.store');
+
+            Route::get(
+                '/brands/{brand}/edit',
+                [BrandController::class, 'edit']
+            )->name('brands.edit');
+
+            Route::put(
+                '/brands/{brand}',
+                [BrandController::class, 'update']
+            )->name('brands.update');
+
+            Route::patch(
+                '/brands/{brand}/toggle',
+                [BrandController::class, 'toggleStatus']
+            )->name('brands.toggle');
 
             Route::post(
                 '/logout',

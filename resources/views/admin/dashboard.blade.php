@@ -18,28 +18,193 @@
             </div>
         </div>
 
+        {{-- ESTADÍSTICAS --}}
         <div class="nv-admin-stats">
             <article>
                 <span>Productos</span>
-                <strong>{{ $stats['products'] }}</strong>
+
+                <strong>
+                    {{ $stats['products'] }}
+                </strong>
             </article>
 
             <article>
                 <span>Variantes activas</span>
-                <strong>{{ $stats['variants'] }}</strong>
+
+                <strong>
+                    {{ $stats['variants'] }}
+                </strong>
             </article>
 
             <article>
                 <span>Cotizaciones nuevas</span>
-                <strong>{{ $stats['new_quotes'] }}</strong>
+
+                <strong>
+                    {{ $stats['new_quotes'] }}
+                </strong>
             </article>
 
             <article>
                 <span>Total cotizaciones</span>
-                <strong>{{ $stats['quotes_total'] }}</strong>
+
+                <strong>
+                    {{ $stats['quotes_total'] }}
+                </strong>
             </article>
         </div>
 
+        {{-- MÓDULOS DEL ADMIN --}}
+        <section class="nv-admin-panel mb-4">
+            <div class="nv-admin-panel-header">
+                <div>
+                    <h2>Gestión del catálogo</h2>
+
+                    <p>
+                        Accesos principales para administrar
+                        el contenido comercial de Natviewer.
+                    </p>
+                </div>
+            </div>
+
+            <div class="row g-4 p-4 pt-0">
+                {{-- PRODUCTOS --}}
+                <div class="col-12 col-md-6 col-xl-4">
+                    <a
+                        href="{{ route('admin.products.index') }}"
+                        class="text-decoration-none text-reset d-block h-100"
+                    >
+                        <article
+                            class="
+                                bg-white
+                                border
+                                rounded-4
+                                p-4
+                                h-100
+                                shadow-sm
+                            "
+                        >
+                            <div class="mb-3">
+                                <span
+                                    class="
+                                        badge
+                                        rounded-pill
+                                        text-bg-dark
+                                    "
+                                >
+                                    Catálogo
+                                </span>
+                            </div>
+
+                            <h3 class="h5">
+                                Productos
+                            </h3>
+
+                            <p class="text-secondary mb-4">
+                                Administra productos, variantes,
+                                precios, stock, imágenes y
+                                especificaciones técnicas.
+                            </p>
+
+                            <strong>
+                                Administrar productos →
+                            </strong>
+                        </article>
+                    </a>
+                </div>
+
+                {{-- CATEGORÍAS --}}
+                <div class="col-12 col-md-6 col-xl-4">
+                    <a
+                        href="{{ route('admin.categories.index') }}"
+                        class="text-decoration-none text-reset d-block h-100"
+                    >
+                        <article
+                            class="
+                                bg-white
+                                border
+                                rounded-4
+                                p-4
+                                h-100
+                                shadow-sm
+                            "
+                        >
+                            <div class="mb-3">
+                                <span
+                                    class="
+                                        badge
+                                        rounded-pill
+                                        text-bg-success
+                                    "
+                                >
+                                    Organización
+                                </span>
+                            </div>
+
+                            <h3 class="h5">
+                                Categorías
+                            </h3>
+
+                            <p class="text-secondary mb-4">
+                                Crea y organiza las categorías
+                                utilizadas para clasificar
+                                los productos.
+                            </p>
+
+                            <strong>
+                                Administrar categorías →
+                            </strong>
+                        </article>
+                    </a>
+                </div>
+
+                {{-- MARCAS --}}
+                <div class="col-12 col-md-6 col-xl-4">
+                    <a
+                        href="{{ route('admin.brands.index') }}"
+                        class="text-decoration-none text-reset d-block h-100"
+                    >
+                        <article
+                            class="
+                                bg-white
+                                border
+                                rounded-4
+                                p-4
+                                h-100
+                                shadow-sm
+                            "
+                        >
+                            <div class="mb-3">
+                                <span
+                                    class="
+                                        badge
+                                        rounded-pill
+                                        text-bg-warning
+                                    "
+                                >
+                                    Catálogo
+                                </span>
+                            </div>
+
+                            <h3 class="h5">
+                                Marcas
+                            </h3>
+
+                            <p class="text-secondary mb-4">
+                                Administra fabricantes,
+                                descripciones, logos,
+                                orden y disponibilidad.
+                            </p>
+
+                            <strong>
+                                Administrar marcas →
+                            </strong>
+                        </article>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        {{-- COTIZACIONES --}}
         <section class="nv-admin-panel">
             <div class="nv-admin-panel-header">
                 <div>
@@ -86,7 +251,12 @@
                                     </td>
 
                                     <td>
-                                        <span class="nv-admin-status">
+                                        <span
+                                            class="
+                                                nv-admin-status
+                                                nv-admin-status-{{ $quote->status }}
+                                            "
+                                        >
                                             {{ $quote->status }}
                                         </span>
                                     </td>
