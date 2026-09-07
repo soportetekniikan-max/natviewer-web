@@ -13,12 +13,12 @@
                 <h1>Dashboard</h1>
 
                 <p>
-                    Resumen general del catálogo y las solicitudes de cotización.
+                    Resumen general del catálogo y las
+                    solicitudes de cotización.
                 </p>
             </div>
         </div>
 
-        {{-- ESTADÍSTICAS --}}
         <div class="nv-admin-stats">
             <article>
                 <span>Productos</span>
@@ -53,22 +53,21 @@
             </article>
         </div>
 
-        {{-- MÓDULOS DEL ADMIN --}}
+        {{-- MÓDULOS --}}
         <section class="nv-admin-panel mb-4">
             <div class="nv-admin-panel-header">
                 <div>
-                    <h2>Gestión del catálogo</h2>
+                    <h2>Módulos de administración</h2>
 
                     <p>
-                        Accesos principales para administrar
-                        el contenido comercial de Natviewer.
+                        Accesos principales para gestionar
+                        Natviewer.
                     </p>
                 </div>
             </div>
 
             <div class="row g-4 p-4 pt-0">
-                {{-- PRODUCTOS --}}
-                <div class="col-12 col-md-6 col-xl-4">
+                <div class="col-12 col-md-6 col-xl-3">
                     <a
                         href="{{ route('admin.products.index') }}"
                         class="text-decoration-none text-reset d-block h-100"
@@ -83,37 +82,34 @@
                                 shadow-sm
                             "
                         >
-                            <div class="mb-3">
-                                <span
-                                    class="
-                                        badge
-                                        rounded-pill
-                                        text-bg-dark
-                                    "
-                                >
-                                    Catálogo
-                                </span>
-                            </div>
+                            <span
+                                class="
+                                    badge
+                                    rounded-pill
+                                    text-bg-dark
+                                    mb-3
+                                "
+                            >
+                                Catálogo
+                            </span>
 
                             <h3 class="h5">
                                 Productos
                             </h3>
 
-                            <p class="text-secondary mb-4">
-                                Administra productos, variantes,
-                                precios, stock, imágenes y
-                                especificaciones técnicas.
+                            <p class="text-secondary">
+                                Productos, variantes,
+                                precios, stock e imágenes.
                             </p>
 
                             <strong>
-                                Administrar productos →
+                                Administrar →
                             </strong>
                         </article>
                     </a>
                 </div>
 
-                {{-- CATEGORÍAS --}}
-                <div class="col-12 col-md-6 col-xl-4">
+                <div class="col-12 col-md-6 col-xl-3">
                     <a
                         href="{{ route('admin.categories.index') }}"
                         class="text-decoration-none text-reset d-block h-100"
@@ -128,37 +124,34 @@
                                 shadow-sm
                             "
                         >
-                            <div class="mb-3">
-                                <span
-                                    class="
-                                        badge
-                                        rounded-pill
-                                        text-bg-success
-                                    "
-                                >
-                                    Organización
-                                </span>
-                            </div>
+                            <span
+                                class="
+                                    badge
+                                    rounded-pill
+                                    text-bg-success
+                                    mb-3
+                                "
+                            >
+                                Organización
+                            </span>
 
                             <h3 class="h5">
                                 Categorías
                             </h3>
 
-                            <p class="text-secondary mb-4">
-                                Crea y organiza las categorías
-                                utilizadas para clasificar
-                                los productos.
+                            <p class="text-secondary">
+                                Clasificación y organización
+                                del catálogo.
                             </p>
 
                             <strong>
-                                Administrar categorías →
+                                Administrar →
                             </strong>
                         </article>
                     </a>
                 </div>
 
-                {{-- MARCAS --}}
-                <div class="col-12 col-md-6 col-xl-4">
+                <div class="col-12 col-md-6 col-xl-3">
                     <a
                         href="{{ route('admin.brands.index') }}"
                         class="text-decoration-none text-reset d-block h-100"
@@ -173,30 +166,70 @@
                                 shadow-sm
                             "
                         >
-                            <div class="mb-3">
-                                <span
-                                    class="
-                                        badge
-                                        rounded-pill
-                                        text-bg-warning
-                                    "
-                                >
-                                    Catálogo
-                                </span>
-                            </div>
+                            <span
+                                class="
+                                    badge
+                                    rounded-pill
+                                    text-bg-warning
+                                    mb-3
+                                "
+                            >
+                                Catálogo
+                            </span>
 
                             <h3 class="h5">
                                 Marcas
                             </h3>
 
-                            <p class="text-secondary mb-4">
-                                Administra fabricantes,
-                                descripciones, logos,
-                                orden y disponibilidad.
+                            <p class="text-secondary">
+                                Marcas, logos y
+                                disponibilidad.
                             </p>
 
                             <strong>
-                                Administrar marcas →
+                                Administrar →
+                            </strong>
+                        </article>
+                    </a>
+                </div>
+
+                <div class="col-12 col-md-6 col-xl-3">
+                    <a
+                        href="{{ route('admin.quotes.index') }}"
+                        class="text-decoration-none text-reset d-block h-100"
+                    >
+                        <article
+                            class="
+                                bg-white
+                                border
+                                rounded-4
+                                p-4
+                                h-100
+                                shadow-sm
+                            "
+                        >
+                            <span
+                                class="
+                                    badge
+                                    rounded-pill
+                                    text-bg-info
+                                    mb-3
+                                "
+                            >
+                                Comercial
+                            </span>
+
+                            <h3 class="h5">
+                                Cotizaciones
+                            </h3>
+
+                            <p class="text-secondary">
+                                Leads, seguimiento,
+                                estados y notas internas.
+                            </p>
+
+                            <strong>
+                                Gestionar →
                             </strong>
                         </article>
                     </a>
@@ -204,16 +237,24 @@
             </div>
         </section>
 
-        {{-- COTIZACIONES --}}
+        {{-- ÚLTIMAS COTIZACIONES --}}
         <section class="nv-admin-panel">
             <div class="nv-admin-panel-header">
                 <div>
                     <h2>Últimas cotizaciones</h2>
 
                     <p>
-                        Solicitudes comerciales recibidas recientemente.
+                        Solicitudes comerciales recibidas
+                        recientemente.
                     </p>
                 </div>
+
+                <a
+                    href="{{ route('admin.quotes.index') }}"
+                    class="nv-admin-action-link"
+                >
+                    Ver todas →
+                </a>
             </div>
 
             @if ($latestQuotes->isEmpty())
@@ -230,6 +271,7 @@
                                 <th>Producto</th>
                                 <th>Estado</th>
                                 <th>Fecha</th>
+                                <th></th>
                             </tr>
                         </thead>
 
@@ -237,9 +279,15 @@
                             @foreach ($latestQuotes as $quote)
                                 <tr>
                                     <td>
-                                        <strong>
+                                        <a
+                                            href="{{ route(
+                                                'admin.quotes.show',
+                                                $quote
+                                            ) }}"
+                                            class="nv-admin-action-link"
+                                        >
                                             {{ $quote->reference }}
-                                        </strong>
+                                        </a>
                                     </td>
 
                                     <td>
@@ -251,18 +299,26 @@
                                     </td>
 
                                     <td>
-                                        <span
-                                            class="
-                                                nv-admin-status
-                                                nv-admin-status-{{ $quote->status }}
-                                            "
-                                        >
+                                        <span class="nv-admin-status">
                                             {{ $quote->status }}
                                         </span>
                                     </td>
 
                                     <td>
-                                        {{ $quote->created_at->format('d/m/Y H:i') }}
+                                        {{ $quote->created_at
+                                            ->format('d/m/Y H:i') }}
+                                    </td>
+
+                                    <td class="text-end">
+                                        <a
+                                            href="{{ route(
+                                                'admin.quotes.show',
+                                                $quote
+                                            ) }}"
+                                            class="nv-admin-action-link"
+                                        >
+                                            Ver
+                                        </a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\ProductVariantController;
+use App\Http\Controllers\Admin\QuoteController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\QuoteRequestController;
 use Illuminate\Support\Facades\Route;
@@ -205,6 +206,33 @@ Route::prefix('admin')
                 '/brands/{brand}/toggle',
                 [BrandController::class, 'toggleStatus']
             )->name('brands.toggle');
+
+            /*
+            |--------------------------------------------------------------------------
+            | Cotizaciones
+            |--------------------------------------------------------------------------
+            */
+
+            Route::get(
+                '/quotes',
+                [QuoteController::class, 'index']
+            )->name('quotes.index');
+
+            Route::get(
+                '/quotes/{quote}',
+                [QuoteController::class, 'show']
+            )->name('quotes.show');
+
+            Route::put(
+                '/quotes/{quote}',
+                [QuoteController::class, 'update']
+            )->name('quotes.update');
+
+            /*
+            |--------------------------------------------------------------------------
+            | Sesión
+            |--------------------------------------------------------------------------
+            */
 
             Route::post(
                 '/logout',

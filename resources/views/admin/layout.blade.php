@@ -35,7 +35,9 @@
                     class="navbar-brand d-flex align-items-center"
                 >
                     <img
-                        src="{{ asset('images/logo-natviewer-white.png') }}"
+                        src="{{ asset(
+                            'images/logo-natviewer-white.png'
+                        ) }}"
                         alt="Natviewer"
                         style="
                             max-height: 38px;
@@ -61,13 +63,14 @@
                     id="adminNavigation"
                 >
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        {{-- DASHBOARD --}}
                         <li class="nav-item">
                             <a
                                 href="{{ route('admin.dashboard') }}"
                                 class="
                                     nav-link
-                                    {{ request()->routeIs('admin.dashboard')
+                                    {{ request()->routeIs(
+                                        'admin.dashboard'
+                                    )
                                         ? 'active fw-semibold'
                                         : '' }}
                                 "
@@ -101,7 +104,9 @@
                             <ul class="dropdown-menu shadow">
                                 <li>
                                     <a
-                                        href="{{ route('admin.products.index') }}"
+                                        href="{{ route(
+                                            'admin.products.index'
+                                        ) }}"
                                         class="
                                             dropdown-item
                                             {{ request()->routeIs(
@@ -117,7 +122,9 @@
 
                                 <li>
                                     <a
-                                        href="{{ route('admin.categories.index') }}"
+                                        href="{{ route(
+                                            'admin.categories.index'
+                                        ) }}"
                                         class="
                                             dropdown-item
                                             {{ request()->routeIs(
@@ -133,7 +140,9 @@
 
                                 <li>
                                     <a
-                                        href="{{ route('admin.brands.index') }}"
+                                        href="{{ route(
+                                            'admin.brands.index'
+                                        ) }}"
                                         class="
                                             dropdown-item
                                             {{ request()->routeIs(
@@ -144,6 +153,47 @@
                                         "
                                     >
                                         Marcas
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        {{-- COMERCIAL --}}
+                        <li class="nav-item dropdown">
+                            <a
+                                href="#"
+                                class="
+                                    nav-link
+                                    dropdown-toggle
+                                    {{ request()->routeIs(
+                                        'admin.quotes.*'
+                                    )
+                                        ? 'active fw-semibold'
+                                        : '' }}
+                                "
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                Comercial
+                            </a>
+
+                            <ul class="dropdown-menu shadow">
+                                <li>
+                                    <a
+                                        href="{{ route(
+                                            'admin.quotes.index'
+                                        ) }}"
+                                        class="
+                                            dropdown-item
+                                            {{ request()->routeIs(
+                                                'admin.quotes.*'
+                                            )
+                                                ? 'active'
+                                                : '' }}
+                                        "
+                                    >
+                                        Cotizaciones
                                     </a>
                                 </li>
                             </ul>
