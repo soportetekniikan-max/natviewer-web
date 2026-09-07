@@ -25,6 +25,25 @@
 
 <body class="bg-light">
     @auth
+        @php
+            $adminUser = auth()->user();
+
+            $canCatalog =
+                $adminUser->canAccessAdminArea(
+                    'catalog'
+                );
+
+            $canCommercial =
+                $adminUser->canAccessAdminArea(
+                    'commercial'
+                );
+
+            $canUsers =
+                $adminUser->canAccessAdminArea(
+                    'users'
+                );
+        @endphp
+
         <header
             class="navbar navbar-expand-lg navbar-dark shadow-sm"
             style="background-color: #122121;"
@@ -79,163 +98,187 @@
                             </a>
                         </li>
 
-                        <li class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="
-                                    nav-link
-                                    dropdown-toggle
-                                    {{ request()->routeIs(
-                                        'admin.products.*',
-                                        'admin.categories.*',
-                                        'admin.brands.*'
-                                    )
-                                        ? 'active fw-semibold'
-                                        : '' }}
-                                "
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                Catálogo
-                            </a>
+                        @if ($canCatalog)
+                            <li class="nav-item dropdown">
+                                <a
+                                    href="#"
+                                    class="
+                                        nav-link
+                                        dropdown-toggle
+                                        {{ request()->routeIs(
+                                            'admin.products.*',
+                                            'admin.categories.*',
+                                            'admin.brands.*'
+                                        )
+                                            ? 'active fw-semibold'
+                                            : '' }}
+                                    "
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Catálogo
+                                </a>
 
-                            <ul class="dropdown-menu shadow">
-                                <li>
-                                    <a
-                                        href="{{ route(
-                                            'admin.products.index'
-                                        ) }}"
-                                        class="
-                                            dropdown-item
-                                            {{ request()->routeIs(
-                                                'admin.products.*'
-                                            )
-                                                ? 'active'
-                                                : '' }}
-                                        "
-                                    >
-                                        Productos
-                                    </a>
-                                </li>
+                                <ul class="dropdown-menu shadow">
+                                    <li>
+                                        <a
+                                            href="{{ route(
+                                                'admin.products.index'
+                                            ) }}"
+                                            class="
+                                                dropdown-item
+                                                {{ request()->routeIs(
+                                                    'admin.products.*'
+                                                )
+                                                    ? 'active'
+                                                    : '' }}
+                                            "
+                                        >
+                                            Productos
+                                        </a>
+                                    </li>
 
-                                <li>
-                                    <a
-                                        href="{{ route(
-                                            'admin.categories.index'
-                                        ) }}"
-                                        class="
-                                            dropdown-item
-                                            {{ request()->routeIs(
-                                                'admin.categories.*'
-                                            )
-                                                ? 'active'
-                                                : '' }}
-                                        "
-                                    >
-                                        Categorías
-                                    </a>
-                                </li>
+                                    <li>
+                                        <a
+                                            href="{{ route(
+                                                'admin.categories.index'
+                                            ) }}"
+                                            class="
+                                                dropdown-item
+                                                {{ request()->routeIs(
+                                                    'admin.categories.*'
+                                                )
+                                                    ? 'active'
+                                                    : '' }}
+                                            "
+                                        >
+                                            Categorías
+                                        </a>
+                                    </li>
 
-                                <li>
-                                    <a
-                                        href="{{ route(
-                                            'admin.brands.index'
-                                        ) }}"
-                                        class="
-                                            dropdown-item
-                                            {{ request()->routeIs(
-                                                'admin.brands.*'
-                                            )
-                                                ? 'active'
-                                                : '' }}
-                                        "
-                                    >
-                                        Marcas
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                    <li>
+                                        <a
+                                            href="{{ route(
+                                                'admin.brands.index'
+                                            ) }}"
+                                            class="
+                                                dropdown-item
+                                                {{ request()->routeIs(
+                                                    'admin.brands.*'
+                                                )
+                                                    ? 'active'
+                                                    : '' }}
+                                            "
+                                        >
+                                            Marcas
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
 
-                        <li class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="
-                                    nav-link
-                                    dropdown-toggle
-                                    {{ request()->routeIs(
-                                        'admin.quotes.*'
-                                    )
-                                        ? 'active fw-semibold'
-                                        : '' }}
-                                "
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                Comercial
-                            </a>
+                        @if ($canCommercial)
+                            <li class="nav-item dropdown">
+                                <a
+                                    href="#"
+                                    class="
+                                        nav-link
+                                        dropdown-toggle
+                                        {{ request()->routeIs(
+                                            'admin.quotes.*'
+                                        )
+                                            ? 'active fw-semibold'
+                                            : '' }}
+                                    "
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Comercial
+                                </a>
 
-                            <ul class="dropdown-menu shadow">
-                                <li>
-                                    <a
-                                        href="{{ route(
-                                            'admin.quotes.index'
-                                        ) }}"
-                                        class="
-                                            dropdown-item
-                                            {{ request()->routeIs(
-                                                'admin.quotes.*'
-                                            )
-                                                ? 'active'
-                                                : '' }}
-                                        "
-                                    >
-                                        Cotizaciones
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                <ul class="dropdown-menu shadow">
+                                    <li>
+                                        <a
+                                            href="{{ route(
+                                                'admin.quotes.index'
+                                            ) }}"
+                                            class="
+                                                dropdown-item
+                                                {{ request()->routeIs(
+                                                    'admin.quotes.*'
+                                                )
+                                                    ? 'active'
+                                                    : '' }}
+                                            "
+                                        >
+                                            Cotizaciones
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
 
-                        <li class="nav-item dropdown">
-                            <a
-                                href="#"
-                                class="
-                                    nav-link
-                                    dropdown-toggle
-                                    {{ request()->routeIs(
-                                        'admin.contact-settings.*'
-                                    )
-                                        ? 'active fw-semibold'
-                                        : '' }}
-                                "
-                                role="button"
-                                data-bs-toggle="dropdown"
-                                aria-expanded="false"
-                            >
-                                Configuración
-                            </a>
+                            <li class="nav-item dropdown">
+                                <a
+                                    href="#"
+                                    class="
+                                        nav-link
+                                        dropdown-toggle
+                                        {{ request()->routeIs(
+                                            'admin.contact-settings.*'
+                                        )
+                                            ? 'active fw-semibold'
+                                            : '' }}
+                                    "
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Configuración
+                                </a>
 
-                            <ul class="dropdown-menu shadow">
-                                <li>
-                                    <a
-                                        href="{{ route(
-                                            'admin.contact-settings.edit'
-                                        ) }}"
-                                        class="
-                                            dropdown-item
-                                            {{ request()->routeIs(
-                                                'admin.contact-settings.*'
-                                            )
-                                                ? 'active'
-                                                : '' }}
-                                        "
-                                    >
-                                        Contacto y WhatsApp
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
+                                <ul class="dropdown-menu shadow">
+                                    <li>
+                                        <a
+                                            href="{{ route(
+                                                'admin.contact-settings.edit'
+                                            ) }}"
+                                            class="
+                                                dropdown-item
+                                                {{ request()->routeIs(
+                                                    'admin.contact-settings.*'
+                                                )
+                                                    ? 'active'
+                                                    : '' }}
+                                            "
+                                        >
+                                            Contacto y WhatsApp
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        @endif
+
+                        @if ($canUsers)
+                            <li class="nav-item">
+                                <a
+                                    href="{{ route(
+                                        'admin.users.index'
+                                    ) }}"
+                                    class="
+                                        nav-link
+                                        {{ request()->routeIs(
+                                            'admin.users.*'
+                                        )
+                                            ? 'active fw-semibold'
+                                            : '' }}
+                                    "
+                                >
+                                    Usuarios
+                                </a>
+                            </li>
+                        @endif
                     </ul>
 
                     <div
@@ -256,11 +299,11 @@
                             "
                         >
                             <strong>
-                                {{ auth()->user()->name }}
+                                {{ $adminUser->name }}
                             </strong>
 
                             <span class="opacity-75">
-                                Administrador
+                                {{ $adminUser->adminRoleLabel() }}
                             </span>
                         </div>
 

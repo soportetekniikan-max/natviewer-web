@@ -9,11 +9,20 @@ class AdminUserSeeder extends Seeder
 {
     public function run(): void
     {
-        $name = config('admin.name');
-        $email = config('admin.email');
-        $password = config('admin.password');
+        $name =
+            config('admin.name');
 
-        if (! $name || ! $email || ! $password) {
+        $email =
+            config('admin.email');
+
+        $password =
+            config('admin.password');
+
+        if (
+            ! $name
+            || ! $email
+            || ! $password
+        ) {
             $this->command?->warn(
                 'ADMIN_NAME, ADMIN_EMAIL o ADMIN_PASSWORD no están configurados.'
             );
@@ -26,10 +35,20 @@ class AdminUserSeeder extends Seeder
                 'email' => $email,
             ],
             [
-                'name' => $name,
-                'password' => $password,
-                'is_admin' => true,
-                'email_verified_at' => now(),
+                'name' =>
+                    $name,
+
+                'password' =>
+                    $password,
+
+                'is_admin' =>
+                    true,
+
+                'admin_role' =>
+                    User::ROLE_SUPER_ADMIN,
+
+                'email_verified_at' =>
+                    now(),
             ]
         );
     }
