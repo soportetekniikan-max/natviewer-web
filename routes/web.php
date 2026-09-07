@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\ContactSettingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
@@ -227,6 +228,22 @@ Route::prefix('admin')
                 '/quotes/{quote}',
                 [QuoteController::class, 'update']
             )->name('quotes.update');
+
+            /*
+            |--------------------------------------------------------------------------
+            | Configuración de contacto
+            |--------------------------------------------------------------------------
+            */
+
+            Route::get(
+                '/contact-settings',
+                [ContactSettingController::class, 'edit']
+            )->name('contact-settings.edit');
+
+            Route::put(
+                '/contact-settings',
+                [ContactSettingController::class, 'update']
+            )->name('contact-settings.update');
 
             /*
             |--------------------------------------------------------------------------

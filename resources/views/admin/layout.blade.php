@@ -79,7 +79,6 @@
                             </a>
                         </li>
 
-                        {{-- CATÁLOGO --}}
                         <li class="nav-item dropdown">
                             <a
                                 href="#"
@@ -158,7 +157,6 @@
                             </ul>
                         </li>
 
-                        {{-- COMERCIAL --}}
                         <li class="nav-item dropdown">
                             <a
                                 href="#"
@@ -194,6 +192,46 @@
                                         "
                                     >
                                         Cotizaciones
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a
+                                href="#"
+                                class="
+                                    nav-link
+                                    dropdown-toggle
+                                    {{ request()->routeIs(
+                                        'admin.contact-settings.*'
+                                    )
+                                        ? 'active fw-semibold'
+                                        : '' }}
+                                "
+                                role="button"
+                                data-bs-toggle="dropdown"
+                                aria-expanded="false"
+                            >
+                                Configuración
+                            </a>
+
+                            <ul class="dropdown-menu shadow">
+                                <li>
+                                    <a
+                                        href="{{ route(
+                                            'admin.contact-settings.edit'
+                                        ) }}"
+                                        class="
+                                            dropdown-item
+                                            {{ request()->routeIs(
+                                                'admin.contact-settings.*'
+                                            )
+                                                ? 'active'
+                                                : '' }}
+                                        "
+                                    >
+                                        Contacto y WhatsApp
                                     </a>
                                 </li>
                             </ul>
