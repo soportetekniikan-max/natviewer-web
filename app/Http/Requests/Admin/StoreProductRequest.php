@@ -42,10 +42,31 @@ class StoreProductRequest extends FormRequest
         }
 
         $this->merge([
-            'slug' => $slug,
+            'slug' =>
+                $slug,
 
             'is_featured' =>
                 $this->boolean('is_featured'),
+
+            'meta_title_es' =>
+                $this->nullableTrim(
+                    'meta_title_es'
+                ),
+
+            'meta_title_en' =>
+                $this->nullableTrim(
+                    'meta_title_en'
+                ),
+
+            'meta_description_es' =>
+                $this->nullableTrim(
+                    'meta_description_es'
+                ),
+
+            'meta_description_en' =>
+                $this->nullableTrim(
+                    'meta_description_en'
+                ),
 
             'variants' =>
                 $variants,
@@ -84,7 +105,10 @@ class StoreProductRequest extends FormRequest
                 'string',
                 'max:255',
                 'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
-                Rule::unique('products', 'slug'),
+                Rule::unique(
+                    'products',
+                    'slug'
+                ),
             ],
 
             'short_description_es' => [
@@ -107,6 +131,30 @@ class StoreProductRequest extends FormRequest
             'description_en' => [
                 'nullable',
                 'string',
+            ],
+
+            'meta_title_es' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+
+            'meta_title_en' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+
+            'meta_description_es' => [
+                'nullable',
+                'string',
+                'max:1000',
+            ],
+
+            'meta_description_en' => [
+                'nullable',
+                'string',
+                'max:1000',
             ],
 
             'is_featured' => [
@@ -335,6 +383,21 @@ class StoreProductRequest extends FormRequest
             'slug.unique' =>
                 'Ya existe un producto con este slug.',
 
+            'slug.regex' =>
+                'El slug solo puede contener letras minúsculas, números y guiones.',
+
+            'meta_title_es.max' =>
+                'El meta título ES puede tener máximo 255 caracteres.',
+
+            'meta_title_en.max' =>
+                'El meta título EN puede tener máximo 255 caracteres.',
+
+            'meta_description_es.max' =>
+                'La meta descripción ES puede tener máximo 1000 caracteres.',
+
+            'meta_description_en.max' =>
+                'La meta descripción EN puede tener máximo 1000 caracteres.',
+
             'variants.required' =>
                 'Debes crear al menos una variante.',
 
@@ -371,5 +434,21 @@ class StoreProductRequest extends FormRequest
             'images.*.file.max' =>
                 'Cada imagen puede pesar máximo 8 MB.',
         ];
+    }
+
+    private function nullableTrim(
+        string $field
+    ): ?string {
+        if (! $this->filled($field)) {
+            return null;
+        }
+
+        $value = trim(
+            (string) $this->input($field)
+        );
+
+        return $value !== ''
+            ? $value
+            : null;
     }
 }

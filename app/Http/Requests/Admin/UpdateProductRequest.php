@@ -5,6 +5,7 @@ namespace App\Http\Requests\Admin;
 use App\Models\Product;
 use App\Models\ProductVariant;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Support\Str;
 use Illuminate\Validation\Rule;
 
 class UpdateProductRequest extends FormRequest
@@ -22,7 +23,9 @@ class UpdateProductRequest extends FormRequest
             ->map(function ($variant) {
                 if (isset($variant['currency'])) {
                     $variant['currency'] = strtoupper(
-                        trim($variant['currency'])
+                        trim(
+                            (string) $variant['currency']
+                        )
                     );
                 }
 
@@ -30,15 +33,55 @@ class UpdateProductRequest extends FormRequest
             })
             ->all();
 
+        /** @var Product|null $product */
+        $product =
+            $this->route('product');
+
+        $slug = $product?->slug;
+
+        if ($this->filled('slug')) {
+            $slug = Str::slug(
+                (string) $this->input('slug')
+            );
+        }
+
         $this->merge([
-            'variants' => $variants,
+            'slug' =>
+                $slug,
+
+            'is_featured' =>
+                $this->boolean('is_featured'),
+
+            'meta_title_es' =>
+                $this->nullableTrim(
+                    'meta_title_es'
+                ),
+
+            'meta_title_en' =>
+                $this->nullableTrim(
+                    'meta_title_en'
+                ),
+
+            'meta_description_es' =>
+                $this->nullableTrim(
+                    'meta_description_es'
+                ),
+
+            'meta_description_en' =>
+                $this->nullableTrim(
+                    'meta_description_en'
+                ),
+
+            'variants' =>
+                $variants,
         ]);
     }
 
     public function rules(): array
     {
         /** @var Product|null $product */
-        $product = $this->route('product');
+        $product =
+            $this->route('product');
 
         return [
             'category_id' => [
@@ -65,6 +108,18 @@ class UpdateProductRequest extends FormRequest
                 'max:255',
             ],
 
+            'slug' => [
+                'required',
+                'string',
+                'max:255',
+                'regex:/^[a-z0-9]+(?:-[a-z0-9]+)*$/',
+
+                Rule::unique(
+                    'products',
+                    'slug'
+                )->ignore($product),
+            ],
+
             'short_description_es' => [
                 'nullable',
                 'string',
@@ -87,8 +142,33 @@ class UpdateProductRequest extends FormRequest
                 'string',
             ],
 
+            'meta_title_es' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+
+            'meta_title_en' => [
+                'nullable',
+                'string',
+                'max:255',
+            ],
+
+            'meta_description_es' => [
+                'nullable',
+                'string',
+                'max:1000',
+            ],
+
+            'meta_description_en' => [
+                'nullable',
+                'string',
+                'max:1000',
+            ],
+
             'status' => [
                 'required',
+
                 Rule::in([
                     Product::STATUS_DRAFT,
                     Product::STATUS_PUBLISHED,
@@ -111,6 +191,7 @@ class UpdateProductRequest extends FormRequest
                 'required',
                 'integer',
                 'distinct',
+
                 Rule::exists(
                     'product_variants',
                     'id'
@@ -164,6 +245,7 @@ class UpdateProductRequest extends FormRequest
 
             'variants.*.stock_status' => [
                 'required',
+
                 Rule::in([
                     ProductVariant::STOCK_IN_STOCK,
                     ProductVariant::STOCK_OUT_OF_STOCK,
@@ -209,6 +291,27 @@ class UpdateProductRequest extends FormRequest
             'brand_id.required' =>
                 'Selecciona una marca.',
 
+            'slug.required' =>
+                'El slug del producto es obligatorio.',
+
+            'slug.unique' =>
+                'Ya existe otro producto con este slug.',
+
+            'slug.regex' =>
+                'El slug solo puede contener letras minúsculas, números y guiones.',
+
+            'meta_title_es.max' =>
+                'El meta título ES puede tener máximo 255 caracteres.',
+
+            'meta_title_en.max' =>
+                'El meta título EN puede tener máximo 255 caracteres.',
+
+            'meta_description_es.max' =>
+                'La meta descripción ES puede tener máximo 1000 caracteres.',
+
+            'meta_description_en.max' =>
+                'La meta descripción EN puede tener máximo 1000 caracteres.',
+
             'variants.*.name_es.required' =>
                 'El nombre de la variante es obligatorio.',
 
@@ -233,5 +336,21 @@ class UpdateProductRequest extends FormRequest
             'variants.*.specifications.*.value.max' =>
                 'El valor de la especificación es demasiado largo.',
         ];
+    }
+
+    private function nullableTrim(
+        string $field
+    ): ?string {
+        if (! $this->filled($field)) {
+            return null;
+        }
+
+        $value = trim(
+            (string) $this->input($field)
+        );
+
+        return $value !== ''
+            ? $value
+            : null;
     }
 }

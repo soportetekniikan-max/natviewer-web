@@ -138,26 +138,6 @@
                         >
                     </div>
 
-                    <div class="nv-admin-field nv-admin-field-full">
-                        <label for="slug">
-                            Slug
-                        </label>
-
-                        <input
-                            type="text"
-                            id="slug"
-                            name="slug"
-                            class="form-control"
-                            value="{{ old('slug') }}"
-                            placeholder="natviewer-falco"
-                        >
-
-                        <small>
-                            Opcional. Si lo dejas vacío,
-                            se genera automáticamente.
-                        </small>
-                    </div>
-
                     <div class="nv-admin-field">
                         <label for="category_id">
                             Categoría *
@@ -304,6 +284,8 @@
                     </div>
                 </div>
             </section>
+
+            @include('admin.products.partials.seo')
 
             {{-- VARIANTES --}}
             <section class="nv-admin-form-card">

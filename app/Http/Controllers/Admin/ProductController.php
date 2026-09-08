@@ -61,7 +61,8 @@ class ProductController extends Controller
     public function store(
         StoreProductRequest $request
     ): RedirectResponse {
-        $validated = $request->validated();
+        $validated =
+            $request->validated();
 
         $storedPaths = [];
 
@@ -78,7 +79,8 @@ class ProductController extends Controller
                     |--------------------------------------------------------------------------
                     */
 
-                    $product = new Product();
+                    $product =
+                        new Product();
 
                     $product->category_id =
                         $validated['category_id'];
@@ -117,6 +119,24 @@ class ProductController extends Controller
                         $validated['description_en']
                         ?? null;
 
+                    $product->meta_title_es =
+                        $validated['meta_title_es']
+                        ?? null;
+
+                    $product->meta_title_en =
+                        $validated['meta_title_en']
+                        ?? null;
+
+                    $product->meta_description_es =
+                        $validated[
+                            'meta_description_es'
+                        ] ?? null;
+
+                    $product->meta_description_en =
+                        $validated[
+                            'meta_description_en'
+                        ] ?? null;
+
                     /*
                      * Siempre comienza como borrador.
                      * El administrador lo publica después
@@ -139,7 +159,8 @@ class ProductController extends Controller
 
                     $variantMap = [];
 
-                    $defaultAssigned = false;
+                    $defaultAssigned =
+                        false;
 
                     foreach (
                         $validated['variants']
@@ -195,11 +216,6 @@ class ProductController extends Controller
                                 'stock_status'
                             ];
 
-                        /*
-                         * Solo puede existir una
-                         * predeterminada durante
-                         * este proceso de creación.
-                         */
                         $requestedDefault =
                             (bool)
                             $variantData[
@@ -211,7 +227,8 @@ class ProductController extends Controller
                             && ! $defaultAssigned;
 
                         if ($variant->is_default) {
-                            $defaultAssigned = true;
+                            $defaultAssigned =
+                                true;
                         }
 
                         $variant->is_active =
@@ -241,10 +258,6 @@ class ProductController extends Controller
                         ] = $variant;
                     }
 
-                    /*
-                     * Si ninguna fue marcada como
-                     * predeterminada, usamos la primera.
-                     */
                     if (! $defaultAssigned) {
                         $firstVariant =
                             $product
@@ -257,7 +270,8 @@ class ProductController extends Controller
 
                         if ($firstVariant) {
                             $firstVariant->update([
-                                'is_default' => true,
+                                'is_default' =>
+                                    true,
                             ]);
                         }
                     }
@@ -272,16 +286,20 @@ class ProductController extends Controller
                         $validated['images']
                         ?? [];
 
-                    $primaryIndex = null;
-                    $firstUploadedIndex = null;
+                    $primaryIndex =
+                        null;
+
+                    $firstUploadedIndex =
+                        null;
 
                     foreach (
                         $imageRows
                         as $index => $imageData
                     ) {
-                        $file = $request->file(
-                            "images.$index.file"
-                        );
+                        $file =
+                            $request->file(
+                                "images.$index.file"
+                            );
 
                         if (! $file) {
                             continue;
@@ -314,24 +332,27 @@ class ProductController extends Controller
                         $imageRows
                         as $index => $imageData
                     ) {
-                        $file = $request->file(
-                            "images.$index.file"
-                        );
+                        $file =
+                            $request->file(
+                                "images.$index.file"
+                            );
 
                         if (! $file) {
                             continue;
                         }
 
-                        $path = $file->store(
-                            'products/'.
-                            $product->id,
-                            'public'
-                        );
+                        $path =
+                            $file->store(
+                                'products/'.
+                                $product->id,
+                                'public'
+                            );
 
                         $storedPaths[] =
                             $path;
 
-                        $variantId = null;
+                        $variantId =
+                            null;
 
                         $variantKey =
                             $imageData[
@@ -459,9 +480,14 @@ class ProductController extends Controller
         return view(
             'admin.products.edit',
             [
-                'product' => $product,
-                'categories' => $categories,
-                'brands' => $brands,
+                'product' =>
+                    $product,
+
+                'categories' =>
+                    $categories,
+
+                'brands' =>
+                    $brands,
             ]
         );
     }
@@ -487,6 +513,11 @@ class ProductController extends Controller
                     'brand_id' =>
                         $validated[
                             'brand_id'
+                        ],
+
+                    'slug' =>
+                        $validated[
+                            'slug'
                         ],
 
                     'name_es' =>
@@ -519,6 +550,26 @@ class ProductController extends Controller
                             'description_en'
                         ] ?? null,
 
+                    'meta_title_es' =>
+                        $validated[
+                            'meta_title_es'
+                        ] ?? null,
+
+                    'meta_title_en' =>
+                        $validated[
+                            'meta_title_en'
+                        ] ?? null,
+
+                    'meta_description_es' =>
+                        $validated[
+                            'meta_description_es'
+                        ] ?? null,
+
+                    'meta_description_en' =>
+                        $validated[
+                            'meta_description_en'
+                        ] ?? null,
+
                     'status' =>
                         $validated[
                             'status'
@@ -536,12 +587,13 @@ class ProductController extends Controller
                     ?? []
                     as $variantData
                 ) {
-                    $variant = $product
-                        ->variants()
-                        ->whereKey(
-                            $variantData['id']
-                        )
-                        ->firstOrFail();
+                    $variant =
+                        $product
+                            ->variants()
+                            ->whereKey(
+                                $variantData['id']
+                            )
+                            ->firstOrFail();
 
                     $manageStock =
                         (bool)
@@ -654,13 +706,15 @@ class ProductController extends Controller
             Str::slug($value);
 
         if ($baseSlug === '') {
-            $baseSlug = 'producto';
+            $baseSlug =
+                'producto';
         }
 
         $slug =
             $baseSlug;
 
-        $counter = 2;
+        $counter =
+            2;
 
         while (
             Product::query()

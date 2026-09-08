@@ -52,6 +52,10 @@
                 General
             </a>
 
+            <a href="#seo">
+                SEO
+            </a>
+
             <a href="#variantes">
                 Variantes
             </a>
@@ -310,6 +314,8 @@
                     </div>
                 </div>
             </section>
+
+            @include('admin.products.partials.seo')
 
             <section
                 id="variantes"
