@@ -3,47 +3,19 @@
     xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
     xmlns:xhtml="http://www.w3.org/1999/xhtml"
 >
+@foreach ($sitemapEntries as $entry)
     <url>
-        <loc>{{ $spanishUrl }}</loc>
+        <loc>{{ $entry['loc'] }}</loc>
 
+@foreach ($entry['alternates'] as $hreflang => $href)
         <xhtml:link
             rel="alternate"
-            hreflang="es"
-            href="{{ $spanishUrl }}"
+            hreflang="{{ $hreflang }}"
+            href="{{ $href }}"
         />
 
-        <xhtml:link
-            rel="alternate"
-            hreflang="en"
-            href="{{ $englishUrl }}"
-        />
-
-        <xhtml:link
-            rel="alternate"
-            hreflang="x-default"
-            href="{{ $spanishUrl }}"
-        />
+@endforeach
     </url>
 
-    <url>
-        <loc>{{ $englishUrl }}</loc>
-
-        <xhtml:link
-            rel="alternate"
-            hreflang="es"
-            href="{{ $spanishUrl }}"
-        />
-
-        <xhtml:link
-            rel="alternate"
-            hreflang="en"
-            href="{{ $englishUrl }}"
-        />
-
-        <xhtml:link
-            rel="alternate"
-            hreflang="x-default"
-            href="{{ $spanishUrl }}"
-        />
-    </url>
+@endforeach
 </urlset>
