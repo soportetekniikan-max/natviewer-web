@@ -1,7 +1,7 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="utf-8">
 
     <meta
         name="viewport"
@@ -13,17 +13,24 @@
         content="{{ csrf_token() }}"
     >
 
+    <meta
+        name="robots"
+        content="noindex,nofollow"
+    >
+
     <title>
         @yield('title', 'Administración') | Natviewer
     </title>
 
     @vite([
-        'resources/css/app.css',
-        'resources/js/app.js',
+        'resources/css/admin.css',
+        'resources/js/admin.js',
     ])
+
+    @stack('head')
 </head>
 
-<body class="bg-light">
+<body class="nv-admin-body">
     @auth
         @php
             $adminUser = auth()->user();
@@ -45,23 +52,31 @@
         @endphp
 
         <header
-            class="navbar navbar-expand-lg navbar-dark shadow-sm"
-            style="background-color: #122121;"
+            class="
+                navbar
+                navbar-expand-lg
+                navbar-dark
+                shadow-sm
+                nv-admin-navbar
+            "
         >
             <div class="container-fluid px-4">
                 <a
-                    href="{{ route('admin.dashboard') }}"
-                    class="navbar-brand d-flex align-items-center"
+                    href="{{ route(
+                        'admin.dashboard'
+                    ) }}"
+                    class="
+                        navbar-brand
+                        d-flex
+                        align-items-center
+                    "
                 >
                     <img
                         src="{{ asset(
                             'images/logo-natviewer-white.png'
                         ) }}"
                         alt="Natviewer"
-                        style="
-                            max-height: 38px;
-                            width: auto;
-                        "
+                        class="nv-admin-navbar-logo"
                     >
                 </a>
 
@@ -74,17 +89,31 @@
                     aria-expanded="false"
                     aria-label="Abrir navegación"
                 >
-                    <span class="navbar-toggler-icon"></span>
+                    <span
+                        class="navbar-toggler-icon"
+                    ></span>
                 </button>
 
                 <div
-                    class="collapse navbar-collapse"
+                    class="
+                        collapse
+                        navbar-collapse
+                    "
                     id="adminNavigation"
                 >
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <ul
+                        class="
+                            navbar-nav
+                            me-auto
+                            mb-2
+                            mb-lg-0
+                        "
+                    >
                         <li class="nav-item">
                             <a
-                                href="{{ route('admin.dashboard') }}"
+                                href="{{ route(
+                                    'admin.dashboard'
+                                ) }}"
                                 class="
                                     nav-link
                                     {{ request()->routeIs(
@@ -99,7 +128,12 @@
                         </li>
 
                         @if ($canCatalog)
-                            <li class="nav-item dropdown">
+                            <li
+                                class="
+                                    nav-item
+                                    dropdown
+                                "
+                            >
                                 <a
                                     href="#"
                                     class="
@@ -120,7 +154,12 @@
                                     Catálogo
                                 </a>
 
-                                <ul class="dropdown-menu shadow">
+                                <ul
+                                    class="
+                                        dropdown-menu
+                                        shadow
+                                    "
+                                >
                                     <li>
                                         <a
                                             href="{{ route(
@@ -179,7 +218,12 @@
                         @endif
 
                         @if ($canCommercial)
-                            <li class="nav-item dropdown">
+                            <li
+                                class="
+                                    nav-item
+                                    dropdown
+                                "
+                            >
                                 <a
                                     href="#"
                                     class="
@@ -198,7 +242,12 @@
                                     Comercial
                                 </a>
 
-                                <ul class="dropdown-menu shadow">
+                                <ul
+                                    class="
+                                        dropdown-menu
+                                        shadow
+                                    "
+                                >
                                     <li>
                                         <a
                                             href="{{ route(
@@ -219,7 +268,12 @@
                                 </ul>
                             </li>
 
-                            <li class="nav-item dropdown">
+                            <li
+                                class="
+                                    nav-item
+                                    dropdown
+                                "
+                            >
                                 <a
                                     href="#"
                                     class="
@@ -238,7 +292,12 @@
                                     Configuración
                                 </a>
 
-                                <ul class="dropdown-menu shadow">
+                                <ul
+                                    class="
+                                        dropdown-menu
+                                        shadow
+                                    "
+                                >
                                     <li>
                                         <a
                                             href="{{ route(
@@ -296,6 +355,7 @@
                                 flex-column
                                 text-end
                                 small
+                                nv-admin-user-info
                             "
                         >
                             <strong>
@@ -303,13 +363,16 @@
                             </strong>
 
                             <span class="opacity-75">
-                                {{ $adminUser->adminRoleLabel() }}
+                                {{ $adminUser
+                                    ->adminRoleLabel() }}
                             </span>
                         </div>
 
                         <form
                             method="POST"
-                            action="{{ route('admin.logout') }}"
+                            action="{{ route(
+                                'admin.logout'
+                            ) }}"
                         >
                             @csrf
 
@@ -330,8 +393,10 @@
         </header>
     @endauth
 
-    <main>
+    <main class="nv-admin-main">
         @yield('content')
     </main>
+
+    @stack('scripts')
 </body>
 </html>

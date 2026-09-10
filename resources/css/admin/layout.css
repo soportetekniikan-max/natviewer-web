@@ -1,0 +1,41 @@
+.nv-admin-body {
+    min-height: 100vh;
+    background: #f1f2f1;
+}
+
+.nv-admin-main {
+    min-height: calc(100vh - 72px);
+}
+
+.nv-admin-navbar {
+    background-color: var(--nv-deep);
+}
+
+.nv-admin-navbar-logo {
+    width: auto;
+    max-height: 38px;
+}
+
+.nv-admin-navbar .navbar-brand {
+    min-height: 48px;
+}
+
+.nv-admin-navbar .nav-link {
+    transition:
+        color 0.2s ease,
+        background-color 0.2s ease;
+}
+
+.nv-admin-navbar .nav-link.active {
+    color: var(--nv-white);
+}
+
+.nv-admin-navbar .dropdown-item.active,
+.nv-admin-navbar .dropdown-item:active {
+    background-color: var(--nv-green);
+    color: var(--nv-white);
+}
+
+.nv-admin-user-info {
+    line-height: 1.25;
+}
