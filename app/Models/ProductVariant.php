@@ -44,14 +44,16 @@ class ProductVariant extends Model
 
     public function product(): BelongsTo
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(
+            Product::class
+        );
     }
 
     public function images(): HasMany
     {
         return $this->hasMany(
             ProductImage::class,
-            'product_variant_id'
+            'variant_id'
         )
             ->orderBy('sort_order')
             ->orderBy('id');

@@ -13,7 +13,14 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/');
 
-        $response->assertRedirect('/es');
+        $response->assertRedirect(
+            route(
+                'home',
+                [
+                    'locale' => 'es',
+                ]
+            )
+        );
     }
 
     public function test_spanish_home_returns_successful_response(): void
@@ -23,8 +30,12 @@ class ExampleTest extends TestCase
         $response
             ->assertStatus(200)
             ->assertViewIs('home')
-            ->assertViewHas('locale', 'es')
-            ->assertViewHas('products')
+            ->assertViewHas(
+                'locale',
+                'es'
+            )
+            ->assertViewHas('hero')
+            ->assertViewHas('catalogItems')
             ->assertViewHas('contactSettings');
     }
 
@@ -35,8 +46,12 @@ class ExampleTest extends TestCase
         $response
             ->assertStatus(200)
             ->assertViewIs('home')
-            ->assertViewHas('locale', 'en')
-            ->assertViewHas('products')
+            ->assertViewHas(
+                'locale',
+                'en'
+            )
+            ->assertViewHas('hero')
+            ->assertViewHas('catalogItems')
             ->assertViewHas('contactSettings');
     }
 
@@ -44,6 +59,6 @@ class ExampleTest extends TestCase
     {
         $response = $this->get('/fr');
 
-        $response->assertStatus(404);
+        $response->assertNotFound();
     }
 }
