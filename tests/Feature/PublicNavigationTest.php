@@ -33,6 +33,10 @@ class PublicNavigationTest extends TestCase
                 ['locale' => 'es']
             )
         );
+
+        $this->assertUniqueContactAnchor(
+            $response->getContent()
+        );
     }
 
     public function test_english_home_switches_to_spanish_home(): void
@@ -56,6 +60,10 @@ class PublicNavigationTest extends TestCase
                 'home',
                 ['locale' => 'en']
             )
+        );
+
+        $this->assertUniqueContactAnchor(
+            $response->getContent()
         );
     }
 
@@ -190,6 +198,21 @@ class PublicNavigationTest extends TestCase
             . $homeUrl
             . '#contact"',
             $html
+        );
+    }
+
+    private function assertUniqueContactAnchor(
+        string $html
+    ): void {
+        $matches = preg_match_all(
+            '/\bid=["\']contact["\']/i',
+            $html
+        );
+
+        $this->assertSame(
+            1,
+            $matches,
+            'La página Home debe contener exactamente un id="contact".'
         );
     }
 

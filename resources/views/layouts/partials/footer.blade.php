@@ -1,7 +1,4 @@
-<footer
-    class="nv-site-footer"
-    id="contact"
->
+<footer class="nv-site-footer">
     <div class="container">
         <div class="nv-footer-grid">
             <div>
