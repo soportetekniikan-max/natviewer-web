@@ -1,55 +1,141 @@
+/* =========================================================
+   NATVIEWER FOOTER
+   ========================================================= */
+
 .nv-site-footer {
-    padding: 4.8rem 0 1.35rem;
+    position: relative;
+
+    padding:
+        4.8rem
+        0
+        1.35rem;
+
     background:
-        radial-gradient(circle at top right, rgba(234, 87, 28, 0.18), transparent 34rem),
-        linear-gradient(135deg, var(--nv-deep), var(--nv-dark));
+        radial-gradient(
+            circle at top right,
+            rgba(234, 87, 28, 0.18),
+            transparent 34rem
+        ),
+        linear-gradient(
+            135deg,
+            var(--nv-deep),
+            var(--nv-dark)
+        );
+
     color: var(--nv-white);
+
+    border-top: 1px solid rgba(
+        237,
+        236,
+        237,
+        0.1
+    );
 }
+
+
+/* =========================================================
+   FOOTER LAYOUT
+   ========================================================= */
 
 .nv-footer-grid {
     display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(280px, 0.7fr);
-    gap: clamp(2rem, 5vw, 4rem);
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(280px, 0.7fr);
+
+    gap: clamp(
+        2rem,
+        5vw,
+        4rem
+    );
+
     align-items: start;
+
     padding-bottom: 2.6rem;
 }
 
 .nv-footer-logo {
     display: block;
+
     width: 260px;
     max-width: 100%;
     height: auto;
+
     margin-bottom: 1.25rem;
+
     object-fit: contain;
 }
 
 .nv-site-footer p {
     max-width: 34rem;
+
     margin: 0;
-    color: rgba(237, 236, 237, 0.72);
+
+    color: rgba(
+        237,
+        236,
+        237,
+        0.76
+    );
+
+    line-height: 1.7;
 }
+
+
+/* =========================================================
+   FOOTER CTA CARD
+   ========================================================= */
 
 .nv-footer-card {
     padding: 1.45rem;
-    border: 1px solid rgba(237, 236, 237, 0.1);
+
+    border: 1px solid rgba(
+        237,
+        236,
+        237,
+        0.12
+    );
+
     border-radius: 1.5rem;
-    background: rgba(237, 236, 237, 0.055);
+
+    background: rgba(
+        237,
+        236,
+        237,
+        0.055
+    );
 }
 
 .nv-footer-card > span {
     display: inline-flex;
+
     margin-bottom: 0.8rem;
+
     color: var(--nv-orange);
+
     font-size: 0.76rem;
     font-weight: 900;
+
     letter-spacing: 0.13em;
+
     text-transform: uppercase;
 }
 
 .nv-site-footer h2 {
-    margin: 0 0 0.85rem;
+    margin:
+        0
+        0
+        0.85rem;
+
     color: var(--nv-white);
-    font-size: clamp(1.6rem, 2.5vw, 2.3rem);
+
+    font-size: clamp(
+        1.6rem,
+        2.5vw,
+        2.3rem
+    );
+
     letter-spacing: -0.04em;
 }
 
@@ -57,20 +143,182 @@
     margin-top: 1.25rem;
 }
 
+
+/* =========================================================
+   FOOTER BOTTOM
+   ========================================================= */
+
 .nv-footer-bottom {
     display: flex;
+
     align-items: center;
     justify-content: space-between;
+
     gap: 1rem;
+
     padding-top: 1.25rem;
-    border-top: 1px solid rgba(237, 236, 237, 0.1);
-    color: rgba(237, 236, 237, 0.58);
+
+    border-top: 1px solid rgba(
+        237,
+        236,
+        237,
+        0.12
+    );
+
+    color: rgba(
+        237,
+        236,
+        237,
+        0.62
+    );
+
     font-size: 0.88rem;
 }
 
+
+/* =========================================================
+   HOME FOOTER
+   Same photographic background used by the Home
+   ========================================================= */
+
+.nv-home-body .nv-site-footer {
+    isolation: isolate;
+
+    overflow: hidden;
+
+    background: transparent;
+
+    border-top: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.16
+    );
+}
+
+
+/*
+ * Same fixed image used by the Home.
+ * Because background-attachment is fixed, it visually
+ * continues the same scenery while reaching the footer.
+ */
+.nv-home-body .nv-site-footer::before {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 0;
+
+    background:
+        url("/images/hero/natviewer-birdwatching.webp")
+        center center
+        / cover
+        no-repeat
+        fixed;
+
+    pointer-events: none;
+}
+
+
+/*
+ * Footer needs slightly more contrast than the content
+ * sections because it contains smaller text.
+ */
+.nv-home-body .nv-site-footer::after {
+    content: "";
+
+    position: absolute;
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        linear-gradient(
+            135deg,
+            rgba(18, 33, 33, 0.76),
+            rgba(18, 33, 33, 0.62)
+        );
+
+    pointer-events: none;
+}
+
+.nv-home-body
+.nv-site-footer
+> .container {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   HOME FOOTER GLASS CARD
+   ========================================================= */
+
+.nv-home-body .nv-footer-card {
+    border-color: rgba(
+        255,
+        255,
+        255,
+        0.18
+    );
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 33, 33, 0.6),
+            rgba(30, 34, 38, 0.44)
+        );
+
+    box-shadow:
+        0
+        24px
+        70px
+        rgba(0, 0, 0, 0.22);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+}
+
+.nv-home-body
+.nv-site-footer p {
+    color: rgba(
+        255,
+        255,
+        255,
+        0.78
+    );
+}
+
+.nv-home-body
+.nv-footer-bottom {
+    border-top-color: rgba(
+        255,
+        255,
+        255,
+        0.15
+    );
+
+    color: rgba(
+        255,
+        255,
+        255,
+        0.68
+    );
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
 @media (max-width: 767.98px) {
     .nv-site-footer {
-        padding-top: 3.2rem;
+        padding:
+            3.5rem
+            0
+            1.25rem;
     }
 
     .nv-footer-grid {
@@ -78,11 +326,29 @@
     }
 
     .nv-footer-logo {
-        width: 230px;
+        width: 220px;
+    }
+
+    .nv-footer-card {
+        padding: 1.25rem;
     }
 
     .nv-footer-bottom {
         align-items: flex-start;
+
         flex-direction: column;
+    }
+
+    /*
+     * Fixed backgrounds have inconsistent behavior on
+     * some mobile browsers. Normal scrolling is safer.
+     */
+    .nv-home-body
+    .nv-site-footer::before {
+        background-attachment: scroll;
+
+        background-position:
+            68%
+            center;
     }
 }
