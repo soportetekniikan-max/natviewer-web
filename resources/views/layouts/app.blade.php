@@ -60,7 +60,7 @@
         ]
     )
 
-    <body>
+    <body class="@yield('body_class')">
         @include(
             'layouts.partials.header',
             [

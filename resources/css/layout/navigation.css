@@ -1,96 +1,209 @@
 .nv-nav-links {
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: clamp(0.8rem, 1.7vw, 1.45rem);
+
+    gap: clamp(
+        1.1rem,
+        2vw,
+        2rem
+    );
 }
 
 .nv-nav-links a {
     position: relative;
-    color: rgba(237, 236, 237, 0.74);
-    font-size: 0.9rem;
-    font-weight: 800;
+
+    color: rgba(
+        255,
+        255,
+        255,
+        0.72
+    );
+
+    font-size: 0.88rem;
+    font-weight: 700;
+
     line-height: 1;
+
     text-decoration: none;
-    transition: color var(--nv-transition);
+
+    transition:
+        color var(--nv-transition);
 }
 
 .nv-nav-links a::after {
     content: "";
+
     position: absolute;
+
     right: 0;
-    bottom: -0.42rem;
+    bottom: -0.65rem;
     left: 0;
+
     height: 2px;
+
     border-radius: 999px;
+
     background: var(--nv-orange);
+
     transform: scaleX(0);
-    transform-origin: center;
-    transition: transform var(--nv-transition);
+
+    transition:
+        transform var(--nv-transition);
 }
 
 .nv-nav-links a:hover,
-.nv-nav-links a:focus {
+.nv-nav-links a:focus-visible {
     color: var(--nv-white);
 }
 
 .nv-nav-links a:hover::after,
-.nv-nav-links a:focus::after {
+.nv-nav-links a:focus-visible::after {
     transform: scaleX(1);
 }
 
 .nv-nav-actions {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    gap: 0.75rem;
-    flex: 0 0 auto;
+
+    gap: 0.8rem;
 }
 
 .nv-lang-switch {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+
     min-width: 44px;
     min-height: 44px;
-    border: 1px solid rgba(237, 236, 237, 0.14);
+
+    padding: 0.5rem;
+
+    border: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.14
+    );
+
     border-radius: 999px;
-    color: rgba(237, 236, 237, 0.84);
-    font-size: 0.78rem;
-    font-weight: 900;
+
+    background: rgba(
+        255,
+        255,
+        255,
+        0.045
+    );
+
+    color: rgba(
+        255,
+        255,
+        255,
+        0.85
+    );
+
+    font-size: 0.75rem;
+    font-weight: 800;
+
     letter-spacing: 0.08em;
+
     text-decoration: none;
+
     transition:
+        border-color var(--nv-transition),
         background-color var(--nv-transition),
-        color var(--nv-transition),
-        border-color var(--nv-transition);
+        color var(--nv-transition);
 }
 
 .nv-lang-switch:hover,
-.nv-lang-switch:focus {
-    border-color: rgba(234, 87, 28, 0.48);
-    background: rgba(234, 87, 28, 0.12);
+.nv-lang-switch:focus-visible {
+    border-color: rgba(
+        234,
+        87,
+        28,
+        0.55
+    );
+
+    background: rgba(
+        234,
+        87,
+        28,
+        0.12
+    );
+
     color: var(--nv-white);
 }
 
-@media (max-width: 991.98px) {
-    .nv-nav-links {
-        order: 3;
-        width: 100%;
-        justify-content: flex-start;
-        overflow-x: auto;
-        padding-top: 0.35rem;
-        padding-bottom: 0.25rem;
-    }
+.nv-mobile-nav-links {
+    display: grid;
+
+    gap: 0;
 }
 
-@media (max-width: 575.98px) {
-    .nv-nav-actions {
-        width: 100%;
-        justify-content: space-between;
+.nv-mobile-nav-links a {
+    display: flex;
+    align-items: center;
+
+    min-height: 54px;
+
+    padding:
+        0.75rem
+        0.25rem;
+
+    border-bottom: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.08
+    );
+
+    color: rgba(
+        255,
+        255,
+        255,
+        0.9
+    );
+
+    font-size: 1rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        color var(--nv-transition),
+        padding-left var(--nv-transition);
+}
+
+.nv-mobile-nav-links a:hover,
+.nv-mobile-nav-links a:focus-visible {
+    padding-left: 0.65rem;
+
+    color: var(--nv-orange);
+}
+
+.nv-mobile-nav-actions {
+    display: grid;
+
+    grid-template-columns:
+        auto
+        minmax(0, 1fr);
+
+    gap: 0.75rem;
+
+    padding-top: 1rem;
+}
+
+.nv-mobile-nav-actions
+.nv-header-cta {
+    width: 100%;
+}
+
+@media (max-width: 420px) {
+    .nv-mobile-nav-actions {
+        grid-template-columns: 1fr;
     }
 
-    .nv-header-cta {
-        flex: 1;
+    .nv-mobile-nav-actions
+    .nv-lang-switch {
+        width: 48px;
     }
 }
