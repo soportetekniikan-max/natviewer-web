@@ -4,8 +4,13 @@
         aria-hidden="true"
     ></div>
 
+    <div
+        class="nv-hero-decoration"
+        aria-hidden="true"
+    ></div>
+
     <div class="container">
-        <div class="nv-hero-grid">
+        <div class="nv-hero-layout">
             <div class="nv-hero-copy">
                 <span class="nv-hero-kicker">
                     <span></span>
@@ -54,144 +59,7 @@
                         }}
                     </a>
                 </div>
-
-                <div class="nv-hero-trust">
-                    @if (
-                        $hero[
-                            'first_variant_label'
-                        ]
-                    )
-                        <div>
-                            <strong>
-                                {{
-                                    $hero[
-                                        'first_variant_label'
-                                    ]
-                                }}
-                            </strong>
-
-                            <span>
-                                {{
-                                    __(
-                                        'public.hero.spec_1'
-                                    )
-                                }}
-                            </span>
-                        </div>
-                    @endif
-
-                    @if (
-                        $hero[
-                            'second_variant_label'
-                        ]
-                    )
-                        <div>
-                            <strong>
-                                {{
-                                    $hero[
-                                        'second_variant_label'
-                                    ]
-                                }}
-                            </strong>
-
-                            <span>
-                                {{
-                                    __(
-                                        'public.hero.spec_2'
-                                    )
-                                }}
-                            </span>
-                        </div>
-                    @endif
-
-                    <div>
-                        <strong>
-                            {{
-                                $hero['glass']
-                                ?: 'UD'
-                            }}
-                        </strong>
-
-                        <span>
-                            Premium optics
-                        </span>
-                    </div>
-                </div>
             </div>
-
-            <aside class="nv-hero-product">
-                <div class="nv-hero-product-top">
-                    <span>
-                        {{
-                            __(
-                                'public.hero.card_label'
-                            )
-                        }}
-                    </span>
-
-                    <span class="nv-hero-status">
-                        <i></i>
-                        Outdoor
-                    </span>
-                </div>
-
-                <div class="nv-hero-product-content">
-                    <span class="nv-hero-product-kicker">
-                        {{
-                            __(
-                                'public.hero.panel_kicker'
-                            )
-                        }}
-                    </span>
-
-                    <h2>
-                        {{
-                            $hero[
-                                'product_name'
-                            ]
-                        }}
-                    </h2>
-
-                    <p>
-                        {{
-                            $hero[
-                                'short_description'
-                            ]
-                        }}
-                    </p>
-                </div>
-
-                <div class="nv-hero-product-footer">
-                    <div>
-                        <span>
-                            {{
-                                __(
-                                    'public.hero.spec_3'
-                                )
-                            }}
-                        </span>
-
-                        <strong>
-                            {{
-                                $hero[
-                                    'default_currency'
-                                ]
-                            }}
-                        </strong>
-                    </div>
-
-                    <a
-                        href="#products"
-                        aria-label="{{
-                            __(
-                                'public.hero.primary_button'
-                            )
-                        }}"
-                    >
-                        →
-                    </a>
-                </div>
-            </aside>
         </div>
     </div>
 </section>
