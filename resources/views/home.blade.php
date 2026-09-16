@@ -19,13 +19,15 @@
     <div class="nv-home-page">
         @include('home.partials.hero')
 
-        @include('home.partials.feature-strip')
+        <div class="nv-home-content">
+            @include('home.partials.feature-strip')
 
-        @include('home.partials.products')
+            @include('home.partials.products')
 
-        @include('home.partials.benefits')
+            @include('home.partials.benefits')
 
-        @include('home.partials.contact')
+            @include('home.partials.contact')
+        </div>
     </div>
 
     @include('quotes.partials.modal')

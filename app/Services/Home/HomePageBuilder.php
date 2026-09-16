@@ -54,6 +54,7 @@ class HomePageBuilder
                 'category',
                 'brand',
                 'primaryImage',
+                'images',
 
                 'variants' => function ($query) {
                     $query

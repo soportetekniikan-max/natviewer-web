@@ -3,14 +3,17 @@
 namespace App\Services\Home;
 
 use App\Models\Product;
+use App\Models\ProductVariant;
 use App\Services\Localization\LocalizedValueResolver;
+use App\Services\ProductDetail\ProductMediaPresenter;
 use Illuminate\Support\Collection;
 
 class HomeCatalogBuilder
 {
     public function __construct(
         private readonly LocalizedValueResolver $localizedValue,
-        private readonly HomeVariantFormatter $variantFormatter
+        private readonly HomeVariantFormatter $variantFormatter,
+        private readonly ProductMediaPresenter $mediaPresenter
     ) {
     }
 
@@ -25,9 +28,52 @@ class HomeCatalogBuilder
                 ) use (
                     $locale
                 ) {
-                    return $product->variants->map(
-                        function ($variant) use (
+                    $productName =
+                        $this->localizedValue->resolve(
                             $product,
+                            'name',
+                            $locale
+                        );
+
+                    $media =
+                        $this->mediaPresenter->build(
+                            $product,
+                            $locale,
+                            $productName
+                        );
+
+                    $variantOptions =
+                        $product->variants
+                            ->map(
+                                function (
+                                    ProductVariant $variant
+                                ) use (
+                                    $locale
+                                ) {
+                                    return [
+                                        'id' =>
+                                            $variant->id,
+
+                                        'label' =>
+                                            $this->variantFormatter
+                                                ->shortLabel(
+                                                    $variant,
+                                                    $locale
+                                                ),
+                                    ];
+                                }
+                            )
+                            ->values()
+                            ->all();
+
+                    return $product->variants->map(
+                        function (
+                            ProductVariant $variant
+                        ) use (
+                            $product,
+                            $productName,
+                            $media,
+                            $variantOptions,
                             $locale
                         ) {
                             $variantName =
@@ -48,20 +94,20 @@ class HomeCatalogBuilder
                                     $variant->sku,
 
                                 'product_name' =>
-                                    $this->localizedValue->resolve(
-                                        $product,
-                                        'name',
-                                        $locale
-                                    ),
+                                    $productName,
 
                                 'variant_name' =>
                                     $variantName,
 
                                 'variant_label' =>
-                                    $this->variantFormatter->shortLabel(
-                                        $variant,
-                                        $locale
-                                    ),
+                                    $this->variantFormatter
+                                        ->shortLabel(
+                                            $variant,
+                                            $locale
+                                        ),
+
+                                'variant_options' =>
+                                    $variantOptions,
 
                                 'title' =>
                                     trim(
@@ -78,6 +124,12 @@ class HomeCatalogBuilder
                                         )
                                     ),
 
+                                'brand_name' =>
+                                    $product
+                                        ->brand
+                                        ?->name
+                                    ?? 'Natviewer',
+
                                 'category_name' =>
                                     $this->localizedValue->resolve(
                                         $product->category,
@@ -93,15 +145,36 @@ class HomeCatalogBuilder
                                     ),
 
                                 'price' =>
-                                    $this->variantFormatter->price(
+                                    $this->variantFormatter
+                                        ->price(
+                                            $variant
+                                        ),
+
+                                'stock' =>
+                                    $this->variantFormatter
+                                        ->stock(
+                                            $variant,
+                                            $locale
+                                        ),
+
+                                'is_available' =>
+                                    $this->isAvailable(
                                         $variant
                                     ),
 
-                                'stock' =>
-                                    $this->variantFormatter->stock(
-                                        $variant,
-                                        $locale
-                                    ),
+                                'is_featured' =>
+                                    (bool) $product
+                                        ->is_featured,
+
+                                'image_url' =>
+                                    $media[
+                                        'primaryImageUrl'
+                                    ],
+
+                                'image_alt' =>
+                                    $media[
+                                        'primaryImageAlt'
+                                    ],
 
                                 'detail_url' =>
                                     $this->detailUrl(
@@ -113,20 +186,27 @@ class HomeCatalogBuilder
                     );
                 }
             )
-            ->values()
-            ->map(
-                function (
-                    array $item,
-                    int $index
-                ) {
-                    $item['media_class'] =
-                        $index % 2 === 0
-                            ? 'nv-product-media-green'
-                            : 'nv-product-media-dark';
+            ->values();
+    }
 
-                    return $item;
-                }
-            );
+    private function isAvailable(
+        ProductVariant $variant
+    ): bool {
+        if (
+            $variant->manage_stock
+            && $variant->stock_quantity !== null
+        ) {
+            return $variant->stock_quantity > 0;
+        }
+
+        return in_array(
+            $variant->stock_status,
+            [
+                ProductVariant::STOCK_IN_STOCK,
+                ProductVariant::STOCK_BACKORDER,
+            ],
+            true
+        );
     }
 
     private function detailUrl(

@@ -4,30 +4,42 @@
 
     gap: clamp(
         1.1rem,
-        2vw,
-        2rem
+        1.6vw,
+        1.7rem
     );
 }
 
 .nv-nav-links a {
     position: relative;
 
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 42px;
+
+    padding:
+        0.35rem
+        0.1rem;
+
     color: rgba(
         255,
         255,
         255,
-        0.72
+        0.8
     );
 
     font-size: 0.88rem;
     font-weight: 700;
 
     line-height: 1;
+    letter-spacing: 0.01em;
 
     text-decoration: none;
 
     transition:
-        color var(--nv-transition);
+        color var(--nv-transition),
+        opacity var(--nv-transition),
+        transform var(--nv-transition);
 }
 
 .nv-nav-links a::after {
@@ -36,24 +48,32 @@
     position: absolute;
 
     right: 0;
-    bottom: -0.65rem;
+    bottom: 0.1rem;
     left: 0;
 
     height: 2px;
 
     border-radius: 999px;
 
-    background: var(--nv-orange);
+    background: linear-gradient(
+        90deg,
+        rgba(234, 87, 28, 0.85),
+        rgba(255, 152, 87, 0.95)
+    );
 
     transform: scaleX(0);
+    transform-origin: center;
 
     transition:
-        transform var(--nv-transition);
+        transform var(--nv-transition),
+        opacity var(--nv-transition);
 }
 
 .nv-nav-links a:hover,
 .nv-nav-links a:focus-visible {
     color: var(--nv-white);
+
+    transform: translateY(-1px);
 }
 
 .nv-nav-links a:hover::after,
@@ -65,7 +85,7 @@
     display: flex;
     align-items: center;
 
-    gap: 0.8rem;
+    gap: 0.65rem;
 }
 
 .nv-lang-switch {
@@ -91,14 +111,14 @@
         255,
         255,
         255,
-        0.045
+        0.05
     );
 
     color: rgba(
         255,
         255,
         255,
-        0.85
+        0.88
     );
 
     font-size: 0.75rem;
@@ -108,76 +128,128 @@
 
     text-decoration: none;
 
+    box-shadow:
+        inset
+        0
+        1px
+        0
+        rgba(255, 255, 255, 0.05);
+
     transition:
         border-color var(--nv-transition),
         background-color var(--nv-transition),
-        color var(--nv-transition);
+        color var(--nv-transition),
+        transform var(--nv-transition);
 }
 
 .nv-lang-switch:hover,
 .nv-lang-switch:focus-visible {
     border-color: rgba(
-        234,
-        87,
-        28,
-        0.55
+        255,
+        255,
+        255,
+        0.24
     );
 
     background: rgba(
-        234,
-        87,
-        28,
-        0.12
+        255,
+        255,
+        255,
+        0.1
     );
 
     color: var(--nv-white);
+
+    transform: translateY(-1px);
+}
+
+.nv-header-cta {
+    min-height: 44px;
+
+    padding:
+        0.78rem
+        1.1rem;
+
+    border-radius: 999px;
+
+    box-shadow:
+        0
+        12px
+        26px
+        rgba(234, 87, 28, 0.2);
+}
+
+@media (min-width: 992px) {
+    .nv-nav-links {
+        padding-right: 1rem;
+        margin-right: 0.1rem;
+
+        border-right: 1px solid rgba(
+            255,
+            255,
+            255,
+            0.12
+        );
+    }
 }
 
 .nv-mobile-nav-links {
     display: grid;
 
-    gap: 0;
+    gap: 0.2rem;
 }
 
 .nv-mobile-nav-links a {
     display: flex;
     align-items: center;
 
-    min-height: 54px;
+    min-height: 52px;
 
     padding:
-        0.75rem
-        0.25rem;
+        0.8rem
+        0.85rem;
 
-    border-bottom: 1px solid rgba(
-        255,
-        255,
-        255,
-        0.08
-    );
+    border: 1px solid transparent;
+    border-radius: 0.95rem;
 
     color: rgba(
         255,
         255,
         255,
-        0.9
+        0.92
     );
 
-    font-size: 1rem;
+    font-size: 0.98rem;
     font-weight: 700;
 
     text-decoration: none;
 
     transition:
         color var(--nv-transition),
-        padding-left var(--nv-transition);
+        background-color var(--nv-transition),
+        border-color var(--nv-transition),
+        transform var(--nv-transition);
 }
 
 .nv-mobile-nav-links a:hover,
 .nv-mobile-nav-links a:focus-visible {
-    padding-left: 0.65rem;
+    border-color: rgba(
+        255,
+        255,
+        255,
+        0.1
+    );
 
-    color: var(--nv-orange);
+    background: rgba(
+        255,
+        255,
+        255,
+        0.06
+    );
+
+    color: var(--nv-white);
+
+    transform: translateX(4px);
 }
 
 .nv-mobile-nav-actions {
@@ -189,7 +261,15 @@
 
     gap: 0.75rem;
 
-    padding-top: 1rem;
+    margin-top: 0.75rem;
+    padding-top: 0.9rem;
+
+    border-top: 1px solid rgba(
+        255,
+        255,
+        255,
+        0.1
+    );
 }
 
 .nv-mobile-nav-actions

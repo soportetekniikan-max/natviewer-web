@@ -1,5 +1,8 @@
 <section
-    class="nv-home-section"
+    class="
+        nv-home-section
+        nv-product-showcase-section
+    "
     id="products"
 >
     <div class="container">
@@ -39,13 +42,16 @@
             </div>
         @endif
 
-        <div
-            class="
-                nv-section-header
-                nv-section-header-split
-            "
-        >
-            <div>
+        <div class="nv-section-heading">
+            <div class="nv-section-heading-mark">
+                <span>
+                    02
+                </span>
+
+                <i aria-hidden="true"></i>
+            </div>
+
+            <div class="nv-section-heading-main">
                 <span class="nv-eyebrow">
                     {{
                         __(
@@ -63,7 +69,7 @@
                 </h2>
             </div>
 
-            <p>
+            <p class="nv-section-heading-copy">
                 {{
                     __(
                         'public.products.text'
@@ -72,7 +78,7 @@
             </p>
         </div>
 
-        <div class="row g-4">
+        <div class="nv-product-grid row g-4">
             @forelse (
                 $catalogItems
                 as $item

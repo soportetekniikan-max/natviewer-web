@@ -1,12 +1,16 @@
-import { Modal } from 'bootstrap';
-
-const initializeQuoteModal = () => {
+const initializeQuoteModal = async () => {
     const modalElement =
         document.getElementById('quoteModal');
 
     if (!modalElement) {
         return;
     }
+
+    const {
+        default: Modal,
+    } = await import(
+        'bootstrap/js/dist/modal'
+    );
 
     const form =
         document.getElementById('quoteForm');
