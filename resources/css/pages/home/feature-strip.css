@@ -1,0 +1,323 @@
+/* =========================================================
+   NATVIEWER HOME
+   Technical feature strip
+   ========================================================= */
+
+.nv-home-strip {
+    position: relative;
+
+    z-index: 5;
+
+    margin-top: 0;
+
+    /*
+     * Sin padding inferior.
+     * La siguiente sección controla su propio espaciado.
+     */
+    padding:
+        1.75rem
+        0
+        0;
+
+    background:
+        var(--nv-home-bg);
+}
+
+
+/* =========================================================
+   SHELL
+   ========================================================= */
+
+.nv-strip-shell {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(18, 33, 33, 0.085);
+
+    border-radius: 1.35rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.98),
+            rgba(247, 248, 245, 0.95)
+        );
+
+    box-shadow:
+        0
+        16px
+        44px
+        rgba(18, 33, 33, 0.06);
+}
+
+
+/* =========================================================
+   TOP DETAIL
+   ========================================================= */
+
+.nv-strip-shell::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 14%;
+    left: 14%;
+
+    z-index: 3;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(234, 87, 28, 0.4),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   ITEM
+   ========================================================= */
+
+.nv-strip-item {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+
+    gap: 1rem;
+
+    min-height: 100px;
+
+    padding:
+        1.15rem
+        1.3rem;
+
+    border-right:
+        1px solid
+        var(--nv-home-line);
+
+    transition:
+        background-color
+        var(--nv-transition);
+}
+
+.nv-strip-item:last-child {
+    border-right: 0;
+}
+
+.nv-strip-item:hover {
+    background:
+        rgba(
+            62,
+            84,
+            71,
+            0.04
+        );
+}
+
+
+/* =========================================================
+   INDEX
+   ========================================================= */
+
+.nv-strip-index {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    flex: 0 0 auto;
+
+    border:
+        1px solid
+        rgba(62, 84, 71, 0.13);
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.82);
+
+    color:
+        var(--nv-orange);
+
+    font-size: 0.63rem;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.nv-strip-item strong {
+    display: block;
+
+    color:
+        var(--nv-home-deep);
+
+    font-size: 1rem;
+    font-weight: 850;
+
+    line-height: 1.2;
+}
+
+.nv-strip-item
+div > span {
+    display: block;
+
+    margin-top: 0.3rem;
+
+    color:
+        rgba(30, 34, 38, 0.59);
+
+    font-size: 0.78rem;
+    font-weight: 500;
+
+    line-height: 1.4;
+}
+
+
+/* =========================================================
+   HOVER ACCENT
+   ========================================================= */
+
+.nv-strip-item::after {
+    content: "";
+
+    position: absolute;
+
+    right: 1.3rem;
+    bottom: 0;
+    left: 1.3rem;
+
+    height: 2px;
+
+    background:
+        var(--nv-orange);
+
+    opacity: 0;
+
+    transform:
+        scaleX(0.4);
+
+    transition:
+        opacity var(--nv-transition),
+        transform var(--nv-transition);
+}
+
+.nv-strip-item:hover::after {
+    opacity: 0.75;
+
+    transform:
+        scaleX(1);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .nv-home-strip {
+        padding:
+            1.5rem
+            0
+            0;
+    }
+
+    .nv-strip-shell {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+    .nv-strip-item:nth-child(2) {
+        border-right: 0;
+    }
+
+    .nv-strip-item:nth-child(-n + 2) {
+        border-bottom:
+            1px solid
+            var(--nv-home-line);
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+    .nv-home-strip {
+        padding:
+            1.25rem
+            0
+            0;
+    }
+
+    .nv-strip-shell {
+        grid-template-columns: 1fr;
+
+        border-radius: 1.2rem;
+    }
+
+    .nv-strip-item {
+        min-height: 84px;
+
+        padding:
+            1rem
+            1.1rem;
+
+        border-right: 0;
+
+        border-bottom:
+            1px solid
+            var(--nv-home-line);
+    }
+
+    .nv-strip-item:last-child {
+        border-bottom: 0;
+    }
+
+    .nv-strip-item strong {
+        font-size: 0.96rem;
+    }
+
+    .nv-strip-item
+    div > span {
+        font-size: 0.75rem;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+    .nv-strip-item,
+    .nv-strip-item::after {
+        transition: none;
+    }
+}

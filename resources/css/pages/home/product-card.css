@@ -1,0 +1,1035 @@
+/* =========================================================
+   NATVIEWER HOME
+   Premium product card
+   ========================================================= */
+
+.nv-product-card {
+    position: relative;
+
+    display: flex;
+
+    height: 100%;
+
+    overflow: hidden;
+
+    flex-direction: column;
+
+    border:
+        1px solid
+        rgba(18, 33, 33, 0.09);
+
+    border-radius: 2rem;
+
+    background: var(--nv-white);
+
+    box-shadow:
+        0
+        22px
+        65px
+        rgba(18, 33, 33, 0.075);
+
+    transition:
+        transform 0.34s ease,
+        box-shadow 0.34s ease,
+        border-color 0.34s ease;
+}
+
+.nv-product-card::after {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 12%;
+    left: 12%;
+
+    z-index: 3;
+
+    height: 1px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.9),
+            transparent
+        );
+}
+
+.nv-product-card:hover {
+    border-color:
+        rgba(62, 84, 71, 0.2);
+
+    box-shadow:
+        0
+        38px
+        100px
+        rgba(18, 33, 33, 0.14);
+
+    transform:
+        translateY(-8px);
+}
+
+
+/* =========================================================
+   MEDIA
+   ========================================================= */
+
+.nv-product-media {
+    position: relative;
+
+    min-height: 430px;
+
+    padding: 1.35rem;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            ellipse at 50% 74%,
+            rgba(62, 84, 71, 0.11),
+            transparent 42%
+        ),
+        radial-gradient(
+            circle at 84% 16%,
+            rgba(234, 87, 28, 0.1),
+            transparent 15rem
+        ),
+        linear-gradient(
+            145deg,
+            #f7f8f4 0%,
+            #e9eee8 100%
+        );
+}
+
+.nv-product-media::before {
+    content: "";
+
+    position: absolute;
+
+    right: -8rem;
+    bottom: -9rem;
+
+    width: 27rem;
+    height: 27rem;
+
+    border:
+        1px solid
+        rgba(62, 84, 71, 0.09);
+
+    border-radius: 50%;
+
+    box-shadow:
+        inset
+        0
+        0
+        60px
+        rgba(62, 84, 71, 0.025);
+
+    pointer-events: none;
+}
+
+.nv-product-media::after {
+    content: "";
+
+    position: absolute;
+
+    right: 10%;
+    bottom: 3.6rem;
+    left: 10%;
+
+    height: 1px;
+
+    pointer-events: none;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(62, 84, 71, 0.14),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   BADGES
+   ========================================================= */
+
+.nv-product-badges {
+    position: relative;
+
+    z-index: 4;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 0.75rem;
+}
+
+.nv-product-badge {
+    display: inline-flex;
+    align-items: center;
+
+    min-height: 34px;
+
+    padding:
+        0.5rem
+        0.8rem;
+
+    border-radius: 999px;
+
+    font-size: 0.63rem;
+    font-weight: 800;
+
+    letter-spacing: 0.1em;
+
+    line-height: 1;
+
+    text-transform: uppercase;
+}
+
+.nv-product-badge-featured {
+    background:
+        linear-gradient(
+            135deg,
+            var(--nv-orange),
+            #ff7134
+        );
+
+    color: var(--nv-white);
+
+    box-shadow:
+        0
+        10px
+        25px
+        rgba(234, 87, 28, 0.24);
+}
+
+.nv-product-badge-brand {
+    margin-left: auto;
+
+    border:
+        1px solid
+        rgba(62, 84, 71, 0.12);
+
+    background:
+        rgba(255, 255, 255, 0.72);
+
+    color: var(--nv-home-green);
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+}
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+.nv-product-image-link {
+    position: absolute;
+
+    inset:
+        3.9rem
+        1.2rem
+        3.8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    color: inherit;
+
+    text-decoration: none;
+}
+
+.nv-product-image-link::before {
+    content: "";
+
+    position: absolute;
+
+    width: min(
+        78%,
+        360px
+    );
+
+    height: min(
+        78%,
+        280px
+    );
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(255, 255, 255, 0.85),
+            rgba(255, 255, 255, 0.24) 48%,
+            transparent 72%
+        );
+
+    filter: blur(3px);
+}
+
+.nv-product-image {
+    position: relative;
+
+    z-index: 1;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: 490px;
+    max-height: 305px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0
+            30px
+            25px
+            rgba(18, 33, 33, 0.17)
+        );
+
+    transition:
+        transform
+        0.42s
+        cubic-bezier(
+            0.2,
+            0.8,
+            0.2,
+            1
+        ),
+        filter 0.42s ease;
+}
+
+.nv-product-card:hover
+.nv-product-image {
+    filter:
+        drop-shadow(
+            0
+            35px
+            32px
+            rgba(18, 33, 33, 0.21)
+        );
+
+    transform:
+        scale(1.055)
+        translateY(-5px);
+}
+
+
+/* =========================================================
+   PLACEHOLDER
+   ========================================================= */
+
+.nv-product-image-placeholder {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: min(
+        100%,
+        360px
+    );
+
+    min-height: 230px;
+
+    flex-direction: column;
+
+    gap: 0.45rem;
+
+    border:
+        1px dashed
+        rgba(62, 84, 71, 0.2);
+
+    border-radius: 1.5rem;
+
+    background:
+        rgba(255, 255, 255, 0.48);
+
+    color: var(--nv-home-green);
+}
+
+.nv-product-image-placeholder span {
+    font-size: 0.67rem;
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+}
+
+.nv-product-image-placeholder strong {
+    color: var(--nv-home-deep);
+
+    font-size: 2.8rem;
+    font-weight: 650;
+
+    letter-spacing: -0.06em;
+}
+
+
+/* =========================================================
+   MEDIA FOOTER
+   ========================================================= */
+
+.nv-product-media-footer {
+    position: absolute;
+
+    right: 1.3rem;
+    bottom: 1rem;
+    left: 1.3rem;
+
+    z-index: 4;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1rem;
+}
+
+.nv-product-media-category {
+    color:
+        rgba(30, 34, 38, 0.52);
+
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+
+.nv-product-stock-pill {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 0.45rem;
+
+    max-width: 58%;
+
+    padding:
+        0.52rem
+        0.75rem;
+
+    border:
+        1px solid
+        rgba(18, 33, 33, 0.08);
+
+    border-radius: 999px;
+
+    background:
+        rgba(255, 255, 255, 0.78);
+
+    color: var(--nv-dark);
+
+    font-size: 0.67rem;
+    font-weight: 700;
+
+    line-height: 1.2;
+
+    text-align: right;
+
+    backdrop-filter:
+        blur(12px);
+
+    -webkit-backdrop-filter:
+        blur(12px);
+}
+
+.nv-product-stock-pill i {
+    width: 7px;
+    height: 7px;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+}
+
+.nv-product-stock-pill.is-available i {
+    background: #39885a;
+
+    box-shadow:
+        0
+        0
+        0
+        4px
+        rgba(57, 136, 90, 0.12);
+}
+
+.nv-product-stock-pill.is-unavailable i {
+    background: #a3473c;
+
+    box-shadow:
+        0
+        0
+        0
+        4px
+        rgba(163, 71, 60, 0.1);
+}
+
+
+/* =========================================================
+   BODY
+   ========================================================= */
+
+.nv-product-body {
+    display: flex;
+
+    padding:
+        1.9rem
+        1.7rem
+        1.6rem;
+
+    flex: 1;
+    flex-direction: column;
+
+    background:
+        linear-gradient(
+            180deg,
+            #ffffff,
+            #fdfdfb
+        );
+}
+
+.nv-product-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 1rem;
+}
+
+.nv-product-brand {
+    display: block;
+
+    margin-bottom: 0.45rem;
+
+    color: var(--nv-orange);
+
+    font-size: 0.66rem;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+}
+
+.nv-home-page
+.nv-product-heading h3 {
+    margin: 0;
+
+    color: var(--nv-home-deep);
+
+    font-size: clamp(
+        1.7rem,
+        2vw,
+        2.15rem
+    );
+
+    font-weight: 650;
+
+    line-height: 1.04;
+
+    letter-spacing: -0.045em;
+}
+
+.nv-product-sku {
+    flex: 0 0 auto;
+
+    padding:
+        0.43rem
+        0.6rem;
+
+    border:
+        1px solid
+        rgba(18, 33, 33, 0.06);
+
+    border-radius: 0.65rem;
+
+    background: #f4f5f2;
+
+    color:
+        rgba(30, 34, 38, 0.46);
+
+    font-size: 0.61rem;
+    font-weight: 700;
+
+    letter-spacing: 0.05em;
+}
+
+.nv-product-description {
+    margin:
+        1rem
+        0
+        0;
+
+    color: var(--nv-home-muted);
+
+    font-size: 0.92rem;
+
+    line-height: 1.72;
+}
+
+
+/* =========================================================
+   VARIANTS
+   ========================================================= */
+
+.nv-product-variants {
+    margin-top: 1.45rem;
+}
+
+.nv-product-variants-label {
+    display: block;
+
+    margin-bottom: 0.7rem;
+
+    color:
+        rgba(30, 34, 38, 0.48);
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    letter-spacing: 0.02em;
+}
+
+.nv-product-variant-list {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 0.5rem;
+}
+
+.nv-product-variant-chip {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    min-height: 37px;
+
+    padding:
+        0.45rem
+        0.85rem;
+
+    border:
+        1px solid
+        rgba(62, 84, 71, 0.13);
+
+    border-radius: 999px;
+
+    background: #f7f8f5;
+
+    color: var(--nv-dark);
+
+    font-size: 0.73rem;
+    font-weight: 700;
+}
+
+.nv-product-variant-chip.is-active {
+    border-color:
+        var(--nv-home-green);
+
+    background:
+        var(--nv-home-green);
+
+    color: var(--nv-white);
+
+    box-shadow:
+        0
+        8px
+        18px
+        rgba(62, 84, 71, 0.16);
+}
+
+
+/* =========================================================
+   PRICE + AVAILABILITY
+   ========================================================= */
+
+.nv-product-commerce {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.1fr)
+        minmax(0, 0.9fr);
+
+    gap: 0.9rem;
+
+    margin-top: 1.6rem;
+
+    padding-top: 1.5rem;
+
+    border-top:
+        1px solid
+        var(--nv-home-line);
+}
+
+.nv-product-price-block > span {
+    display: block;
+
+    color:
+        rgba(30, 34, 38, 0.45);
+
+    font-size: 0.64rem;
+    font-weight: 800;
+
+    letter-spacing: 0.09em;
+
+    text-transform: uppercase;
+}
+
+.nv-product-price-block strong {
+    display: block;
+
+    margin-top: 0.2rem;
+
+    color: var(--nv-home-deep);
+
+    font-size: clamp(
+        1.55rem,
+        2.2vw,
+        2.1rem
+    );
+
+    font-weight: 700;
+
+    line-height: 1.08;
+
+    letter-spacing: -0.045em;
+}
+
+.nv-product-price-block small {
+    display: block;
+
+    margin-top: 0.38rem;
+
+    color:
+        rgba(30, 34, 38, 0.43);
+
+    font-size: 0.65rem;
+}
+
+.nv-product-availability {
+    display: flex;
+    align-items: center;
+
+    gap: 0.7rem;
+
+    padding:
+        0.8rem
+        0.85rem;
+
+    border:
+        1px solid
+        rgba(18, 33, 33, 0.07);
+
+    border-radius: 1rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            #f8f9f6,
+            #f3f5f1
+        );
+}
+
+.nv-product-availability-dot {
+    width: 9px;
+    height: 9px;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+}
+
+.nv-product-availability-dot.is-available {
+    background: #39885a;
+
+    box-shadow:
+        0
+        0
+        0
+        5px
+        rgba(57, 136, 90, 0.11);
+}
+
+.nv-product-availability-dot.is-unavailable {
+    background: #a3473c;
+
+    box-shadow:
+        0
+        0
+        0
+        5px
+        rgba(163, 71, 60, 0.1);
+}
+
+.nv-product-availability strong {
+    display: block;
+
+    color: var(--nv-home-deep);
+
+    font-size: 0.73rem;
+    font-weight: 700;
+
+    line-height: 1.25;
+}
+
+.nv-product-availability span {
+    display: block;
+
+    margin-top: 0.2rem;
+
+    color:
+        rgba(30, 34, 38, 0.42);
+
+    font-size: 0.62rem;
+}
+
+
+/* =========================================================
+   ACTIONS
+   ========================================================= */
+
+.nv-product-actions {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.85fr)
+        minmax(0, 1.15fr);
+
+    gap: 0.7rem;
+
+    margin-top: 1.5rem;
+}
+
+.nv-product-actions
+.nv-button {
+    width: 100%;
+
+    min-height: 52px;
+
+    padding:
+        0.82rem
+        1rem;
+
+    border-radius: 999px;
+}
+
+.nv-product-actions
+.nv-button-primary {
+    box-shadow:
+        0
+        13px
+        28px
+        rgba(234, 87, 28, 0.2);
+}
+
+.nv-product-actions
+.nv-button-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.5rem;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   CONFIDENCE
+   ========================================================= */
+
+.nv-product-confidence {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap:
+        0.65rem
+        1.1rem;
+
+    margin-top: 1.05rem;
+
+    padding-top: 1rem;
+
+    border-top:
+        1px solid
+        rgba(18, 33, 33, 0.055);
+}
+
+.nv-product-confidence span {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 0.45rem;
+
+    color:
+        rgba(30, 34, 38, 0.49);
+
+    font-size: 0.65rem;
+    font-weight: 600;
+}
+
+.nv-product-confidence i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 18px;
+    height: 18px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(62, 84, 71, 0.1);
+
+    color: var(--nv-home-green);
+
+    font-size: 0.62rem;
+    font-style: normal;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .nv-product-media {
+        min-height: 380px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+    .nv-product-card {
+        border-radius: 1.6rem;
+    }
+
+    .nv-product-media {
+        min-height: 320px;
+    }
+
+    .nv-product-image-link {
+        inset:
+            3.7rem
+            1rem
+            3.8rem;
+    }
+
+    .nv-product-image {
+        max-height: 220px;
+    }
+
+    .nv-product-media-footer {
+        right: 1rem;
+        left: 1rem;
+    }
+
+    .nv-product-stock-pill {
+        max-width: 65%;
+    }
+
+    .nv-product-body {
+        padding:
+            1.45rem
+            1.2rem
+            1.3rem;
+    }
+
+    .nv-product-sku {
+        display: none;
+    }
+
+    .nv-product-commerce {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-product-actions {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-product-actions
+    .nv-button {
+        min-height: 53px;
+    }
+
+    .nv-product-confidence {
+        display: grid;
+
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 390px) {
+    .nv-product-media {
+        min-height: 290px;
+    }
+
+    .nv-product-image {
+        max-height: 188px;
+    }
+
+    .nv-product-media-category {
+        display: none;
+    }
+
+    .nv-product-stock-pill {
+        max-width: 100%;
+
+        margin-left: auto;
+    }
+
+    .nv-product-variant-chip {
+        min-height: 34px;
+
+        padding:
+            0.4rem
+            0.65rem;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+    .nv-product-card,
+    .nv-product-image {
+        transition: none;
+    }
+
+    .nv-product-card:hover {
+        transform: none;
+    }
+
+    .nv-product-card:hover
+    .nv-product-image {
+        transform: none;
+    }
+}

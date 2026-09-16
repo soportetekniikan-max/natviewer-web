@@ -1,0 +1,444 @@
+/* =========================================================
+   NATVIEWER HOME
+   Shared premium foundation
+   ========================================================= */
+
+.nv-home-page {
+    --nv-home-bg: #f5f5f1;
+    --nv-home-surface: #ffffff;
+    --nv-home-soft: #edf1ec;
+
+    --nv-home-deep: #122121;
+    --nv-home-green: #3e5447;
+
+    --nv-home-muted:
+        rgba(30, 34, 38, 0.62);
+
+    --nv-home-line:
+        rgba(18, 33, 33, 0.09);
+
+    --nv-home-line-strong:
+        rgba(18, 33, 33, 0.15);
+
+    --nv-home-shadow:
+        0
+        22px
+        60px
+        rgba(18, 33, 33, 0.08);
+
+    position: relative;
+
+    overflow: clip;
+
+    background: var(--nv-home-bg);
+
+    color: var(--nv-dark);
+}
+
+.nv-home-content {
+    position: relative;
+
+    z-index: 2;
+}
+
+
+/* =========================================================
+   ANCHORS
+   ========================================================= */
+
+#products,
+#benefits,
+#specs,
+#contact {
+    scroll-margin-top: 105px;
+}
+
+
+/* =========================================================
+   SECTION RHYTHM
+   ========================================================= */
+
+.nv-home-section {
+    position: relative;
+
+    padding:
+        clamp(
+            4.5rem,
+            6vw,
+            6.5rem
+        )
+        0;
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.nv-eyebrow {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 0.65rem;
+
+    margin-bottom: 0.75rem;
+
+    color: var(--nv-orange);
+
+    font-size: 0.68rem;
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+}
+
+.nv-eyebrow::before {
+    content: "";
+
+    width: 26px;
+    height: 1px;
+
+    background: currentColor;
+}
+
+
+/* =========================================================
+   EDITORIAL SECTION HEADING
+   ========================================================= */
+
+.nv-section-heading {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        72px
+        minmax(0, 1.05fr)
+        minmax(280px, 0.72fr);
+
+    gap:
+        clamp(
+            1.4rem,
+            3vw,
+            3rem
+        );
+
+    align-items: end;
+
+    margin-bottom:
+        clamp(
+            2.75rem,
+            4vw,
+            3.75rem
+        );
+
+    padding-bottom: 1.5rem;
+
+    border-bottom:
+        1px solid
+        var(--nv-home-line);
+}
+
+
+/* =========================================================
+   SECTION NUMBER
+   ========================================================= */
+
+.nv-section-heading-mark {
+    align-self: start;
+}
+
+.nv-section-heading-mark > span {
+    display: block;
+
+    color:
+        rgba(18, 33, 33, 0.2);
+
+    font-size: 0.72rem;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+}
+
+.nv-section-heading-mark > i {
+    display: block;
+
+    width: 36px;
+    height: 2px;
+
+    margin-top: 0.75rem;
+
+    background: var(--nv-orange);
+}
+
+
+/* =========================================================
+   SECTION TITLE
+   ========================================================= */
+
+.nv-section-heading-main h2 {
+    max-width: 720px;
+
+    margin: 0;
+
+    color: var(--nv-home-deep);
+
+    font-size: clamp(
+        2.4rem,
+        4vw,
+        4.35rem
+    );
+
+    font-weight: 650;
+
+    line-height: 0.96;
+
+    letter-spacing: -0.055em;
+
+    text-wrap: balance;
+}
+
+.nv-section-heading-copy {
+    max-width: 420px;
+
+    margin: 0;
+
+    color: var(--nv-home-muted);
+
+    font-size: 0.94rem;
+
+    line-height: 1.75;
+}
+
+
+/* =========================================================
+   HOME OUTLINE BUTTON
+   Global buttons continue living in components/buttons.css
+   ========================================================= */
+
+.nv-home-page
+.nv-button-outline {
+    border-color:
+        rgba(18, 33, 33, 0.15);
+
+    background:
+        rgba(255, 255, 255, 0.68);
+
+    color: var(--nv-home-deep);
+
+    box-shadow:
+        0
+        10px
+        28px
+        rgba(18, 33, 33, 0.055);
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+}
+
+.nv-home-page
+.nv-button-outline:hover,
+.nv-home-page
+.nv-button-outline:focus-visible {
+    border-color: var(--nv-green);
+
+    background: var(--nv-green);
+
+    color: var(--nv-white);
+
+    box-shadow:
+        0
+        16px
+        34px
+        rgba(62, 84, 71, 0.2);
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+   JS adds nv-reveal / is-visible
+   ========================================================= */
+
+.nv-home-body.nv-motion-ready
+.nv-reveal {
+    opacity: 0;
+
+    transform:
+        translate3d(
+            0,
+            30px,
+            0
+        );
+
+    transition:
+        opacity 0.7s
+            cubic-bezier(
+                0.2,
+                0.7,
+                0.2,
+                1
+            ),
+        transform 0.8s
+            cubic-bezier(
+                0.2,
+                0.7,
+                0.2,
+                1
+            );
+
+    transition-delay:
+        var(
+            --nv-reveal-delay,
+            0ms
+        );
+}
+
+.nv-home-body.nv-motion-ready
+.nv-reveal.is-visible {
+    opacity: 1;
+
+    transform:
+        translate3d(
+            0,
+            0,
+            0
+        );
+}
+
+
+/* =========================================================
+   TYPOGRAPHY
+   ========================================================= */
+
+.nv-home-page p {
+    color: var(--nv-home-muted);
+}
+
+.nv-home-page h1,
+.nv-home-page h2,
+.nv-home-page h3,
+.nv-home-page h4,
+.nv-home-page h5,
+.nv-home-page h6 {
+    color: var(--nv-home-deep);
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.nv-home-page
+a:focus-visible,
+.nv-home-page
+button:focus-visible {
+    outline:
+        3px solid
+        rgba(234, 87, 28, 0.42);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .nv-section-heading {
+        grid-template-columns:
+            54px
+            minmax(0, 1fr);
+
+        gap:
+            1.2rem
+            1.7rem;
+    }
+
+    .nv-section-heading-copy {
+        grid-column: 2;
+
+        max-width: 620px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+    #products,
+    #benefits,
+    #specs,
+    #contact {
+        scroll-margin-top: 88px;
+    }
+
+    .nv-home-section {
+        padding:
+            3.75rem
+            0;
+    }
+
+    .nv-section-heading {
+        grid-template-columns: 1fr;
+
+        gap: 1rem;
+
+        margin-bottom: 2.25rem;
+
+        padding-bottom: 1.3rem;
+    }
+
+    .nv-section-heading-mark {
+        display: flex;
+        align-items: center;
+
+        gap: 0.75rem;
+    }
+
+    .nv-section-heading-mark > i {
+        margin-top: 0;
+
+        width: 34px;
+    }
+
+    .nv-section-heading-copy {
+        grid-column: auto;
+
+        font-size: 0.9rem;
+    }
+
+    .nv-section-heading-main h2 {
+        font-size: clamp(
+            2.25rem,
+            10vw,
+            3.25rem
+        );
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+    .nv-home-body.nv-motion-ready
+    .nv-reveal {
+        opacity: 1;
+
+        transform: none;
+
+        transition: none;
+    }
+}
