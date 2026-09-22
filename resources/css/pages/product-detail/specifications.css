@@ -1,0 +1,128 @@
+/* =========================================================
+   SPECIFICATIONS
+   ========================================================= */
+
+.nv-detail-specs {
+    margin-top: 3.5rem;
+}
+
+.nv-detail-specs-heading {
+    margin-bottom: 1.5rem;
+}
+
+.nv-detail-specs-heading .nv-eyebrow {
+    color: #ff7a40;
+}
+
+.nv-detail-specs-heading h2 {
+    margin: 0;
+
+    color: var(--nv-white);
+
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 900;
+
+    letter-spacing: -0.045em;
+
+    text-shadow:
+        0 3px 24px rgba(0, 0, 0, 0.24);
+}
+
+.nv-detail-spec-card {
+    overflow: hidden;
+
+    border: 1px solid rgba(255, 255, 255, 0.17);
+    border-radius: 1.5rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 33, 33, 0.55),
+            rgba(30, 34, 38, 0.36)
+        );
+
+    box-shadow:
+        0 24px 70px rgba(0, 0, 0, 0.16);
+
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+}
+
+.nv-detail-spec-card
++ .nv-detail-spec-card {
+    margin-top: 1rem;
+}
+
+.nv-detail-spec-header {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1.25rem;
+
+    padding: 1.4rem 1.65rem;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+
+    background: rgba(255, 255, 255, 0.035);
+}
+
+.nv-detail-spec-header h3 {
+    margin: 0;
+
+    color: var(--nv-white);
+
+    font-size: 1.15rem;
+    font-weight: 900;
+}
+
+.nv-detail-spec-header small {
+    color: rgba(255, 255, 255, 0.54);
+}
+
+.nv-detail-spec-list {
+    margin: 0;
+}
+
+.nv-detail-spec-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        minmax(0, 1fr);
+
+    gap: 1.25rem;
+
+    padding: 0.9rem 1.65rem;
+
+    margin: 0;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+}
+
+.nv-detail-spec-row:last-child {
+    border-bottom: 0;
+}
+
+.nv-detail-spec-row:nth-child(even) {
+    background: rgba(255, 255, 255, 0.045);
+}
+
+.nv-detail-spec-row dt {
+    color: rgba(255, 255, 255, 0.62);
+
+    font-weight: 500;
+}
+
+.nv-detail-spec-row dd {
+    margin: 0;
+
+    color: var(--nv-white);
+
+    font-weight: 800;
+
+    text-align: right;
+}
+
+

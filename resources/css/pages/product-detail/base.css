@@ -1,0 +1,69 @@
+/* =========================================================
+   NATVIEWER PRODUCT DETAIL
+   Premium photographic / glass experience
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE BACKGROUND
+   ========================================================= */
+
+.nv-detail-page {
+    position: relative;
+    min-height: 100vh;
+
+    background-image:
+        linear-gradient(
+            90deg,
+            rgba(18, 33, 33, 0.56) 0%,
+            rgba(18, 33, 33, 0.38) 48%,
+            rgba(18, 33, 33, 0.28) 100%
+        ),
+        linear-gradient(
+            180deg,
+            rgba(18, 33, 33, 0.18) 0%,
+            rgba(18, 33, 33, 0.32) 52%,
+            rgba(18, 33, 33, 0.58) 100%
+        ),
+        url("/images/hero/natviewer-birdwatching.webp");
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed;
+
+    color: var(--nv-white);
+}
+
+.nv-detail-shell {
+    padding-top: 2rem;
+    padding-bottom: 4.5rem;
+}
+
+
+/* =========================================================
+   GLOBAL DETAIL TYPOGRAPHY
+   ========================================================= */
+
+.nv-detail-page h1,
+.nv-detail-page h2,
+.nv-detail-page h3,
+.nv-detail-page h4,
+.nv-detail-page h5,
+.nv-detail-page h6 {
+    color: var(--nv-white);
+}
+
+.nv-detail-page p {
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.nv-detail-page .nv-eyebrow {
+    color: var(--nv-orange);
+}
+
+.nv-detail-page .nv-eyebrow::before {
+    background: currentColor;
+}
+
+

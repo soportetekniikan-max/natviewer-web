@@ -1,0 +1,222 @@
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.nv-detail-page a:focus-visible,
+.nv-detail-page button:focus-visible,
+.nv-detail-page input:focus-visible,
+.nv-detail-page select:focus-visible,
+.nv-detail-page textarea:focus-visible {
+    outline: 3px solid rgba(234, 87, 28, 0.42);
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .nv-detail-page {
+        background-image:
+            linear-gradient(
+                180deg,
+                rgba(18, 33, 33, 0.4) 0%,
+                rgba(18, 33, 33, 0.52) 52%,
+                rgba(18, 33, 33, 0.7) 100%
+            ),
+            url("/images/hero/natviewer-birdwatching.webp");
+
+        background-position: 64% center;
+    }
+
+    .nv-detail-hero {
+        grid-template-columns: 1fr;
+
+        gap: 1.75rem;
+    }
+
+    .nv-detail-gallery {
+        position: static;
+    }
+
+    .nv-detail-main-image,
+    .nv-detail-main-image > img {
+        min-height: 26rem;
+    }
+
+    .nv-detail-description {
+        grid-template-columns: 1fr;
+
+        gap: 1.5rem;
+    }
+
+    .nv-detail-quote-card {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+    .nv-detail-page {
+        background-image:
+            linear-gradient(
+                180deg,
+                rgba(18, 33, 33, 0.44) 0%,
+                rgba(18, 33, 33, 0.58) 52%,
+                rgba(18, 33, 33, 0.76) 100%
+            ),
+            url("/images/hero/natviewer-birdwatching.webp");
+
+        background-position: 68% center;
+        background-attachment: scroll;
+    }
+
+    .nv-detail-shell {
+        padding-top: 1.25rem;
+        padding-bottom: 3rem;
+    }
+
+    .nv-detail-breadcrumb {
+        margin-bottom: 1rem;
+
+        font-size: 0.8rem;
+    }
+
+    .nv-detail-main-image {
+        min-height: 20rem;
+
+        padding: 0.75rem;
+
+        border-radius: 1.5rem;
+    }
+
+    .nv-detail-main-image::before {
+        inset: 0.7rem;
+
+        border-radius: 1.1rem;
+    }
+
+    .nv-detail-main-image > img {
+        min-height: 19rem;
+    }
+
+    .nv-detail-main-image-placeholder {
+        padding: 2.5rem 1.5rem;
+    }
+
+    .nv-detail-thumbnails {
+        grid-template-columns:
+            repeat(3, minmax(0, 1fr));
+    }
+
+    .nv-detail-content {
+        padding: 1.25rem;
+
+        border-radius: 1.5rem;
+    }
+
+    .nv-detail-title {
+        font-size: clamp(2.5rem, 13vw, 3.4rem);
+    }
+
+    .nv-detail-lead {
+        font-size: 1rem;
+    }
+
+    .nv-detail-highlight {
+        padding: 0.65rem;
+    }
+
+    .nv-detail-highlight-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-detail-variant {
+        padding: 1rem;
+    }
+
+    .nv-detail-variant-head {
+        flex-direction: column;
+
+        gap: 0.65rem;
+    }
+
+    .nv-detail-variant-data {
+        grid-template-columns: 1fr;
+
+        gap: 0.7rem;
+    }
+
+    .nv-detail-lower,
+    .nv-detail-specs,
+    .nv-detail-quote-section {
+        margin-top: 2.75rem;
+    }
+
+    .nv-detail-description {
+        padding: 1.5rem;
+
+        border-radius: 1.5rem;
+    }
+
+    .nv-detail-spec-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding: 1.2rem;
+    }
+
+    .nv-detail-spec-row {
+        grid-template-columns: 1fr;
+
+        gap: 0.35rem;
+
+        padding:
+            0.85rem
+            1.2rem;
+    }
+
+    .nv-detail-spec-row dd {
+        text-align: left;
+    }
+
+    .nv-detail-quote-section {
+        padding-top: 1rem;
+    }
+
+    .nv-detail-quote-card {
+        border-radius: 1.5rem;
+    }
+
+    .nv-detail-quote-intro,
+    .nv-detail-quote-form {
+        padding: 1.5rem;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    .nv-detail-thumb,
+    .nv-detail-variant,
+    .nv-detail-cta,
+    .nv-detail-quote-form .form-control,
+    .nv-detail-quote-form .form-select {
+        transition: none;
+    }
+
+    .nv-detail-thumb:hover,
+    .nv-detail-variant:hover,
+    .nv-detail-cta:hover {
+        transform: none;
+    }
+}

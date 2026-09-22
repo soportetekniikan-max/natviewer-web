@@ -1,0 +1,63 @@
+/* =========================================================
+   LOWER CONTENT
+   ========================================================= */
+
+.nv-detail-lower {
+    margin-top: 3.5rem;
+}
+
+
+/* =========================================================
+   DESCRIPTION CARD
+   ========================================================= */
+
+.nv-detail-description {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.75fr)
+        minmax(0, 1.25fr);
+
+    gap: clamp(2rem, 4vw, 3.5rem);
+
+    padding: clamp(2rem, 4vw, 3.25rem);
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 2rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 33, 33, 0.52),
+            rgba(30, 34, 38, 0.36)
+        );
+
+    box-shadow:
+        0 28px 80px rgba(0, 0, 0, 0.18);
+
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+}
+
+.nv-detail-description h2 {
+    margin: 0.75rem 0 0;
+
+    color: var(--nv-white);
+
+    font-size: clamp(2.1rem, 4vw, 3.4rem);
+    font-weight: 900;
+
+    letter-spacing: -0.045em;
+}
+
+.nv-detail-description p {
+    margin: 0;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 1.0625rem;
+
+    line-height: 1.85;
+}
+
+

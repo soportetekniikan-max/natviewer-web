@@ -1,0 +1,466 @@
+/* =========================================================
+   SUMMARY GLASS CARD
+   ========================================================= */
+
+.nv-detail-content {
+    padding: clamp(1.5rem, 3vw, 2.25rem);
+
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 2rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(18, 33, 33, 0.55),
+            rgba(30, 34, 38, 0.38)
+        );
+
+    box-shadow:
+        0 30px 90px rgba(0, 0, 0, 0.2);
+
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+}
+
+.nv-detail-category {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 0.5rem;
+
+    padding: 0.5rem 0.8rem;
+
+    border: 1px solid rgba(234, 87, 28, 0.32);
+    border-radius: 999px;
+
+    background: rgba(234, 87, 28, 0.11);
+
+    color: #ff7a40;
+
+    font-size: 0.75rem;
+    font-weight: 900;
+
+    letter-spacing: 0.1em;
+
+    text-transform: uppercase;
+}
+
+.nv-detail-category::before {
+    content: "";
+
+    width: 0.42rem;
+    height: 0.42rem;
+
+    border-radius: 50%;
+
+    background: var(--nv-orange);
+
+    box-shadow:
+        0 0 0 5px rgba(234, 87, 28, 0.1);
+}
+
+.nv-detail-title {
+    margin: 1.35rem 0 0.7rem;
+
+    color: var(--nv-white);
+
+    font-size: clamp(2.75rem, 5vw, 4.65rem);
+    font-weight: 900;
+
+    line-height: 0.92;
+
+    letter-spacing: -0.06em;
+
+    text-wrap: balance;
+
+    text-shadow:
+        0 4px 26px rgba(0, 0, 0, 0.24);
+}
+
+.nv-detail-brand {
+    margin-bottom: 1.4rem;
+
+    color: rgba(255, 255, 255, 0.58);
+
+    font-size: 0.78rem;
+    font-weight: 900;
+
+    letter-spacing: 0.11em;
+
+    text-transform: uppercase;
+}
+
+.nv-detail-lead {
+    max-width: 40rem;
+
+    margin-bottom: 1.75rem;
+
+    color: rgba(255, 255, 255, 0.82);
+
+    font-size: 1.0625rem;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   PRICE / STOCK
+   ========================================================= */
+
+.nv-detail-highlight {
+    padding: 0.75rem;
+
+    margin-bottom: 1.8rem;
+
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 1.35rem;
+
+    background: rgba(255, 255, 255, 0.065);
+}
+
+.nv-detail-highlight-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 0.75rem;
+}
+
+.nv-detail-highlight-grid > div {
+    padding: 1rem;
+
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    border-radius: 1rem;
+
+    background: rgba(18, 33, 33, 0.34);
+}
+
+.nv-detail-highlight span {
+    display: block;
+
+    margin-bottom: 0.4rem;
+
+    color: rgba(255, 255, 255, 0.55);
+
+    font-size: 0.68rem;
+    font-weight: 900;
+
+    letter-spacing: 0.11em;
+
+    text-transform: uppercase;
+}
+
+.nv-detail-highlight strong {
+    display: block;
+
+    color: var(--nv-white);
+
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   VARIANT INTRO
+   ========================================================= */
+
+.nv-detail-section-label {
+    margin-bottom: 0.55rem;
+
+    color: #ff7a40;
+
+    font-size: 0.72rem;
+    font-weight: 900;
+
+    letter-spacing: 0.13em;
+
+    text-transform: uppercase;
+}
+
+.nv-detail-section-title {
+    margin-bottom: 0.5rem;
+
+    color: var(--nv-white);
+
+    font-size: 1.55rem;
+    font-weight: 800;
+
+    line-height: 1.2;
+}
+
+.nv-detail-section-copy {
+    margin-bottom: 1.25rem;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    line-height: 1.65;
+}
+
+
+/* =========================================================
+   VARIANT CARDS
+   ========================================================= */
+
+.nv-detail-variants {
+    display: grid;
+
+    gap: 0.8rem;
+}
+
+.nv-detail-variant {
+    padding: 1.15rem;
+
+    border: 1px solid rgba(255, 255, 255, 0.13);
+    border-radius: 1.25rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.07),
+            rgba(18, 33, 33, 0.24)
+        );
+
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+
+    transition:
+        border-color var(--nv-transition),
+        background-color var(--nv-transition),
+        box-shadow var(--nv-transition),
+        transform var(--nv-transition);
+}
+
+.nv-detail-variant:hover {
+    border-color: rgba(234, 87, 28, 0.46);
+
+    transform: translateY(-2px);
+}
+
+.nv-detail-variant.is-selected {
+    border-color: rgba(234, 87, 28, 0.9);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(234, 87, 28, 0.14),
+            rgba(18, 33, 33, 0.32)
+        );
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.16);
+}
+
+.nv-detail-variant:focus-within {
+    border-color: var(--nv-orange);
+
+    box-shadow:
+        0 0 0 3px rgba(234, 87, 28, 0.16);
+}
+
+.nv-detail-variant-select {
+    display: grid;
+
+    grid-template-columns:
+        auto minmax(0, 1fr);
+
+    gap: 0.875rem;
+
+    align-items: start;
+
+    margin: 0;
+
+    cursor: pointer;
+}
+
+.nv-detail-variant-radio {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+}
+
+.nv-detail-variant-indicator {
+    position: relative;
+
+    display: block;
+
+    width: 1.125rem;
+    height: 1.125rem;
+
+    margin-top: 0.1875rem;
+
+    border: 2px solid rgba(255, 255, 255, 0.48);
+    border-radius: 50%;
+}
+
+.nv-detail-variant-radio:checked
++ .nv-detail-variant-indicator {
+    border-color: var(--nv-orange);
+}
+
+.nv-detail-variant-radio:checked
++ .nv-detail-variant-indicator::after {
+    content: "";
+
+    position: absolute;
+    inset: 0.1875rem;
+
+    border-radius: 50%;
+
+    background: var(--nv-orange);
+}
+
+.nv-detail-variant-content {
+    display: block;
+
+    min-width: 0;
+}
+
+.nv-detail-variant-head {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 1rem;
+}
+
+.nv-detail-variant-name {
+    display: block;
+
+    margin-bottom: 0.25rem;
+
+    color: var(--nv-white);
+
+    font-size: 1.125rem;
+    font-weight: 900;
+}
+
+.nv-detail-variant-sku {
+    display: block;
+
+    color: rgba(255, 255, 255, 0.52);
+
+    font-size: 0.72rem;
+}
+
+.nv-detail-recommended {
+    padding: 0.375rem 0.625rem;
+
+    border: 1px solid rgba(234, 87, 28, 0.32);
+    border-radius: 999px;
+
+    background: rgba(234, 87, 28, 0.12);
+
+    color: #ff7a40;
+
+    font-size: 0.65rem;
+    font-weight: 900;
+
+    letter-spacing: 0.06em;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+.nv-detail-variant-data {
+    display: grid;
+
+    grid-template-columns:
+        repeat(2, 1fr);
+
+    gap: 1rem;
+
+    padding-top: 1rem;
+
+    margin-top: 1rem;
+
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.nv-detail-variant-data > span {
+    display: block;
+}
+
+.nv-detail-variant-data
+> span
+> span {
+    display: block;
+
+    margin-bottom: 0.25rem;
+
+    color: rgba(255, 255, 255, 0.5);
+
+    font-size: 0.7rem;
+}
+
+.nv-detail-variant-data strong {
+    display: block;
+
+    color: var(--nv-white);
+
+    font-size: 0.95rem;
+    font-weight: 900;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.nv-detail-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    min-height: 3.4rem;
+
+    margin-top: 1rem;
+
+    padding: 0.85rem 1.25rem;
+
+    border: 1px solid var(--nv-orange);
+    border-radius: 999px;
+
+    background: var(--nv-orange);
+
+    color: var(--nv-white);
+
+    box-shadow:
+        0 14px 34px rgba(234, 87, 28, 0.24);
+
+    font-weight: 900;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--nv-transition),
+        background-color var(--nv-transition),
+        box-shadow var(--nv-transition);
+}
+
+.nv-detail-cta:hover,
+.nv-detail-cta:focus-visible {
+    background: #ff6a2b;
+
+    color: var(--nv-white);
+
+    transform: translateY(-2px);
+
+    box-shadow:
+        0 20px 46px rgba(234, 87, 28, 0.32);
+}
+
+.nv-detail-cta:focus-visible {
+    outline: 3px solid rgba(234, 87, 28, 0.3);
+    outline-offset: 3px;
+}
+
+

@@ -1,0 +1,36 @@
+/* =========================================================
+   BREADCRUMB
+   ========================================================= */
+
+.nv-detail-breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.625rem;
+
+    margin-bottom: 1.5rem;
+
+    color: rgba(255, 255, 255, 0.62);
+
+    font-size: 0.875rem;
+}
+
+.nv-detail-breadcrumb a {
+    color: rgba(255, 255, 255, 0.88);
+
+    font-weight: 700;
+    text-decoration: none;
+
+    transition: color var(--nv-transition);
+}
+
+.nv-detail-breadcrumb a:hover,
+.nv-detail-breadcrumb a:focus-visible {
+    color: var(--nv-orange);
+}
+
+.nv-detail-breadcrumb-separator {
+    opacity: 0.42;
+}
+
+
