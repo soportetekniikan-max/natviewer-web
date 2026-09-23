@@ -1,0 +1,105 @@
+/* =========================================================
+   PRODUCT DETAIL
+   Description
+   ========================================================= */
+
+.nv-detail-lower {
+    margin-top: 5rem;
+}
+
+
+/* =========================================================
+   DESCRIPTION
+   ========================================================= */
+
+.nv-detail-description {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(14rem, 0.7fr)
+        minmax(0, 1.3fr);
+
+    gap:
+        clamp(
+            2rem,
+            6vw,
+            5rem
+        );
+
+    align-items: start;
+
+    padding:
+        3.5rem
+        0;
+
+    border-top:
+        1px solid
+        rgba(18, 33, 33, 0.1);
+
+    border-bottom:
+        1px solid
+        rgba(18, 33, 33, 0.1);
+}
+
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.nv-detail-description h2 {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 20rem;
+
+    margin:
+        0.85rem
+        0
+        0;
+
+    color: var(--nv-detail-deep);
+
+    font-size:
+        clamp(
+            2rem,
+            4vw,
+            3.4rem
+        );
+
+    font-weight: 700;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
+}
+
+
+/* =========================================================
+   COPY
+   ========================================================= */
+
+.nv-detail-description > p {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 50rem;
+
+    margin: 0;
+
+    color:
+        rgba(30, 34, 38, 0.67);
+
+    font-size:
+        clamp(
+            1rem,
+            1.3vw,
+            1.1rem
+        );
+
+    line-height: 1.85;
+}

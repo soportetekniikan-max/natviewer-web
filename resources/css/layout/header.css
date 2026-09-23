@@ -37,10 +37,14 @@
 
 
 /* =========================================================
-   HOME
+   PREMIUM PUBLIC PAGES
+   Home + Product Detail
    ========================================================= */
 
-.nv-home-body
+:is(
+    .nv-home-body,
+    .nv-detail-body
+)
 .nv-site-header {
     position: fixed;
 
@@ -75,11 +79,14 @@
 
 
 /* =========================================================
-   HOME PREMIUM GLASS
+   PREMIUM GLASS
    Same visual family as Benefit 01
    ========================================================= */
 
-.nv-home-body
+:is(
+    .nv-home-body,
+    .nv-detail-body
+)
 .nv-navbar {
     --nv-glass-x: 50%;
     --nv-glass-y: 0%;
@@ -102,10 +109,6 @@
 
     border-radius: 1.65rem;
 
-    /*
-     * Mismos tonos de Benefit 01,
-     * pero translúcidos para mantener el blur.
-     */
     background:
         radial-gradient(
             circle at 83% 12%,
@@ -152,7 +155,10 @@
    GLASS REFLECTION
    ========================================================= */
 
-.nv-home-body
+:is(
+    .nv-home-body,
+    .nv-detail-body
+)
 .nv-navbar::before {
     content: "";
 
@@ -182,7 +188,10 @@
    TOP REFLECTION
    ========================================================= */
 
-.nv-home-body
+:is(
+    .nv-home-body,
+    .nv-detail-body
+)
 .nv-navbar::after {
     content: "";
 
@@ -207,7 +216,10 @@
         );
 }
 
-.nv-home-body
+:is(
+    .nv-home-body,
+    .nv-detail-body
+)
 .nv-navbar > * {
     position: relative;
 
@@ -219,14 +231,20 @@
    SCROLLED
    ========================================================= */
 
-.nv-home-body
+:is(
+    .nv-home-body,
+    .nv-detail-body
+)
 .nv-site-header.is-scrolled {
     padding:
         0.45rem
         0;
 }
 
-.nv-home-body
+:is(
+    .nv-home-body,
+    .nv-detail-body
+)
 .nv-site-header.is-scrolled
 .nv-navbar {
     min-height: 66px;
@@ -359,7 +377,10 @@
             blur(20px)
     )
 ) {
-    .nv-home-body
+    :is(
+        .nv-home-body,
+        .nv-detail-body
+    )
     .nv-navbar {
         background:
             radial-gradient(
@@ -389,7 +410,10 @@
     }
 
     .nv-navbar,
-    .nv-home-body
+    :is(
+        .nv-home-body,
+        .nv-detail-body
+    )
     .nv-navbar {
         min-height: 68px;
 
@@ -404,7 +428,10 @@
         border-radius: 1.35rem;
     }
 
-    .nv-home-body
+    :is(
+        .nv-home-body,
+        .nv-detail-body
+    )
     .nv-navbar {
         background:
             radial-gradient(
@@ -428,7 +455,10 @@
             saturate(120%);
     }
 
-    .nv-home-body
+    :is(
+        .nv-home-body,
+        .nv-detail-body
+    )
     .nv-site-header.is-scrolled
     .nv-navbar {
         min-height: 64px;
@@ -615,7 +645,10 @@
     }
 
     .nv-navbar,
-    .nv-home-body
+    :is(
+        .nv-home-body,
+        .nv-detail-body
+    )
     .nv-navbar {
         min-height: 62px;
 

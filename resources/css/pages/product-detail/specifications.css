@@ -1,0 +1,218 @@
+/* =========================================================
+   PRODUCT DETAIL
+   Specifications
+   ========================================================= */
+
+.nv-detail-specs {
+    position: relative;
+
+    margin-top: 5rem;
+}
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
+
+.nv-detail-specs-heading {
+    position: relative;
+
+    max-width: 50rem;
+
+    margin-bottom: 2rem;
+}
+
+
+.nv-detail-specs-heading h2 {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 35rem;
+
+    margin:
+        0.8rem
+        0
+        0;
+
+    color: var(--nv-detail-deep);
+
+    font-size:
+        clamp(
+            2.1rem,
+            4vw,
+            3.5rem
+        );
+
+    font-weight: 700;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
+}
+
+
+/* =========================================================
+   SPEC CARD
+   ========================================================= */
+
+.nv-detail-spec-card {
+    overflow: hidden;
+
+    margin-top: 1.25rem;
+
+    border:
+        1px solid
+        rgba(18, 33, 33, 0.09);
+
+    border-radius: 1.5rem;
+
+    background:
+        rgba(255, 255, 255, 0.9);
+
+    box-shadow:
+        0 18px 55px rgba(18, 33, 33, 0.055);
+}
+
+
+/* =========================================================
+   SPEC HEADER
+   ========================================================= */
+
+.nv-detail-spec-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    padding:
+        1.35rem
+        1.6rem;
+
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(234, 87, 28, 0.18),
+            transparent 12rem
+        ),
+        linear-gradient(
+            145deg,
+            #40594a,
+            #253b31 55%,
+            #182b24
+        );
+
+    color: var(--nv-white);
+}
+
+.nv-detail-spec-header h3 {
+    margin: 0;
+
+    color: var(--nv-white);
+
+    font-size: 1.15rem;
+    font-weight: 700;
+
+    letter-spacing: -0.025em;
+}
+
+.nv-detail-spec-header small {
+    color:
+        rgba(255, 255, 255, 0.58);
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   SPEC LIST
+   ========================================================= */
+
+.nv-detail-spec-list {
+    margin: 0;
+
+    background: var(--nv-white);
+}
+
+
+/* =========================================================
+   SPEC ROW
+   ========================================================= */
+
+.nv-detail-spec-row {
+    display: grid;
+
+    grid-template-columns:
+        minmax(12rem, 0.8fr)
+        minmax(0, 1.2fr);
+
+    gap: 2rem;
+
+    align-items: center;
+
+    padding:
+        1rem
+        1.6rem;
+
+    margin: 0;
+
+    border-bottom:
+        1px solid
+        rgba(18, 33, 33, 0.065);
+
+    transition:
+        background-color
+        var(--nv-transition);
+}
+
+.nv-detail-spec-row:last-child {
+    border-bottom: 0;
+}
+
+.nv-detail-spec-row:hover {
+    background:
+        rgba(64, 89, 74, 0.035);
+}
+
+
+/* =========================================================
+   TERM
+   ========================================================= */
+
+.nv-detail-spec-row dt {
+    margin: 0;
+
+    color:
+        rgba(30, 34, 38, 0.54);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    letter-spacing: 0.025em;
+}
+
+
+/* =========================================================
+   VALUE
+   ========================================================= */
+
+.nv-detail-spec-row dd {
+    margin: 0;
+
+    color: var(--nv-detail-deep);
+
+    font-size: 0.92rem;
+    font-weight: 650;
+
+    text-align: right;
+}

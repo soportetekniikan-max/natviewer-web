@@ -1,0 +1,522 @@
+/* =========================================================
+   PRODUCT DETAIL
+   Accessibility / Responsive
+   ========================================================= */
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.nv-detail-page a:focus-visible,
+.nv-detail-page button:focus-visible,
+.nv-detail-page input:focus-visible,
+.nv-detail-page select:focus-visible,
+.nv-detail-page textarea:focus-visible {
+    outline:
+        3px solid
+        rgba(234, 87, 28, 0.42);
+
+    outline-offset: 3px;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .nv-detail-shell {
+        padding-top: 7.5rem;
+        padding-bottom: 4rem;
+    }
+
+    .nv-detail-hero {
+        grid-template-columns: 1fr;
+
+        gap: 1.5rem;
+
+        padding: 1rem;
+
+        border-radius: 1.8rem;
+    }
+
+    .nv-detail-gallery {
+        position: static;
+    }
+
+    .nv-detail-main-image,
+    .nv-detail-main-image > img {
+        min-height: 26rem;
+    }
+
+    .nv-detail-content {
+        max-width: 48rem;
+
+        padding:
+            1.5rem
+            1.25rem
+            1.75rem;
+    }
+
+
+    /* =====================================================
+       DESCRIPTION
+       ===================================================== */
+
+    .nv-detail-description {
+        grid-template-columns: 1fr;
+
+        gap: 1.5rem;
+
+        padding:
+            3rem
+            0;
+    }
+
+    .nv-detail-description::before {
+        top: 3rem;
+    }
+
+
+    /* =====================================================
+       QUOTE
+       ===================================================== */
+
+    .nv-detail-quote-card {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-detail-quote-intro {
+        padding:
+            2.5rem
+            2rem
+            1.5rem;
+    }
+
+    .nv-detail-quote-form {
+        margin:
+            0
+            1rem
+            1rem;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+    .nv-detail-page {
+        background:
+            linear-gradient(
+                180deg,
+                #f8f8f5,
+                #f1f3ee
+            );
+    }
+
+
+    /* =====================================================
+       FIXED HEADER OFFSET
+       ===================================================== */
+
+    .nv-detail-shell {
+        padding-top: 6.5rem;
+        padding-bottom: 3rem;
+    }
+
+
+    /* =====================================================
+       BREADCRUMB
+       ===================================================== */
+
+    .nv-detail-breadcrumb {
+        margin-bottom: 0.85rem;
+
+        font-size: 0.74rem;
+    }
+
+    .nv-detail-breadcrumb
+    span[aria-current="page"] {
+        max-width: 12rem;
+    }
+
+
+    /* =====================================================
+       HERO
+       ===================================================== */
+
+    .nv-detail-hero {
+        gap: 0.75rem;
+
+        padding: 0.65rem;
+
+        border-radius: 1.45rem;
+    }
+
+
+    /* =====================================================
+       GALLERY
+       ===================================================== */
+
+    .nv-detail-main-image {
+        min-height: 20rem;
+
+        padding: 0.75rem;
+
+        border-radius: 1.2rem;
+    }
+
+    .nv-detail-main-image::after {
+        bottom: 2rem;
+    }
+
+    .nv-detail-main-image > img {
+        min-height: 19rem;
+    }
+
+    .nv-detail-main-image-placeholder {
+        padding:
+            2.5rem
+            1.5rem;
+
+        border-radius: 1.2rem;
+    }
+
+    .nv-detail-thumbnails {
+        grid-template-columns:
+            repeat(
+                4,
+                minmax(0, 1fr)
+            );
+
+        gap: 0.45rem;
+
+        margin-top: 0.55rem;
+    }
+
+    .nv-detail-thumb {
+        padding: 0.2rem;
+
+        border-radius: 0.8rem;
+    }
+
+    .nv-detail-thumb img {
+        border-radius: 0.55rem;
+    }
+
+
+    /* =====================================================
+       SUMMARY
+       ===================================================== */
+
+    .nv-detail-content {
+        padding:
+            1.25rem
+            0.8rem
+            1.2rem;
+    }
+
+    .nv-detail-category {
+        font-size: 0.64rem;
+    }
+
+    .nv-detail-category::before {
+        width: 28px;
+    }
+
+    .nv-detail-title {
+        margin-top: 0.85rem;
+
+        font-size:
+            clamp(
+                2.5rem,
+                12vw,
+                3.5rem
+            );
+
+        line-height: 0.95;
+    }
+
+    .nv-detail-brand {
+        margin-bottom: 1rem;
+    }
+
+    .nv-detail-lead {
+        font-size: 0.95rem;
+
+        line-height: 1.65;
+    }
+
+
+    /* =====================================================
+       PRICE / STOCK
+       ===================================================== */
+
+    .nv-detail-highlight {
+        padding: 0.45rem;
+
+        border-radius: 1.15rem;
+    }
+
+    .nv-detail-highlight-grid {
+        grid-template-columns:
+            1.2fr
+            0.8fr;
+    }
+
+    .nv-detail-highlight-grid > div {
+        padding:
+            0.85rem
+            0.75rem;
+    }
+
+    .nv-detail-highlight strong {
+        font-size: 1rem;
+    }
+
+
+    /* =====================================================
+       VARIANTS
+       ===================================================== */
+
+    .nv-detail-variant {
+        padding: 0.9rem;
+    }
+
+    .nv-detail-variant-head {
+        flex-direction: column;
+
+        gap: 0.55rem;
+    }
+
+    .nv-detail-variant-data {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+
+        gap: 0.65rem;
+    }
+
+
+    /* =====================================================
+       SECTION SPACING
+       ===================================================== */
+
+    .nv-detail-lower,
+    .nv-detail-specs,
+    .nv-detail-quote-section {
+        margin-top: 3.5rem;
+    }
+
+
+    /* =====================================================
+       DESCRIPTION
+       ===================================================== */
+
+    .nv-detail-description {
+        gap: 1.25rem;
+
+        padding:
+            2.5rem
+            0;
+    }
+
+    .nv-detail-description::before {
+        top: 2.5rem;
+
+        font-size: 4rem;
+    }
+
+    .nv-detail-description h2 {
+        max-width: 16rem;
+
+        font-size: 2.3rem;
+    }
+
+    .nv-detail-description > p {
+        font-size: 0.95rem;
+
+        line-height: 1.75;
+    }
+
+
+    /* =====================================================
+       SPECIFICATIONS
+       ===================================================== */
+
+    .nv-detail-specs-heading::after {
+        font-size: 4rem;
+    }
+
+    .nv-detail-specs-heading h2 {
+        max-width: 16rem;
+
+        font-size: 2.3rem;
+    }
+
+    .nv-detail-spec-card {
+        border-radius: 1.2rem;
+    }
+
+    .nv-detail-spec-header {
+        flex-direction: column;
+
+        align-items: flex-start;
+
+        padding:
+            1.1rem
+            1.2rem;
+    }
+
+    .nv-detail-spec-row {
+        grid-template-columns: 1fr;
+
+        gap: 0.3rem;
+
+        padding:
+            0.9rem
+            1.2rem;
+    }
+
+    .nv-detail-spec-row dd {
+        text-align: left;
+    }
+
+
+    /* =====================================================
+       QUOTE
+       ===================================================== */
+
+    .nv-detail-quote-section {
+        padding-top: 0;
+    }
+
+    .nv-detail-quote-card {
+        border-radius: 1.5rem;
+    }
+
+    .nv-detail-quote-card::before {
+        top: 1.5rem;
+        left: 1rem;
+
+        font-size: 5rem;
+    }
+
+    .nv-detail-quote-intro {
+        padding:
+            2.25rem
+            1.5rem
+            1.4rem;
+    }
+
+    .nv-detail-quote-intro h2 {
+        font-size: 2.4rem;
+    }
+
+    .nv-detail-quote-form {
+        margin:
+            0
+            0.65rem
+            0.65rem;
+
+        padding: 1.25rem;
+
+        border-radius: 1.15rem;
+    }
+
+    .nv-detail-trust {
+        gap: 0.4rem;
+    }
+
+    .nv-detail-trust span {
+        font-size: 0.66rem;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 390px) {
+    .nv-detail-shell {
+        padding-top: 6rem;
+    }
+
+    .nv-detail-hero {
+        padding: 0.5rem;
+    }
+
+    .nv-detail-main-image {
+        min-height: 18rem;
+    }
+
+    .nv-detail-main-image > img {
+        min-height: 17rem;
+    }
+
+    .nv-detail-content {
+        padding:
+            1.1rem
+            0.65rem;
+    }
+
+    .nv-detail-title {
+        font-size: 2.45rem;
+    }
+
+    .nv-detail-highlight-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-detail-highlight-grid
+    > div
+    + div {
+        border-top:
+            1px solid
+            rgba(255, 255, 255, 0.12);
+
+        border-left: 0;
+    }
+
+    .nv-detail-variant-data {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-detail-quote-intro h2 {
+        font-size: 2.1rem;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+    .nv-detail-main-image > img,
+    .nv-detail-thumb,
+    .nv-detail-variant,
+    .nv-detail-cta,
+    .nv-detail-spec-row,
+    .nv-detail-quote-form
+    .form-control,
+    .nv-detail-quote-form
+    .form-select {
+        transition: none;
+    }
+
+    .nv-detail-main-image:hover > img,
+    .nv-detail-thumb:hover,
+    .nv-detail-variant:hover,
+    .nv-detail-cta:hover {
+        transform: none;
+    }
+}
