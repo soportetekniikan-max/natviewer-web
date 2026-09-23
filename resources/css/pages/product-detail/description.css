@@ -1,63 +1,105 @@
 /* =========================================================
-   LOWER CONTENT
+   PRODUCT DETAIL
+   Description
    ========================================================= */
 
 .nv-detail-lower {
-    margin-top: 3.5rem;
+    margin-top: 5rem;
 }
 
 
 /* =========================================================
-   DESCRIPTION CARD
+   DESCRIPTION
    ========================================================= */
 
 .nv-detail-description {
+    position: relative;
+
     display: grid;
 
     grid-template-columns:
-        minmax(0, 0.75fr)
-        minmax(0, 1.25fr);
+        minmax(14rem, 0.7fr)
+        minmax(0, 1.3fr);
 
-    gap: clamp(2rem, 4vw, 3.5rem);
-
-    padding: clamp(2rem, 4vw, 3.25rem);
-
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    border-radius: 2rem;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(18, 33, 33, 0.52),
-            rgba(30, 34, 38, 0.36)
+    gap:
+        clamp(
+            2rem,
+            6vw,
+            5rem
         );
 
-    box-shadow:
-        0 28px 80px rgba(0, 0, 0, 0.18);
+    align-items: start;
 
-    backdrop-filter: blur(22px);
-    -webkit-backdrop-filter: blur(22px);
+    padding:
+        3.5rem
+        0;
+
+    border-top:
+        1px solid
+        rgba(18, 33, 33, 0.1);
+
+    border-bottom:
+        1px solid
+        rgba(18, 33, 33, 0.1);
 }
+
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
 
 .nv-detail-description h2 {
-    margin: 0.75rem 0 0;
+    position: relative;
 
-    color: var(--nv-white);
+    z-index: 2;
 
-    font-size: clamp(2.1rem, 4vw, 3.4rem);
-    font-weight: 900;
+    max-width: 20rem;
 
-    letter-spacing: -0.045em;
+    margin:
+        0.85rem
+        0
+        0;
+
+    color: var(--nv-detail-deep);
+
+    font-size:
+        clamp(
+            2rem,
+            4vw,
+            3.4rem
+        );
+
+    font-weight: 700;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
 }
 
-.nv-detail-description p {
+
+/* =========================================================
+   COPY
+   ========================================================= */
+
+.nv-detail-description > p {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 50rem;
+
     margin: 0;
 
-    color: rgba(255, 255, 255, 0.82);
+    color:
+        rgba(30, 34, 38, 0.67);
 
-    font-size: 1.0625rem;
+    font-size:
+        clamp(
+            1rem,
+            1.3vw,
+            1.1rem
+        );
 
     line-height: 1.85;
 }
-
-

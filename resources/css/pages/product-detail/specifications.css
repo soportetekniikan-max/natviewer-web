@@ -1,71 +1,113 @@
 /* =========================================================
-   SPECIFICATIONS
+   PRODUCT DETAIL
+   Specifications
    ========================================================= */
 
 .nv-detail-specs {
-    margin-top: 3.5rem;
+    position: relative;
+
+    margin-top: 5rem;
 }
+
+
+/* =========================================================
+   SECTION HEADING
+   ========================================================= */
 
 .nv-detail-specs-heading {
-    margin-bottom: 1.5rem;
+    position: relative;
+
+    max-width: 50rem;
+
+    margin-bottom: 2rem;
 }
 
-.nv-detail-specs-heading .nv-eyebrow {
-    color: #ff7a40;
-}
 
 .nv-detail-specs-heading h2 {
-    margin: 0;
+    position: relative;
 
-    color: var(--nv-white);
+    z-index: 2;
 
-    font-size: clamp(2rem, 4vw, 3.5rem);
-    font-weight: 900;
+    max-width: 35rem;
 
-    letter-spacing: -0.045em;
+    margin:
+        0.8rem
+        0
+        0;
 
-    text-shadow:
-        0 3px 24px rgba(0, 0, 0, 0.24);
+    color: var(--nv-detail-deep);
+
+    font-size:
+        clamp(
+            2.1rem,
+            4vw,
+            3.5rem
+        );
+
+    font-weight: 700;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
 }
+
+
+/* =========================================================
+   SPEC CARD
+   ========================================================= */
 
 .nv-detail-spec-card {
     overflow: hidden;
 
-    border: 1px solid rgba(255, 255, 255, 0.17);
+    margin-top: 1.25rem;
+
+    border:
+        1px solid
+        rgba(18, 33, 33, 0.09);
+
     border-radius: 1.5rem;
 
     background:
-        linear-gradient(
-            145deg,
-            rgba(18, 33, 33, 0.55),
-            rgba(30, 34, 38, 0.36)
-        );
+        rgba(255, 255, 255, 0.9);
 
     box-shadow:
-        0 24px 70px rgba(0, 0, 0, 0.16);
-
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+        0 18px 55px rgba(18, 33, 33, 0.055);
 }
 
-.nv-detail-spec-card
-+ .nv-detail-spec-card {
-    margin-top: 1rem;
-}
+
+/* =========================================================
+   SPEC HEADER
+   ========================================================= */
 
 .nv-detail-spec-header {
     display: flex;
-
     align-items: center;
     justify-content: space-between;
 
-    gap: 1.25rem;
+    gap: 1rem;
 
-    padding: 1.4rem 1.65rem;
+    padding:
+        1.35rem
+        1.6rem;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    border-bottom:
+        1px solid
+        rgba(255, 255, 255, 0.1);
 
-    background: rgba(255, 255, 255, 0.035);
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(234, 87, 28, 0.18),
+            transparent 12rem
+        ),
+        linear-gradient(
+            145deg,
+            #40594a,
+            #253b31 55%,
+            #182b24
+        );
+
+    color: var(--nv-white);
 }
 
 .nv-detail-spec-header h3 {
@@ -74,55 +116,103 @@
     color: var(--nv-white);
 
     font-size: 1.15rem;
-    font-weight: 900;
+    font-weight: 700;
+
+    letter-spacing: -0.025em;
 }
 
 .nv-detail-spec-header small {
-    color: rgba(255, 255, 255, 0.54);
+    color:
+        rgba(255, 255, 255, 0.58);
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    letter-spacing: 0.08em;
+
+    text-transform: uppercase;
 }
+
+
+/* =========================================================
+   SPEC LIST
+   ========================================================= */
 
 .nv-detail-spec-list {
     margin: 0;
+
+    background: var(--nv-white);
 }
+
+
+/* =========================================================
+   SPEC ROW
+   ========================================================= */
 
 .nv-detail-spec-row {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 1fr)
-        minmax(0, 1fr);
+        minmax(12rem, 0.8fr)
+        minmax(0, 1.2fr);
 
-    gap: 1.25rem;
+    gap: 2rem;
 
-    padding: 0.9rem 1.65rem;
+    align-items: center;
+
+    padding:
+        1rem
+        1.6rem;
 
     margin: 0;
 
-    border-bottom: 1px solid rgba(255, 255, 255, 0.045);
+    border-bottom:
+        1px solid
+        rgba(18, 33, 33, 0.065);
+
+    transition:
+        background-color
+        var(--nv-transition);
 }
 
 .nv-detail-spec-row:last-child {
     border-bottom: 0;
 }
 
-.nv-detail-spec-row:nth-child(even) {
-    background: rgba(255, 255, 255, 0.045);
+.nv-detail-spec-row:hover {
+    background:
+        rgba(64, 89, 74, 0.035);
 }
+
+
+/* =========================================================
+   TERM
+   ========================================================= */
 
 .nv-detail-spec-row dt {
-    color: rgba(255, 255, 255, 0.62);
+    margin: 0;
 
-    font-weight: 500;
+    color:
+        rgba(30, 34, 38, 0.54);
+
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    letter-spacing: 0.025em;
 }
+
+
+/* =========================================================
+   VALUE
+   ========================================================= */
 
 .nv-detail-spec-row dd {
     margin: 0;
 
-    color: var(--nv-white);
+    color: var(--nv-detail-deep);
 
-    font-weight: 800;
+    font-size: 0.92rem;
+    font-weight: 650;
 
     text-align: right;
 }
-
-

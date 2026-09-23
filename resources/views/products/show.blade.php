@@ -11,6 +11,11 @@
 )
 
 @section(
+    'body_class',
+    'nv-detail-body'
+)
+
+@section(
     'canonical',
     $seo['canonical']
 )

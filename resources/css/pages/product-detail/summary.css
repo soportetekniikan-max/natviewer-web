@@ -1,46 +1,60 @@
 /* =========================================================
-   SUMMARY GLASS CARD
+   PRODUCT DETAIL
+   Summary
    ========================================================= */
 
 .nv-detail-content {
-    padding: clamp(1.5rem, 3vw, 2.25rem);
+    min-width: 0;
 
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    border-radius: 2rem;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(18, 33, 33, 0.55),
-            rgba(30, 34, 38, 0.38)
+    padding:
+        clamp(
+            1.35rem,
+            3vw,
+            2.5rem
+        )
+        clamp(
+            0.5rem,
+            2vw,
+            1.75rem
         );
 
-    box-shadow:
-        0 30px 90px rgba(0, 0, 0, 0.2);
+    border: 0;
 
-    backdrop-filter: blur(24px);
-    -webkit-backdrop-filter: blur(24px);
+    border-radius: 0;
+
+    background: transparent;
+
+    box-shadow: none;
+
+    backdrop-filter: none;
+
+    -webkit-backdrop-filter: none;
 }
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
 
 .nv-detail-category {
     display: inline-flex;
     align-items: center;
 
-    gap: 0.5rem;
+    gap: 0.7rem;
 
-    padding: 0.5rem 0.8rem;
+    padding: 0;
 
-    border: 1px solid rgba(234, 87, 28, 0.32);
-    border-radius: 999px;
+    border: 0;
+    border-radius: 0;
 
-    background: rgba(234, 87, 28, 0.11);
+    background: transparent;
 
-    color: #ff7a40;
+    color: var(--nv-orange);
 
-    font-size: 0.75rem;
-    font-weight: 900;
+    font-size: 0.7rem;
+    font-weight: 800;
 
-    letter-spacing: 0.1em;
+    letter-spacing: 0.15em;
 
     text-transform: uppercase;
 }
@@ -48,116 +62,234 @@
 .nv-detail-category::before {
     content: "";
 
-    width: 0.42rem;
-    height: 0.42rem;
+    width: 34px;
+    height: 2px;
 
-    border-radius: 50%;
+    border-radius: 999px;
 
     background: var(--nv-orange);
 
-    box-shadow:
-        0 0 0 5px rgba(234, 87, 28, 0.1);
-}
-
-.nv-detail-title {
-    margin: 1.35rem 0 0.7rem;
-
-    color: var(--nv-white);
-
-    font-size: clamp(2.75rem, 5vw, 4.65rem);
-    font-weight: 900;
-
-    line-height: 0.92;
-
-    letter-spacing: -0.06em;
-
-    text-wrap: balance;
-
-    text-shadow:
-        0 4px 26px rgba(0, 0, 0, 0.24);
-}
-
-.nv-detail-brand {
-    margin-bottom: 1.4rem;
-
-    color: rgba(255, 255, 255, 0.58);
-
-    font-size: 0.78rem;
-    font-weight: 900;
-
-    letter-spacing: 0.11em;
-
-    text-transform: uppercase;
-}
-
-.nv-detail-lead {
-    max-width: 40rem;
-
-    margin-bottom: 1.75rem;
-
-    color: rgba(255, 255, 255, 0.82);
-
-    font-size: 1.0625rem;
-
-    line-height: 1.7;
+    box-shadow: none;
 }
 
 
 /* =========================================================
-   PRICE / STOCK
+   TITLE
    ========================================================= */
 
-.nv-detail-highlight {
-    padding: 0.75rem;
+.nv-detail-title {
+    max-width: 38rem;
 
-    margin-bottom: 1.8rem;
+    margin:
+        1rem
+        0
+        0.55rem;
 
-    border: 1px solid rgba(255, 255, 255, 0.13);
-    border-radius: 1.35rem;
+    color: var(--nv-detail-deep);
 
-    background: rgba(255, 255, 255, 0.065);
+    font-size:
+        clamp(
+            2.9rem,
+            4.6vw,
+            4.7rem
+        );
+
+    font-weight: 680;
+
+    line-height: 0.94;
+
+    letter-spacing: -0.062em;
+
+    text-wrap: balance;
+
+    text-shadow: none;
 }
 
-.nv-detail-highlight-grid {
-    display: grid;
 
-    grid-template-columns:
-        repeat(2, 1fr);
+/* =========================================================
+   BRAND
+   ========================================================= */
 
-    gap: 0.75rem;
-}
+.nv-detail-brand {
+    margin-bottom: 1.2rem;
 
-.nv-detail-highlight-grid > div {
-    padding: 1rem;
+    color:
+        rgba(64, 89, 74, 0.74);
 
-    border: 1px solid rgba(255, 255, 255, 0.09);
-    border-radius: 1rem;
-
-    background: rgba(18, 33, 33, 0.34);
-}
-
-.nv-detail-highlight span {
-    display: block;
-
-    margin-bottom: 0.4rem;
-
-    color: rgba(255, 255, 255, 0.55);
-
-    font-size: 0.68rem;
-    font-weight: 900;
+    font-size: 0.76rem;
+    font-weight: 800;
 
     letter-spacing: 0.11em;
 
     text-transform: uppercase;
 }
+
+
+/* =========================================================
+   LEAD
+   ========================================================= */
+
+.nv-detail-lead {
+    max-width: 38rem;
+
+    margin:
+        0
+        0
+        1.65rem;
+
+    color:
+        rgba(30, 34, 38, 0.64);
+
+    font-size: 1rem;
+
+    line-height: 1.72;
+}
+
+
+/* =========================================================
+   PRICE / STOCK PREMIUM STRIP
+   ========================================================= */
+
+.nv-detail-highlight {
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        0.65rem;
+
+    margin-bottom: 1.8rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 1.4rem;
+
+    background:
+        radial-gradient(
+            circle at 88% 5%,
+            rgba(234, 87, 28, 0.2),
+            transparent 12rem
+        ),
+        linear-gradient(
+            145deg,
+            #40594a,
+            #253b31 55%,
+            #182b24
+        );
+
+    box-shadow:
+        0
+        20px
+        50px
+        rgba(18, 33, 33, 0.13);
+}
+
+.nv-detail-highlight::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 10%;
+    left: 10%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.26),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   PRICE GRID
+   ========================================================= */
+
+.nv-detail-highlight-grid {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(0, 0.65fr);
+
+    gap: 0;
+}
+
+
+/* =========================================================
+   PRICE / STOCK CELLS
+   ========================================================= */
+
+.nv-detail-highlight-grid > div {
+    padding:
+        1rem
+        1.1rem;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+}
+
+.nv-detail-highlight-grid > div + div {
+    border-left:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.nv-detail-highlight span {
+    display: block;
+
+    margin-bottom: 0.38rem;
+
+    color:
+        rgba(255, 255, 255, 0.57);
+
+    font-size: 0.63rem;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   VALUE
+   ========================================================= */
 
 .nv-detail-highlight strong {
     display: block;
 
     color: var(--nv-white);
 
-    font-size: clamp(1.1rem, 2vw, 1.4rem);
-    font-weight: 900;
+    font-size:
+        clamp(
+            1.15rem,
+            2vw,
+            1.65rem
+        );
+
+    font-weight: 700;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.025em;
 }
 
 
@@ -166,63 +298,97 @@
    ========================================================= */
 
 .nv-detail-section-label {
-    margin-bottom: 0.55rem;
+    margin-bottom: 0.5rem;
 
-    color: #ff7a40;
+    color: var(--nv-orange);
 
-    font-size: 0.72rem;
-    font-weight: 900;
+    font-size: 0.68rem;
+    font-weight: 800;
 
-    letter-spacing: 0.13em;
+    letter-spacing: 0.14em;
 
     text-transform: uppercase;
 }
 
 .nv-detail-section-title {
-    margin-bottom: 0.5rem;
+    margin:
+        0
+        0
+        0.45rem;
 
-    color: var(--nv-white);
+    color: var(--nv-detail-deep);
 
-    font-size: 1.55rem;
-    font-weight: 800;
+    font-size:
+        clamp(
+            1.45rem,
+            2vw,
+            1.75rem
+        );
 
-    line-height: 1.2;
+    font-weight: 700;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.035em;
 }
 
 .nv-detail-section-copy {
-    margin-bottom: 1.25rem;
+    max-width: 34rem;
 
-    color: rgba(255, 255, 255, 0.7);
+    margin:
+        0
+        0
+        1.2rem;
 
-    line-height: 1.65;
+    color:
+        rgba(30, 34, 38, 0.56);
+
+    font-size: 0.9rem;
+
+    line-height: 1.6;
 }
 
 
 /* =========================================================
-   VARIANT CARDS
+   VARIANTS
    ========================================================= */
 
 .nv-detail-variants {
     display: grid;
 
-    gap: 0.8rem;
+    gap: 0.65rem;
 }
 
-.nv-detail-variant {
-    padding: 1.15rem;
 
-    border: 1px solid rgba(255, 255, 255, 0.13);
-    border-radius: 1.25rem;
+/* =========================================================
+   VARIANT CARD
+   ========================================================= */
+
+.nv-detail-variant {
+    padding: 1rem;
+
+    border:
+        1px solid
+        rgba(18, 33, 33, 0.095);
+
+    border-radius: 1.1rem;
 
     background:
         linear-gradient(
             145deg,
-            rgba(255, 255, 255, 0.07),
-            rgba(18, 33, 33, 0.24)
+            rgba(255, 255, 255, 0.92),
+            rgba(244, 246, 241, 0.82)
         );
 
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    box-shadow:
+        0
+        8px
+        24px
+        rgba(18, 33, 33, 0.035);
+
+    backdrop-filter: none;
+
+    -webkit-backdrop-filter: none;
 
     transition:
         border-color var(--nv-transition),
@@ -232,39 +398,73 @@
 }
 
 .nv-detail-variant:hover {
-    border-color: rgba(234, 87, 28, 0.46);
+    border-color:
+        rgba(64, 89, 74, 0.28);
 
-    transform: translateY(-2px);
+    box-shadow:
+        0
+        14px
+        32px
+        rgba(18, 33, 33, 0.065);
+
+    transform:
+        translateY(-2px);
 }
 
+
+/* =========================================================
+   SELECTED VARIANT
+   ========================================================= */
+
 .nv-detail-variant.is-selected {
-    border-color: rgba(234, 87, 28, 0.9);
+    border-color:
+        rgba(64, 89, 74, 0.55);
 
     background:
         linear-gradient(
             145deg,
-            rgba(234, 87, 28, 0.14),
-            rgba(18, 33, 33, 0.32)
+            rgba(64, 89, 74, 0.085),
+            rgba(255, 255, 255, 0.94)
         );
 
     box-shadow:
-        0 18px 45px rgba(0, 0, 0, 0.16);
+        0
+        14px
+        36px
+        rgba(18, 33, 33, 0.075),
+
+        inset
+        3px
+        0
+        0
+        var(--nv-detail-green);
 }
 
 .nv-detail-variant:focus-within {
-    border-color: var(--nv-orange);
+    border-color:
+        var(--nv-detail-green);
 
     box-shadow:
-        0 0 0 3px rgba(234, 87, 28, 0.16);
+        0
+        0
+        0
+        3px
+        rgba(64, 89, 74, 0.1);
 }
+
+
+/* =========================================================
+   VARIANT SELECT
+   ========================================================= */
 
 .nv-detail-variant-select {
     display: grid;
 
     grid-template-columns:
-        auto minmax(0, 1fr);
+        auto
+        minmax(0, 1fr);
 
-    gap: 0.875rem;
+    gap: 0.85rem;
 
     align-items: start;
 
@@ -282,6 +482,11 @@
     opacity: 0;
 }
 
+
+/* =========================================================
+   RADIO INDICATOR
+   ========================================================= */
+
 .nv-detail-variant-indicator {
     position: relative;
 
@@ -292,13 +497,19 @@
 
     margin-top: 0.1875rem;
 
-    border: 2px solid rgba(255, 255, 255, 0.48);
+    border:
+        2px solid
+        rgba(64, 89, 74, 0.35);
+
     border-radius: 50%;
+
+    background: var(--nv-white);
 }
 
 .nv-detail-variant-radio:checked
 + .nv-detail-variant-indicator {
-    border-color: var(--nv-orange);
+    border-color:
+        var(--nv-detail-green);
 }
 
 .nv-detail-variant-radio:checked
@@ -306,18 +517,30 @@
     content: "";
 
     position: absolute;
+
     inset: 0.1875rem;
 
     border-radius: 50%;
 
-    background: var(--nv-orange);
+    background:
+        var(--nv-detail-green);
 }
+
+
+/* =========================================================
+   VARIANT CONTENT
+   ========================================================= */
 
 .nv-detail-variant-content {
     display: block;
 
     min-width: 0;
 }
+
+
+/* =========================================================
+   VARIANT HEADER
+   ========================================================= */
 
 .nv-detail-variant-head {
     display: flex;
@@ -331,55 +554,77 @@
 .nv-detail-variant-name {
     display: block;
 
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.22rem;
 
-    color: var(--nv-white);
+    color: var(--nv-detail-deep);
 
-    font-size: 1.125rem;
-    font-weight: 900;
+    font-size: 1.05rem;
+    font-weight: 750;
 }
 
 .nv-detail-variant-sku {
     display: block;
 
-    color: rgba(255, 255, 255, 0.52);
+    color:
+        rgba(30, 34, 38, 0.44);
 
-    font-size: 0.72rem;
+    font-size: 0.7rem;
 }
 
-.nv-detail-recommended {
-    padding: 0.375rem 0.625rem;
 
-    border: 1px solid rgba(234, 87, 28, 0.32);
+/* =========================================================
+   RECOMMENDED
+   ========================================================= */
+
+.nv-detail-recommended {
+    padding:
+        0.35rem
+        0.6rem;
+
+    border:
+        1px solid
+        rgba(234, 87, 28, 0.22);
+
     border-radius: 999px;
 
-    background: rgba(234, 87, 28, 0.12);
+    background:
+        rgba(234, 87, 28, 0.085);
 
-    color: #ff7a40;
+    color: var(--nv-orange);
 
-    font-size: 0.65rem;
-    font-weight: 900;
+    font-size: 0.62rem;
+    font-weight: 800;
 
-    letter-spacing: 0.06em;
+    letter-spacing: 0.055em;
 
     text-transform: uppercase;
 
     white-space: nowrap;
 }
 
+
+/* =========================================================
+   VARIANT DATA
+   ========================================================= */
+
 .nv-detail-variant-data {
     display: grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
 
     gap: 1rem;
 
-    padding-top: 1rem;
+    padding-top: 0.85rem;
 
-    margin-top: 1rem;
+    margin-top: 0.85rem;
 
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top:
+        1px solid
+        rgba(18, 33, 33, 0.07);
 }
 
 .nv-detail-variant-data > span {
@@ -391,20 +636,21 @@
 > span {
     display: block;
 
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.22rem;
 
-    color: rgba(255, 255, 255, 0.5);
+    color:
+        rgba(30, 34, 38, 0.43);
 
-    font-size: 0.7rem;
+    font-size: 0.67rem;
 }
 
 .nv-detail-variant-data strong {
     display: block;
 
-    color: var(--nv-white);
+    color: var(--nv-detail-deep);
 
-    font-size: 0.95rem;
-    font-weight: 900;
+    font-size: 0.9rem;
+    font-weight: 750;
 }
 
 
@@ -418,23 +664,38 @@
     justify-content: center;
 
     width: 100%;
-    min-height: 3.4rem;
 
-    margin-top: 1rem;
+    min-height: 3.25rem;
 
-    padding: 0.85rem 1.25rem;
+    margin-top: 0.85rem;
 
-    border: 1px solid var(--nv-orange);
+    padding:
+        0.8rem
+        1.2rem;
+
+    border:
+        1px solid
+        var(--nv-orange);
+
     border-radius: 999px;
 
-    background: var(--nv-orange);
+    background:
+        linear-gradient(
+            135deg,
+            var(--nv-orange),
+            #ff7033
+        );
 
     color: var(--nv-white);
 
     box-shadow:
-        0 14px 34px rgba(234, 87, 28, 0.24);
+        0
+        13px
+        28px
+        rgba(234, 87, 28, 0.2);
 
-    font-weight: 900;
+    font-size: 0.9rem;
+    font-weight: 800;
 
     text-decoration: none;
 
@@ -443,24 +704,38 @@
     transition:
         transform var(--nv-transition),
         background-color var(--nv-transition),
-        box-shadow var(--nv-transition);
+        box-shadow var(--nv-transition),
+        filter var(--nv-transition);
 }
 
 .nv-detail-cta:hover,
 .nv-detail-cta:focus-visible {
-    background: #ff6a2b;
+    background:
+        linear-gradient(
+            135deg,
+            #f45e23,
+            #ff783e
+        );
 
     color: var(--nv-white);
 
-    transform: translateY(-2px);
-
     box-shadow:
-        0 20px 46px rgba(234, 87, 28, 0.32);
+        0
+        18px
+        38px
+        rgba(234, 87, 28, 0.28);
+
+    filter:
+        brightness(1.02);
+
+    transform:
+        translateY(-2px);
 }
 
 .nv-detail-cta:focus-visible {
-    outline: 3px solid rgba(234, 87, 28, 0.3);
+    outline:
+        3px solid
+        rgba(234, 87, 28, 0.28);
+
     outline-offset: 3px;
 }
-
-
