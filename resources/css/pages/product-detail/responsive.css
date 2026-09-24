@@ -436,6 +436,13 @@
     .nv-detail-trust span {
         font-size: 0.66rem;
     }
+
+
+    .nv-detail-lower,
+    .nv-detail-specs,
+    .nv-detail-quote-section {
+        scroll-margin-top: 6.5rem;
+    }
 }
 
 

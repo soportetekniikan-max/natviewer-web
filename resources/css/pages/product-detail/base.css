@@ -172,3 +172,13 @@
 
     background: currentColor;
 }
+
+/* =========================================================
+   FIXED HEADER ANCHOR OFFSET
+   ========================================================= */
+
+.nv-detail-lower,
+.nv-detail-specs,
+.nv-detail-quote-section {
+    scroll-margin-top: 7.5rem;
+}
