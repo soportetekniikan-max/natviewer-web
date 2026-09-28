@@ -197,7 +197,9 @@ class ProductVariantPresenter
                         ),
 
                     'value' =>
-                        (string) $value,
+                        $this->formatSpecificationValue(
+                            (string) $value
+                        ),
                 ]
             )
             ->values()
@@ -215,10 +217,6 @@ class ProductVariantPresenter
             return __($translationKey);
         }
 
-        /*
-         * Fallback para especificaciones futuras
-         * que todavía no tengan traducción.
-         */
         return Str::headline(
             str_replace(
                 '_',
@@ -226,5 +224,33 @@ class ProductVariantPresenter
                 $key
             )
         );
+    }
+
+    private function formatSpecificationValue(
+        string $value
+    ): string {
+        /*
+         * Los códigos técnicos simples pueden
+         * traducirse desde los archivos de idioma.
+         *
+         * Valores físicos como "42 mm",
+         * "675 g" o "93 m" se muestran tal cual.
+         */
+        if (
+            preg_match(
+                '/^[a-z0-9_]+$/',
+                $value
+            ) === 1
+        ) {
+            $translationKey =
+                'product.spec_values.'
+                . $value;
+
+            if (Lang::has($translationKey)) {
+                return __($translationKey);
+            }
+        }
+
+        return $value;
     }
 }

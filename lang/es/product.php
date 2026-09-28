@@ -51,8 +51,79 @@ return [
         'objective_diameter' =>
             'Diámetro del objetivo',
 
-        'glass' =>
-            'Vidrio',
+        'lenses' =>
+            'Lentes',
+
+        'prism' =>
+            'Prisma',
+
+        'field_of_view' =>
+            'Campo visual a 1000 m',
+
+        'minimum_focus' =>
+            'Enfoque mínimo',
+
+        'eye_relief' =>
+            'Alivio ocular',
+
+        'exit_pupil' =>
+            'Pupila de salida',
+
+        'chassis' =>
+            'Chasis',
+
+        'weight' =>
+            'Peso',
+
+        'adjustable_eyecups' =>
+            'Copas oculares ajustables',
+
+        'diopter_adjustment' =>
+            'Ajuste de dioptría',
+
+        'focus_system' =>
+            'Sistema de enfoque',
+
+        'weather_resistance' =>
+            'Protección ambiental',
+
+        'tripod_compatible' =>
+            'Compatible con trípode',
+
+        'included_accessories' =>
+            'Accesorios incluidos',
+
+        'warranty' =>
+            'Garantía',
+    ],
+
+    'spec_values' => [
+        'coated' =>
+            'Coated',
+
+        'bak7_roof' =>
+            'BAK-7 tipo techo',
+
+        'polycarbonate' =>
+            'Policarbonato',
+
+        'yes' =>
+            'Sí',
+
+        'central_wheel' =>
+            'Rueda de enfoque central',
+
+        'rain_fog_resistant' =>
+            'Resistente a lluvia y empañamiento',
+
+        'splash_rain_fog_resistant' =>
+            'Resistente a salpicaduras, lluvia y empañamiento',
+
+        'lens_caps_neck_strap_case' =>
+            'Tapas para lentes, correa de cuello y estuche de transporte',
+
+        'manufacturing_defects_3_months' =>
+            '3 meses por defectos de fabricación',
     ],
 
     'description_title' =>

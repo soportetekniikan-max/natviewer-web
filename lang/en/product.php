@@ -55,8 +55,79 @@ return [
         'objective_diameter' =>
             'Objective diameter',
 
-        'glass' =>
-            'Glass',
+        'lenses' =>
+            'Lenses',
+
+        'prism' =>
+            'Prism',
+
+        'field_of_view' =>
+            'Field of view at 1000 m',
+
+        'minimum_focus' =>
+            'Minimum focus',
+
+        'eye_relief' =>
+            'Eye relief',
+
+        'exit_pupil' =>
+            'Exit pupil',
+
+        'chassis' =>
+            'Chassis',
+
+        'weight' =>
+            'Weight',
+
+        'adjustable_eyecups' =>
+            'Adjustable eyecups',
+
+        'diopter_adjustment' =>
+            'Diopter adjustment',
+
+        'focus_system' =>
+            'Focus system',
+
+        'weather_resistance' =>
+            'Weather protection',
+
+        'tripod_compatible' =>
+            'Tripod compatible',
+
+        'included_accessories' =>
+            'Included accessories',
+
+        'warranty' =>
+            'Warranty',
+    ],
+
+    'spec_values' => [
+        'coated' =>
+            'Coated',
+
+        'bak7_roof' =>
+            'BAK-7 roof',
+
+        'polycarbonate' =>
+            'Polycarbonate',
+
+        'yes' =>
+            'Yes',
+
+        'central_wheel' =>
+            'Central focus wheel',
+
+        'rain_fog_resistant' =>
+            'Rain and fog resistant',
+
+        'splash_rain_fog_resistant' =>
+            'Splash, rain and fog resistant',
+
+        'lens_caps_neck_strap_case' =>
+            'Lens caps, neck strap and carrying case',
+
+        'manufacturing_defects_3_months' =>
+            '3 months against manufacturing defects',
     ],
 
     'description_title' =>
