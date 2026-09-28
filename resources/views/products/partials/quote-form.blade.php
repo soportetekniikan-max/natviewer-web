@@ -136,17 +136,6 @@
                                                 'name'
                                             ]
                                         }}
-
-                                        —
-
-                                        {{
-                                            $variant[
-                                                'price'
-                                            ]
-                                            ?: __(
-                                                'product.price_pending'
-                                            )
-                                        }}
                                     </option>
                                 @endforeach
                             </select>

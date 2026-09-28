@@ -15,25 +15,11 @@ return [
         'Elige la opción que mejor se adapte a tu forma de observar.',
 
     'variants_text' =>
-        'Compara las variantes disponibles, su precio, disponibilidad y especificaciones técnicas.',
+        'Compara las configuraciones disponibles y revisa sus especificaciones técnicas antes de solicitar una cotización.',
 
     'default_variant' => 'Recomendada',
 
     'sku' => 'SKU',
-
-    'price' => 'Precio',
-    'price_pending' => 'Precio por confirmar',
-
-    'stock' => 'Disponibilidad',
-    'stock_pending' => 'Disponibilidad por confirmar',
-    'stock_available' => 'Disponible',
-    'stock_out' => 'Agotado',
-
-    'stock_backorder' =>
-        'Disponible bajo pedido',
-
-    'units_available' =>
-        ':count unidades disponibles',
 
     'technical_eyebrow' =>
         'Información técnica',

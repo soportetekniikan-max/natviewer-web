@@ -67,14 +67,6 @@ const initializeProductDetail = () => {
         '[data-product-variant-select]'
     );
 
-    const selectedPrice = page.querySelector(
-        '[data-selected-price]'
-    );
-
-    const selectedStock = page.querySelector(
-        '[data-selected-stock]'
-    );
-
     const selectVariant = (variantId) => {
         const selectedCard =
             variantCards.find(
@@ -118,20 +110,6 @@ const initializeProductDetail = () => {
         if (variantSelect) {
             variantSelect.value =
                 String(variantId);
-        }
-
-        if (selectedPrice) {
-            selectedPrice.textContent =
-                selectedCard.dataset
-                    .variantPrice
-                || '';
-        }
-
-        if (selectedStock) {
-            selectedStock.textContent =
-                selectedCard.dataset
-                    .variantStock
-                || '';
         }
     };
 

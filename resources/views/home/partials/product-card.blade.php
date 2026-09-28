@@ -74,24 +74,8 @@
                     {{ $item['category_name'] }}
                 </span>
 
-                <span
-                    class="
-                        nv-product-stock-pill
-                        {{
-                            $item['is_available']
-                                ? 'is-available'
-                                : 'is-unavailable'
-                        }}
-                    "
-                >
-                    <i aria-hidden="true"></i>
-
-                    {{
-                        $item['stock']
-                        ?: __(
-                            'public.products.stock_pending'
-                        )
-                    }}
+                <span class="nv-product-sku">
+                    {{ $item['sku'] }}
                 </span>
             </div>
         </div>
@@ -157,68 +141,6 @@
                     </div>
                 </div>
             @endif
-
-            <div class="nv-product-commerce">
-                <div class="nv-product-price-block">
-                    <span>
-                        {{
-                            $locale === 'en'
-                                ? 'Price'
-                                : 'Precio'
-                        }}
-                    </span>
-
-                    <strong>
-                        {{
-                            $item['price']
-                            ?: __(
-                                'public.products.price_pending'
-                            )
-                        }}
-                    </strong>
-
-                    <small>
-                        {{
-                            __(
-                                'public.products.price_note'
-                            )
-                        }}
-                    </small>
-                </div>
-
-                <div class="nv-product-availability">
-                    <span
-                        class="
-                            nv-product-availability-dot
-                            {{
-                                $item['is_available']
-                                    ? 'is-available'
-                                    : 'is-unavailable'
-                            }}
-                        "
-                        aria-hidden="true"
-                    ></span>
-
-                    <div>
-                        <strong>
-                            {{
-                                $item['stock']
-                                ?: __(
-                                    'public.products.stock_pending'
-                                )
-                            }}
-                        </strong>
-
-                        <span>
-                            {{
-                                __(
-                                    'public.products.stock_note'
-                                )
-                            }}
-                        </span>
-                    </div>
-                </div>
-            </div>
 
             <div class="nv-product-actions">
                 <a

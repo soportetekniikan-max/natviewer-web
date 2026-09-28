@@ -114,6 +114,57 @@ class CatalogHomeTest extends TestCase
         );
     }
 
+    public function test_home_does_not_expose_internal_price_or_stock_data(): void
+    {
+        DB::table('product_variants')
+            ->where(
+                'sku',
+                'NV-FALCO-8X42-UD'
+            )
+            ->update([
+                'price' =>
+                    1299000,
+
+                'currency' =>
+                    'COP',
+
+                'manage_stock' =>
+                    true,
+
+                'stock_quantity' =>
+                    5,
+
+                'stock_status' =>
+                    'in_stock',
+            ]);
+
+        $response = $this->get('/es');
+
+        $response
+            ->assertOk()
+            ->assertSee(
+                'Falco 8×42 UD'
+            )
+            ->assertSee(
+                'Solicitar cotización'
+            )
+            ->assertDontSee(
+                '1299000'
+            )
+            ->assertDontSee(
+                '1.299.000'
+            )
+            ->assertDontSee(
+                '5 unidades disponibles'
+            )
+            ->assertDontSee(
+                'Precio por confirmar'
+            )
+            ->assertDontSee(
+                'Disponibilidad por confirmar'
+            );
+    }
+
     public function test_home_excludes_draft_products(): void
     {
         DB::table('products')

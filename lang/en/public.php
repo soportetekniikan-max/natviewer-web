@@ -49,10 +49,6 @@ return [
         'falco_8_text' => 'An 8× magnification configuration with a 42 mm objective, coated lenses and BAK-7 roof prisms.',
         'falco_10_text' => 'A 10× magnification configuration with a 42 mm objective, coated lenses and BAK-7 roof prisms.',
 
-        'price_pending' => 'Price to be confirmed',
-        'stock_pending' => 'Availability to be confirmed',
-        'price_note' => 'Price in COP',
-        'stock_note' => 'Availability',
         'quote_button' => 'Request quote',
     ],
 
@@ -91,7 +87,7 @@ return [
         'kicker' => 'Commercial contact',
         'text' => 'Natviewer presents binoculars for birdwatching, wildlife, landscapes and nature observation.',
         'contact_title' => 'Request a quote for your Natviewer Falco',
-        'contact_text' => 'Explore the available configurations and submit your request for commercial information about price and availability.',
+        'contact_text' => 'Explore the available configurations and submit your request for commercial information.',
         'quote_button' => 'Request quote',
         'rights' => 'All rights reserved.',
         'version' => 'Natviewer catalog',

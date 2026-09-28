@@ -22,59 +22,6 @@
         </p>
     @endif
 
-    @if ($selectedVariant)
-        <div class="nv-detail-highlight">
-            <div
-                class="
-                    nv-detail-highlight-grid
-                "
-            >
-                <div>
-                    <span>
-                        {{
-                            __(
-                                'product.price'
-                            )
-                        }}
-                    </span>
-
-                    <strong
-                        data-selected-price
-                    >
-                        {{
-                            $selectedVariant[
-                                'price'
-                            ]
-                            ?: __(
-                                'product.price_pending'
-                            )
-                        }}
-                    </strong>
-                </div>
-
-                <div>
-                    <span>
-                        {{
-                            __(
-                                'product.stock'
-                            )
-                        }}
-                    </span>
-
-                    <strong
-                        data-selected-stock
-                    >
-                        {{
-                            $selectedVariant[
-                                'stock'
-                            ]
-                        }}
-                    </strong>
-                </div>
-            </div>
-        </div>
-    @endif
-
     <div class="nv-detail-section-label">
         {{
             __(
@@ -115,15 +62,6 @@
                 data-variant-card
                 data-variant-id="{{
                     $variant['id']
-                }}"
-                data-variant-price="{{
-                    $variant['price']
-                    ?: __(
-                        'product.price_pending'
-                    )
-                }}"
-                data-variant-stock="{{
-                    $variant['stock']
                 }}"
             >
                 <label
@@ -211,51 +149,6 @@
                                     }}
                                 </span>
                             @endif
-                        </span>
-
-                        <span
-                            class="
-                                nv-detail-variant-data
-                            "
-                        >
-                            <span>
-                                <span>
-                                    {{
-                                        __(
-                                            'product.price'
-                                        )
-                                    }}
-                                </span>
-
-                                <strong>
-                                    {{
-                                        $variant[
-                                            'price'
-                                        ]
-                                        ?: __(
-                                            'product.price_pending'
-                                        )
-                                    }}
-                                </strong>
-                            </span>
-
-                            <span>
-                                <span>
-                                    {{
-                                        __(
-                                            'product.stock'
-                                        )
-                                    }}
-                                </span>
-
-                                <strong>
-                                    {{
-                                        $variant[
-                                            'stock'
-                                        ]
-                                    }}
-                                </strong>
-                            </span>
                         </span>
                     </span>
                 </label>

@@ -72,16 +72,6 @@ class ProductVariantPresenter
                                 $locale
                             ) ?: $variant->sku,
 
-                        'price' =>
-                            $this->formatPrice(
-                                $variant
-                            ),
-
-                        'stock' =>
-                            $this->stockText(
-                                $variant
-                            ),
-
                         'is_default' =>
                             $variant->is_default,
 
@@ -127,60 +117,6 @@ class ProductVariantPresenter
             'specificationGroups' =>
                 $specificationGroups,
         ];
-    }
-
-    private function formatPrice(
-        ProductVariant $variant
-    ): ?string {
-        if ($variant->price === null) {
-            return null;
-        }
-
-        return $variant->currency
-            . ' '
-            . number_format(
-                (float) $variant->price,
-                0,
-                ',',
-                '.'
-            );
-    }
-
-    private function stockText(
-        ProductVariant $variant
-    ): string {
-        if (
-            $variant->manage_stock
-            && $variant->stock_quantity !== null
-        ) {
-            if ($variant->stock_quantity > 0) {
-                return __(
-                    'product.units_available',
-                    [
-                        'count' =>
-                            $variant->stock_quantity,
-                    ]
-                );
-            }
-
-            return __(
-                'product.stock_out'
-            );
-        }
-
-        return match ($variant->stock_status) {
-            ProductVariant::STOCK_IN_STOCK =>
-                __('product.stock_available'),
-
-            ProductVariant::STOCK_OUT_OF_STOCK =>
-                __('product.stock_out'),
-
-            ProductVariant::STOCK_BACKORDER =>
-                __('product.stock_backorder'),
-
-            default =>
-                __('product.stock_pending'),
-        };
     }
 
     private function specifications(

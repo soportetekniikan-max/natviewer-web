@@ -144,24 +144,6 @@ class HomeCatalogBuilder
                                         $locale
                                     ),
 
-                                'price' =>
-                                    $this->variantFormatter
-                                        ->price(
-                                            $variant
-                                        ),
-
-                                'stock' =>
-                                    $this->variantFormatter
-                                        ->stock(
-                                            $variant,
-                                            $locale
-                                        ),
-
-                                'is_available' =>
-                                    $this->isAvailable(
-                                        $variant
-                                    ),
-
                                 'is_featured' =>
                                     (bool) $product
                                         ->is_featured,
@@ -187,26 +169,6 @@ class HomeCatalogBuilder
                 }
             )
             ->values();
-    }
-
-    private function isAvailable(
-        ProductVariant $variant
-    ): bool {
-        if (
-            $variant->manage_stock
-            && $variant->stock_quantity !== null
-        ) {
-            return $variant->stock_quantity > 0;
-        }
-
-        return in_array(
-            $variant->stock_status,
-            [
-                ProductVariant::STOCK_IN_STOCK,
-                ProductVariant::STOCK_BACKORDER,
-            ],
-            true
-        );
     }
 
     private function detailUrl(

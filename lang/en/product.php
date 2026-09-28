@@ -16,28 +16,12 @@ return [
         'Choose the option that best fits your observation style.',
 
     'variants_text' =>
-        'Compare available variants, pricing, availability and technical specifications.',
+        'Compare the available configurations and review their technical specifications before requesting a quote.',
 
     'default_variant' =>
         'Recommended',
 
     'sku' => 'SKU',
-
-    'price' => 'Price',
-    'price_pending' =>
-        'Price to be confirmed',
-
-    'stock' => 'Availability',
-    'stock_pending' =>
-        'Availability to be confirmed',
-    'stock_available' => 'Available',
-    'stock_out' => 'Out of stock',
-
-    'stock_backorder' =>
-        'Available on request',
-
-    'units_available' =>
-        ':count units available',
 
     'technical_eyebrow' =>
         'Technical information',

@@ -49,10 +49,6 @@ return [
         'falco_8_text' => 'Configuración de 8 aumentos, objetivo de 42 mm, lentes coated y prismas BAK-7 tipo techo.',
         'falco_10_text' => 'Configuración de 10 aumentos, objetivo de 42 mm, lentes coated y prismas BAK-7 tipo techo.',
 
-        'price_pending' => 'Precio por confirmar',
-        'stock_pending' => 'Disponibilidad por confirmar',
-        'price_note' => 'Precio en COP',
-        'stock_note' => 'Disponibilidad',
         'quote_button' => 'Solicitar cotización',
     ],
 
@@ -91,7 +87,7 @@ return [
         'kicker' => 'Contacto comercial',
         'text' => 'Natviewer presenta binoculares para observación de aves, fauna, paisajes y naturaleza.',
         'contact_title' => 'Cotiza tu Natviewer Falco',
-        'contact_text' => 'Consulta las configuraciones disponibles y envía tu solicitud para recibir información comercial sobre precio y disponibilidad.',
+        'contact_text' => 'Consulta las configuraciones disponibles y envía tu solicitud para recibir información comercial.',
         'quote_button' => 'Solicitar cotización',
         'rights' => 'Todos los derechos reservados.',
         'version' => 'Catálogo Natviewer',
