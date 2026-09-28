@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Services\Localization\LocalizedValueResolver;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 
 class ProductVariantPresenter
@@ -206,6 +207,18 @@ class ProductVariantPresenter
     private function formatSpecificationLabel(
         string $key
     ): string {
+        $translationKey =
+            'product.spec_labels.'
+            . $key;
+
+        if (Lang::has($translationKey)) {
+            return __($translationKey);
+        }
+
+        /*
+         * Fallback para especificaciones futuras
+         * que todavía no tengan traducción.
+         */
         return Str::headline(
             str_replace(
                 '_',

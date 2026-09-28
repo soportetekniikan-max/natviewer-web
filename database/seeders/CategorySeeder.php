@@ -16,8 +16,13 @@ class CategorySeeder extends Seeder
             [
                 'name_es' => 'Binoculares terrestres',
                 'name_en' => 'Terrestrial binoculars',
-                'description_es' => 'Binoculares diseñados para observación de naturaleza, aves y fauna.',
-                'description_en' => 'Binoculars designed for nature, bird and wildlife observation.',
+
+                'description_es' =>
+                    'Binoculares para observación de aves, fauna, paisajes, naturaleza y actividades al aire libre.',
+
+                'description_en' =>
+                    'Binoculars for birdwatching, wildlife, landscapes, nature observation and outdoor activities.',
+
                 'is_active' => true,
                 'sort_order' => 1,
             ]

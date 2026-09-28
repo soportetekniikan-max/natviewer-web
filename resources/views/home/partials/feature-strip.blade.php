@@ -11,16 +11,13 @@
 
                 <div>
                     <strong>
-                        {{
-                            $hero['glass']
-                            ?: 'UD'
-                        }}
+                        UD
                     </strong>
 
                     <span>
                         {{
                             __(
-                                'public.strip.item_1'
+                                'public.strip.item_3'
                             )
                         }}
                     </span>
@@ -34,7 +31,7 @@
 
                 <div>
                     <strong>
-                        Coated
+                        42 mm
                     </strong>
 
                     <span>
@@ -54,15 +51,11 @@
 
                 <div>
                     <strong>
-                        3 m
+                        Falco
                     </strong>
 
                     <span>
-                        {{
-                            __(
-                                'public.strip.item_3'
-                            )
-                        }}
+                        Natviewer
                     </span>
                 </div>
             </article>
@@ -74,7 +67,7 @@
 
                 <div>
                     <strong>
-                        Outdoor
+                        Nature
                     </strong>
 
                     <span>

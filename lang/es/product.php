@@ -15,7 +15,7 @@ return [
         'Elige la opción que mejor se adapte a tu forma de observar.',
 
     'variants_text' =>
-        'Compara las variantes disponibles, su precio, stock y especificaciones técnicas.',
+        'Compara las variantes disponibles, su precio, disponibilidad y especificaciones técnicas.',
 
     'default_variant' => 'Recomendada',
 
@@ -25,7 +25,7 @@ return [
     'price_pending' => 'Precio por confirmar',
 
     'stock' => 'Disponibilidad',
-    'stock_pending' => 'Stock por confirmar',
+    'stock_pending' => 'Disponibilidad por confirmar',
     'stock_available' => 'Disponible',
     'stock_out' => 'Agotado',
 
@@ -43,6 +43,17 @@ return [
 
     'no_specifications' =>
         'Especificaciones por confirmar.',
+
+    'spec_labels' => [
+        'magnification' =>
+            'Aumento',
+
+        'objective_diameter' =>
+            'Diámetro del objetivo',
+
+        'glass' =>
+            'Vidrio',
+    ],
 
     'description_title' =>
         'Sobre este producto',

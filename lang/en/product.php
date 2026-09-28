@@ -16,7 +16,7 @@ return [
         'Choose the option that best fits your observation style.',
 
     'variants_text' =>
-        'Compare available variants, pricing, stock and technical specifications.',
+        'Compare available variants, pricing, availability and technical specifications.',
 
     'default_variant' =>
         'Recommended',
@@ -29,7 +29,7 @@ return [
 
     'stock' => 'Availability',
     'stock_pending' =>
-        'Stock to be confirmed',
+        'Availability to be confirmed',
     'stock_available' => 'Available',
     'stock_out' => 'Out of stock',
 
@@ -47,6 +47,17 @@ return [
 
     'no_specifications' =>
         'Specifications to be confirmed.',
+
+    'spec_labels' => [
+        'magnification' =>
+            'Magnification',
+
+        'objective_diameter' =>
+            'Objective diameter',
+
+        'glass' =>
+            'Glass',
+    ],
 
     'description_title' =>
         'About this product',
