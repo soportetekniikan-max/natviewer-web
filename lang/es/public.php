@@ -3,7 +3,7 @@
 return [
     'seo' => [
         'home_title' => 'Natviewer | Binoculares para avistamiento de aves',
-        'home_description' => 'Conoce Natviewer Falco, una línea de binoculares para observación de aves, fauna, paisajes, naturaleza y actividades al aire libre.',
+        'home_description' => 'Conoce Natviewer Falco, binoculares con objetivo de 42 mm, lentes coated y prismas BAK-7 tipo techo para observación de aves y naturaleza.',
     ],
 
     'nav' => [
@@ -17,37 +17,37 @@ return [
     'hero' => [
         'eyebrow' => 'Binoculares para observación',
         'title' => 'Acércate a las aves y la naturaleza con Natviewer Falco.',
-        'text' => 'Descubre la línea Natviewer Falco, desarrollada para acompañarte en jornadas de observación de aves, fauna, paisajes y naturaleza.',
+        'text' => 'Descubre la línea Natviewer Falco con objetivo de 42 mm, lentes coated y prismas BAK-7 tipo techo para observación de aves, fauna y naturaleza.',
         'primary_button' => 'Ver binoculares',
         'secondary_button' => 'Solicitar cotización',
         'card_label' => 'Línea Falco',
-        'panel_kicker' => 'Natviewer Falco UD',
-        'spec_1' => 'Opciones de aumento',
+        'panel_kicker' => 'Natviewer Falco',
+        'spec_1' => 'Prismas BAK-7',
         'spec_2' => 'Objetivo 42 mm',
-        'spec_3' => 'Especificación UD',
+        'spec_3' => 'Enfoque mínimo 3 m',
     ],
 
     'strip' => [
-        'item_1' => 'Opciones de aumento',
-        'item_2' => 'Objetivo de 42 mm',
-        'item_3' => 'Especificación UD',
-        'item_4' => 'Observación de naturaleza',
+        'item_1' => 'Prismas tipo techo',
+        'item_2' => 'Diámetro del objetivo',
+        'item_3' => 'Enfoque mínimo',
+        'item_4' => 'Alivio ocular',
     ],
 
     'products' => [
         'eyebrow' => 'Línea Falco',
         'title' => 'Binoculares Natviewer Falco UD',
-        'text' => 'Consulta las configuraciones disponibles y elige la alternativa que mejor se adapte a tu forma de observar aves y naturaleza.',
+        'text' => 'Consulta las configuraciones disponibles y elige el nivel de aumento que mejor se adapte a tu forma de observar aves, fauna y naturaleza.',
         'category' => 'Binoculares terrestres',
 
         'card_8_title' => 'Observación versátil',
-        'card_8_text' => 'Configuración orientada a observación de aves, fauna, paisajes, caminatas y actividades en naturaleza.',
+        'card_8_text' => 'Configuración orientada a observación de aves, fauna y naturaleza con objetivo de 42 mm.',
 
         'card_10_title' => 'Mayor ampliación',
-        'card_10_text' => 'Configuración para quienes prefieren un mayor nivel de aumento al observar sujetos a distancia.',
+        'card_10_text' => 'Configuración orientada a quienes prefieren un mayor nivel de ampliación durante la observación.',
 
-        'falco_8_text' => 'Una configuración versátil para observación de aves, fauna, paisajes y naturaleza.',
-        'falco_10_text' => 'Una configuración orientada a quienes buscan un mayor nivel de ampliación para observación a distancia.',
+        'falco_8_text' => 'Configuración de 8 aumentos, objetivo de 42 mm, lentes coated y prismas BAK-7 tipo techo.',
+        'falco_10_text' => 'Configuración de 10 aumentos, objetivo de 42 mm, lentes coated y prismas BAK-7 tipo techo.',
 
         'price_pending' => 'Precio por confirmar',
         'stock_pending' => 'Disponibilidad por confirmar',
@@ -58,17 +58,17 @@ return [
 
     'benefits' => [
         'eyebrow' => 'Natviewer Falco',
-        'title' => 'Una línea diseñada para disfrutar cada jornada de observación.',
-        'text' => 'Natviewer Falco reúne diferentes configuraciones dentro de una misma línea para adaptarse a distintas preferencias de observación.',
+        'title' => 'Características pensadas para la observación en campo.',
+        'text' => 'La línea Falco combina una configuración óptica orientada a observación de aves, fauna y naturaleza con diferentes opciones de aumento.',
 
-        'item_1_title' => 'Opciones de aumento',
-        'item_1_text' => 'Consulta las configuraciones disponibles y selecciona el nivel de aumento que mejor se adapte a tu forma de observar.',
+        'item_1_title' => 'Prismas BAK-7 tipo techo',
+        'item_1_text' => 'Las configuraciones disponibles de Falco incorporan prismas BAK-7 en diseño tipo techo.',
 
         'item_2_title' => 'Objetivo de 42 mm',
-        'item_2_text' => 'Las configuraciones actuales de la línea Falco utilizan un objetivo de 42 mm.',
+        'item_2_text' => 'Las configuraciones disponibles de la línea Falco utilizan un objetivo de 42 mm.',
 
-        'item_3_title' => 'Especificación UD',
-        'item_3_text' => 'La línea Falco disponible actualmente incorpora especificación UD dentro de su configuración óptica.',
+        'item_3_title' => 'Enfoque desde 3 metros',
+        'item_3_text' => 'La distancia mínima de enfoque publicada para las configuraciones actuales es de 3 metros.',
 
         'item_4_title' => 'Cotización directa',
         'item_4_text' => 'Selecciona la configuración disponible que te interesa y envía una solicitud de cotización desde la ficha del producto.',
@@ -77,12 +77,12 @@ return [
     'included' => [
         'eyebrow' => 'Conoce la línea',
         'title' => 'Consulta la información antes de solicitar tu cotización.',
-        'text' => 'Revisa las configuraciones disponibles, galería e información técnica de Natviewer Falco antes de enviar tu solicitud.',
+        'text' => 'Revisa las configuraciones disponibles, la galería y las especificaciones técnicas de Natviewer Falco.',
 
         'item_1' => 'Configuraciones disponibles',
-        'item_2' => 'Información de aumento',
+        'item_2' => 'Prismas BAK-7 tipo techo',
         'item_3' => 'Objetivo de 42 mm',
-        'item_4' => 'Especificación UD',
+        'item_4' => 'Enfoque mínimo de 3 m',
         'item_5' => 'Galería y ficha técnica',
         'item_6' => 'Solicitud de cotización',
     ],

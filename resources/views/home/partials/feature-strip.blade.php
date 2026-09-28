@@ -11,13 +11,13 @@
 
                 <div>
                     <strong>
-                        UD
+                        BAK-7
                     </strong>
 
                     <span>
                         {{
                             __(
-                                'public.strip.item_3'
+                                'public.strip.item_1'
                             )
                         }}
                     </span>
@@ -51,11 +51,15 @@
 
                 <div>
                     <strong>
-                        Falco
+                        3 m
                     </strong>
 
                     <span>
-                        Natviewer
+                        {{
+                            __(
+                                'public.strip.item_3'
+                            )
+                        }}
                     </span>
                 </div>
             </article>
@@ -67,7 +71,7 @@
 
                 <div>
                     <strong>
-                        Nature
+                        15 mm
                     </strong>
 
                     <span>
