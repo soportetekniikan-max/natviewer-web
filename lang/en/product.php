@@ -10,13 +10,13 @@ return [
     'gallery' => 'Product gallery',
 
     'variants_title' =>
-        'Choose your configuration',
+        'Available options',
 
     'variants_heading' =>
-        'Choose the option that best fits your observation style.',
+        'Choose the option that best fits your needs.',
 
     'variants_text' =>
-        'Compare the available configurations and review their technical specifications before requesting a quote.',
+        'Compare the available options and review their technical specifications before requesting a quote.',
 
     'default_variant' =>
         'Recommended',
@@ -118,7 +118,7 @@ return [
         'About this product',
 
     'quote_button' =>
-        'Quote this variant',
+        'Request quote',
 
     'quote_eyebrow' =>
         'Commercial contact',
@@ -127,12 +127,15 @@ return [
         'Request a quote',
 
     'quote_text' =>
-        'Choose a variant and leave your contact information. Your request will be saved before continuing to WhatsApp.',
+        'Leave your contact information to request a quote for this product. Your request will be saved before continuing to WhatsApp.',
+
+    'quote_text_multiple' =>
+        'Select the option you are interested in and leave your contact information. Your request will be saved before continuing to WhatsApp.',
 
     'quote_error' =>
         'Please review the quote form fields.',
 
-    'variant' => 'Variant',
+    'variant' => 'Option',
     'name' => 'Name',
     'phone' => 'Phone',
     'email' => 'Email',
@@ -158,5 +161,5 @@ return [
         'Continue through WhatsApp',
 
     'no_variants' =>
-        'There are currently no available variants for this product.',
+        'This product is not currently available for quote requests.',
 ];

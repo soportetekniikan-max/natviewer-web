@@ -22,29 +22,31 @@
         </p>
     @endif
 
-    <div class="nv-detail-section-label">
-        {{
-            __(
-                'product.variants_title'
-            )
-        }}
-    </div>
+    @if ($variants->count() > 1)
+        <div class="nv-detail-section-label">
+            {{
+                __(
+                    'product.variants_title'
+                )
+            }}
+        </div>
 
-    <h2 class="nv-detail-section-title">
-        {{
-            __(
-                'product.variants_heading'
-            )
-        }}
-    </h2>
+        <h2 class="nv-detail-section-title">
+            {{
+                __(
+                    'product.variants_heading'
+                )
+            }}
+        </h2>
 
-    <p class="nv-detail-section-copy">
-        {{
-            __(
-                'product.variants_text'
-            )
-        }}
-    </p>
+        <p class="nv-detail-section-copy">
+            {{
+                __(
+                    'product.variants_text'
+                )
+            }}
+        </p>
+    @endif
 
     <div class="nv-detail-variants">
         @forelse ($variants as $variant)
@@ -75,6 +77,11 @@
                         value="{{ $variant['id'] }}"
                         class="
                             nv-detail-variant-radio
+                            {{
+                                $variants->count() === 1
+                                    ? 'visually-hidden'
+                                    : ''
+                            }}
                         "
                         data-variant-radio
                         @checked(
@@ -84,12 +91,14 @@
                         )
                     >
 
-                    <span
-                        class="
-                            nv-detail-variant-indicator
-                        "
-                        aria-hidden="true"
-                    ></span>
+                    @if ($variants->count() > 1)
+                        <span
+                            class="
+                                nv-detail-variant-indicator
+                            "
+                            aria-hidden="true"
+                        ></span>
+                    @endif
 
                     <span
                         class="
@@ -133,6 +142,8 @@
                             </span>
 
                             @if (
+                                $variants->count() > 1
+                                &&
                                 $variant[
                                     'is_default'
                                 ]

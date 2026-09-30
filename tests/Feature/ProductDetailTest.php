@@ -299,7 +299,7 @@ class ProductDetailTest extends TestCase
                 'FALCO-842'
             )
             ->assertSee(
-                'Cotizar esta variante'
+                'Solicitar cotización'
             )
             ->assertSee(
                 'Solicitar cotización'

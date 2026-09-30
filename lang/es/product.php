@@ -9,13 +9,13 @@ return [
 
     'gallery' => 'Galería del producto',
 
-    'variants_title' => 'Elige tu configuración',
+    'variants_title' => 'Opciones disponibles',
 
     'variants_heading' =>
-        'Elige la opción que mejor se adapte a tu forma de observar.',
+        'Elige la opción que mejor se adapte a tu necesidad.',
 
     'variants_text' =>
-        'Compara las configuraciones disponibles y revisa sus especificaciones técnicas antes de solicitar una cotización.',
+        'Compara las opciones disponibles y revisa sus especificaciones técnicas antes de solicitar una cotización.',
 
     'default_variant' => 'Recomendada',
 
@@ -116,7 +116,7 @@ return [
         'Sobre este producto',
 
     'quote_button' =>
-        'Cotizar esta variante',
+        'Solicitar cotización',
 
     'quote_eyebrow' =>
         'Contacto comercial',
@@ -125,12 +125,15 @@ return [
         'Solicita una cotización',
 
     'quote_text' =>
-        'Selecciona una variante y déjanos tus datos. La solicitud quedará registrada antes de continuar a WhatsApp.',
+        'Déjanos tus datos para solicitar una cotización de este producto. La solicitud quedará registrada antes de continuar a WhatsApp.',
+
+    'quote_text_multiple' =>
+        'Selecciona la opción que te interesa y déjanos tus datos. La solicitud quedará registrada antes de continuar a WhatsApp.',
 
     'quote_error' =>
         'Revisa los campos del formulario de cotización.',
 
-    'variant' => 'Variante',
+    'variant' => 'Opción',
     'name' => 'Nombre',
     'phone' => 'Teléfono',
     'email' => 'Correo electrónico',
@@ -156,5 +159,5 @@ return [
         'Continuación por WhatsApp',
 
     'no_variants' =>
-        'Actualmente no hay variantes disponibles para este producto.',
+        'Actualmente este producto no está disponible para solicitar cotización.',
 ];
