@@ -17,17 +17,28 @@ class StoreProductImageRequest extends FormRequest
     {
         $this->merge([
             'make_primary' =>
-                $this->boolean('make_primary'),
+                $this->boolean(
+                    'make_primary'
+                ),
         ]);
     }
 
     public function rules(): array
     {
         /** @var Product|null $product */
-        $product = $this->route('product');
+        $product = $this->route(
+            'product'
+        );
 
         return [
-            'image' => [
+            'images' => [
+                'required',
+                'array',
+                'min:1',
+                'max:20',
+            ],
+
+            'images.*' => [
                 'required',
                 'image',
                 'mimes:jpg,jpeg,png,webp',
@@ -42,7 +53,11 @@ class StoreProductImageRequest extends FormRequest
                     'product_variants',
                     'id'
                 )->where(
-                    function ($query) use ($product) {
+                    function (
+                        $query
+                    ) use (
+                        $product
+                    ) {
                         if ($product) {
                             $query->where(
                                 'product_id',
@@ -82,17 +97,29 @@ class StoreProductImageRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'image.required' =>
-                'Selecciona una imagen.',
+            'images.required' =>
+                'Selecciona al menos una imagen.',
 
-            'image.image' =>
-                'El archivo debe ser una imagen válida.',
+            'images.array' =>
+                'La selección de imágenes no es válida.',
 
-            'image.mimes' =>
+            'images.min' =>
+                'Selecciona al menos una imagen.',
+
+            'images.max' =>
+                'Puedes subir máximo 20 imágenes por lote.',
+
+            'images.*.required' =>
+                'Cada archivo de imagen es obligatorio.',
+
+            'images.*.image' =>
+                'Todos los archivos deben ser imágenes válidas.',
+
+            'images.*.mimes' =>
                 'Solo se permiten imágenes JPG, JPEG, PNG o WebP.',
 
-            'image.max' =>
-                'La imagen no puede superar 8 MB.',
+            'images.*.max' =>
+                'Cada imagen puede pesar máximo 8 MB.',
 
             'variant_id.exists' =>
                 'La variante seleccionada no pertenece a este producto.',

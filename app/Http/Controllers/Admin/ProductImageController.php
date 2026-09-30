@@ -20,76 +20,112 @@ class ProductImageController extends Controller
     ): RedirectResponse {
         $validated = $request->validated();
 
-        $path = $request
-            ->file('image')
-            ->store(
-                'products/'.$product->id,
-                'public'
-            );
+        $files = $request->file(
+            'images',
+            []
+        );
+
+        $storedPaths = [];
 
         try {
-            DB::transaction(function () use (
-                $product,
-                $validated,
-                $path
-            ): void {
-                $hasImages = $product
-                    ->images()
-                    ->exists();
+            foreach ($files as $file) {
+                $storedPaths[] = $file->store(
+                    'products/'.$product->id,
+                    'public'
+                );
+            }
 
-                $makePrimary =
-                    ! $hasImages
-                    || (bool) $validated['make_primary'];
-
-                if ($makePrimary) {
-                    $product
+            DB::transaction(
+                function () use (
+                    $product,
+                    $validated,
+                    $storedPaths
+                ): void {
+                    $hasImages = $product
                         ->images()
-                        ->update([
-                            'is_primary' => false,
-                        ]);
+                        ->exists();
+
+                    $makeFirstPrimary =
+                        ! $hasImages
+                        || (bool) $validated[
+                            'make_primary'
+                        ];
+
+                    if ($makeFirstPrimary) {
+                        $product
+                            ->images()
+                            ->update([
+                                'is_primary' => false,
+                            ]);
+                    }
+
+                    $currentMaxSortOrder =
+                        $product
+                            ->images()
+                            ->max('sort_order')
+                        ?? 0;
+
+                    $initialSortOrder =
+                        $validated['sort_order']
+                        ?? (
+                            $currentMaxSortOrder
+                            + 10
+                        );
+
+                    foreach (
+                        $storedPaths
+                        as $index => $path
+                    ) {
+                        $product
+                            ->images()
+                            ->create([
+                                'variant_id' =>
+                                    $validated[
+                                        'variant_id'
+                                    ]
+                                    ?? null,
+
+                                'disk' =>
+                                    'public',
+
+                                'path' =>
+                                    $path,
+
+                                'alt_es' =>
+                                    $validated[
+                                        'alt_es'
+                                    ]
+                                    ?? null,
+
+                                'alt_en' =>
+                                    $validated[
+                                        'alt_en'
+                                    ]
+                                    ?? null,
+
+                                'is_primary' =>
+                                    $makeFirstPrimary
+                                    && $index === 0,
+
+                                'sort_order' =>
+                                    $initialSortOrder
+                                    + ($index * 10),
+                            ]);
+                    }
                 }
-
-                $sortOrder =
-                    $validated['sort_order']
-                    ?? (
-                        (
-                            $product
-                                ->images()
-                                ->max('sort_order')
-                            ?? 0
-                        ) + 10
-                    );
-
-                $product->images()->create([
-                    'variant_id' =>
-                        $validated['variant_id']
-                            ?? null,
-
-                    'disk' => 'public',
-
-                    'path' => $path,
-
-                    'alt_es' =>
-                        $validated['alt_es']
-                            ?? null,
-
-                    'alt_en' =>
-                        $validated['alt_en']
-                            ?? null,
-
-                    'is_primary' =>
-                        $makePrimary,
-
-                    'sort_order' =>
-                        $sortOrder,
-                ]);
-            });
+            );
         } catch (Throwable $exception) {
-            Storage::disk('public')
-                ->delete($path);
+            foreach ($storedPaths as $path) {
+                Storage::disk('public')
+                    ->delete($path);
+            }
 
             throw $exception;
         }
+
+        $imageCount = count(
+            $storedPaths
+        );
 
         return redirect()
             ->route(
@@ -98,7 +134,10 @@ class ProductImageController extends Controller
             )
             ->with(
                 'success',
-                'Imagen subida correctamente.'
+                $imageCount === 1
+                    ? 'Imagen subida correctamente.'
+                    : $imageCount
+                        . ' imágenes subidas correctamente.'
             );
     }
 
@@ -151,20 +190,22 @@ class ProductImageController extends Controller
             $image
         );
 
-        DB::transaction(function () use (
-            $product,
-            $image
-        ): void {
-            $product
-                ->images()
-                ->update([
-                    'is_primary' => false,
-                ]);
+        DB::transaction(
+            function () use (
+                $product,
+                $image
+            ): void {
+                $product
+                    ->images()
+                    ->update([
+                        'is_primary' => false,
+                    ]);
 
-            $image->update([
-                'is_primary' => true,
-            ]);
-        });
+                $image->update([
+                    'is_primary' => true,
+                ]);
+            }
+        );
 
         return redirect()
             ->route(
@@ -190,27 +231,31 @@ class ProductImageController extends Controller
         $path = $image->path;
         $wasPrimary = $image->is_primary;
 
-        DB::transaction(function () use (
-            $product,
-            $image,
-            $wasPrimary
-        ): void {
-            $image->delete();
+        DB::transaction(
+            function () use (
+                $product,
+                $image,
+                $wasPrimary
+            ): void {
+                $image->delete();
 
-            if ($wasPrimary) {
-                $nextImage = $product
-                    ->images()
-                    ->orderBy('sort_order')
-                    ->orderBy('id')
-                    ->first();
+                if ($wasPrimary) {
+                    $nextImage = $product
+                        ->images()
+                        ->orderBy(
+                            'sort_order'
+                        )
+                        ->orderBy('id')
+                        ->first();
 
-                if ($nextImage) {
-                    $nextImage->update([
-                        'is_primary' => true,
-                    ]);
+                    if ($nextImage) {
+                        $nextImage->update([
+                            'is_primary' => true,
+                        ]);
+                    }
                 }
             }
-        });
+        );
 
         Storage::disk($disk)
             ->delete($path);

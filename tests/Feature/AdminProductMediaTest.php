@@ -35,9 +35,17 @@ class AdminProductMediaTest extends TestCase
 
         $variant = $product->variants->first();
 
-        $payload = $this->productPayload($product);
+        $payload = $this->productPayload(
+            $product
+        );
 
-        $payload['variants'][$variant->id]['specifications'][] = [
+        $payload[
+            'variants'
+        ][
+            $variant->id
+        ][
+            'specifications'
+        ][] = [
             'key' => 'weight',
             'value' => '650 g',
         ];
@@ -63,7 +71,9 @@ class AdminProductMediaTest extends TestCase
 
         $this->assertSame(
             '650 g',
-            $variant->specifications['weight']
+            $variant->specifications[
+                'weight'
+            ]
         );
     }
 
@@ -74,7 +84,9 @@ class AdminProductMediaTest extends TestCase
         $admin = $this->createAdmin();
         $product = $this->getProduct();
 
-        $variant = $product->variants->first();
+        $variant = $product
+            ->variants
+            ->first();
 
         $response = $this
             ->actingAs($admin)
@@ -84,14 +96,17 @@ class AdminProductMediaTest extends TestCase
                     $product
                 ),
                 [
-                    'image' => UploadedFile::fake()
-                        ->image(
-                            'falco.jpg',
-                            1200,
-                            900
-                        ),
+                    'images' => [
+                        UploadedFile::fake()
+                            ->image(
+                                'falco.jpg',
+                                1200,
+                                900
+                            ),
+                    ],
 
-                    'variant_id' => $variant->id,
+                    'variant_id' =>
+                        $variant->id,
 
                     'alt_es' =>
                         'Binocular Natviewer Falco',
@@ -99,9 +114,11 @@ class AdminProductMediaTest extends TestCase
                     'alt_en' =>
                         'Natviewer Falco binocular',
 
-                    'sort_order' => 10,
+                    'sort_order' =>
+                        10,
 
-                    'make_primary' => 0,
+                    'make_primary' =>
+                        0,
                 ]
             );
 
@@ -130,7 +147,254 @@ class AdminProductMediaTest extends TestCase
         );
 
         Storage::disk('public')
-            ->assertExists($image->path);
+            ->assertExists(
+                $image->path
+            );
+    }
+
+    public function test_admin_can_upload_multiple_images_at_once(): void
+    {
+        Storage::fake('public');
+
+        $admin = $this->createAdmin();
+        $product = $this->getProduct();
+
+        $variant = $product
+            ->variants
+            ->first();
+
+        $response = $this
+            ->actingAs($admin)
+            ->post(
+                route(
+                    'admin.products.images.store',
+                    $product
+                ),
+                [
+                    'images' => [
+                        UploadedFile::fake()
+                            ->image(
+                                'falco-01.jpg',
+                                1200,
+                                900
+                            ),
+
+                        UploadedFile::fake()
+                            ->image(
+                                'falco-02.jpg',
+                                1200,
+                                900
+                            ),
+
+                        UploadedFile::fake()
+                            ->image(
+                                'falco-03.jpg',
+                                1200,
+                                900
+                            ),
+                    ],
+
+                    'variant_id' =>
+                        $variant->id,
+
+                    'alt_es' =>
+                        'Natviewer Falco',
+
+                    'alt_en' =>
+                        'Natviewer Falco',
+
+                    'sort_order' =>
+                        10,
+
+                    'make_primary' =>
+                        0,
+                ]
+            );
+
+        $response->assertRedirect(
+            route(
+                'admin.products.edit',
+                $product
+            )
+        );
+
+        $images = ProductImage::query()
+            ->where(
+                'product_id',
+                $product->id
+            )
+            ->orderBy('sort_order')
+            ->get();
+
+        $this->assertCount(
+            3,
+            $images
+        );
+
+        $this->assertSame(
+            [
+                10,
+                20,
+                30,
+            ],
+            $images
+                ->pluck('sort_order')
+                ->all()
+        );
+
+        $this->assertTrue(
+            $images[0]->is_primary
+        );
+
+        $this->assertFalse(
+            $images[1]->is_primary
+        );
+
+        $this->assertFalse(
+            $images[2]->is_primary
+        );
+
+        foreach ($images as $image) {
+            $this->assertSame(
+                $variant->id,
+                $image->variant_id
+            );
+
+            Storage::disk('public')
+                ->assertExists(
+                    $image->path
+                );
+        }
+    }
+
+    public function test_marking_batch_as_primary_only_promotes_first_new_image(): void
+    {
+        Storage::fake('public');
+
+        $admin = $this->createAdmin();
+        $product = $this->getProduct();
+
+        $variant = $product
+            ->variants
+            ->first();
+
+        $existingImage = $product
+            ->images()
+            ->create([
+                'variant_id' =>
+                    $variant->id,
+
+                'disk' =>
+                    'public',
+
+                'path' =>
+                    'products/'
+                    . $product->id
+                    . '/existing.jpg',
+
+                'alt_es' =>
+                    'Imagen existente',
+
+                'alt_en' =>
+                    'Existing image',
+
+                'is_primary' =>
+                    true,
+
+                'sort_order' =>
+                    10,
+            ]);
+
+        Storage::disk('public')
+            ->put(
+                $existingImage->path,
+                'test'
+            );
+
+        $response = $this
+            ->actingAs($admin)
+            ->post(
+                route(
+                    'admin.products.images.store',
+                    $product
+                ),
+                [
+                    'images' => [
+                        UploadedFile::fake()
+                            ->image(
+                                'new-01.jpg',
+                                1200,
+                                900
+                            ),
+
+                        UploadedFile::fake()
+                            ->image(
+                                'new-02.jpg',
+                                1200,
+                                900
+                            ),
+                    ],
+
+                    'variant_id' =>
+                        $variant->id,
+
+                    'make_primary' =>
+                        1,
+                ]
+            );
+
+        $response->assertRedirect(
+            route(
+                'admin.products.edit',
+                $product
+            )
+        );
+
+        $existingImage->refresh();
+
+        $this->assertFalse(
+            $existingImage->is_primary
+        );
+
+        $newImages = ProductImage::query()
+            ->where(
+                'product_id',
+                $product->id
+            )
+            ->where(
+                'id',
+                '!=',
+                $existingImage->id
+            )
+            ->orderBy('sort_order')
+            ->get();
+
+        $this->assertCount(
+            2,
+            $newImages
+        );
+
+        $this->assertTrue(
+            $newImages[0]->is_primary
+        );
+
+        $this->assertFalse(
+            $newImages[1]->is_primary
+        );
+
+        $this->assertSame(
+            1,
+            ProductImage::query()
+                ->where(
+                    'product_id',
+                    $product->id
+                )
+                ->where(
+                    'is_primary',
+                    true
+                )
+                ->count()
+        );
     }
 
     public function test_admin_can_update_image_metadata(): void
@@ -144,7 +408,9 @@ class AdminProductMediaTest extends TestCase
             $product->variants->first();
 
         $secondVariant =
-            $product->variants->skip(1)->first();
+            $product->variants
+                ->skip(1)
+                ->first();
 
         $image = $product
             ->images()
@@ -152,10 +418,13 @@ class AdminProductMediaTest extends TestCase
                 'variant_id' =>
                     $firstVariant->id,
 
-                'disk' => 'public',
+                'disk' =>
+                    'public',
 
                 'path' =>
-                    'products/'.$product->id.'/test.jpg',
+                    'products/'
+                    . $product->id
+                    . '/test.jpg',
 
                 'alt_es' =>
                     'Imagen anterior',
@@ -163,9 +432,11 @@ class AdminProductMediaTest extends TestCase
                 'alt_en' =>
                     'Previous image',
 
-                'is_primary' => true,
+                'is_primary' =>
+                    true,
 
-                'sort_order' => 10,
+                'sort_order' =>
+                    10,
             ]);
 
         $response = $this
@@ -188,7 +459,8 @@ class AdminProductMediaTest extends TestCase
                     'alt_en' =>
                         'New English description',
 
-                    'sort_order' => 30,
+                    'sort_order' =>
+                        30,
                 ]
             );
 
@@ -284,15 +556,17 @@ class AdminProductMediaTest extends TestCase
         $admin = $this->createAdmin();
         $product = $this->getProduct();
 
-        Storage::disk('public')->put(
-            'products/1/one.jpg',
-            'test'
-        );
+        Storage::disk('public')
+            ->put(
+                'products/1/one.jpg',
+                'test'
+            );
 
-        Storage::disk('public')->put(
-            'products/1/two.jpg',
-            'test'
-        );
+        Storage::disk('public')
+            ->put(
+                'products/1/two.jpg',
+                'test'
+            );
 
         $firstImage = $product
             ->images()
@@ -334,7 +608,8 @@ class AdminProductMediaTest extends TestCase
         $this->assertDatabaseMissing(
             'product_images',
             [
-                'id' => $firstImage->id,
+                'id' =>
+                    $firstImage->id,
             ]
         );
 
@@ -354,7 +629,8 @@ class AdminProductMediaTest extends TestCase
     {
         $admin = $this->createAdmin();
 
-        $firstProduct = $this->getProduct();
+        $firstProduct =
+            $this->getProduct();
 
         $secondProduct =
             $firstProduct->replicate();
@@ -370,16 +646,19 @@ class AdminProductMediaTest extends TestCase
         $image = $secondProduct
             ->images()
             ->create([
-                'disk' => 'public',
+                'disk' =>
+                    'public',
 
                 'path' =>
-                    'products/'.
-                    $secondProduct->id.
-                    '/image.jpg',
+                    'products/'
+                    . $secondProduct->id
+                    . '/image.jpg',
 
-                'is_primary' => true,
+                'is_primary' =>
+                    true,
 
-                'sort_order' => 10,
+                'sort_order' =>
+                    10,
             ]);
 
         $response = $this
@@ -399,18 +678,20 @@ class AdminProductMediaTest extends TestCase
 
     private function createAdmin(): User
     {
-        return User::factory()->create([
-            'name' =>
-                'Administrador Test',
+        return User::factory()
+            ->create([
+                'name' =>
+                    'Administrador Test',
 
-            'email' =>
-                'admin@example.com',
+                'email' =>
+                    'admin@example.com',
 
-            'password' =>
-                'password-seguro',
+                'password' =>
+                    'password-seguro',
 
-            'is_admin' => true,
-        ]);
+                'is_admin' =>
+                    true,
+            ]);
     }
 
     private function getProduct(): Product
@@ -423,24 +704,38 @@ class AdminProductMediaTest extends TestCase
     private function productPayload(
         Product $product
     ): array {
-        $product->load('variants');
+        $product->load(
+            'variants'
+        );
 
         $variants = [];
 
-        foreach ($product->variants as $variant) {
+        foreach (
+            $product->variants
+            as $variant
+        ) {
             $specifications = collect(
-                $variant->specifications ?? []
+                $variant->specifications
+                ?? []
             )
                 ->map(
-                    fn ($value, $key) => [
-                        'key' => $key,
-                        'value' => $value,
+                    fn (
+                        $value,
+                        $key
+                    ) => [
+                        'key' =>
+                            $key,
+
+                        'value' =>
+                            $value,
                     ]
                 )
                 ->values()
                 ->all();
 
-            $variants[$variant->id] = [
+            $variants[
+                $variant->id
+            ] = [
                 'id' =>
                     $variant->id,
 
