@@ -413,6 +413,59 @@ class CatalogHomeTest extends TestCase
             );
     }
 
+    public function test_single_variant_products_do_not_show_variant_selector(): void
+    {
+        $spanishResponse =
+            $this->get('/es');
+
+        $spanishResponse
+            ->assertOk()
+            ->assertDontSeeText(
+                'Versiones disponibles'
+            );
+
+        $englishResponse =
+            $this->get('/en');
+
+        $englishResponse
+            ->assertOk()
+            ->assertDontSeeText(
+                'Available versions'
+            );
+    }
+
+    public function test_home_renders_exactly_four_benefit_cards(): void
+    {
+        $response = $this->get('/es');
+
+        $response->assertOk();
+
+        $html =
+            $response->getContent();
+
+        $benefitCardCount =
+            preg_match_all(
+                '/class="[^"]*\bnv-benefit-card\b[^"]*"/',
+                $html
+            );
+
+        $this->assertSame(
+            4,
+            $benefitCardCount
+        );
+
+        $hasBenefitFive =
+            preg_match(
+                '/<span\s+class="nv-benefit-number">\s*05\s*<\/span>/',
+                $html
+            );
+
+        $this->assertSame(
+            0,
+            $hasBenefitFive
+        );
+    }
+
     private function spanishProduct8Url(): string
     {
         return route(

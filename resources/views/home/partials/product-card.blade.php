@@ -104,7 +104,7 @@
             @if (
                 count(
                     $item['variant_options']
-                ) > 0
+                ) > 1
             )
                 <div class="nv-product-variants">
                     <span class="nv-product-variants-label">
