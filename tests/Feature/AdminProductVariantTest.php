@@ -202,13 +202,14 @@ class AdminProductVariantTest extends TestCase
         $admin = $this->createAdmin();
         $product = $this->getProduct();
 
-        $variants = $product
+        $first = $product
             ->variants()
-            ->orderBy('id')
-            ->get();
+            ->firstOrFail();
 
-        $first = $variants->first();
-        $second = $variants->last();
+        $second =
+            $this->createAdditionalVariant(
+                $product
+            );
 
         $first->update([
             'is_default' => true,
@@ -229,11 +230,20 @@ class AdminProductVariantTest extends TestCase
                     ]
                 ),
                 [
-                    'sku' => $second->sku,
-                    'name_es' => $second->name_es,
-                    'name_en' => $second->name_en,
-                    'price' => $second->price,
-                    'currency' => $second->currency,
+                    'sku' =>
+                        $second->sku,
+
+                    'name_es' =>
+                        $second->name_es,
+
+                    'name_en' =>
+                        $second->name_en,
+
+                    'price' =>
+                        $second->price,
+
+                    'currency' =>
+                        $second->currency,
 
                     'manage_stock' =>
                         $second->manage_stock
@@ -246,22 +256,32 @@ class AdminProductVariantTest extends TestCase
                     'stock_status' =>
                         $second->stock_status,
 
-                    'is_default' => 1,
-                    'is_active' => 1,
-                    'sort_order' => $second->sort_order,
+                    'is_default' =>
+                        1,
 
-                    'specifications' => [],
+                    'is_active' =>
+                        1,
+
+                    'sort_order' =>
+                        $second->sort_order,
+
+                    'specifications' =>
+                        [],
                 ]
             );
 
         $response->assertRedirect();
 
         $this->assertFalse(
-            $first->fresh()->is_default
+            $first
+                ->fresh()
+                ->is_default
         );
 
         $this->assertTrue(
-            $second->fresh()->is_default
+            $second
+                ->fresh()
+                ->is_default
         );
     }
 
@@ -270,24 +290,35 @@ class AdminProductVariantTest extends TestCase
         $admin = $this->createAdmin();
         $product = $this->getProduct();
 
-        $variants = $product
+        $first = $product
             ->variants()
-            ->orderBy('id')
-            ->get();
+            ->firstOrFail();
 
-        $first = $variants->first();
-        $second = $variants->last();
+        $second =
+            $this->createAdditionalVariant(
+                $product
+            );
 
         $first->update([
-            'is_default' => true,
-            'is_active' => true,
-            'sort_order' => 10,
+            'is_default' =>
+                true,
+
+            'is_active' =>
+                true,
+
+            'sort_order' =>
+                10,
         ]);
 
         $second->update([
-            'is_default' => false,
-            'is_active' => true,
-            'sort_order' => 20,
+            'is_default' =>
+                false,
+
+            'is_active' =>
+                true,
+
+            'sort_order' =>
+                20,
         ]);
 
         $response = $this
@@ -301,11 +332,20 @@ class AdminProductVariantTest extends TestCase
                     ]
                 ),
                 [
-                    'sku' => $first->sku,
-                    'name_es' => $first->name_es,
-                    'name_en' => $first->name_en,
-                    'price' => $first->price,
-                    'currency' => $first->currency,
+                    'sku' =>
+                        $first->sku,
+
+                    'name_es' =>
+                        $first->name_es,
+
+                    'name_en' =>
+                        $first->name_en,
+
+                    'price' =>
+                        $first->price,
+
+                    'currency' =>
+                        $first->currency,
 
                     'manage_stock' =>
                         $first->manage_stock
@@ -318,26 +358,38 @@ class AdminProductVariantTest extends TestCase
                     'stock_status' =>
                         $first->stock_status,
 
-                    'is_default' => 0,
-                    'is_active' => 0,
-                    'sort_order' => 10,
+                    'is_default' =>
+                        0,
 
-                    'specifications' => [],
+                    'is_active' =>
+                        0,
+
+                    'sort_order' =>
+                        10,
+
+                    'specifications' =>
+                        [],
                 ]
             );
 
         $response->assertRedirect();
 
         $this->assertFalse(
-            $first->fresh()->is_active
+            $first
+                ->fresh()
+                ->is_active
         );
 
         $this->assertFalse(
-            $first->fresh()->is_default
+            $first
+                ->fresh()
+                ->is_default
         );
 
         $this->assertTrue(
-            $second->fresh()->is_default
+            $second
+                ->fresh()
+                ->is_default
         );
     }
 
@@ -364,24 +416,32 @@ class AdminProductVariantTest extends TestCase
                     'name_es' =>
                         'Variante duplicada',
 
-                    'price' => null,
+                    'price' =>
+                        null,
 
-                    'currency' => 'COP',
+                    'currency' =>
+                        'COP',
 
-                    'manage_stock' => 0,
+                    'manage_stock' =>
+                        0,
 
-                    'stock_quantity' => null,
+                    'stock_quantity' =>
+                        null,
 
                     'stock_status' =>
                         ProductVariant::STOCK_UNKNOWN,
 
-                    'is_default' => 0,
+                    'is_default' =>
+                        0,
 
-                    'is_active' => 1,
+                    'is_active' =>
+                        1,
 
-                    'sort_order' => 50,
+                    'sort_order' =>
+                        50,
 
-                    'specifications' => [],
+                    'specifications' =>
+                        [],
                 ]
             );
 
@@ -454,6 +514,51 @@ class AdminProductVariantTest extends TestCase
         $response->assertNotFound();
     }
 
+    private function createAdditionalVariant(
+        Product $product
+    ): ProductVariant {
+        return ProductVariant::create([
+            'product_id' =>
+                $product->id,
+
+            'sku' =>
+                'NV-FALCO-TEST-SECOND',
+
+            'name_es' =>
+                'Variante adicional de prueba',
+
+            'name_en' =>
+                'Additional test variant',
+
+            'price' =>
+                null,
+
+            'currency' =>
+                'COP',
+
+            'manage_stock' =>
+                false,
+
+            'stock_quantity' =>
+                null,
+
+            'stock_status' =>
+                ProductVariant::STOCK_UNKNOWN,
+
+            'specifications' =>
+                [],
+
+            'is_default' =>
+                false,
+
+            'is_active' =>
+                true,
+
+            'sort_order' =>
+                20,
+        ]);
+    }
+
     private function createAdmin(): User
     {
         return User::factory()->create([
@@ -466,13 +571,18 @@ class AdminProductVariantTest extends TestCase
             'password' =>
                 'password-seguro',
 
-            'is_admin' => true,
+            'is_admin' =>
+                true,
         ]);
     }
 
     private function getProduct(): Product
     {
         return Product::query()
+            ->where(
+                'slug',
+                'natviewer-falco-8x42-ud'
+            )
             ->with('variants')
             ->firstOrFail();
     }

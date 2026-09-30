@@ -33,12 +33,21 @@ class CatalogHomeTest extends TestCase
 
         $response
             ->assertOk()
-            ->assertSee('Natviewer Falco')
-            ->assertSee('Falco 8×42 UD')
-            ->assertSee('Falco 10×42 UD')
-            ->assertSee('Binoculares terrestres')
             ->assertSee(
-                $this->spanishProductUrl(),
+                'Natviewer Falco 8×42 UD'
+            )
+            ->assertSee(
+                'Natviewer Falco 10×42 UD'
+            )
+            ->assertSee(
+                'Binoculares terrestres'
+            )
+            ->assertSee(
+                $this->spanishProduct8Url(),
+                false
+            )
+            ->assertSee(
+                $this->spanishProduct10Url(),
                 false
             );
     }
@@ -49,12 +58,21 @@ class CatalogHomeTest extends TestCase
 
         $response
             ->assertOk()
-            ->assertSee('Natviewer Falco')
-            ->assertSee('Falco 8×42 UD')
-            ->assertSee('Falco 10×42 UD')
-            ->assertSee('Terrestrial binoculars')
             ->assertSee(
-                $this->englishProductUrl(),
+                'Natviewer Falco 8×42 UD'
+            )
+            ->assertSee(
+                'Natviewer Falco 10×42 UD'
+            )
+            ->assertSee(
+                'Terrestrial binoculars'
+            )
+            ->assertSee(
+                $this->englishProduct8Url(),
+                false
+            )
+            ->assertSee(
+                $this->englishProduct10Url(),
                 false
             );
     }
@@ -73,7 +91,7 @@ class CatalogHomeTest extends TestCase
 
         $this->assertDatabaseCount(
             'products',
-            1
+            2
         );
 
         $this->assertDatabaseCount(
@@ -86,11 +104,59 @@ class CatalogHomeTest extends TestCase
             1
         );
 
+        $product8Id = DB::table(
+            'products'
+        )
+            ->where(
+                'slug',
+                'natviewer-falco-8x42-ud'
+            )
+            ->value('id');
+
+        $product10Id = DB::table(
+            'products'
+        )
+            ->where(
+                'slug',
+                'natviewer-falco-10x42-ud'
+            )
+            ->value('id');
+
+        $this->assertNotNull(
+            $product8Id
+        );
+
+        $this->assertNotNull(
+            $product10Id
+        );
+
+        $this->assertNotSame(
+            $product8Id,
+            $product10Id
+        );
+
         $this->assertDatabaseHas(
             'products',
             [
+                'id' =>
+                    $product8Id,
+
                 'slug' =>
-                    'natviewer-falco',
+                    'natviewer-falco-8x42-ud',
+
+                'status' =>
+                    Product::STATUS_PUBLISHED,
+            ]
+        );
+
+        $this->assertDatabaseHas(
+            'products',
+            [
+                'id' =>
+                    $product10Id,
+
+                'slug' =>
+                    'natviewer-falco-10x42-ud',
 
                 'status' =>
                     Product::STATUS_PUBLISHED,
@@ -100,16 +166,28 @@ class CatalogHomeTest extends TestCase
         $this->assertDatabaseHas(
             'product_variants',
             [
+                'product_id' =>
+                    $product8Id,
+
                 'sku' =>
                     'NV-FALCO-8X42-UD',
+
+                'is_default' =>
+                    true,
             ]
         );
 
         $this->assertDatabaseHas(
             'product_variants',
             [
+                'product_id' =>
+                    $product10Id,
+
                 'sku' =>
                     'NV-FALCO-10X42-UD',
+
+                'is_default' =>
+                    true,
             ]
         );
     }
@@ -143,7 +221,7 @@ class CatalogHomeTest extends TestCase
         $response
             ->assertOk()
             ->assertSee(
-                'Falco 8×42 UD'
+                'Natviewer Falco 8×42 UD'
             )
             ->assertSee(
                 'Solicitar cotización'
@@ -170,7 +248,7 @@ class CatalogHomeTest extends TestCase
         DB::table('products')
             ->where(
                 'slug',
-                'natviewer-falco'
+                'natviewer-falco-8x42-ud'
             )
             ->update([
                 'status' =>
@@ -182,11 +260,15 @@ class CatalogHomeTest extends TestCase
         $response
             ->assertOk()
             ->assertDontSee(
-                $this->spanishProductUrl(),
+                $this->spanishProduct8Url(),
                 false
             )
             ->assertSee(
-                'No hay productos disponibles actualmente.'
+                $this->spanishProduct10Url(),
+                false
+            )
+            ->assertSee(
+                'Natviewer Falco 10×42 UD'
             );
     }
 
@@ -195,7 +277,7 @@ class CatalogHomeTest extends TestCase
         DB::table('products')
             ->where(
                 'slug',
-                'natviewer-falco'
+                'natviewer-falco-8x42-ud'
             )
             ->update([
                 'status' =>
@@ -207,11 +289,15 @@ class CatalogHomeTest extends TestCase
         $response
             ->assertOk()
             ->assertDontSee(
-                $this->spanishProductUrl(),
+                $this->spanishProduct8Url(),
                 false
             )
             ->assertSee(
-                'No hay productos disponibles actualmente.'
+                $this->spanishProduct10Url(),
+                false
+            )
+            ->assertSee(
+                'Natviewer Falco 10×42 UD'
             );
     }
 
@@ -222,7 +308,7 @@ class CatalogHomeTest extends TestCase
         )
             ->where(
                 'slug',
-                'natviewer-falco'
+                'natviewer-falco-8x42-ud'
             )
             ->value(
                 'category_id'
@@ -243,7 +329,11 @@ class CatalogHomeTest extends TestCase
         $response
             ->assertOk()
             ->assertDontSee(
-                $this->spanishProductUrl(),
+                $this->spanishProduct8Url(),
+                false
+            )
+            ->assertDontSee(
+                $this->spanishProduct10Url(),
                 false
             )
             ->assertSee(
@@ -258,7 +348,7 @@ class CatalogHomeTest extends TestCase
         )
             ->where(
                 'slug',
-                'natviewer-falco'
+                'natviewer-falco-8x42-ud'
             )
             ->value(
                 'brand_id'
@@ -279,7 +369,11 @@ class CatalogHomeTest extends TestCase
         $response
             ->assertOk()
             ->assertDontSee(
-                $this->spanishProductUrl(),
+                $this->spanishProduct8Url(),
+                false
+            )
+            ->assertDontSee(
+                $this->spanishProduct10Url(),
                 false
             )
             ->assertSee(
@@ -287,7 +381,7 @@ class CatalogHomeTest extends TestCase
             );
     }
 
-    public function test_home_excludes_inactive_variants(): void
+    public function test_home_excludes_product_when_its_only_variant_is_inactive(): void
     {
         DB::table('product_variants')
             ->where(
@@ -304,35 +398,61 @@ class CatalogHomeTest extends TestCase
         $response
             ->assertOk()
             ->assertSee(
-                'Falco 8×42 UD'
+                $this->spanishProduct8Url(),
+                false
             )
             ->assertDontSee(
-                'Falco 10×42 UD'
+                $this->spanishProduct10Url(),
+                false
             )
             ->assertSee(
-                $this->spanishProductUrl(),
-                false
+                'Natviewer Falco 8×42 UD'
+            )
+            ->assertDontSee(
+                'Natviewer Falco 10×42 UD'
             );
     }
 
-    private function spanishProductUrl(): string
+    private function spanishProduct8Url(): string
     {
         return route(
             'products.show.es',
             [
                 'product' =>
-                    'natviewer-falco',
+                    'natviewer-falco-8x42-ud',
             ]
         );
     }
 
-    private function englishProductUrl(): string
+    private function spanishProduct10Url(): string
+    {
+        return route(
+            'products.show.es',
+            [
+                'product' =>
+                    'natviewer-falco-10x42-ud',
+            ]
+        );
+    }
+
+    private function englishProduct8Url(): string
     {
         return route(
             'products.show.en',
             [
                 'product' =>
-                    'natviewer-falco',
+                    'natviewer-falco-8x42-ud',
+            ]
+        );
+    }
+
+    private function englishProduct10Url(): string
+    {
+        return route(
+            'products.show.en',
+            [
+                'product' =>
+                    'natviewer-falco-10x42-ud',
             ]
         );
     }

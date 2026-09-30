@@ -29,9 +29,10 @@ class ProductSeeder extends Seeder
             );
         }
 
-        $product = Product::updateOrCreate(
+        $product8 = Product::updateOrCreate(
             [
-                'slug' => 'natviewer-falco',
+                'slug' =>
+                    'natviewer-falco-8x42-ud',
             ],
             [
                 'category_id' =>
@@ -41,22 +42,22 @@ class ProductSeeder extends Seeder
                     $brand->id,
 
                 'name_es' =>
-                    'Natviewer Falco',
+                    'Natviewer Falco 8×42 UD',
 
                 'name_en' =>
-                    'Natviewer Falco',
+                    'Natviewer Falco 8×42 UD',
 
                 'short_description_es' =>
-                    'Binoculares con lentes coated, prismas BAK-7 tipo techo y objetivo de 42 mm para observación de aves y naturaleza.',
+                    'Binoculares 8×42 con lentes coated, prismas BAK-7 tipo techo, campo de visión de 93 m a 1000 m y enfoque mínimo de 3 m para observación de aves y naturaleza.',
 
                 'short_description_en' =>
-                    'Binoculars with coated lenses, BAK-7 roof prisms and a 42 mm objective for birdwatching and nature observation.',
+                    '8×42 binoculars with coated lenses, BAK-7 roof prisms, a 93 m field of view at 1000 m and a 3 m minimum focus for birdwatching and nature observation.',
 
                 'description_es' =>
-                    'Natviewer Falco es una línea de binoculares para observación de aves, fauna y naturaleza. Sus configuraciones actuales incorporan lentes coated, prismas BAK-7 tipo techo, objetivo de 42 mm, enfoque mínimo de 3 metros y alivio ocular de 15 mm. Las variantes disponibles permiten elegir diferentes niveles de aumento manteniendo una configuración orientada al uso en campo.',
+                    'Natviewer Falco 8×42 UD es un binocular para observación de aves, fauna y naturaleza. Ofrece 8× de aumento, objetivo de 42 mm, lentes coated, prismas BAK-7 tipo techo, campo de visión de 93 m a 1000 m, enfoque mínimo de 3 m, alivio ocular de 15 mm y pupila de salida de 5.25 mm. Su chasis es de policarbonato, pesa 675 g, incorpora oculares ajustables, ajuste dióptrico, enfoque central, resistencia a lluvia y niebla y compatibilidad con trípode.',
 
                 'description_en' =>
-                    'Natviewer Falco is a binocular line for birdwatching, wildlife and nature observation. Its current configurations feature coated lenses, BAK-7 roof prisms, a 42 mm objective, 3 m minimum focus and 15 mm eye relief. Available variants provide different magnification levels while maintaining a configuration intended for field observation.',
+                    'Natviewer Falco 8×42 UD is a binocular for birdwatching, wildlife and nature observation. It offers 8× magnification, a 42 mm objective, coated lenses, BAK-7 roof prisms, a 93 m field of view at 1000 m, 3 m minimum focus, 15 mm eye relief and a 5.25 mm exit pupil. It has a polycarbonate chassis, weighs 675 g, and includes adjustable eyecups, diopter adjustment, central focusing, rain and fog resistance, and tripod compatibility.',
 
                 'status' =>
                     Product::STATUS_PUBLISHED,
@@ -65,16 +66,66 @@ class ProductSeeder extends Seeder
                     true,
 
                 'meta_title_es' =>
-                    'Binoculares Natviewer Falco 8×42 y 10×42 UD',
+                    'Binoculares Natviewer Falco 8×42 UD',
 
                 'meta_title_en' =>
-                    'Natviewer Falco 8×42 and 10×42 UD Binoculars',
+                    'Natviewer Falco 8×42 UD Binoculars',
 
                 'meta_description_es' =>
-                    'Conoce los binoculares Natviewer Falco con lentes coated, prismas BAK-7 tipo techo y objetivo de 42 mm para observación de aves y naturaleza.',
+                    'Binoculares Natviewer Falco 8×42 UD con prismas BAK-7 tipo techo, campo de visión de 93 m a 1000 m y enfoque mínimo de 3 m.',
 
                 'meta_description_en' =>
-                    'Discover Natviewer Falco binoculars with coated lenses, BAK-7 roof prisms and a 42 mm objective for birdwatching and nature observation.',
+                    'Natviewer Falco 8×42 UD binoculars with BAK-7 roof prisms, a 93 m field of view at 1000 m and a 3 m minimum focus.',
+            ]
+        );
+
+        $product10 = Product::updateOrCreate(
+            [
+                'slug' =>
+                    'natviewer-falco-10x42-ud',
+            ],
+            [
+                'category_id' =>
+                    $category->id,
+
+                'brand_id' =>
+                    $brand->id,
+
+                'name_es' =>
+                    'Natviewer Falco 10×42 UD',
+
+                'name_en' =>
+                    'Natviewer Falco 10×42 UD',
+
+                'short_description_es' =>
+                    'Binoculares 10×42 con lentes coated, prismas BAK-7 tipo techo, campo de visión de 89 m a 1000 m y enfoque mínimo de 3 m para observación de aves y naturaleza.',
+
+                'short_description_en' =>
+                    '10×42 binoculars with coated lenses, BAK-7 roof prisms, an 89 m field of view at 1000 m and a 3 m minimum focus for birdwatching and nature observation.',
+
+                'description_es' =>
+                    'Natviewer Falco 10×42 UD es un binocular para observación de aves, fauna y naturaleza. Ofrece 10× de aumento, objetivo de 42 mm, lentes coated, prismas BAK-7 tipo techo, campo de visión de 89 m a 1000 m, enfoque mínimo de 3 m, alivio ocular de 15 mm y pupila de salida de 4.2 mm. Su chasis es de policarbonato, pesa 687 g, incorpora oculares ajustables, ajuste dióptrico, enfoque central, resistencia a salpicaduras, lluvia y niebla y compatibilidad con trípode.',
+
+                'description_en' =>
+                    'Natviewer Falco 10×42 UD is a binocular for birdwatching, wildlife and nature observation. It offers 10× magnification, a 42 mm objective, coated lenses, BAK-7 roof prisms, an 89 m field of view at 1000 m, 3 m minimum focus, 15 mm eye relief and a 4.2 mm exit pupil. It has a polycarbonate chassis, weighs 687 g, and includes adjustable eyecups, diopter adjustment, central focusing, splash, rain and fog resistance, and tripod compatibility.',
+
+                'status' =>
+                    Product::STATUS_PUBLISHED,
+
+                'is_featured' =>
+                    true,
+
+                'meta_title_es' =>
+                    'Binoculares Natviewer Falco 10×42 UD',
+
+                'meta_title_en' =>
+                    'Natviewer Falco 10×42 UD Binoculars',
+
+                'meta_description_es' =>
+                    'Binoculares Natviewer Falco 10×42 UD con prismas BAK-7 tipo techo, campo de visión de 89 m a 1000 m y enfoque mínimo de 3 m.',
+
+                'meta_description_en' =>
+                    'Natviewer Falco 10×42 UD binoculars with BAK-7 roof prisms, an 89 m field of view at 1000 m and a 3 m minimum focus.',
             ]
         );
 
@@ -85,7 +136,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'product_id' =>
-                    $product->id,
+                    $product8->id,
 
                 'name_es' =>
                     'Falco 8×42 UD',
@@ -93,20 +144,12 @@ class ProductSeeder extends Seeder
                 'name_en' =>
                     'Falco 8×42 UD',
 
-                /*
-                 * Pendiente de definición
-                 * comercial para Natviewer.
-                 */
                 'price' =>
                     null,
 
                 'currency' =>
                     'COP',
 
-                /*
-                 * Pendiente de confirmación
-                 * de inventario Natviewer.
-                 */
                 'manage_stock' =>
                     true,
 
@@ -116,10 +159,6 @@ class ProductSeeder extends Seeder
                 'stock_status' =>
                     ProductVariant::STOCK_UNKNOWN,
 
-                /*
-                 * Especificaciones verificadas
-                 * con la ficha del producto.
-                 */
                 'specifications' => [
                     'magnification' =>
                         '8×',
@@ -191,7 +230,7 @@ class ProductSeeder extends Seeder
             ],
             [
                 'product_id' =>
-                    $product->id,
+                    $product10->id,
 
                 'name_es' =>
                     'Falco 10×42 UD',
@@ -199,20 +238,12 @@ class ProductSeeder extends Seeder
                 'name_en' =>
                     'Falco 10×42 UD',
 
-                /*
-                 * Pendiente de definición
-                 * comercial para Natviewer.
-                 */
                 'price' =>
                     null,
 
                 'currency' =>
                     'COP',
 
-                /*
-                 * Pendiente de confirmación
-                 * de inventario Natviewer.
-                 */
                 'manage_stock' =>
                     true,
 
@@ -222,10 +253,6 @@ class ProductSeeder extends Seeder
                 'stock_status' =>
                     ProductVariant::STOCK_UNKNOWN,
 
-                /*
-                 * Especificaciones verificadas
-                 * con la ficha del producto.
-                 */
                 'specifications' => [
                     'magnification' =>
                         '10×',
@@ -280,13 +307,13 @@ class ProductSeeder extends Seeder
                 ],
 
                 'is_default' =>
-                    false,
+                    true,
 
                 'is_active' =>
                     true,
 
                 'sort_order' =>
-                    2,
+                    1,
             ]
         );
     }

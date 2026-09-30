@@ -4,6 +4,7 @@ namespace Tests\Feature;
 
 use App\Models\Product;
 use App\Models\ProductImage;
+use App\Models\ProductVariant;
 use App\Models\User;
 use Database\Seeders\BrandSeeder;
 use Database\Seeders\CategorySeeder;
@@ -33,11 +34,14 @@ class AdminProductMediaTest extends TestCase
         $admin = $this->createAdmin();
         $product = $this->getProduct();
 
-        $variant = $product->variants->first();
+        $variant = $product
+            ->variants
+            ->first();
 
-        $payload = $this->productPayload(
-            $product
-        );
+        $payload =
+            $this->productPayload(
+                $product
+            );
 
         $payload[
             'variants'
@@ -46,8 +50,11 @@ class AdminProductMediaTest extends TestCase
         ][
             'specifications'
         ][] = [
-            'key' => 'weight',
-            'value' => '650 g',
+            'key' =>
+                'weight',
+
+            'value' =>
+                '650 g',
         ];
 
         $response = $this
@@ -71,9 +78,10 @@ class AdminProductMediaTest extends TestCase
 
         $this->assertSame(
             '650 g',
-            $variant->specifications[
-                'weight'
-            ]
+            $variant
+                ->specifications[
+                    'weight'
+                ]
         );
     }
 
@@ -223,7 +231,9 @@ class AdminProductMediaTest extends TestCase
                 'product_id',
                 $product->id
             )
-            ->orderBy('sort_order')
+            ->orderBy(
+                'sort_order'
+            )
             ->get();
 
         $this->assertCount(
@@ -238,7 +248,9 @@ class AdminProductMediaTest extends TestCase
                 30,
             ],
             $images
-                ->pluck('sort_order')
+                ->pluck(
+                    'sort_order'
+                )
                 ->all()
         );
 
@@ -366,7 +378,9 @@ class AdminProductMediaTest extends TestCase
                 '!=',
                 $existingImage->id
             )
-            ->orderBy('sort_order')
+            ->orderBy(
+                'sort_order'
+            )
             ->get();
 
         $this->assertCount(
@@ -404,13 +418,14 @@ class AdminProductMediaTest extends TestCase
         $admin = $this->createAdmin();
         $product = $this->getProduct();
 
-        $firstVariant =
-            $product->variants->first();
+        $firstVariant = $product
+            ->variants()
+            ->firstOrFail();
 
         $secondVariant =
-            $product->variants
-                ->skip(1)
-                ->first();
+            $this->createAdditionalVariant(
+                $product
+            );
 
         $image = $product
             ->images()
@@ -502,19 +517,37 @@ class AdminProductMediaTest extends TestCase
         $firstImage = $product
             ->images()
             ->create([
-                'disk' => 'public',
-                'path' => 'products/1/one.jpg',
-                'is_primary' => true,
-                'sort_order' => 10,
+                'disk' =>
+                    'public',
+
+                'path' =>
+                    'products/'
+                    . $product->id
+                    . '/one.jpg',
+
+                'is_primary' =>
+                    true,
+
+                'sort_order' =>
+                    10,
             ]);
 
         $secondImage = $product
             ->images()
             ->create([
-                'disk' => 'public',
-                'path' => 'products/1/two.jpg',
-                'is_primary' => false,
-                'sort_order' => 20,
+                'disk' =>
+                    'public',
+
+                'path' =>
+                    'products/'
+                    . $product->id
+                    . '/two.jpg',
+
+                'is_primary' =>
+                    false,
+
+                'sort_order' =>
+                    20,
             ]);
 
         $response = $this
@@ -556,34 +589,58 @@ class AdminProductMediaTest extends TestCase
         $admin = $this->createAdmin();
         $product = $this->getProduct();
 
+        $firstPath =
+            'products/'
+            . $product->id
+            . '/one.jpg';
+
+        $secondPath =
+            'products/'
+            . $product->id
+            . '/two.jpg';
+
         Storage::disk('public')
             ->put(
-                'products/1/one.jpg',
+                $firstPath,
                 'test'
             );
 
         Storage::disk('public')
             ->put(
-                'products/1/two.jpg',
+                $secondPath,
                 'test'
             );
 
         $firstImage = $product
             ->images()
             ->create([
-                'disk' => 'public',
-                'path' => 'products/1/one.jpg',
-                'is_primary' => true,
-                'sort_order' => 10,
+                'disk' =>
+                    'public',
+
+                'path' =>
+                    $firstPath,
+
+                'is_primary' =>
+                    true,
+
+                'sort_order' =>
+                    10,
             ]);
 
         $secondImage = $product
             ->images()
             ->create([
-                'disk' => 'public',
-                'path' => 'products/1/two.jpg',
-                'is_primary' => false,
-                'sort_order' => 20,
+                'disk' =>
+                    'public',
+
+                'path' =>
+                    $secondPath,
+
+                'is_primary' =>
+                    false,
+
+                'sort_order' =>
+                    20,
             ]);
 
         $response = $this
@@ -621,7 +678,7 @@ class AdminProductMediaTest extends TestCase
 
         Storage::disk('public')
             ->assertMissing(
-                'products/1/one.jpg'
+                $firstPath
             );
     }
 
@@ -633,15 +690,12 @@ class AdminProductMediaTest extends TestCase
             $this->getProduct();
 
         $secondProduct =
-            $firstProduct->replicate();
-
-        $secondProduct->slug =
-            'producto-secundario';
-
-        $secondProduct->name_es =
-            'Producto secundario';
-
-        $secondProduct->save();
+            Product::query()
+                ->where(
+                    'slug',
+                    'natviewer-falco-10x42-ud'
+                )
+                ->firstOrFail();
 
         $image = $secondProduct
             ->images()
@@ -676,27 +730,75 @@ class AdminProductMediaTest extends TestCase
         $response->assertNotFound();
     }
 
+    private function createAdditionalVariant(
+        Product $product
+    ): ProductVariant {
+        return ProductVariant::create([
+            'product_id' =>
+                $product->id,
+
+            'sku' =>
+                'NV-FALCO-MEDIA-TEST',
+
+            'name_es' =>
+                'Variante multimedia de prueba',
+
+            'name_en' =>
+                'Media test variant',
+
+            'price' =>
+                null,
+
+            'currency' =>
+                'COP',
+
+            'manage_stock' =>
+                false,
+
+            'stock_quantity' =>
+                null,
+
+            'stock_status' =>
+                ProductVariant::STOCK_UNKNOWN,
+
+            'specifications' =>
+                [],
+
+            'is_default' =>
+                false,
+
+            'is_active' =>
+                true,
+
+            'sort_order' =>
+                20,
+        ]);
+    }
+
     private function createAdmin(): User
     {
-        return User::factory()
-            ->create([
-                'name' =>
-                    'Administrador Test',
+        return User::factory()->create([
+            'name' =>
+                'Administrador Test',
 
-                'email' =>
-                    'admin@example.com',
+            'email' =>
+                'admin@example.com',
 
-                'password' =>
-                    'password-seguro',
+            'password' =>
+                'password-seguro',
 
-                'is_admin' =>
-                    true,
-            ]);
+            'is_admin' =>
+                true,
+        ]);
     }
 
     private function getProduct(): Product
     {
         return Product::query()
+            ->where(
+                'slug',
+                'natviewer-falco-8x42-ud'
+            )
             ->with('variants')
             ->firstOrFail();
     }
