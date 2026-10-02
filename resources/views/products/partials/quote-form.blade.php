@@ -23,7 +23,9 @@
             <p>
                 {{
                     __(
-                        'product.quote_text'
+                        $variants->count() > 1
+                            ? 'product.quote_text_multiple'
+                            : 'product.quote_text'
                     )
                 }}
             </p>
@@ -81,7 +83,16 @@
                     @endforeach
 
                     <div class="row g-3">
-                        <div class="col-12">
+                        <div
+                            class="{{
+                                $variants->count() > 1
+                                    ? 'col-12'
+                                    : 'd-none'
+                            }}"
+                            @if ($variants->count() === 1)
+                                aria-hidden="true"
+                            @endif
+                        >
                             <label
                                 for="productVariant"
                                 class="
@@ -135,17 +146,6 @@
                                             $variant[
                                                 'name'
                                             ]
-                                        }}
-
-                                        —
-
-                                        {{
-                                            $variant[
-                                                'price'
-                                            ]
-                                            ?: __(
-                                                'product.price_pending'
-                                            )
                                         }}
                                     </option>
                                 @endforeach

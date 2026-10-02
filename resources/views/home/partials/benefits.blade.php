@@ -150,30 +150,6 @@
                     </p>
                 </div>
             </article>
-
-                        <article class="nv-benefit-card">
-                <span class="nv-benefit-number">
-                    05
-                </span>
-
-                <div class="nv-benefit-content">
-                    <h3>
-                        {{
-                            __(
-                                'public.benefits.item_4_title'
-                            )
-                        }}
-                    </h3>
-
-                    <p>
-                        {{
-                            __(
-                                'public.benefits.item_4_text'
-                            )
-                        }}
-                    </p>
-                </div>
-            </article>
         </div>
     </div>
 </section>

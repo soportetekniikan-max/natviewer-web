@@ -11,10 +11,7 @@
 
                 <div>
                     <strong>
-                        {{
-                            $hero['glass']
-                            ?: 'UD'
-                        }}
+                        BAK-7
                     </strong>
 
                     <span>
@@ -34,7 +31,7 @@
 
                 <div>
                     <strong>
-                        Coated
+                        42 mm
                     </strong>
 
                     <span>
@@ -74,7 +71,7 @@
 
                 <div>
                     <strong>
-                        Outdoor
+                        15 mm
                     </strong>
 
                     <span>

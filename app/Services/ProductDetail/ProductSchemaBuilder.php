@@ -3,7 +3,6 @@
 namespace App\Services\ProductDetail;
 
 use App\Models\Product;
-use App\Models\ProductVariant;
 use Illuminate\Support\Collection;
 
 class ProductSchemaBuilder
@@ -53,59 +52,6 @@ class ProductSchemaBuilder
                 $images;
         }
 
-        $offers = $product->variants
-            ->filter(
-                fn (
-                    ProductVariant $variant
-                ) =>
-                    $variant->price !== null
-            )
-            ->map(
-                function (
-                    ProductVariant $variant
-                ) use (
-                    $canonicalUrl
-                ) {
-                    $offer = [
-                        '@type' =>
-                            'Offer',
-
-                        'url' =>
-                            $canonicalUrl
-                            . '?variant='
-                            . $variant->id,
-
-                        'sku' =>
-                            $variant->sku,
-
-                        'price' =>
-                            (string) $variant->price,
-
-                        'priceCurrency' =>
-                            $variant->currency,
-                    ];
-
-                    $availability =
-                        $this->availability(
-                            $variant
-                        );
-
-                    if ($availability) {
-                        $offer['availability'] =
-                            $availability;
-                    }
-
-                    return $offer;
-                }
-            )
-            ->values()
-            ->all();
-
-        if (! empty($offers)) {
-            $schema['offers'] =
-                $offers;
-        }
-
         return json_encode(
             $schema,
             JSON_UNESCAPED_SLASHES
@@ -115,31 +61,5 @@ class ProductSchemaBuilder
             | JSON_HEX_APOS
             | JSON_HEX_QUOT
         ) ?: '{}';
-    }
-
-    private function availability(
-        ProductVariant $variant
-    ): ?string {
-        if (
-            $variant->manage_stock
-            && $variant->stock_quantity !== null
-        ) {
-            return $variant->stock_quantity > 0
-                ? 'https://schema.org/InStock'
-                : 'https://schema.org/OutOfStock';
-        }
-
-        return match ($variant->stock_status) {
-            ProductVariant::STOCK_IN_STOCK =>
-                'https://schema.org/InStock',
-
-            ProductVariant::STOCK_OUT_OF_STOCK =>
-                'https://schema.org/OutOfStock',
-
-            ProductVariant::STOCK_BACKORDER =>
-                'https://schema.org/BackOrder',
-
-            default => null,
-        };
     }
 }

@@ -22,82 +22,31 @@
         </p>
     @endif
 
-    @if ($selectedVariant)
-        <div class="nv-detail-highlight">
-            <div
-                class="
-                    nv-detail-highlight-grid
-                "
-            >
-                <div>
-                    <span>
-                        {{
-                            __(
-                                'product.price'
-                            )
-                        }}
-                    </span>
-
-                    <strong
-                        data-selected-price
-                    >
-                        {{
-                            $selectedVariant[
-                                'price'
-                            ]
-                            ?: __(
-                                'product.price_pending'
-                            )
-                        }}
-                    </strong>
-                </div>
-
-                <div>
-                    <span>
-                        {{
-                            __(
-                                'product.stock'
-                            )
-                        }}
-                    </span>
-
-                    <strong
-                        data-selected-stock
-                    >
-                        {{
-                            $selectedVariant[
-                                'stock'
-                            ]
-                        }}
-                    </strong>
-                </div>
-            </div>
+    @if ($variants->count() > 1)
+        <div class="nv-detail-section-label">
+            {{
+                __(
+                    'product.variants_title'
+                )
+            }}
         </div>
+
+        <h2 class="nv-detail-section-title">
+            {{
+                __(
+                    'product.variants_heading'
+                )
+            }}
+        </h2>
+
+        <p class="nv-detail-section-copy">
+            {{
+                __(
+                    'product.variants_text'
+                )
+            }}
+        </p>
     @endif
-
-    <div class="nv-detail-section-label">
-        {{
-            __(
-                'product.variants_title'
-            )
-        }}
-    </div>
-
-    <h2 class="nv-detail-section-title">
-        {{
-            __(
-                'product.variants_heading'
-            )
-        }}
-    </h2>
-
-    <p class="nv-detail-section-copy">
-        {{
-            __(
-                'product.variants_text'
-            )
-        }}
-    </p>
 
     <div class="nv-detail-variants">
         @forelse ($variants as $variant)
@@ -116,15 +65,6 @@
                 data-variant-id="{{
                     $variant['id']
                 }}"
-                data-variant-price="{{
-                    $variant['price']
-                    ?: __(
-                        'product.price_pending'
-                    )
-                }}"
-                data-variant-stock="{{
-                    $variant['stock']
-                }}"
             >
                 <label
                     class="
@@ -137,6 +77,11 @@
                         value="{{ $variant['id'] }}"
                         class="
                             nv-detail-variant-radio
+                            {{
+                                $variants->count() === 1
+                                    ? 'visually-hidden'
+                                    : ''
+                            }}
                         "
                         data-variant-radio
                         @checked(
@@ -146,12 +91,14 @@
                         )
                     >
 
-                    <span
-                        class="
-                            nv-detail-variant-indicator
-                        "
-                        aria-hidden="true"
-                    ></span>
+                    @if ($variants->count() > 1)
+                        <span
+                            class="
+                                nv-detail-variant-indicator
+                            "
+                            aria-hidden="true"
+                        ></span>
+                    @endif
 
                     <span
                         class="
@@ -195,6 +142,8 @@
                             </span>
 
                             @if (
+                                $variants->count() > 1
+                                &&
                                 $variant[
                                     'is_default'
                                 ]
@@ -211,51 +160,6 @@
                                     }}
                                 </span>
                             @endif
-                        </span>
-
-                        <span
-                            class="
-                                nv-detail-variant-data
-                            "
-                        >
-                            <span>
-                                <span>
-                                    {{
-                                        __(
-                                            'product.price'
-                                        )
-                                    }}
-                                </span>
-
-                                <strong>
-                                    {{
-                                        $variant[
-                                            'price'
-                                        ]
-                                        ?: __(
-                                            'product.price_pending'
-                                        )
-                                    }}
-                                </strong>
-                            </span>
-
-                            <span>
-                                <span>
-                                    {{
-                                        __(
-                                            'product.stock'
-                                        )
-                                    }}
-                                </span>
-
-                                <strong>
-                                    {{
-                                        $variant[
-                                            'stock'
-                                        ]
-                                    }}
-                                </strong>
-                            </span>
                         </span>
                     </span>
                 </label>

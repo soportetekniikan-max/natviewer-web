@@ -242,7 +242,7 @@ class ProductDetailTest extends TestCase
             );
     }
 
-    public function test_product_json_ld_contains_product_and_offer_data(): void
+    public function test_product_json_ld_does_not_publish_commercial_offer_data(): void
     {
         $this->createCatalog();
 
@@ -260,25 +260,29 @@ class ProductDetailTest extends TestCase
                 '"name":"Natviewer Falco"',
                 false
             )
-            ->assertSee(
+            ->assertDontSee(
                 '"@type":"Offer"',
                 false
             )
-            ->assertSee(
-                '"sku":"FALCO-842"',
-                false
-            )
-            ->assertSee(
+            ->assertDontSee(
                 '"priceCurrency":"COP"',
                 false
             )
-            ->assertSee(
+            ->assertDontSee(
                 'https://schema.org/InStock',
+                false
+            )
+            ->assertDontSee(
+                'COP 1.299.000',
+                false
+            )
+            ->assertDontSee(
+                '5 unidades disponibles',
                 false
             );
     }
 
-    public function test_variant_without_price_does_not_create_offer(): void
+    public function test_variant_without_price_still_supports_quote_flow(): void
     {
         $data = $this->createCatalog(
             variantPrice: null
@@ -291,10 +295,24 @@ class ProductDetailTest extends TestCase
 
         $response
             ->assertOk()
-            ->assertSee('FALCO-842')
-            ->assertDontSee(
-                '"@type":"Offer"',
+            ->assertSee(
+                'FALCO-842'
+            )
+            ->assertSee(
+                'Solicitar cotización'
+            )
+            ->assertSee(
+                'Solicitar cotización'
+            )
+            ->assertSee(
+                'name="product_variant_id"',
                 false
+            )
+            ->assertDontSee(
+                'Precio por confirmar'
+            )
+            ->assertDontSee(
+                'Disponibilidad por confirmar'
             );
     }
 
@@ -528,13 +546,16 @@ class ProductDetailTest extends TestCase
             'specifications' =>
                 json_encode([
                     'magnification' =>
-                        '8x',
+                        '8×',
 
                     'objective_diameter' =>
                         '42 mm',
 
-                    'glass' =>
-                        'UD',
+                    'lenses' =>
+                        'coated',
+
+                    'prism' =>
+                        'bak7_roof',
                 ]),
 
             'is_default' =>

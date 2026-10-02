@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\ProductVariant;
 use App\Services\Localization\LocalizedValueResolver;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Lang;
 use Illuminate\Support\Str;
 
 class ProductVariantPresenter
@@ -71,16 +72,6 @@ class ProductVariantPresenter
                                 $locale
                             ) ?: $variant->sku,
 
-                        'price' =>
-                            $this->formatPrice(
-                                $variant
-                            ),
-
-                        'stock' =>
-                            $this->stockText(
-                                $variant
-                            ),
-
                         'is_default' =>
                             $variant->is_default,
 
@@ -128,60 +119,6 @@ class ProductVariantPresenter
         ];
     }
 
-    private function formatPrice(
-        ProductVariant $variant
-    ): ?string {
-        if ($variant->price === null) {
-            return null;
-        }
-
-        return $variant->currency
-            . ' '
-            . number_format(
-                (float) $variant->price,
-                0,
-                ',',
-                '.'
-            );
-    }
-
-    private function stockText(
-        ProductVariant $variant
-    ): string {
-        if (
-            $variant->manage_stock
-            && $variant->stock_quantity !== null
-        ) {
-            if ($variant->stock_quantity > 0) {
-                return __(
-                    'product.units_available',
-                    [
-                        'count' =>
-                            $variant->stock_quantity,
-                    ]
-                );
-            }
-
-            return __(
-                'product.stock_out'
-            );
-        }
-
-        return match ($variant->stock_status) {
-            ProductVariant::STOCK_IN_STOCK =>
-                __('product.stock_available'),
-
-            ProductVariant::STOCK_OUT_OF_STOCK =>
-                __('product.stock_out'),
-
-            ProductVariant::STOCK_BACKORDER =>
-                __('product.stock_backorder'),
-
-            default =>
-                __('product.stock_pending'),
-        };
-    }
-
     private function specifications(
         ProductVariant $variant
     ): array {
@@ -196,7 +133,9 @@ class ProductVariantPresenter
                         ),
 
                     'value' =>
-                        (string) $value,
+                        $this->formatSpecificationValue(
+                            (string) $value
+                        ),
                 ]
             )
             ->values()
@@ -206,6 +145,14 @@ class ProductVariantPresenter
     private function formatSpecificationLabel(
         string $key
     ): string {
+        $translationKey =
+            'product.spec_labels.'
+            . $key;
+
+        if (Lang::has($translationKey)) {
+            return __($translationKey);
+        }
+
         return Str::headline(
             str_replace(
                 '_',
@@ -213,5 +160,33 @@ class ProductVariantPresenter
                 $key
             )
         );
+    }
+
+    private function formatSpecificationValue(
+        string $value
+    ): string {
+        /*
+         * Los códigos técnicos simples pueden
+         * traducirse desde los archivos de idioma.
+         *
+         * Valores físicos como "42 mm",
+         * "675 g" o "93 m" se muestran tal cual.
+         */
+        if (
+            preg_match(
+                '/^[a-z0-9_]+$/',
+                $value
+            ) === 1
+        ) {
+            $translationKey =
+                'product.spec_values.'
+                . $value;
+
+            if (Lang::has($translationKey)) {
+                return __($translationKey);
+            }
+        }
+
+        return $value;
     }
 }

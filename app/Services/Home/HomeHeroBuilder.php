@@ -30,13 +30,6 @@ class HomeHeroBuilder
         $secondHeroVariant =
             $featuredVariants->get(1);
 
-        $heroGlass = $firstHeroVariant
-            ? data_get(
-                $firstHeroVariant->specifications,
-                'glass'
-            )
-            : null;
-
         return [
             'product_name' =>
                 $featuredProduct
@@ -71,9 +64,6 @@ class HomeHeroBuilder
                         $locale
                     )
                     : '10×42',
-
-            'glass' =>
-                $heroGlass,
 
             'default_currency' =>
                 $contactSettings

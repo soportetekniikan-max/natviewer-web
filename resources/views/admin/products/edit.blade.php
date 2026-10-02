@@ -328,8 +328,8 @@
                         </h2>
 
                         <p>
-                            Gestiona precio, stock y ficha
-                            técnica de cada variante.
+                            Gestiona información interna y
+                            ficha técnica de cada variante.
                         </p>
                     </div>
                 </div>
@@ -430,7 +430,7 @@
 
                                 <div class="nv-admin-field">
                                     <label>
-                                        Precio
+                                        Precio interno
                                     </label>
 
                                     <input
@@ -440,7 +440,7 @@
                                         name="variants[{{ $variant->id }}][price]"
                                         class="form-control"
                                         value="{{ $oldVariant['price'] ?? $variant->price }}"
-                                        placeholder="Pendiente"
+                                        placeholder="Sin definir"
                                     >
                                 </div>
 
@@ -461,7 +461,7 @@
 
                                 <div class="nv-admin-field">
                                     <label>
-                                        Estado de stock
+                                        Estado de stock interno
                                     </label>
 
                                     @php
@@ -519,7 +519,7 @@
 
                                 <div class="nv-admin-field">
                                     <label>
-                                        Cantidad disponible
+                                        Cantidad interna
                                     </label>
 
                                     <input
@@ -555,7 +555,7 @@
                                         >
 
                                         <span>
-                                            Gestionar stock
+                                            Gestionar stock interno
                                         </span>
                                     </label>
                                 </div>
@@ -649,7 +649,7 @@
                                                     class="form-control"
                                                     value="{{ $specification['value'] ?? '' }}"
                                                     maxlength="500"
-                                                    placeholder="Ej: 8x"
+                                                    placeholder="Ej: 8×"
                                                     data-spec-value
                                                 >
                                             </div>
@@ -700,16 +700,16 @@
                     </h2>
 
                     <p>
-                        Gestiona imagen principal,
-                        galería, textos ALT y relación
-                        con variantes.
+                        Sube varias imágenes en un solo lote,
+                        define la principal y administra
+                        textos ALT, orden y relación con variantes.
                     </p>
                 </div>
             </div>
 
             <div class="nv-admin-image-upload">
                 <h3>
-                    Subir nueva imagen
+                    Subir imágenes
                 </h3>
 
                 <form
@@ -722,28 +722,30 @@
 
                     <div class="nv-admin-form-grid">
                         <div class="nv-admin-field nv-admin-field-full">
-                            <label for="image">
-                                Archivo
+                            <label for="images">
+                                Archivos
                             </label>
 
                             <input
                                 type="file"
-                                id="image"
-                                name="image"
+                                id="images"
+                                name="images[]"
                                 class="form-control"
                                 accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+                                multiple
                                 required
                             >
 
                             <small>
+                                Puedes seleccionar hasta 20 imágenes.
                                 JPG, JPEG, PNG o WebP.
-                                Máximo 8 MB.
+                                Máximo 8 MB por imagen.
                             </small>
                         </div>
 
                         <div class="nv-admin-field">
                             <label for="image_alt_es">
-                                ALT ES
+                                ALT ES inicial
                             </label>
 
                             <input
@@ -753,11 +755,16 @@
                                 class="form-control"
                                 maxlength="255"
                             >
+
+                            <small>
+                                Se aplicará inicialmente a todo el lote.
+                                Después puedes editar cada imagen.
+                            </small>
                         </div>
 
                         <div class="nv-admin-field">
                             <label for="image_alt_en">
-                                ALT EN
+                                ALT EN inicial
                             </label>
 
                             <input
@@ -767,6 +774,11 @@
                                 class="form-control"
                                 maxlength="255"
                             >
+
+                            <small>
+                                Se aplicará inicialmente a todo el lote.
+                                Después puedes editar cada imagen.
+                            </small>
                         </div>
 
                         <div class="nv-admin-field">
@@ -791,11 +803,16 @@
                                     </option>
                                 @endforeach
                             </select>
+
+                            <small>
+                                La variante seleccionada se aplicará
+                                a todas las imágenes del lote.
+                            </small>
                         </div>
 
                         <div class="nv-admin-field">
                             <label for="image_sort_order">
-                                Orden
+                                Orden inicial
                             </label>
 
                             <input
@@ -807,6 +824,11 @@
                                 max="9999"
                                 placeholder="Automático"
                             >
+
+                            <small>
+                                Las siguientes imágenes avanzarán
+                                automáticamente de 10 en 10.
+                            </small>
                         </div>
 
                         <div class="nv-admin-field nv-admin-field-full">
@@ -824,9 +846,16 @@
                                 >
 
                                 <span>
-                                    Usar como imagen principal
+                                    Usar la primera imagen del lote
+                                    como imagen principal
                                 </span>
                             </label>
+
+                            <small>
+                                Si el producto todavía no tiene imágenes,
+                                la primera se establecerá como principal
+                                automáticamente.
+                            </small>
                         </div>
                     </div>
 
@@ -835,7 +864,7 @@
                             type="submit"
                             class="nv-button nv-button-primary"
                         >
-                            Subir imagen
+                            Subir imágenes
                         </button>
                     </div>
                 </form>

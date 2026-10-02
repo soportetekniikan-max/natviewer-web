@@ -15,9 +15,16 @@ class BrandSeeder extends Seeder
             ],
             [
                 'name' => 'Natviewer',
-                'description_es' => 'Equipos ópticos para observación de naturaleza y avistamiento de aves.',
-                'description_en' => 'Optical equipment for nature observation and birdwatching.',
-                'logo_path' => 'images/logo-natviewer-white.png',
+
+                'description_es' =>
+                    'Natviewer presenta productos ópticos para observación de aves, fauna, paisajes y naturaleza.',
+
+                'description_en' =>
+                    'Natviewer presents optical products for birdwatching, wildlife, landscapes and nature observation.',
+
+                'logo_path' =>
+                    'images/logo-natviewer-white.png',
+
                 'is_active' => true,
                 'sort_order' => 1,
             ]
