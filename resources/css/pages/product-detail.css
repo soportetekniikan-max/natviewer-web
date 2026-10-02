@@ -1,0 +1,14 @@
+/* =========================================================
+   NATVIEWER PRODUCT DETAIL
+   CSS entry point
+   ========================================================= */
+
+@import "./product-detail/base.css";
+@import "./product-detail/breadcrumb.css";
+@import "./product-detail/hero.css";
+@import "./product-detail/gallery.css";
+@import "./product-detail/summary.css";
+@import "./product-detail/description.css";
+@import "./product-detail/specifications.css";
+@import "./product-detail/quote-form.css";
+@import "./product-detail/responsive.css";

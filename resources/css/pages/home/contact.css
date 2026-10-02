@@ -1,0 +1,310 @@
+/* =========================================================
+   NATVIEWER HOME
+   Information / contact
+   ========================================================= */
+
+.nv-info-section {
+    padding-top:
+        clamp(
+            4rem,
+            6vw,
+            5.5rem
+        );
+
+    padding-bottom: 3rem;
+
+    background: #ffffff;
+}
+
+
+/* =========================================================
+   MAIN CARD
+   ========================================================= */
+
+.nv-info-card {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 0.95fr)
+        minmax(360px, 1.05fr);
+
+    gap:
+        clamp(
+            2rem,
+            5vw,
+            4.5rem
+        );
+
+    align-items: center;
+
+    padding:
+        clamp(
+            2rem,
+            4vw,
+            3.5rem
+        );
+
+    overflow: hidden;
+
+    border-radius: 1.8rem;
+
+    background:
+        radial-gradient(
+            circle at 90% 0%,
+            rgba(234, 87, 28, 0.18),
+            transparent 20rem
+        ),
+        linear-gradient(
+            145deg,
+            #334b3e,
+            #20362d 62%,
+            #172a23
+        );
+
+    box-shadow:
+        0
+        25px
+        70px
+        rgba(18, 33, 33, 0.14);
+}
+
+.nv-info-card::before {
+    content: "";
+
+    position: absolute;
+
+    top: -10rem;
+    right: -9rem;
+
+    width: 27rem;
+    height: 27rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 50%;
+}
+
+
+/* =========================================================
+   COPY
+   ========================================================= */
+
+.nv-info-copy {
+    position: relative;
+
+    z-index: 2;
+}
+
+.nv-info-copy
+.nv-section-heading-mark {
+    margin-bottom: 1.75rem;
+}
+
+.nv-info-copy
+.nv-section-heading-mark > span {
+    color:
+        rgba(255, 255, 255, 0.34);
+}
+
+.nv-info-copy
+.nv-eyebrow {
+    color: #ff8c58;
+}
+
+.nv-info-card h2 {
+    max-width: 590px;
+
+    margin:
+        0
+        0
+        1rem;
+
+    color: var(--nv-white);
+
+    font-size: clamp(
+        2.25rem,
+        4vw,
+        4rem
+    );
+
+    font-weight: 650;
+
+    line-height: 0.97;
+
+    letter-spacing: -0.055em;
+
+    text-wrap: balance;
+}
+
+.nv-info-card p {
+    max-width: 520px;
+
+    margin: 0;
+
+    color:
+        rgba(255, 255, 255, 0.67);
+
+    font-size: 0.92rem;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   LIST
+   ========================================================= */
+
+.nv-info-list {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 0.65rem;
+}
+
+.nv-info-list > span {
+    display: flex;
+    align-items: center;
+
+    min-height: 66px;
+
+    gap: 0.75rem;
+
+    padding:
+        0.8rem
+        0.9rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    border-radius: 1rem;
+
+    background:
+        rgba(255, 255, 255, 0.055);
+
+    color:
+        rgba(255, 255, 255, 0.84);
+
+    font-size: 0.82rem;
+    font-weight: 600;
+
+    backdrop-filter:
+        blur(14px);
+
+    -webkit-backdrop-filter:
+        blur(14px);
+
+    transition:
+        background-color var(--nv-transition),
+        transform var(--nv-transition);
+}
+
+.nv-info-list > span:hover {
+    background:
+        rgba(255, 255, 255, 0.1);
+
+    transform:
+        translateY(-2px);
+}
+
+.nv-info-list small {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 29px;
+    height: 29px;
+
+    flex: 0 0 auto;
+
+    border-radius: 50%;
+
+    background:
+        rgba(234, 87, 28, 0.16);
+
+    color: #ff915e;
+
+    font-size: 0.55rem;
+    font-weight: 800;
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .nv-info-card {
+        grid-template-columns: 1fr;
+
+        gap: 2.5rem;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+    .nv-info-section {
+        padding:
+            3.5rem
+            0
+            2rem;
+    }
+
+    .nv-info-card {
+        gap: 2rem;
+
+        padding: 1.35rem;
+
+        border-radius: 1.4rem;
+    }
+
+    .nv-info-card h2 {
+        font-size: clamp(
+            2.2rem,
+            10vw,
+            3.2rem
+        );
+    }
+
+    .nv-info-list {
+        grid-template-columns: 1fr;
+    }
+
+    .nv-info-list > span {
+        min-height: 60px;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+    .nv-info-list > span {
+        transition: none;
+    }
+
+    .nv-info-list > span:hover {
+        transform: none;
+    }
+}

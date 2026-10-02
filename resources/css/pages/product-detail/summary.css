@@ -1,0 +1,741 @@
+/* =========================================================
+   PRODUCT DETAIL
+   Summary
+   ========================================================= */
+
+.nv-detail-content {
+    min-width: 0;
+
+    padding:
+        clamp(
+            1.35rem,
+            3vw,
+            2.5rem
+        )
+        clamp(
+            0.5rem,
+            2vw,
+            1.75rem
+        );
+
+    border: 0;
+
+    border-radius: 0;
+
+    background: transparent;
+
+    box-shadow: none;
+
+    backdrop-filter: none;
+
+    -webkit-backdrop-filter: none;
+}
+
+
+/* =========================================================
+   CATEGORY
+   ========================================================= */
+
+.nv-detail-category {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 0.7rem;
+
+    padding: 0;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+
+    color: var(--nv-orange);
+
+    font-size: 0.7rem;
+    font-weight: 800;
+
+    letter-spacing: 0.15em;
+
+    text-transform: uppercase;
+}
+
+.nv-detail-category::before {
+    content: "";
+
+    width: 34px;
+    height: 2px;
+
+    border-radius: 999px;
+
+    background: var(--nv-orange);
+
+    box-shadow: none;
+}
+
+
+/* =========================================================
+   TITLE
+   ========================================================= */
+
+.nv-detail-title {
+    max-width: 38rem;
+
+    margin:
+        1rem
+        0
+        0.55rem;
+
+    color: var(--nv-detail-deep);
+
+    font-size:
+        clamp(
+            2.9rem,
+            4.6vw,
+            4.7rem
+        );
+
+    font-weight: 680;
+
+    line-height: 0.94;
+
+    letter-spacing: -0.062em;
+
+    text-wrap: balance;
+
+    text-shadow: none;
+}
+
+
+/* =========================================================
+   BRAND
+   ========================================================= */
+
+.nv-detail-brand {
+    margin-bottom: 1.2rem;
+
+    color:
+        rgba(64, 89, 74, 0.74);
+
+    font-size: 0.76rem;
+    font-weight: 800;
+
+    letter-spacing: 0.11em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   LEAD
+   ========================================================= */
+
+.nv-detail-lead {
+    max-width: 38rem;
+
+    margin:
+        0
+        0
+        1.65rem;
+
+    color:
+        rgba(30, 34, 38, 0.64);
+
+    font-size: 1rem;
+
+    line-height: 1.72;
+}
+
+
+/* =========================================================
+   PRICE / STOCK PREMIUM STRIP
+   ========================================================= */
+
+.nv-detail-highlight {
+    position: relative;
+
+    overflow: hidden;
+
+    padding:
+        0.65rem;
+
+    margin-bottom: 1.8rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.08);
+
+    border-radius: 1.4rem;
+
+    background:
+        radial-gradient(
+            circle at 88% 5%,
+            rgba(234, 87, 28, 0.2),
+            transparent 12rem
+        ),
+        linear-gradient(
+            145deg,
+            #40594a,
+            #253b31 55%,
+            #182b24
+        );
+
+    box-shadow:
+        0
+        20px
+        50px
+        rgba(18, 33, 33, 0.13);
+}
+
+.nv-detail-highlight::before {
+    content: "";
+
+    position: absolute;
+
+    top: 0;
+    right: 10%;
+    left: 10%;
+
+    height: 1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.26),
+            transparent
+        );
+}
+
+
+/* =========================================================
+   PRICE GRID
+   ========================================================= */
+
+.nv-detail-highlight-grid {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.35fr)
+        minmax(0, 0.65fr);
+
+    gap: 0;
+}
+
+
+/* =========================================================
+   PRICE / STOCK CELLS
+   ========================================================= */
+
+.nv-detail-highlight-grid > div {
+    padding:
+        1rem
+        1.1rem;
+
+    border: 0;
+    border-radius: 0;
+
+    background: transparent;
+}
+
+.nv-detail-highlight-grid > div + div {
+    border-left:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   LABEL
+   ========================================================= */
+
+.nv-detail-highlight span {
+    display: block;
+
+    margin-bottom: 0.38rem;
+
+    color:
+        rgba(255, 255, 255, 0.57);
+
+    font-size: 0.63rem;
+    font-weight: 800;
+
+    letter-spacing: 0.12em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   VALUE
+   ========================================================= */
+
+.nv-detail-highlight strong {
+    display: block;
+
+    color: var(--nv-white);
+
+    font-size:
+        clamp(
+            1.15rem,
+            2vw,
+            1.65rem
+        );
+
+    font-weight: 700;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.025em;
+}
+
+
+/* =========================================================
+   VARIANT INTRO
+   ========================================================= */
+
+.nv-detail-section-label {
+    margin-bottom: 0.5rem;
+
+    color: var(--nv-orange);
+
+    font-size: 0.68rem;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+}
+
+.nv-detail-section-title {
+    margin:
+        0
+        0
+        0.45rem;
+
+    color: var(--nv-detail-deep);
+
+    font-size:
+        clamp(
+            1.45rem,
+            2vw,
+            1.75rem
+        );
+
+    font-weight: 700;
+
+    line-height: 1.15;
+
+    letter-spacing: -0.035em;
+}
+
+.nv-detail-section-copy {
+    max-width: 34rem;
+
+    margin:
+        0
+        0
+        1.2rem;
+
+    color:
+        rgba(30, 34, 38, 0.56);
+
+    font-size: 0.9rem;
+
+    line-height: 1.6;
+}
+
+
+/* =========================================================
+   VARIANTS
+   ========================================================= */
+
+.nv-detail-variants {
+    display: grid;
+
+    gap: 0.65rem;
+}
+
+
+/* =========================================================
+   VARIANT CARD
+   ========================================================= */
+
+.nv-detail-variant {
+    padding: 1rem;
+
+    border:
+        1px solid
+        rgba(18, 33, 33, 0.095);
+
+    border-radius: 1.1rem;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255, 255, 255, 0.92),
+            rgba(244, 246, 241, 0.82)
+        );
+
+    box-shadow:
+        0
+        8px
+        24px
+        rgba(18, 33, 33, 0.035);
+
+    backdrop-filter: none;
+
+    -webkit-backdrop-filter: none;
+
+    transition:
+        border-color var(--nv-transition),
+        background-color var(--nv-transition),
+        box-shadow var(--nv-transition),
+        transform var(--nv-transition);
+}
+
+.nv-detail-variant:hover {
+    border-color:
+        rgba(64, 89, 74, 0.28);
+
+    box-shadow:
+        0
+        14px
+        32px
+        rgba(18, 33, 33, 0.065);
+
+    transform:
+        translateY(-2px);
+}
+
+
+/* =========================================================
+   SELECTED VARIANT
+   ========================================================= */
+
+.nv-detail-variant.is-selected {
+    border-color:
+        rgba(64, 89, 74, 0.55);
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(64, 89, 74, 0.085),
+            rgba(255, 255, 255, 0.94)
+        );
+
+    box-shadow:
+        0
+        14px
+        36px
+        rgba(18, 33, 33, 0.075),
+
+        inset
+        3px
+        0
+        0
+        var(--nv-detail-green);
+}
+
+.nv-detail-variant:focus-within {
+    border-color:
+        var(--nv-detail-green);
+
+    box-shadow:
+        0
+        0
+        0
+        3px
+        rgba(64, 89, 74, 0.1);
+}
+
+
+/* =========================================================
+   VARIANT SELECT
+   ========================================================= */
+
+.nv-detail-variant-select {
+    display: grid;
+
+    grid-template-columns:
+        auto
+        minmax(0, 1fr);
+
+    gap: 0.85rem;
+
+    align-items: start;
+
+    margin: 0;
+
+    cursor: pointer;
+}
+
+.nv-detail-variant-radio {
+    position: absolute;
+
+    width: 1px;
+    height: 1px;
+
+    opacity: 0;
+}
+
+
+/* =========================================================
+   RADIO INDICATOR
+   ========================================================= */
+
+.nv-detail-variant-indicator {
+    position: relative;
+
+    display: block;
+
+    width: 1.125rem;
+    height: 1.125rem;
+
+    margin-top: 0.1875rem;
+
+    border:
+        2px solid
+        rgba(64, 89, 74, 0.35);
+
+    border-radius: 50%;
+
+    background: var(--nv-white);
+}
+
+.nv-detail-variant-radio:checked
++ .nv-detail-variant-indicator {
+    border-color:
+        var(--nv-detail-green);
+}
+
+.nv-detail-variant-radio:checked
++ .nv-detail-variant-indicator::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0.1875rem;
+
+    border-radius: 50%;
+
+    background:
+        var(--nv-detail-green);
+}
+
+
+/* =========================================================
+   VARIANT CONTENT
+   ========================================================= */
+
+.nv-detail-variant-content {
+    display: block;
+
+    min-width: 0;
+}
+
+
+/* =========================================================
+   VARIANT HEADER
+   ========================================================= */
+
+.nv-detail-variant-head {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap: 1rem;
+}
+
+.nv-detail-variant-name {
+    display: block;
+
+    margin-bottom: 0.22rem;
+
+    color: var(--nv-detail-deep);
+
+    font-size: 1.05rem;
+    font-weight: 750;
+}
+
+.nv-detail-variant-sku {
+    display: block;
+
+    color:
+        rgba(30, 34, 38, 0.44);
+
+    font-size: 0.7rem;
+}
+
+
+/* =========================================================
+   RECOMMENDED
+   ========================================================= */
+
+.nv-detail-recommended {
+    padding:
+        0.35rem
+        0.6rem;
+
+    border:
+        1px solid
+        rgba(234, 87, 28, 0.22);
+
+    border-radius: 999px;
+
+    background:
+        rgba(234, 87, 28, 0.085);
+
+    color: var(--nv-orange);
+
+    font-size: 0.62rem;
+    font-weight: 800;
+
+    letter-spacing: 0.055em;
+
+    text-transform: uppercase;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   VARIANT DATA
+   ========================================================= */
+
+.nv-detail-variant-data {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap: 1rem;
+
+    padding-top: 0.85rem;
+
+    margin-top: 0.85rem;
+
+    border-top:
+        1px solid
+        rgba(18, 33, 33, 0.07);
+}
+
+.nv-detail-variant-data > span {
+    display: block;
+}
+
+.nv-detail-variant-data
+> span
+> span {
+    display: block;
+
+    margin-bottom: 0.22rem;
+
+    color:
+        rgba(30, 34, 38, 0.43);
+
+    font-size: 0.67rem;
+}
+
+.nv-detail-variant-data strong {
+    display: block;
+
+    color: var(--nv-detail-deep);
+
+    font-size: 0.9rem;
+    font-weight: 750;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.nv-detail-cta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+
+    min-height: 3.25rem;
+
+    margin-top: 0.85rem;
+
+    padding:
+        0.8rem
+        1.2rem;
+
+    border:
+        1px solid
+        var(--nv-orange);
+
+    border-radius: 999px;
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--nv-orange),
+            #ff7033
+        );
+
+    color: var(--nv-white);
+
+    box-shadow:
+        0
+        13px
+        28px
+        rgba(234, 87, 28, 0.2);
+
+    font-size: 0.9rem;
+    font-weight: 800;
+
+    text-decoration: none;
+
+    cursor: pointer;
+
+    transition:
+        transform var(--nv-transition),
+        background-color var(--nv-transition),
+        box-shadow var(--nv-transition),
+        filter var(--nv-transition);
+}
+
+.nv-detail-cta:hover,
+.nv-detail-cta:focus-visible {
+    background:
+        linear-gradient(
+            135deg,
+            #f45e23,
+            #ff783e
+        );
+
+    color: var(--nv-white);
+
+    box-shadow:
+        0
+        18px
+        38px
+        rgba(234, 87, 28, 0.28);
+
+    filter:
+        brightness(1.02);
+
+    transform:
+        translateY(-2px);
+}
+
+.nv-detail-cta:focus-visible {
+    outline:
+        3px solid
+        rgba(234, 87, 28, 0.28);
+
+    outline-offset: 3px;
+}

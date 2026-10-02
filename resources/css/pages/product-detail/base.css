@@ -1,0 +1,184 @@
+/* =========================================================
+   NATVIEWER PRODUCT DETAIL
+   Premium light product experience
+   ========================================================= */
+
+
+/* =========================================================
+   PAGE
+   ========================================================= */
+
+.nv-detail-page {
+    --nv-detail-bg: #f5f5f1;
+    --nv-detail-surface: #ffffff;
+    --nv-detail-surface-soft: #f1f3ee;
+
+    --nv-detail-deep: #122121;
+    --nv-detail-green: #40594a;
+    --nv-detail-green-mid: #253b31;
+    --nv-detail-green-dark: #182b24;
+
+    --nv-detail-muted:
+        rgba(30, 34, 38, 0.62);
+
+    --nv-detail-line:
+        rgba(18, 33, 33, 0.09);
+
+    --nv-detail-line-strong:
+        rgba(18, 33, 33, 0.15);
+
+    --nv-detail-shadow:
+        0 28px 75px rgba(18, 33, 33, 0.09);
+
+    position: relative;
+    isolation: isolate;
+
+    min-height: 100vh;
+
+    overflow: clip;
+
+    background:
+        radial-gradient(
+            circle at 90% 8%,
+            rgba(234, 87, 28, 0.065),
+            transparent 28rem
+        ),
+        radial-gradient(
+            circle at 4% 28%,
+            rgba(64, 89, 74, 0.07),
+            transparent 32rem
+        ),
+        linear-gradient(
+            180deg,
+            #f8f8f5 0%,
+            var(--nv-detail-bg) 48rem,
+            #f1f3ee 100%
+        );
+
+    color: var(--nv-detail-deep);
+}
+
+
+/* =========================================================
+   AMBIENT DECORATION
+   ========================================================= */
+
+.nv-detail-page::before {
+    content: "";
+
+    position: absolute;
+
+    top: 8rem;
+    right: -17rem;
+
+    z-index: -1;
+
+    width: 38rem;
+    height: 38rem;
+
+    border:
+        1px solid
+        rgba(64, 89, 74, 0.045);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.nv-detail-page::after {
+    content: "";
+
+    position: absolute;
+
+    top: 24rem;
+    left: -15rem;
+
+    z-index: -1;
+
+    width: 31rem;
+    height: 31rem;
+
+    border:
+        1px solid
+        rgba(234, 87, 28, 0.045);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   SHELL
+   Compensates fixed premium header
+   ========================================================= */
+
+.nv-detail-shell {
+    position: relative;
+
+    z-index: 2;
+
+    padding-top: 8.5rem;
+    padding-bottom: 5rem;
+}
+
+
+/* =========================================================
+   HERO TYPOGRAPHY
+   ========================================================= */
+
+.nv-detail-page
+.nv-detail-hero h1,
+.nv-detail-page
+.nv-detail-hero h2,
+.nv-detail-page
+.nv-detail-hero h3 {
+    color: var(--nv-detail-deep);
+}
+
+.nv-detail-page
+.nv-detail-hero p {
+    color: var(--nv-detail-muted);
+}
+
+
+/* =========================================================
+   EYEBROW
+   ========================================================= */
+
+.nv-detail-page
+.nv-eyebrow {
+    display: inline-flex;
+    align-items: center;
+
+    gap: 0.65rem;
+
+    color: var(--nv-orange);
+
+    font-size: 0.68rem;
+    font-weight: 800;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+}
+
+.nv-detail-page
+.nv-eyebrow::before {
+    content: "";
+
+    width: 28px;
+    height: 1px;
+
+    background: currentColor;
+}
+
+/* =========================================================
+   FIXED HEADER ANCHOR OFFSET
+   ========================================================= */
+
+.nv-detail-lower,
+.nv-detail-specs,
+.nv-detail-quote-section {
+    scroll-margin-top: 7.5rem;
+}

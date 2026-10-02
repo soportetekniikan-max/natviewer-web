@@ -1,0 +1,1048 @@
+@extends('admin.layout')
+
+@section('title', 'Editar producto')
+
+@section('content')
+    <div class="container-fluid nv-admin-dashboard">
+        <div class="nv-admin-page-header nv-admin-page-header-actions">
+            <div>
+                <span class="nv-eyebrow">
+                    Catálogo
+                </span>
+
+                <h1>Editar producto</h1>
+
+                <p>
+                    {{ $product->name_es }}
+                </p>
+            </div>
+
+            <a
+                href="{{ route('admin.products.index') }}"
+                class="nv-button nv-button-outline"
+            >
+                Volver a productos
+            </a>
+        </div>
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <strong>
+                    Hay campos que debes revisar.
+                </strong>
+
+                <ul class="mb-0 mt-2">
+                    @foreach ($errors->all() as $error)
+                        <li>
+                            {{ $error }}
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        <div class="nv-admin-edit-navigation">
+            <a href="#general">
+                General
+            </a>
+
+            <a href="#seo">
+                SEO
+            </a>
+
+            <a href="#variantes">
+                Variantes
+            </a>
+
+            <a href="#imagenes">
+                Imágenes
+            </a>
+        </div>
+
+        <form
+            method="POST"
+            action="{{ route('admin.products.update', $product) }}"
+            class="nv-admin-product-form"
+        >
+            @csrf
+            @method('PUT')
+
+            <section
+                id="general"
+                class="nv-admin-form-card"
+            >
+                <div class="nv-admin-form-card-header">
+                    <div>
+                        <h2>
+                            Información general
+                        </h2>
+
+                        <p>
+                            Información comercial y
+                            editorial del producto.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nv-admin-form-grid">
+                    <div class="nv-admin-field">
+                        <label for="name_es">
+                            Nombre ES
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name_es"
+                            name="name_es"
+                            class="form-control"
+                            value="{{ old('name_es', $product->name_es) }}"
+                            required
+                        >
+                    </div>
+
+                    <div class="nv-admin-field">
+                        <label for="name_en">
+                            Nombre EN
+                        </label>
+
+                        <input
+                            type="text"
+                            id="name_en"
+                            name="name_en"
+                            class="form-control"
+                            value="{{ old('name_en', $product->name_en) }}"
+                        >
+                    </div>
+
+                    <div class="nv-admin-field">
+                        <label for="category_id">
+                            Categoría
+                        </label>
+
+                        <select
+                            id="category_id"
+                            name="category_id"
+                            class="form-select"
+                            required
+                        >
+                            @foreach ($categories as $category)
+                                <option
+                                    value="{{ $category->id }}"
+                                    @selected(
+                                        old(
+                                            'category_id',
+                                            $product->category_id
+                                        ) == $category->id
+                                    )
+                                >
+                                    {{ $category->name_es }}
+
+                                    {{ ! $category->is_active
+                                        ? ' (inactiva)'
+                                        : '' }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="nv-admin-field">
+                        <label for="brand_id">
+                            Marca
+                        </label>
+
+                        <select
+                            id="brand_id"
+                            name="brand_id"
+                            class="form-select"
+                            required
+                        >
+                            @foreach ($brands as $brand)
+                                <option
+                                    value="{{ $brand->id }}"
+                                    @selected(
+                                        old(
+                                            'brand_id',
+                                            $product->brand_id
+                                        ) == $brand->id
+                                    )
+                                >
+                                    {{ $brand->name }}
+
+                                    {{ ! $brand->is_active
+                                        ? ' (inactiva)'
+                                        : '' }}
+                                </option>
+                            @endforeach
+                        </select>
+                    </div>
+
+                    <div class="nv-admin-field nv-admin-field-full">
+                        <label for="short_description_es">
+                            Descripción corta ES
+                        </label>
+
+                        <textarea
+                            id="short_description_es"
+                            name="short_description_es"
+                            class="form-control"
+                            rows="3"
+                        >{{ old('short_description_es', $product->short_description_es) }}</textarea>
+                    </div>
+
+                    <div class="nv-admin-field nv-admin-field-full">
+                        <label for="short_description_en">
+                            Descripción corta EN
+                        </label>
+
+                        <textarea
+                            id="short_description_en"
+                            name="short_description_en"
+                            class="form-control"
+                            rows="3"
+                        >{{ old('short_description_en', $product->short_description_en) }}</textarea>
+                    </div>
+
+                    <div class="nv-admin-field nv-admin-field-full">
+                        <label for="description_es">
+                            Descripción completa ES
+                        </label>
+
+                        <textarea
+                            id="description_es"
+                            name="description_es"
+                            class="form-control"
+                            rows="6"
+                        >{{ old('description_es', $product->description_es) }}</textarea>
+                    </div>
+
+                    <div class="nv-admin-field nv-admin-field-full">
+                        <label for="description_en">
+                            Descripción completa EN
+                        </label>
+
+                        <textarea
+                            id="description_en"
+                            name="description_en"
+                            class="form-control"
+                            rows="6"
+                        >{{ old('description_en', $product->description_en) }}</textarea>
+                    </div>
+
+                    <div class="nv-admin-field">
+                        <label for="status">
+                            Estado
+                        </label>
+
+                        <select
+                            id="status"
+                            name="status"
+                            class="form-select"
+                            required
+                        >
+                            <option
+                                value="draft"
+                                @selected(
+                                    old(
+                                        'status',
+                                        $product->status
+                                    ) === 'draft'
+                                )
+                            >
+                                Borrador
+                            </option>
+
+                            <option
+                                value="published"
+                                @selected(
+                                    old(
+                                        'status',
+                                        $product->status
+                                    ) === 'published'
+                                )
+                            >
+                                Publicado
+                            </option>
+
+                            <option
+                                value="archived"
+                                @selected(
+                                    old(
+                                        'status',
+                                        $product->status
+                                    ) === 'archived'
+                                )
+                            >
+                                Archivado
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="nv-admin-field">
+                        <label>
+                            Destacado
+                        </label>
+
+                        <input
+                            type="hidden"
+                            name="is_featured"
+                            value="0"
+                        >
+
+                        <label class="nv-admin-toggle">
+                            <input
+                                type="checkbox"
+                                name="is_featured"
+                                value="1"
+                                @checked(
+                                    old(
+                                        'is_featured',
+                                        $product->is_featured
+                                    )
+                                )
+                            >
+
+                            <span>
+                                Mostrar como producto destacado
+                            </span>
+                        </label>
+                    </div>
+                </div>
+            </section>
+
+            @include('admin.products.partials.seo')
+
+            <section
+                id="variantes"
+                class="nv-admin-form-card"
+            >
+                <div class="nv-admin-form-card-header">
+                    <div>
+                        <h2>
+                            Variantes y especificaciones
+                        </h2>
+
+                        <p>
+                            Gestiona información interna y
+                            ficha técnica de cada variante.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="nv-admin-variants">
+                    @foreach ($product->variants as $variant)
+                        @php
+                            $oldVariant = old(
+                                'variants.'.$variant->id,
+                                []
+                            );
+
+                            $oldSpecifications =
+                                $oldVariant['specifications']
+                                ?? null;
+
+                            if ($oldSpecifications !== null) {
+                                $specificationRows =
+                                    $oldSpecifications;
+                            } else {
+                                $specificationRows =
+                                    collect(
+                                        $variant->specifications
+                                        ?? []
+                                    )
+                                    ->map(
+                                        fn ($value, $key) => [
+                                            'key' => $key,
+                                            'value' => $value,
+                                        ]
+                                    )
+                                    ->values()
+                                    ->all();
+                            }
+
+                            if (empty($specificationRows)) {
+                                $specificationRows = [
+                                    [
+                                        'key' => '',
+                                        'value' => '',
+                                    ],
+                                ];
+                            }
+                        @endphp
+
+                        <article class="nv-admin-variant-card">
+                            <div class="nv-admin-variant-header">
+                                <div>
+                                    <span>
+                                        SKU
+                                    </span>
+
+                                    <strong>
+                                        {{ $variant->sku }}
+                                    </strong>
+                                </div>
+
+                                <span>
+                                    {{ $variant->is_default
+                                        ? 'Predeterminada'
+                                        : 'Variante' }}
+                                </span>
+                            </div>
+
+                            <input
+                                type="hidden"
+                                name="variants[{{ $variant->id }}][id]"
+                                value="{{ $variant->id }}"
+                            >
+
+                            <div class="nv-admin-form-grid">
+                                <div class="nv-admin-field">
+                                    <label>
+                                        Nombre ES
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        name="variants[{{ $variant->id }}][name_es]"
+                                        class="form-control"
+                                        value="{{ $oldVariant['name_es'] ?? $variant->name_es }}"
+                                        required
+                                    >
+                                </div>
+
+                                <div class="nv-admin-field">
+                                    <label>
+                                        Nombre EN
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        name="variants[{{ $variant->id }}][name_en]"
+                                        class="form-control"
+                                        value="{{ $oldVariant['name_en'] ?? $variant->name_en }}"
+                                    >
+                                </div>
+
+                                <div class="nv-admin-field">
+                                    <label>
+                                        Precio interno
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        step="0.01"
+                                        min="0"
+                                        name="variants[{{ $variant->id }}][price]"
+                                        class="form-control"
+                                        value="{{ $oldVariant['price'] ?? $variant->price }}"
+                                        placeholder="Sin definir"
+                                    >
+                                </div>
+
+                                <div class="nv-admin-field">
+                                    <label>
+                                        Moneda
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        maxlength="3"
+                                        name="variants[{{ $variant->id }}][currency]"
+                                        class="form-control"
+                                        value="{{ $oldVariant['currency'] ?? $variant->currency }}"
+                                        required
+                                    >
+                                </div>
+
+                                <div class="nv-admin-field">
+                                    <label>
+                                        Estado de stock interno
+                                    </label>
+
+                                    @php
+                                        $currentStockStatus =
+                                            $oldVariant['stock_status']
+                                            ?? $variant->stock_status;
+                                    @endphp
+
+                                    <select
+                                        name="variants[{{ $variant->id }}][stock_status]"
+                                        class="form-select"
+                                        required
+                                    >
+                                        <option
+                                            value="unknown"
+                                            @selected(
+                                                $currentStockStatus
+                                                === 'unknown'
+                                            )
+                                        >
+                                            Pendiente / desconocido
+                                        </option>
+
+                                        <option
+                                            value="in_stock"
+                                            @selected(
+                                                $currentStockStatus
+                                                === 'in_stock'
+                                            )
+                                        >
+                                            Disponible
+                                        </option>
+
+                                        <option
+                                            value="out_of_stock"
+                                            @selected(
+                                                $currentStockStatus
+                                                === 'out_of_stock'
+                                            )
+                                        >
+                                            Agotado
+                                        </option>
+
+                                        <option
+                                            value="backorder"
+                                            @selected(
+                                                $currentStockStatus
+                                                === 'backorder'
+                                            )
+                                        >
+                                            Bajo pedido
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="nv-admin-field">
+                                    <label>
+                                        Cantidad interna
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        min="0"
+                                        name="variants[{{ $variant->id }}][stock_quantity]"
+                                        class="form-control"
+                                        value="{{ $oldVariant['stock_quantity'] ?? $variant->stock_quantity }}"
+                                        placeholder="Sin definir"
+                                    >
+                                </div>
+
+                                <div class="nv-admin-field">
+                                    <input
+                                        type="hidden"
+                                        name="variants[{{ $variant->id }}][manage_stock]"
+                                        value="0"
+                                    >
+
+                                    <label class="nv-admin-toggle">
+                                        <input
+                                            type="checkbox"
+                                            name="variants[{{ $variant->id }}][manage_stock]"
+                                            value="1"
+                                            @checked(
+                                                $oldVariant
+                                                    ? (
+                                                        $oldVariant['manage_stock']
+                                                        ?? false
+                                                    )
+                                                    : $variant->manage_stock
+                                            )
+                                        >
+
+                                        <span>
+                                            Gestionar stock interno
+                                        </span>
+                                    </label>
+                                </div>
+
+                                <div class="nv-admin-field">
+                                    <input
+                                        type="hidden"
+                                        name="variants[{{ $variant->id }}][is_active]"
+                                        value="0"
+                                    >
+
+                                    <label class="nv-admin-toggle">
+                                        <input
+                                            type="checkbox"
+                                            name="variants[{{ $variant->id }}][is_active]"
+                                            value="1"
+                                            @checked(
+                                                $oldVariant
+                                                    ? (
+                                                        $oldVariant['is_active']
+                                                        ?? false
+                                                    )
+                                                    : $variant->is_active
+                                            )
+                                        >
+
+                                        <span>
+                                            Variante activa
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="nv-admin-specifications">
+                                <div class="nv-admin-specifications-header">
+                                    <div>
+                                        <h3>
+                                            Especificaciones
+                                        </h3>
+
+                                        <p>
+                                            Agrega cualquier atributo
+                                            técnico necesario.
+                                        </p>
+                                    </div>
+
+                                    <button
+                                        type="button"
+                                        class="nv-admin-action-link"
+                                        data-add-spec
+                                        data-variant-id="{{ $variant->id }}"
+                                    >
+                                        + Agregar atributo
+                                    </button>
+                                </div>
+
+                                <div
+                                    class="nv-admin-spec-list"
+                                    data-spec-list="{{ $variant->id }}"
+                                    data-variant-id="{{ $variant->id }}"
+                                >
+                                    @foreach ($specificationRows as $index => $specification)
+                                        <div
+                                            class="nv-admin-spec-row"
+                                            data-spec-row
+                                        >
+                                            <div class="nv-admin-field">
+                                                <label>
+                                                    Especificación
+                                                </label>
+
+                                                <input
+                                                    type="text"
+                                                    name="variants[{{ $variant->id }}][specifications][{{ $index }}][key]"
+                                                    class="form-control"
+                                                    value="{{ $specification['key'] ?? '' }}"
+                                                    maxlength="100"
+                                                    placeholder="Ej: magnification"
+                                                    data-spec-key
+                                                >
+                                            </div>
+
+                                            <div class="nv-admin-field">
+                                                <label>
+                                                    Valor
+                                                </label>
+
+                                                <input
+                                                    type="text"
+                                                    name="variants[{{ $variant->id }}][specifications][{{ $index }}][value]"
+                                                    class="form-control"
+                                                    value="{{ $specification['value'] ?? '' }}"
+                                                    maxlength="500"
+                                                    placeholder="Ej: 8×"
+                                                    data-spec-value
+                                                >
+                                            </div>
+
+                                            <div class="nv-admin-spec-remove-wrap">
+                                                <button
+                                                    type="button"
+                                                    class="nv-admin-spec-remove"
+                                                    data-remove-spec
+                                                >
+                                                    Eliminar
+                                                </button>
+                                            </div>
+                                        </div>
+                                    @endforeach
+                                </div>
+                            </div>
+                        </article>
+                    @endforeach
+                </div>
+            </section>
+
+            <div class="nv-admin-form-actions">
+                <a
+                    href="{{ route('admin.products.index') }}"
+                    class="nv-button nv-button-outline"
+                >
+                    Cancelar
+                </a>
+
+                <button
+                    type="submit"
+                    class="nv-button nv-button-primary"
+                >
+                    Guardar producto
+                </button>
+            </div>
+        </form>
+
+        <section
+            id="imagenes"
+            class="nv-admin-form-card nv-admin-images-section"
+        >
+            <div class="nv-admin-form-card-header">
+                <div>
+                    <h2>
+                        Imágenes y galería
+                    </h2>
+
+                    <p>
+                        Sube varias imágenes en un solo lote,
+                        define la principal y administra
+                        textos ALT, orden y relación con variantes.
+                    </p>
+                </div>
+            </div>
+
+            <div class="nv-admin-image-upload">
+                <h3>
+                    Subir imágenes
+                </h3>
+
+                <form
+                    method="POST"
+                    action="{{ route('admin.products.images.store', $product) }}"
+                    enctype="multipart/form-data"
+                    class="nv-admin-image-upload-form"
+                >
+                    @csrf
+
+                    <div class="nv-admin-form-grid">
+                        <div class="nv-admin-field nv-admin-field-full">
+                            <label for="images">
+                                Archivos
+                            </label>
+
+                            <input
+                                type="file"
+                                id="images"
+                                name="images[]"
+                                class="form-control"
+                                accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp"
+                                multiple
+                                required
+                            >
+
+                            <small>
+                                Puedes seleccionar hasta 20 imágenes.
+                                JPG, JPEG, PNG o WebP.
+                                Máximo 8 MB por imagen.
+                            </small>
+                        </div>
+
+                        <div class="nv-admin-field">
+                            <label for="image_alt_es">
+                                ALT ES inicial
+                            </label>
+
+                            <input
+                                type="text"
+                                id="image_alt_es"
+                                name="alt_es"
+                                class="form-control"
+                                maxlength="255"
+                            >
+
+                            <small>
+                                Se aplicará inicialmente a todo el lote.
+                                Después puedes editar cada imagen.
+                            </small>
+                        </div>
+
+                        <div class="nv-admin-field">
+                            <label for="image_alt_en">
+                                ALT EN inicial
+                            </label>
+
+                            <input
+                                type="text"
+                                id="image_alt_en"
+                                name="alt_en"
+                                class="form-control"
+                                maxlength="255"
+                            >
+
+                            <small>
+                                Se aplicará inicialmente a todo el lote.
+                                Después puedes editar cada imagen.
+                            </small>
+                        </div>
+
+                        <div class="nv-admin-field">
+                            <label for="image_variant_id">
+                                Variante
+                            </label>
+
+                            <select
+                                id="image_variant_id"
+                                name="variant_id"
+                                class="form-select"
+                            >
+                                <option value="">
+                                    Imagen general del producto
+                                </option>
+
+                                @foreach ($product->variants as $variant)
+                                    <option
+                                        value="{{ $variant->id }}"
+                                    >
+                                        {{ $variant->name_es }}
+                                    </option>
+                                @endforeach
+                            </select>
+
+                            <small>
+                                La variante seleccionada se aplicará
+                                a todas las imágenes del lote.
+                            </small>
+                        </div>
+
+                        <div class="nv-admin-field">
+                            <label for="image_sort_order">
+                                Orden inicial
+                            </label>
+
+                            <input
+                                type="number"
+                                id="image_sort_order"
+                                name="sort_order"
+                                class="form-control"
+                                min="0"
+                                max="9999"
+                                placeholder="Automático"
+                            >
+
+                            <small>
+                                Las siguientes imágenes avanzarán
+                                automáticamente de 10 en 10.
+                            </small>
+                        </div>
+
+                        <div class="nv-admin-field nv-admin-field-full">
+                            <input
+                                type="hidden"
+                                name="make_primary"
+                                value="0"
+                            >
+
+                            <label class="nv-admin-toggle">
+                                <input
+                                    type="checkbox"
+                                    name="make_primary"
+                                    value="1"
+                                >
+
+                                <span>
+                                    Usar la primera imagen del lote
+                                    como imagen principal
+                                </span>
+                            </label>
+
+                            <small>
+                                Si el producto todavía no tiene imágenes,
+                                la primera se establecerá como principal
+                                automáticamente.
+                            </small>
+                        </div>
+                    </div>
+
+                    <div class="nv-admin-image-upload-actions">
+                        <button
+                            type="submit"
+                            class="nv-button nv-button-primary"
+                        >
+                            Subir imágenes
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="nv-admin-gallery">
+                @if ($product->images->isEmpty())
+                    <div class="nv-admin-empty">
+                        Este producto todavía no tiene imágenes.
+                    </div>
+                @else
+                    @foreach ($product->images as $image)
+                        @php
+                            $imageUrl =
+                                \Illuminate\Support\Facades\Storage::disk(
+                                    $image->disk
+                                )->url(
+                                    $image->path
+                                );
+                        @endphp
+
+                        <article class="nv-admin-image-card">
+                            <div class="nv-admin-image-preview">
+                                <img
+                                    src="{{ $imageUrl }}"
+                                    alt="{{ $image->alt_es ?: $product->name_es }}"
+                                >
+
+                                @if ($image->is_primary)
+                                    <span class="nv-admin-primary-badge">
+                                        Principal
+                                    </span>
+                                @endif
+                            </div>
+
+                            <form
+                                method="POST"
+                                action="{{ route(
+                                    'admin.products.images.update',
+                                    [
+                                        $product,
+                                        $image,
+                                    ]
+                                ) }}"
+                                class="nv-admin-image-meta-form"
+                            >
+                                @csrf
+                                @method('PUT')
+
+                                <div class="nv-admin-field">
+                                    <label>
+                                        ALT ES
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        name="alt_es"
+                                        class="form-control"
+                                        maxlength="255"
+                                        value="{{ $image->alt_es }}"
+                                    >
+                                </div>
+
+                                <div class="nv-admin-field">
+                                    <label>
+                                        ALT EN
+                                    </label>
+
+                                    <input
+                                        type="text"
+                                        name="alt_en"
+                                        class="form-control"
+                                        maxlength="255"
+                                        value="{{ $image->alt_en }}"
+                                    >
+                                </div>
+
+                                <div class="nv-admin-field">
+                                    <label>
+                                        Variante
+                                    </label>
+
+                                    <select
+                                        name="variant_id"
+                                        class="form-select"
+                                    >
+                                        <option value="">
+                                            General
+                                        </option>
+
+                                        @foreach ($product->variants as $variant)
+                                            <option
+                                                value="{{ $variant->id }}"
+                                                @selected(
+                                                    $image->variant_id
+                                                    === $variant->id
+                                                )
+                                            >
+                                                {{ $variant->name_es }}
+                                            </option>
+                                        @endforeach
+                                    </select>
+                                </div>
+
+                                <div class="nv-admin-field">
+                                    <label>
+                                        Orden
+                                    </label>
+
+                                    <input
+                                        type="number"
+                                        name="sort_order"
+                                        class="form-control"
+                                        min="0"
+                                        max="9999"
+                                        value="{{ $image->sort_order }}"
+                                        required
+                                    >
+                                </div>
+
+                                <button
+                                    type="submit"
+                                    class="nv-admin-image-save"
+                                >
+                                    Guardar datos
+                                </button>
+                            </form>
+
+                            <div class="nv-admin-image-actions">
+                                @unless ($image->is_primary)
+                                    <form
+                                        method="POST"
+                                        action="{{ route(
+                                            'admin.products.images.primary',
+                                            [
+                                                $product,
+                                                $image,
+                                            ]
+                                        ) }}"
+                                    >
+                                        @csrf
+                                        @method('PATCH')
+
+                                        <button
+                                            type="submit"
+                                            class="nv-admin-image-primary-button"
+                                        >
+                                            Hacer principal
+                                        </button>
+                                    </form>
+                                @endunless
+
+                                <form
+                                    method="POST"
+                                    action="{{ route(
+                                        'admin.products.images.destroy',
+                                        [
+                                            $product,
+                                            $image,
+                                        ]
+                                    ) }}"
+                                    onsubmit="return confirm('¿Eliminar esta imagen definitivamente?');"
+                                >
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <button
+                                        type="submit"
+                                        class="nv-admin-image-delete"
+                                    >
+                                        Eliminar
+                                    </button>
+                                </form>
+                            </div>
+                        </article>
+                    @endforeach
+                @endif
+            </div>
+        </section>
+    </div>
+@endsection

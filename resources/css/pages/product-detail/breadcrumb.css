@@ -1,0 +1,76 @@
+/* =========================================================
+   PRODUCT DETAIL
+   Breadcrumb
+   ========================================================= */
+
+.nv-detail-breadcrumb {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    gap: 0.6rem;
+
+    margin-bottom: 1.35rem;
+
+    color:
+        rgba(30, 34, 38, 0.46);
+
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+
+/* =========================================================
+   LINKS
+   ========================================================= */
+
+.nv-detail-breadcrumb a {
+    position: relative;
+
+    color:
+        rgba(18, 33, 33, 0.68);
+
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+        color var(--nv-transition);
+}
+
+.nv-detail-breadcrumb a:hover,
+.nv-detail-breadcrumb a:focus-visible {
+    color: var(--nv-orange);
+}
+
+
+/* =========================================================
+   CURRENT PAGE
+   ========================================================= */
+
+.nv-detail-breadcrumb
+span[aria-current="page"] {
+    max-width: 28rem;
+
+    overflow: hidden;
+
+    color: var(--nv-detail-deep);
+
+    font-weight: 700;
+
+    text-overflow: ellipsis;
+
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   SEPARATOR
+   ========================================================= */
+
+.nv-detail-breadcrumb-separator {
+    color:
+        rgba(18, 33, 33, 0.25);
+
+    opacity: 1;
+}

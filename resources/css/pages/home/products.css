@@ -1,0 +1,54 @@
+/* =========================================================
+   NATVIEWER HOME
+   Products section
+   ========================================================= */
+
+.nv-product-showcase-section {
+    isolation: isolate;
+
+    overflow: hidden;
+
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(234, 87, 28, 0.055),
+            transparent 32rem
+        ),
+        radial-gradient(
+            circle at 0% 55%,
+            rgba(62, 84, 71, 0.06),
+            transparent 34rem
+        ),
+        linear-gradient(
+            180deg,
+            var(--nv-home-bg) 0%,
+            #ffffff 32%,
+            #ffffff 100%
+        );
+}
+
+.nv-product-showcase-section::before {
+    content: "";
+
+    position: absolute;
+
+    top: 14rem;
+    right: -16rem;
+
+    z-index: -1;
+
+    width: 36rem;
+    height: 36rem;
+
+    border:
+        1px solid
+        rgba(62, 84, 71, 0.05);
+
+    border-radius: 50%;
+
+    pointer-events: none;
+}
+
+.nv-product-grid {
+    position: relative;
+}

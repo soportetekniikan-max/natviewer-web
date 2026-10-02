@@ -1,0 +1,18 @@
+.nv-form-control {
+    width: 100%;
+    min-height: 48px;
+    padding: 0.8rem 0.95rem;
+    border: 1px solid rgba(30, 34, 38, 0.14);
+    border-radius: var(--nv-radius-md);
+    background: var(--nv-white);
+    color: var(--nv-dark);
+    outline: none;
+    transition:
+        border-color var(--nv-transition),
+        box-shadow var(--nv-transition);
+}
+
+.nv-form-control:focus {
+    border-color: rgba(234, 87, 28, 0.58);
+    box-shadow: 0 0 0 4px rgba(234, 87, 28, 0.12);
+}
