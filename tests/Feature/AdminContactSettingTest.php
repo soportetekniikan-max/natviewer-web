@@ -332,7 +332,7 @@ class AdminContactSettingTest extends TestCase
                     'Natviewer',
 
                 'default_locale' =>
-                    'es',
+                    'en',
 
                 'default_currency' =>
                     'COP',

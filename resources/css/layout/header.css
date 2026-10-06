@@ -1,50 +1,8 @@
 /* =========================================================
    NATVIEWER HEADER
-   Premium green glass
+   Unified premium glass navigation
    ========================================================= */
 
-.nv-site-header {
-    position: sticky;
-    top: 0;
-
-    z-index: 120;
-
-    padding:
-        0.75rem
-        0;
-
-    background:
-        radial-gradient(
-            circle at 83% 12%,
-            rgba(234, 87, 28, 0.2),
-            transparent 16rem
-        ),
-        radial-gradient(
-            circle at 20% 100%,
-            rgba(96, 127, 107, 0.22),
-            transparent 20rem
-        ),
-        linear-gradient(
-            145deg,
-            #40594a,
-            #253b31 55%,
-            #182b24
-        );
-
-    transition:
-        padding 0.28s ease;
-}
-
-
-/* =========================================================
-   PREMIUM PUBLIC PAGES
-   Home + Product Detail
-   ========================================================= */
-
-:is(
-    .nv-home-body,
-    .nv-detail-body
-)
 .nv-site-header {
     position: fixed;
 
@@ -52,7 +10,16 @@
     right: 0;
     left: 0;
 
+    z-index: 120;
+
+    padding:
+        0.75rem
+        0;
+
     background: transparent;
+
+    transition:
+        padding 0.28s ease;
 }
 
 
@@ -61,37 +28,14 @@
    ========================================================= */
 
 .nv-navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    min-height: 78px;
-
-    gap: 1.4rem;
-
-    transition:
-        min-height 0.28s ease,
-        padding 0.28s ease,
-        border-color 0.28s ease,
-        box-shadow 0.28s ease,
-        transform 0.28s ease;
-}
-
-
-/* =========================================================
-   PREMIUM GLASS
-   Same visual family as Benefit 01
-   ========================================================= */
-
-:is(
-    .nv-home-body,
-    .nv-detail-body
-)
-.nv-navbar {
     --nv-glass-x: 50%;
     --nv-glass-y: 0%;
 
     position: relative;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 
     min-height: 76px;
 
@@ -100,6 +44,8 @@
         0.7rem
         0.55rem
         1.15rem;
+
+    gap: 1.4rem;
 
     overflow: hidden;
 
@@ -148,6 +94,13 @@
         1px
         0
         rgba(255, 255, 255, 0.14);
+
+    transition:
+        min-height 0.28s ease,
+        padding 0.28s ease,
+        border-color 0.28s ease,
+        box-shadow 0.28s ease,
+        border-radius 0.28s ease;
 }
 
 
@@ -155,14 +108,11 @@
    GLASS REFLECTION
    ========================================================= */
 
-:is(
-    .nv-home-body,
-    .nv-detail-body
-)
 .nv-navbar::before {
     content: "";
 
     position: absolute;
+
     inset: 0;
 
     z-index: 0;
@@ -188,10 +138,6 @@
    TOP REFLECTION
    ========================================================= */
 
-:is(
-    .nv-home-body,
-    .nv-detail-body
-)
 .nv-navbar::after {
     content: "";
 
@@ -216,10 +162,11 @@
         );
 }
 
-:is(
-    .nv-home-body,
-    .nv-detail-body
-)
+
+/* =========================================================
+   CONTENT ABOVE GLASS
+   ========================================================= */
+
 .nv-navbar > * {
     position: relative;
 
@@ -228,23 +175,15 @@
 
 
 /* =========================================================
-   SCROLLED
+   SCROLLED STATE
    ========================================================= */
 
-:is(
-    .nv-home-body,
-    .nv-detail-body
-)
 .nv-site-header.is-scrolled {
     padding:
         0.45rem
         0;
 }
 
-:is(
-    .nv-home-body,
-    .nv-detail-body
-)
 .nv-site-header.is-scrolled
 .nv-navbar {
     min-height: 66px;
@@ -377,10 +316,6 @@
             blur(20px)
     )
 ) {
-    :is(
-        .nv-home-body,
-        .nv-detail-body
-    )
     .nv-navbar {
         background:
             radial-gradient(
@@ -409,11 +344,6 @@
             0;
     }
 
-    .nv-navbar,
-    :is(
-        .nv-home-body,
-        .nv-detail-body
-    )
     .nv-navbar {
         min-height: 68px;
 
@@ -426,13 +356,7 @@
         gap: 0.9rem;
 
         border-radius: 1.35rem;
-    }
 
-    :is(
-        .nv-home-body,
-        .nv-detail-body
-    )
-    .nv-navbar {
         background:
             radial-gradient(
                 circle at 85% 10%,
@@ -455,10 +379,6 @@
             saturate(120%);
     }
 
-    :is(
-        .nv-home-body,
-        .nv-detail-body
-    )
     .nv-site-header.is-scrolled
     .nv-navbar {
         min-height: 64px;
@@ -481,7 +401,7 @@
 
 
     /* =====================================================
-       TOGGLE
+       MOBILE TOGGLE
        ===================================================== */
 
     .nv-nav-toggle {
@@ -644,11 +564,6 @@
             0;
     }
 
-    .nv-navbar,
-    :is(
-        .nv-home-body,
-        .nv-detail-body
-    )
     .nv-navbar {
         min-height: 62px;
 

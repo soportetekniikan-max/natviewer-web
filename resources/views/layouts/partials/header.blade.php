@@ -38,14 +38,16 @@
                 </div>
 
                 <div class="nv-nav-actions">
-                    <a
-                        href="{{ $alternateLanguageUrl }}"
-                        class="nv-lang-switch"
-                        hreflang="{{ $alternateLocale }}"
-                        lang="{{ $alternateLocale }}"
-                    >
-                        {{ strtoupper($alternateLocale) }}
-                    </a>
+                    @if ($showLanguageAlternates)
+                        <a
+                            href="{{ $alternateLanguageUrl }}"
+                            class="nv-lang-switch"
+                            hreflang="{{ $alternateLocale }}"
+                            lang="{{ $alternateLocale }}"
+                        >
+                            {{ strtoupper($alternateLocale) }}
+                        </a>
+                    @endif
 
                     <a
                         href="{{ $navigationUrls['contact'] }}"
@@ -101,14 +103,16 @@
             </nav>
 
             <div class="nv-mobile-nav-actions">
-                <a
-                    href="{{ $alternateLanguageUrl }}"
-                    class="nv-lang-switch"
-                    hreflang="{{ $alternateLocale }}"
-                    lang="{{ $alternateLocale }}"
-                >
-                    {{ strtoupper($alternateLocale) }}
-                </a>
+                @if ($showLanguageAlternates)
+                    <a
+                        href="{{ $alternateLanguageUrl }}"
+                        class="nv-lang-switch"
+                        hreflang="{{ $alternateLocale }}"
+                        lang="{{ $alternateLocale }}"
+                    >
+                        {{ strtoupper($alternateLocale) }}
+                    </a>
+                @endif
 
                 <a
                     href="{{ $navigationUrls['contact'] }}"

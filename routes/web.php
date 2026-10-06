@@ -10,22 +10,45 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\ProductVariantController;
 use App\Http\Controllers\Admin\QuoteController;
+use App\Http\Controllers\DefaultLocaleController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ProductDetailController;
 use App\Http\Controllers\QuoteRequestController;
 use App\Http\Controllers\SeoController;
 use Illuminate\Support\Facades\Route;
 
-Route::redirect('/', '/es');
+/*
+|--------------------------------------------------------------------------
+| Entrada pública
+|--------------------------------------------------------------------------
+*/
+
+Route::get(
+    '/',
+    DefaultLocaleController::class
+)->name('public.entry');
+
+/*
+|--------------------------------------------------------------------------
+| SEO
+|--------------------------------------------------------------------------
+*/
 
 Route::get(
     '/sitemap.xml',
-    [SeoController::class, 'sitemap']
+    [
+        SeoController::class,
+        'sitemap',
+    ]
 )->name('sitemap');
 
 Route::get(
     '/robots.txt',
-    [SeoController::class, 'robots']
+    [
+        SeoController::class,
+        'robots',
+    ]
 )->name('robots');
 
 /*
@@ -59,6 +82,38 @@ Route::get(
         'en'
     )
     ->name('products.show.en');
+
+/*
+|--------------------------------------------------------------------------
+| Política de privacidad
+|--------------------------------------------------------------------------
+*/
+
+Route::get(
+    '/es/politica-de-privacidad',
+    [
+        PrivacyPolicyController::class,
+        '__invoke',
+    ]
+)
+    ->defaults(
+        'locale',
+        'es'
+    )
+    ->name('privacy-policy.es');
+
+Route::get(
+    '/en/privacy-policy',
+    [
+        PrivacyPolicyController::class,
+        '__invoke',
+    ]
+)
+    ->defaults(
+        'locale',
+        'en'
+    )
+    ->name('privacy-policy.en');
 
 /*
 |--------------------------------------------------------------------------

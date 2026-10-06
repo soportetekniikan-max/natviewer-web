@@ -24,7 +24,7 @@ class UpdateContactSettingRequest extends FormRequest
                     trim(
                         (string) $this->input(
                             'default_locale',
-                            'es'
+                            'en'
                         )
                     )
                 ),
