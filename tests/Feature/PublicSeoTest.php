@@ -181,32 +181,99 @@ class PublicSeoTest extends TestCase
             '/sitemap.xml'
         );
 
-        $response
-            ->assertOk()
-            ->assertSee(
-                $spanishUrl,
-                false
-            )
-            ->assertSee(
-                $englishUrl,
-                false
-            )
-            ->assertSee(
-                'hreflang="es"',
-                false
-            )
-            ->assertSee(
-                'hreflang="en"',
-                false
-            )
-            ->assertSee(
-                'hreflang="x-default"',
-                false
-            )
-            ->assertDontSee(
-                '/admin',
-                false
+        $response->assertOk();
+
+        $html = $response->getContent();
+
+        $this->assertLocalizedSitemapPair(
+            $html,
+            $spanishUrl,
+            $englishUrl
+        );
+
+        $response->assertDontSee(
+            '/admin',
+            false
+        );
+    }
+
+    public function test_sitemap_contains_localized_about_urls(): void
+    {
+        $spanishUrl = route(
+            'about.es'
+        );
+
+        $englishUrl = route(
+            'about.en'
+        );
+
+        $response = $this->get(
+            '/sitemap.xml'
+        );
+
+        $response->assertOk();
+
+        $this->assertLocalizedSitemapPair(
+            $response->getContent(),
+            $spanishUrl,
+            $englishUrl
+        );
+    }
+
+    public function test_sitemap_contains_localized_faq_urls(): void
+    {
+        $spanishUrl = route(
+            'faq.es'
+        );
+
+        $englishUrl = route(
+            'faq.en'
+        );
+
+        $response = $this->get(
+            '/sitemap.xml'
+        );
+
+        $response->assertOk();
+
+        $this->assertLocalizedSitemapPair(
+            $response->getContent(),
+            $spanishUrl,
+            $englishUrl
+        );
+    }
+
+    public function test_sitemap_uses_english_as_x_default(): void
+    {
+        $englishUrls = [
+            route(
+                'home',
+                [
+                    'locale' => 'en',
+                ]
+            ),
+            route(
+                'about.en'
+            ),
+            route(
+                'faq.en'
+            ),
+        ];
+
+        $response = $this->get(
+            '/sitemap.xml'
+        );
+
+        $response->assertOk();
+
+        $html = $response->getContent();
+
+        foreach ($englishUrls as $englishUrl) {
+            $this->assertXDefaultPointsTo(
+                $html,
+                $englishUrl
             );
+        }
     }
 
     public function test_sitemap_contains_localized_published_product_urls(): void
@@ -236,36 +303,20 @@ class PublicSeoTest extends TestCase
             '/sitemap.xml'
         );
 
-        $response
-            ->assertOk()
-            ->assertSee(
-                '<loc>'.$spanishUrl.'</loc>',
-                false
-            )
-            ->assertSee(
-                '<loc>'.$englishUrl.'</loc>',
-                false
-            )
-            ->assertSee(
-                'href="'.$spanishUrl.'"',
-                false
-            )
-            ->assertSee(
-                'href="'.$englishUrl.'"',
-                false
-            )
-            ->assertSee(
-                'hreflang="es"',
-                false
-            )
-            ->assertSee(
-                'hreflang="en"',
-                false
-            )
-            ->assertSee(
-                'hreflang="x-default"',
-                false
-            );
+        $response->assertOk();
+
+        $html = $response->getContent();
+
+        $this->assertLocalizedSitemapPair(
+            $html,
+            $spanishUrl,
+            $englishUrl
+        );
+
+        $this->assertXDefaultPointsTo(
+            $html,
+            $englishUrl
+        );
     }
 
     public function test_sitemap_excludes_draft_products(): void
@@ -448,6 +499,75 @@ class PublicSeoTest extends TestCase
             ->assertSeeText(
                 'Sitemap: '.route('sitemap')
             );
+    }
+
+    private function assertLocalizedSitemapPair(
+        string $html,
+        string $spanishUrl,
+        string $englishUrl
+    ): void {
+        $this->assertStringContainsString(
+            '<loc>'.$spanishUrl.'</loc>',
+            $html
+        );
+
+        $this->assertStringContainsString(
+            '<loc>'.$englishUrl.'</loc>',
+            $html
+        );
+
+        $this->assertStringContainsString(
+            'href="'.$spanishUrl.'"',
+            $html
+        );
+
+        $this->assertStringContainsString(
+            'href="'.$englishUrl.'"',
+            $html
+        );
+
+        $this->assertStringContainsString(
+            'hreflang="es"',
+            $html
+        );
+
+        $this->assertStringContainsString(
+            'hreflang="en"',
+            $html
+        );
+
+        $this->assertStringContainsString(
+            'hreflang="x-default"',
+            $html
+        );
+
+        $this->assertXDefaultPointsTo(
+            $html,
+            $englishUrl
+        );
+    }
+
+    private function assertXDefaultPointsTo(
+        string $html,
+        string $expectedUrl
+    ): void {
+        $pattern = sprintf(
+            '/<xhtml:link\b(?=[^>]*\bhreflang="x-default")(?=[^>]*\bhref="%s")[^>]*>/i',
+            preg_quote(
+                $expectedUrl,
+                '/'
+            )
+        );
+
+        $this->assertSame(
+            1,
+            preg_match(
+                $pattern,
+                $html
+            ),
+            'Se esperaba que hreflang="x-default" apuntara a: '
+            . $expectedUrl
+        );
     }
 
     private function createProduct(

@@ -23,10 +23,38 @@ class SeoController extends Controller
             ]
         );
 
-        $sitemapEntries = $this->localizedEntries(
-            $spanishHomeUrl,
-            $englishHomeUrl
+        $spanishAboutUrl = route(
+            'about.es'
         );
+
+        $englishAboutUrl = route(
+            'about.en'
+        );
+
+        $spanishFaqUrl = route(
+            'faq.es'
+        );
+
+        $englishFaqUrl = route(
+            'faq.en'
+        );
+
+        $sitemapEntries = [
+            ...$this->localizedEntries(
+                $spanishHomeUrl,
+                $englishHomeUrl
+            ),
+
+            ...$this->localizedEntries(
+                $spanishAboutUrl,
+                $englishAboutUrl
+            ),
+
+            ...$this->localizedEntries(
+                $spanishFaqUrl,
+                $englishFaqUrl
+            ),
+        ];
 
         $products = Product::query()
             ->select([
@@ -128,7 +156,7 @@ class SeoController extends Controller
         $alternates = [
             'es' => $spanishUrl,
             'en' => $englishUrl,
-            'x-default' => $spanishUrl,
+            'x-default' => $englishUrl,
         ];
 
         return [
