@@ -10,7 +10,9 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\ProductVariantController;
 use App\Http\Controllers\Admin\QuoteController;
+use App\Http\Controllers\AboutPageController;
 use App\Http\Controllers\DefaultLocaleController;
+use App\Http\Controllers\FaqPageController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PrivacyPolicyController;
 use App\Http\Controllers\ProductDetailController;
@@ -114,6 +116,70 @@ Route::get(
         'en'
     )
     ->name('privacy-policy.en');
+
+/*
+|--------------------------------------------------------------------------
+| Quiénes somos
+|--------------------------------------------------------------------------
+*/
+
+Route::get(
+    '/es/quienes-somos',
+    [
+        AboutPageController::class,
+        '__invoke',
+    ]
+)
+    ->defaults(
+        'locale',
+        'es'
+    )
+    ->name('about.es');
+
+Route::get(
+    '/en/about-us',
+    [
+        AboutPageController::class,
+        '__invoke',
+    ]
+)
+    ->defaults(
+        'locale',
+        'en'
+    )
+    ->name('about.en');
+
+/*
+|--------------------------------------------------------------------------
+| Preguntas frecuentes
+|--------------------------------------------------------------------------
+*/
+
+Route::get(
+    '/es/preguntas-frecuentes',
+    [
+        FaqPageController::class,
+        '__invoke',
+    ]
+)
+    ->defaults(
+        'locale',
+        'es'
+    )
+    ->name('faq.es');
+
+Route::get(
+    '/en/faq',
+    [
+        FaqPageController::class,
+        '__invoke',
+    ]
+)
+    ->defaults(
+        'locale',
+        'en'
+    )
+    ->name('faq.en');
 
 /*
 |--------------------------------------------------------------------------

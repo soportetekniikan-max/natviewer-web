@@ -20,19 +20,106 @@
 
             <div class="nv-nav-desktop">
                 <div class="nv-nav-links">
-                    <a href="{{ $navigationUrls['products'] }}">
+                    <a
+                        href="{{ $navigationUrls['products'] }}"
+                        class="nv-nav-link"
+                    >
                         {{ __('public.nav.products') }}
                     </a>
 
-                    <a href="{{ $navigationUrls['benefits'] }}">
-                        {{ __('public.nav.benefits') }}
-                    </a>
+                    <details class="nv-nav-cluster">
+                        <summary
+                            aria-label="{{
+                                __('navigation.open_about_menu')
+                            }}"
+                        >
+                            <span>
+                                {{ __('navigation.about_group') }}
+                            </span>
 
-                    <a href="{{ $navigationUrls['specs'] }}">
-                        {{ __('public.nav.specs') }}
-                    </a>
+                            <span
+                                class="nv-nav-cluster-chevron"
+                                aria-hidden="true"
+                            ></span>
+                        </summary>
 
-                    <a href="{{ $navigationUrls['contact'] }}">
+                        <div class="nv-nav-dropdown">
+                            <a
+                                href="{{
+                                    route(
+                                        'about.' . $currentLocale
+                                    )
+                                }}"
+                                class="nv-nav-dropdown-item"
+                            >
+                                <span
+                                    class="
+                                        nv-nav-dropdown-icon
+                                        nv-nav-dropdown-icon-about
+                                    "
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="nv-nav-dropdown-copy">
+                                    <strong>
+                                        {{
+                                            __(
+                                                'navigation.about_title'
+                                            )
+                                        }}
+                                    </strong>
+
+                                    <small>
+                                        {{
+                                            __(
+                                                'navigation.about_description'
+                                            )
+                                        }}
+                                    </small>
+                                </span>
+                            </a>
+
+                            <a
+                                href="{{
+                                    route(
+                                        'faq.' . $currentLocale
+                                    )
+                                }}"
+                                class="nv-nav-dropdown-item"
+                            >
+                                <span
+                                    class="
+                                        nv-nav-dropdown-icon
+                                        nv-nav-dropdown-icon-faq
+                                    "
+                                    aria-hidden="true"
+                                ></span>
+
+                                <span class="nv-nav-dropdown-copy">
+                                    <strong>
+                                        {{
+                                            __(
+                                                'navigation.faq_title'
+                                            )
+                                        }}
+                                    </strong>
+
+                                    <small>
+                                        {{
+                                            __(
+                                                'navigation.faq_description'
+                                            )
+                                        }}
+                                    </small>
+                                </span>
+                            </a>
+                        </div>
+                    </details>
+
+                    <a
+                        href="{{ $navigationUrls['contact'] }}"
+                        class="nv-nav-link"
+                    >
                         {{ __('public.nav.contact') }}
                     </a>
                 </div>
@@ -65,7 +152,7 @@
             <button
                 type="button"
                 class="nv-nav-toggle"
-                aria-label="Abrir menú"
+                aria-label="{{ __('navigation.open_menu') }}"
                 aria-controls="nvMobileNavigation"
                 aria-expanded="false"
                 data-public-nav-toggle
@@ -83,19 +170,68 @@
         >
             <nav
                 class="nv-mobile-nav-links"
-                aria-label="Navegación móvil"
+                aria-label="{{
+                    __('navigation.mobile_navigation')
+                }}"
             >
                 <a href="{{ $navigationUrls['products'] }}">
                     {{ __('public.nav.products') }}
                 </a>
 
-                <a href="{{ $navigationUrls['benefits'] }}">
-                    {{ __('public.nav.benefits') }}
-                </a>
+                <details class="nv-mobile-nav-cluster">
+                    <summary>
+                        <span>
+                            {{ __('navigation.about_group') }}
+                        </span>
 
-                <a href="{{ $navigationUrls['specs'] }}">
-                    {{ __('public.nav.specs') }}
-                </a>
+                        <span
+                            class="nv-mobile-nav-chevron"
+                            aria-hidden="true"
+                        ></span>
+                    </summary>
+
+                    <div class="nv-mobile-nav-submenu">
+                        <a
+                            href="{{
+                                route(
+                                    'about.' . $currentLocale
+                                )
+                            }}"
+                        >
+                            <strong>
+                                {{ __('navigation.about_title') }}
+                            </strong>
+
+                            <small>
+                                {{
+                                    __(
+                                        'navigation.about_description'
+                                    )
+                                }}
+                            </small>
+                        </a>
+
+                        <a
+                            href="{{
+                                route(
+                                    'faq.' . $currentLocale
+                                )
+                            }}"
+                        >
+                            <strong>
+                                {{ __('navigation.faq_title') }}
+                            </strong>
+
+                            <small>
+                                {{
+                                    __(
+                                        'navigation.faq_description'
+                                    )
+                                }}
+                            </small>
+                        </a>
+                    </div>
+                </details>
 
                 <a href="{{ $navigationUrls['contact'] }}">
                     {{ __('public.nav.contact') }}

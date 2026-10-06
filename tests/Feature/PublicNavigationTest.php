@@ -28,10 +28,7 @@ class PublicNavigationTest extends TestCase
 
         $this->assertPublicNavigation(
             $response->getContent(),
-            route(
-                'home',
-                ['locale' => 'es']
-            )
+            'es'
         );
 
         $this->assertUniqueContactAnchor(
@@ -56,10 +53,7 @@ class PublicNavigationTest extends TestCase
 
         $this->assertPublicNavigation(
             $response->getContent(),
-            route(
-                'home',
-                ['locale' => 'en']
-            )
+            'en'
         );
 
         $this->assertUniqueContactAnchor(
@@ -91,10 +85,7 @@ class PublicNavigationTest extends TestCase
 
         $this->assertPublicNavigation(
             $response->getContent(),
-            route(
-                'home',
-                ['locale' => 'es']
-            )
+            'es'
         );
     }
 
@@ -122,10 +113,7 @@ class PublicNavigationTest extends TestCase
 
         $this->assertPublicNavigation(
             $response->getContent(),
-            route(
-                'home',
-                ['locale' => 'en']
-            )
+            'en'
         );
     }
 
@@ -170,8 +158,23 @@ class PublicNavigationTest extends TestCase
 
     private function assertPublicNavigation(
         string $html,
-        string $homeUrl
+        string $locale
     ): void {
+        $homeUrl = route(
+            'home',
+            [
+                'locale' => $locale,
+            ]
+        );
+
+        $aboutUrl = route(
+            'about.' . $locale
+        );
+
+        $faqUrl = route(
+            'faq.' . $locale
+        );
+
         $this->assertStringContainsString(
             'href="'
             . $homeUrl
@@ -181,15 +184,15 @@ class PublicNavigationTest extends TestCase
 
         $this->assertStringContainsString(
             'href="'
-            . $homeUrl
-            . '#benefits"',
+            . $aboutUrl
+            . '"',
             $html
         );
 
         $this->assertStringContainsString(
             'href="'
-            . $homeUrl
-            . '#specs"',
+            . $faqUrl
+            . '"',
             $html
         );
 
@@ -197,6 +200,20 @@ class PublicNavigationTest extends TestCase
             'href="'
             . $homeUrl
             . '#contact"',
+            $html
+        );
+
+        $this->assertStringNotContainsString(
+            'href="'
+            . $homeUrl
+            . '#benefits"',
+            $html
+        );
+
+        $this->assertStringNotContainsString(
+            'href="'
+            . $homeUrl
+            . '#specs"',
             $html
         );
     }
