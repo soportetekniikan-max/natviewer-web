@@ -3,204 +3,280 @@
 return [
     'seo' => [
         'title' =>
-            'Preguntas frecuentes | Natviewer',
+            'Preguntas frecuentes | NatViewer',
 
         'description' =>
-            'Resuelve preguntas frecuentes sobre los binoculares Natviewer Falco 8×42 UD y 10×42 UD, cotizaciones, elección del modelo y proceso de contacto.',
+            'Encuentra respuestas a preguntas frecuentes sobre NatViewer, equipos ópticos, elección de productos, compras, cuidado, seguridad y contacto.',
     ],
 
     'hero' => [
         'kicker' =>
-            'Centro de ayuda',
+            'NatViewer',
 
         'title' =>
             'Preguntas frecuentes',
 
         'lead' =>
-            'Encuentra respuestas rápidas sobre nuestros binoculares, el proceso de cotización y cómo elegir la opción adecuada para tu forma de observar.',
+            'Encuentra respuestas a algunas de las preguntas más comunes sobre NatViewer, nuestros productos y el proceso de compra.',
     ],
 
     'intro' => [
         'title' =>
-            'Información clara antes de elegir.',
+            '24 preguntas comunes para ayudarte a elegir, comprar, usar y cuidar tus equipos.',
 
         'text' =>
-            'Reunimos las preguntas más comunes para ayudarte a conocer mejor los productos Natviewer y entender cómo funciona nuestro proceso comercial.',
+            'Consulta información sobre NatViewer, nuestros equipos ópticos, selección de productos, pedidos, cuidado, seguridad y los canales disponibles para resolver tus dudas.',
     ],
 
     'groups' => [
         [
             'kicker' =>
-                'Productos',
+                'NatViewer',
 
             'title' =>
-                'Sobre nuestros binoculares',
+                'Marca y catálogo',
 
             'items' => [
                 [
                     'question' =>
-                        '¿Qué modelos de binoculares ofrece Natviewer?',
+                        '¿Qué es NatViewer?',
 
                     'answer' =>
-                        'Actualmente presentamos dos productos independientes de la línea Natviewer Falco UD: el Falco 8×42 UD y el Falco 10×42 UD.',
+                        'NatViewer es una marca enfocada en equipos ópticos, productos para observación y accesorios relacionados. Nuestro catálogo puede incluir binoculares, telescopios terrestres, telescopios, trípodes, accesorios ópticos y otros productos pensados para actividades como observación de naturaleza, viajes, exploración y actividades al aire libre. A medida que NatViewer continúa creciendo, nuestro portafolio puede incorporar nuevas categorías y soluciones.',
                 ],
 
                 [
                     'question' =>
-                        '¿Cuál es la diferencia principal entre 8×42 y 10×42?',
+                        '¿Qué tipo de productos ofrece NatViewer?',
 
                     'answer' =>
-                        'La diferencia principal está en el aumento. El modelo 8×42 ofrece ocho aumentos y el 10×42 ofrece diez aumentos. Esto influye en la percepción de cercanía, el campo de visión y la estabilidad durante la observación.',
+                        'Nuestra selección está orientada principalmente a equipos ópticos y accesorios para observación. Puede incluir binoculares, telescopios terrestres, telescopios, trípodes, accesorios ópticos, accesorios para observación y otros equipos relacionados. Nuestro catálogo puede cambiar y ampliarse con el tiempo.',
                 ],
 
                 [
                     'question' =>
-                        '¿Cuál modelo es mejor para observación de aves?',
+                        '¿Cómo puedo elegir el producto adecuado para mí?',
 
                     'answer' =>
-                        'La elección depende de tu forma de observar. Un 8×42 suele favorecer una experiencia más amplia y manejable, mientras que un 10×42 proporciona mayor aumento para observar detalles a mayor distancia.',
-                ],
-
-                [
-                    'question' =>
-                        '¿Los Falco 8×42 UD y 10×42 UD son variantes del mismo producto?',
-
-                    'answer' =>
-                        'No. Natviewer Falco 8×42 UD y Natviewer Falco 10×42 UD se presentan como productos independientes, cada uno con sus propias características y ficha de producto.',
-                ],
-
-                [
-                    'question' =>
-                        '¿Dónde puedo consultar las especificaciones de cada modelo?',
-
-                    'answer' =>
-                        'Puedes consultar la ficha individual de cada producto desde nuestro catálogo. Allí encontrarás la información disponible para comparar los modelos antes de solicitar una cotización.',
+                        'El producto ideal depende principalmente del uso que quieras darle. Antes de elegir te recomendamos considerar qué quieres observar, a qué distancia normalmente observarás, si necesitas un equipo portátil, el tamaño y peso que prefieres, las condiciones de luz en las que lo utilizarás, si necesitas utilizarlo con trípode y tu nivel de experiencia. También puedes consultar las características y especificaciones disponibles en cada producto para comparar las diferentes opciones.',
                 ],
             ],
         ],
 
         [
             'kicker' =>
-                'Cotizaciones',
+                'Equipos ópticos',
 
             'title' =>
-                'Proceso comercial',
+                'Características y elección',
 
             'items' => [
                 [
                     'question' =>
-                        '¿Cómo solicito una cotización?',
+                        '¿Qué significan números como 8x42 o 10x42 en unos binoculares?',
 
                     'answer' =>
-                        'Selecciona el producto que te interesa y utiliza la opción de solicitar cotización. Completa tus datos de contacto y envía la solicitud para que podamos identificar el producto sobre el que deseas recibir información comercial.',
+                        'El primer número indica el nivel de aumento. Por ejemplo, un binocular 10x permite observar un objeto aproximadamente diez veces más cerca de lo que se percibiría a simple vista. El segundo número corresponde al diámetro de los lentes objetivos, expresado en milímetros. Por ejemplo, en un binocular 10x42, los lentes objetivos tienen un diámetro de 42 mm. Estas características influyen en factores como el alcance percibido, el campo de visión, la luminosidad y el tamaño del equipo.',
                 ],
 
                 [
                     'question' =>
-                        '¿La solicitud de cotización confirma una compra?',
+                        '¿Cuál es la diferencia entre unos binoculares y un telescopio terrestre?',
 
                     'answer' =>
-                        'No. Enviar una solicitud de cotización registra tu interés en un producto, pero no constituye una compra ni confirma automáticamente una transacción.',
+                        'Los binoculares están diseñados principalmente para observar utilizando ambos ojos y normalmente ofrecen mayor movilidad y rapidez de uso. Los telescopios terrestres proporcionan mayores niveles de aumento y son especialmente útiles cuando se necesita observar detalles a distancias más largas. Por su nivel de aumento, muchos telescopios terrestres funcionan mejor cuando se utilizan con un trípode. La elección depende del tipo de observación y del nivel de detalle que necesites.',
                 ],
 
                 [
                     'question' =>
-                        '¿Los precios se muestran públicamente en el sitio web?',
+                        '¿Necesito un trípode para utilizar mis equipos ópticos?',
 
                     'answer' =>
-                        'No. Actualmente Natviewer funciona mediante un modelo de cotización, por lo que los precios no se publican directamente en el catálogo público.',
+                        'No siempre. Muchos binoculares están diseñados para utilizarse directamente con las manos. Sin embargo, un trípode puede mejorar la estabilidad y comodidad durante observaciones prolongadas o cuando se utilizan equipos con mayor aumento. En el caso de muchos telescopios terrestres, el uso de un trípode es altamente recomendable para obtener una imagen más estable.',
                 ],
 
                 [
                     'question' =>
-                        '¿Puedo consultar disponibilidad desde la página?',
+                        '¿Los productos NatViewer son solamente para observadores experimentados?',
 
                     'answer' =>
-                        'La disponibilidad no se publica como inventario visible en el sitio. Puedes solicitar una cotización para recibir información comercial relacionada con el producto de tu interés.',
+                        'No. Los productos disponibles pueden ser utilizados por personas con diferentes niveles de experiencia. Algunas opciones pueden resultar especialmente adecuadas para quienes están comenzando, mientras que otras pueden ofrecer características más avanzadas para usuarios con necesidades específicas. Recomendamos revisar las especificaciones y el uso recomendado de cada producto antes de realizar una compra.',
                 ],
 
                 [
                     'question' =>
-                        '¿Puedo solicitar información sin tener claro qué modelo elegir?',
+                        '¿Puedo utilizar estos productos para observar naturaleza y vida silvestre?',
 
                     'answer' =>
-                        'Sí. Puedes revisar las características de ambos modelos y utilizar nuestros canales de contacto para resolver dudas antes de decidir cuál se ajusta mejor a tu forma de observar.',
+                        'Sí. Muchos equipos ópticos son adecuados para actividades como observación de aves, observación de fauna, exploración de paisajes, viajes, senderismo, observación de naturaleza y actividades al aire libre. El modelo más adecuado dependerá de las distancias de observación, las condiciones ambientales y el nivel de portabilidad que necesites.',
+                ],
+
+                [
+                    'question' =>
+                        '¿Cómo puedo comparar diferentes productos?',
+
+                    'answer' =>
+                        'Cada producto puede incluir información sobre sus principales características y especificaciones técnicas. Al comparar equipos ópticos recomendamos revisar factores como aumento, diámetro del objetivo, campo de visión, distancia mínima de enfoque, peso, dimensiones, tipo de óptica, resistencia al agua o condiciones ambientales cuando aplique, compatibilidad con accesorios y uso recomendado. No siempre el producto con mayor aumento es necesariamente la mejor opción. La elección debe depender principalmente del uso que quieras darle.',
                 ],
             ],
         ],
 
         [
             'kicker' =>
-                'Elección del equipo',
+                'Catálogo',
 
             'title' =>
-                'Antes de decidir',
+                'Disponibilidad y crecimiento',
 
             'items' => [
                 [
                     'question' =>
-                        '¿Qué significa 8×42?',
+                        '¿Todos los productos están disponibles permanentemente?',
 
                     'answer' =>
-                        'El primer número indica el aumento del binocular y el segundo corresponde al diámetro, en milímetros, de los objetivos. En un 8×42, la imagen se observa con ocho aumentos y los objetivos tienen 42 mm de diámetro.',
+                        'La disponibilidad puede cambiar dependiendo del producto, inventario y demanda. Algunos artículos pueden estar disponibles regularmente mientras que otros pueden tener disponibilidad limitada o temporal. La información de disponibilidad presentada en nuestro sitio web puede actualizarse a medida que cambia el inventario.',
                 ],
 
                 [
                     'question' =>
-                        '¿Qué significa 10×42?',
+                        '¿NatViewer incorporará nuevos productos?',
 
                     'answer' =>
-                        'En un binocular 10×42, el primer número indica diez aumentos y el segundo señala que los objetivos tienen 42 mm de diámetro.',
-                ],
-
-                [
-                    'question' =>
-                        '¿Más aumento significa siempre una mejor opción?',
-
-                    'answer' =>
-                        'No necesariamente. Un aumento mayor acerca más visualmente el sujeto, pero la experiencia también depende de factores como el campo de visión, la estabilidad y el tipo de observación que realizas.',
-                ],
-
-                [
-                    'question' =>
-                        '¿Puedo comparar los dos modelos antes de cotizar?',
-
-                    'answer' =>
-                        'Sí. Cada modelo cuenta con su propia ficha para que puedas revisar sus características y comparar cuál se adapta mejor a tus necesidades antes de enviar una solicitud.',
+                        'Sí. NatViewer está pensado como un catálogo en crecimiento. Podemos incorporar nuevas categorías, modelos, accesorios y tecnologías relacionadas con observación, óptica y actividades al aire libre a medida que evolucionen las necesidades de nuestros clientes.',
                 ],
             ],
         ],
 
         [
             'kicker' =>
-                'Sitio web',
+                'Compras',
 
             'title' =>
-                'Navegación y contacto',
+                'Pedidos, pagos y servicio',
 
             'items' => [
                 [
                     'question' =>
-                        '¿El sitio de Natviewer está disponible en español e inglés?',
+                        '¿Cómo funcionan los envíos?',
 
                     'answer' =>
-                        'Sí. El sitio público cuenta con contenido localizado en español e inglés y puedes cambiar de idioma desde la navegación.',
+                        'Las opciones de envío, costos y tiempos estimados de entrega pueden variar según el destino, el producto y las características del pedido. La información disponible para cada compra debe revisarse antes de completar el pedido. Los tiempos de entrega pueden verse afectados por factores externos relacionados con transportistas, ubicación, condiciones climáticas u otras circunstancias fuera del control de NatViewer.',
                 ],
 
                 [
                     'question' =>
-                        '¿Dónde puedo conocer más sobre Natviewer?',
+                        '¿Cómo puedo saber el estado de mi pedido?',
 
                     'answer' =>
-                        'Puedes visitar nuestra página Quiénes somos para conocer nuestro enfoque, propósito y la manera en que entendemos la experiencia de observación.',
+                        'Cuando haya información de seguimiento disponible, esta puede ser proporcionada mediante los datos de contacto asociados con el pedido o a través de los medios habilitados por NatViewer. Si tienes preguntas sobre un pedido, puedes comunicarte con nuestro equipo proporcionando la información necesaria para identificarlo.',
                 ],
 
                 [
                     'question' =>
-                        '¿Qué hago si mi pregunta no aparece aquí?',
+                        '¿Qué métodos de pago acepta NatViewer?',
 
                     'answer' =>
-                        'Puedes utilizar los canales de contacto disponibles en el sitio para enviarnos tu consulta y solicitar información relacionada con nuestros productos.',
+                        'Los métodos de pago disponibles pueden depender de la plataforma, ubicación y modalidad de compra. Las opciones disponibles serán indicadas durante el proceso de compra o a través de los medios de pago habilitados por NatViewer.',
+                ],
+
+                [
+                    'question' =>
+                        '¿Puedo cambiar o cancelar un pedido?',
+
+                    'answer' =>
+                        'Si necesitas solicitar un cambio o cancelación, recomendamos contactar a NatViewer lo antes posible. La posibilidad de realizar modificaciones dependerá del estado del pedido y de si este ya ha sido procesado, preparado o enviado. No podemos garantizar que un pedido pueda modificarse una vez haya avanzado en el proceso de cumplimiento.',
+                ],
+
+                [
+                    'question' =>
+                        '¿Puedo devolver un producto?',
+
+                    'answer' =>
+                        'Las devoluciones están sujetas a las condiciones y requisitos establecidos en la política de devoluciones vigente de NatViewer. Antes de solicitar una devolución recomendamos revisar dicha política para conocer los requisitos, plazos y condiciones aplicables.',
+                ],
+
+                [
+                    'question' =>
+                        '¿Los productos tienen garantía?',
+
+                    'answer' =>
+                        'La cobertura de garantía puede variar dependiendo del producto, fabricante, categoría y condiciones aplicables. Cuando exista una garantía específica, la información correspondiente puede encontrarse en la documentación del producto o en las condiciones proporcionadas por NatViewer o el fabricante. Conserva siempre la información relacionada con tu compra.',
+                ],
+
+                [
+                    'question' =>
+                        '¿Qué hago si recibo un producto con algún problema?',
+
+                    'answer' =>
+                        'Si detectas algún inconveniente al recibir tu pedido, recomendamos comunicarte con NatViewer lo antes posible. Puede ser útil proporcionar el número o información del pedido, una descripción del problema, fotografías o videos cuando sean necesarios e información adicional que permita identificar el producto. Esto nos ayudará a revisar el caso de manera más eficiente.',
+                ],
+            ],
+        ],
+
+        [
+            'kicker' =>
+                'Cuidado',
+
+            'title' =>
+                'Uso, limpieza y seguridad',
+
+            'items' => [
+                [
+                    'question' =>
+                        '¿Cómo debo cuidar mis equipos ópticos?',
+
+                    'answer' =>
+                        'Para prolongar la vida útil de tus equipos recomendamos guardarlos en un lugar limpio y seco, evitar golpes y caídas, utilizar protección cuando no estén en uso, mantener los lentes libres de polvo y suciedad, utilizar herramientas y productos adecuados para limpieza óptica, evitar tocar directamente las superficies ópticas con los dedos y seguir las recomendaciones específicas del fabricante. No recomendamos utilizar productos químicos o materiales abrasivos que no estén diseñados para superficies ópticas.',
+                ],
+
+                [
+                    'question' =>
+                        '¿Cómo debo limpiar los lentes?',
+
+                    'answer' =>
+                        'Retira primero cualquier partícula de polvo utilizando herramientas apropiadas para óptica. Después puedes utilizar materiales específicamente diseñados para limpieza de lentes, siguiendo las instrucciones del fabricante. Evita limpiar una superficie óptica con materiales ásperos, ropa común o productos químicos no diseñados para este propósito, ya que podrían afectar sus recubrimientos.',
+                ],
+
+                [
+                    'question' =>
+                        '¿Puedo utilizar equipos ópticos bajo la lluvia?',
+
+                    'answer' =>
+                        'Depende del producto. Algunos equipos pueden ofrecer distintos niveles de resistencia al agua, sellado o protección contra condiciones ambientales. Esto no significa necesariamente que puedan sumergirse en agua. Consulta siempre las especificaciones particulares del producto antes de utilizarlo en condiciones de lluvia, humedad o ambientes exigentes.',
+                ],
+
+                [
+                    'question' =>
+                        '¿Puedo observar directamente el sol con los productos NatViewer?',
+
+                    'answer' =>
+                        'No. Nunca observes directamente el sol a través de binoculares, telescopios terrestres, telescopios u otros dispositivos ópticos sin un sistema de filtración solar específicamente diseñado y certificado para ese propósito. Observar el sol directamente a través de un equipo óptico sin la protección adecuada puede causar daños oculares graves y permanentes.',
+                ],
+            ],
+        ],
+
+        [
+            'kicker' =>
+                'Ayuda',
+
+            'title' =>
+                'Información y contacto',
+
+            'items' => [
+                [
+                    'question' =>
+                        '¿NatViewer puede ayudarme si tengo preguntas sobre un producto?',
+
+                    'answer' =>
+                        'Sí. Si necesitas información adicional sobre un producto, sus características o aplicaciones, puedes comunicarte con NatViewer a través de los canales de contacto disponibles en nuestro sitio web. Mientras más información proporciones sobre el uso que quieres darle al equipo, más fácil será orientarte entre las opciones disponibles.',
+                ],
+
+                [
+                    'question' =>
+                        '¿Cómo puedo contactar a NatViewer?',
+
+                    'answer' =>
+                        'Puedes utilizar los canales de contacto disponibles en nuestro sitio web para realizar preguntas relacionadas con productos, pedidos, servicio al cliente, privacidad u otros asuntos. Consulta nuestra sección de contacto para conocer los medios actualmente disponibles.',
                 ],
             ],
         ],
@@ -211,10 +287,10 @@ return [
             '¿Aún tienes preguntas?',
 
         'title' =>
-            'Conoce los modelos Natviewer y encuentra el que mejor se adapte a tu forma de observar.',
+            'Estamos aquí para ayudarte a encontrar la información que necesitas.',
 
         'text' =>
-            'Explora las fichas de producto, compara sus características y solicita una cotización cuando estés listo.',
+            'Explora nuestros productos o ponte en contacto con NatViewer si necesitas información adicional antes de realizar tu compra.',
 
         'button' =>
             'Explorar productos',

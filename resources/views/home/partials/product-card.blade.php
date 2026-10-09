@@ -1,35 +1,60 @@
-<div class="col-12 col-xl-6">
+<div class="nv-product-story-item">
     <article
-        class="nv-product-card"
+        @class([
+            'nv-product-card',
+            'nv-product-story',
+            'is-reverse' =>
+                (($position ?? 0) % 2) === 1,
+            'is-featured' =>
+                $item['is_featured'],
+        ])
         data-product-id="{{ $item['product_id'] }}"
         data-variant-id="{{ $item['variant_id'] }}"
         data-sku="{{ $item['sku'] }}"
     >
-        <div class="nv-product-media">
-            <div class="nv-product-badges">
-                @if ($item['is_featured'])
+        {{-- =================================================
+             PRODUCT MEDIA
+             ================================================= --}}
+        <div class="nv-product-story-media">
+            <div class="nv-product-story-media-top">
+                <span class="nv-product-story-number">
+                    {{
+                        str_pad(
+                            (string) (
+                                ($position ?? 0) + 1
+                            ),
+                            2,
+                            '0',
+                            STR_PAD_LEFT
+                        )
+                    }}
+                </span>
+
+                <div class="nv-product-badges">
+                    @if ($item['is_featured'])
+                        <span
+                            class="
+                                nv-product-badge
+                                nv-product-badge-featured
+                            "
+                        >
+                            {{
+                                $locale === 'en'
+                                    ? 'Featured'
+                                    : 'Destacado'
+                            }}
+                        </span>
+                    @endif
+
                     <span
                         class="
                             nv-product-badge
-                            nv-product-badge-featured
+                            nv-product-badge-brand
                         "
                     >
-                        {{
-                            $locale === 'en'
-                                ? 'Featured'
-                                : 'Destacado'
-                        }}
+                        {{ $item['brand_name'] }}
                     </span>
-                @endif
-
-                <span
-                    class="
-                        nv-product-badge
-                        nv-product-badge-brand
-                    "
-                >
-                    {{ $item['brand_name'] }}
-                </span>
+                </div>
             </div>
 
             <a
@@ -59,30 +84,30 @@
                         </span>
 
                         <strong>
-                            {{
-                                $item[
-                                    'variant_label'
-                                ]
-                            }}
+                            {{ $item['variant_label'] }}
                         </strong>
                     </div>
                 @endif
             </a>
 
-            <div class="nv-product-media-footer">
-                <span class="nv-product-media-category">
+            <div class="nv-product-story-media-footer">
+                <span>
                     {{ $item['category_name'] }}
                 </span>
 
-                <span class="nv-product-sku">
+                <span>
                     {{ $item['sku'] }}
                 </span>
             </div>
         </div>
 
-        <div class="nv-product-body">
-            <div class="nv-product-heading">
-                <div>
+
+        {{-- =================================================
+             PRODUCT CONTENT
+             ================================================= --}}
+        <div class="nv-product-story-content">
+            <div class="nv-product-story-heading">
+                <div class="nv-product-story-heading-main">
                     <span class="nv-product-brand">
                         {{ $item['brand_name'] }}
                     </span>
@@ -92,8 +117,8 @@
                     </h3>
                 </div>
 
-                <span class="nv-product-sku">
-                    {{ $item['sku'] }}
+                <span class="nv-product-story-variant">
+                    {{ $item['variant_label'] }}
                 </span>
             </div>
 
@@ -101,6 +126,11 @@
                 {{ $item['description'] }}
             </p>
 
+
+            {{-- =================================================
+                 VARIANTS
+                 Kept for future multi-variant products
+                 ================================================= --}}
             @if (
                 count(
                     $item['variant_options']
@@ -121,15 +151,12 @@
                             as $variantOption
                         )
                             <span
-                                class="
-                                    nv-product-variant-chip
-                                    {{
+                                @class([
+                                    'nv-product-variant-chip',
+                                    'is-active' =>
                                         $variantOption['id']
-                                        === $item['variant_id']
-                                            ? 'is-active'
-                                            : ''
-                                    }}
-                                "
+                                        === $item['variant_id'],
+                                ])
                             >
                                 {{
                                     $variantOption[
@@ -142,6 +169,40 @@
                 </div>
             @endif
 
+
+            {{-- =================================================
+                 COMMERCIAL SUPPORT
+                 ================================================= --}}
+            <div class="nv-product-story-support">
+                <span>
+                    <i aria-hidden="true">
+                        ✓
+                    </i>
+
+                    {{
+                        $locale === 'en'
+                            ? 'Personalized advice'
+                            : 'Asesoría personalizada'
+                    }}
+                </span>
+
+                <span>
+                    <i aria-hidden="true">
+                        ✓
+                    </i>
+
+                    {{
+                        $locale === 'en'
+                            ? 'Direct quotation'
+                            : 'Cotización directa'
+                    }}
+                </span>
+            </div>
+
+
+            {{-- =================================================
+                 ACTIONS
+                 ================================================= --}}
             <div class="nv-product-actions">
                 <a
                     href="{{ $item['detail_url'] }}"
@@ -180,29 +241,22 @@
                 </button>
             </div>
 
-            <div class="nv-product-confidence">
-                <span>
-                    <i aria-hidden="true">
-                        ✓
-                    </i>
 
-                    {{
-                        $locale === 'en'
-                            ? 'Personalized advice'
-                            : 'Asesoría personalizada'
-                    }}
+            {{-- =================================================
+                 EDITORIAL FOOTER
+                 ================================================= --}}
+            <div class="nv-product-story-footer">
+                <span>
+                    Natviewer
                 </span>
 
-                <span>
-                    <i aria-hidden="true">
-                        ✓
-                    </i>
+                <span
+                    class="nv-product-story-footer-line"
+                    aria-hidden="true"
+                ></span>
 
-                    {{
-                        $locale === 'en'
-                            ? 'Direct quotation'
-                            : 'Cotización directa'
-                    }}
+                <span>
+                    {{ $item['sku'] }}
                 </span>
             </div>
         </div>

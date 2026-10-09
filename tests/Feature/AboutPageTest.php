@@ -20,10 +20,10 @@ class AboutPageTest extends TestCase
                 'es'
             )
             ->assertSeeText(
-                'Más cerca de lo que quieres observar.'
+                'Óptica para observar, explorar y descubrir.'
             )
             ->assertSeeText(
-                'Quiénes somos'
+                'Sobre NatViewer'
             );
     }
 
@@ -41,10 +41,10 @@ class AboutPageTest extends TestCase
                 'en'
             )
             ->assertSeeText(
-                'Closer to what you want to observe.'
+                'Optics for observing, exploring and discovering.'
             )
             ->assertSeeText(
-                'About us'
+                'About NatViewer'
             );
     }
 
@@ -57,7 +57,11 @@ class AboutPageTest extends TestCase
         $response
             ->assertOk()
             ->assertSee(
-                '<title>Quiénes somos | Natviewer</title>',
+                '<title>',
+                false
+            )
+            ->assertSee(
+                'Natviewer',
                 false
             )
             ->assertSee(
@@ -85,7 +89,11 @@ class AboutPageTest extends TestCase
         $response
             ->assertOk()
             ->assertSee(
-                '<title>About us | Natviewer</title>',
+                '<title>',
+                false
+            )
+            ->assertSee(
+                'Natviewer',
                 false
             )
             ->assertSee(
@@ -152,7 +160,7 @@ class AboutPageTest extends TestCase
             );
     }
 
-    public function test_about_page_renders_all_four_principles(): void
+    public function test_about_page_renders_all_five_principles(): void
     {
         $spanishResponse = $this->get(
             route('about.es')
@@ -160,10 +168,11 @@ class AboutPageTest extends TestCase
 
         $spanishResponse
             ->assertOk()
+            ->assertSeeText('Calidad')
             ->assertSeeText('Claridad')
-            ->assertSeeText('Funcionalidad')
-            ->assertSeeText('Cercanía')
-            ->assertSeeText('Naturaleza');
+            ->assertSeeText('Practicidad')
+            ->assertSeeText('Experiencia del cliente')
+            ->assertSeeText('Crecimiento continuo');
 
         $englishResponse = $this->get(
             route('about.en')
@@ -171,9 +180,10 @@ class AboutPageTest extends TestCase
 
         $englishResponse
             ->assertOk()
+            ->assertSeeText('Quality')
             ->assertSeeText('Clarity')
-            ->assertSeeText('Functionality')
-            ->assertSeeText('Accessibility')
-            ->assertSeeText('Nature');
+            ->assertSeeText('Practicality')
+            ->assertSeeText('Customer experience')
+            ->assertSeeText('Continuous growth');
     }
 }

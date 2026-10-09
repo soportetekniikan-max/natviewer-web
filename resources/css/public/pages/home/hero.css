@@ -1,35 +1,43 @@
 /* =========================================================
    NATVIEWER HOME
-   Hero
-   Premium balanced composition
+   Premium product-focused hero
+   ========================================================= */
+
+
+/* =========================================================
+   HERO ROOT
    ========================================================= */
 
 .nv-home-hero {
     --nv-hero-shift: 0px;
 
     position: relative;
+
     isolation: isolate;
 
     display: flex;
+
     align-items: center;
 
-    min-height: 740px;
+    min-height: 640px;
 
-    height:
+    padding:
         clamp(
-            740px,
-            82svh,
-            810px
+            7.5rem,
+            9vw,
+            8.75rem
+        )
+        0
+        clamp(
+            2.75rem,
+            4vw,
+            3.75rem
         );
-
-    padding-top: 6rem;
-    padding-right: 0;
-    padding-bottom: 1.5rem;
-    padding-left: 0;
 
     overflow: hidden;
 
-    background: #e8eee7;
+    background:
+        var(--nv-light);
 }
 
 
@@ -40,34 +48,22 @@
 .nv-home-hero > .container {
     position: relative;
 
-    z-index: 2;
+    z-index: 5;
 
-    padding-right:
-        clamp(
-            1.5rem,
-            3vw,
-            3.25rem
-        );
-
-    padding-left:
-        clamp(
-            1.5rem,
-            3vw,
-            3.25rem
-        );
+    width: 100%;
 }
 
 
 /* =========================================================
-   BACKGROUND
+   BACKGROUND IMAGE
    ========================================================= */
 
 .nv-hero-background {
     position: absolute;
 
-    inset: -22px 0;
+    inset: -1.25rem;
 
-    z-index: -5;
+    z-index: -6;
 
     background-image:
         url("/images/hero/natviewer-hero-light.png");
@@ -76,11 +72,9 @@
 
     background-position:
         center
-        48%;
+        50%;
 
     background-size: cover;
-
-    will-change: transform;
 
     transform:
         translate3d(
@@ -92,6 +86,8 @@
             0
         )
         scale(1.025);
+
+    will-change: transform;
 }
 
 
@@ -103,27 +99,27 @@
     content: "";
 
     position: absolute;
+
     inset: 0;
 
-    z-index: -4;
+    z-index: -5;
 
     pointer-events: none;
 
     background:
         linear-gradient(
             90deg,
-            rgba(248, 248, 244, 0.68) 0%,
-            rgba(248, 248, 244, 0.52) 28%,
-            rgba(248, 248, 244, 0.25) 49%,
-            rgba(248, 248, 244, 0.07) 70%,
-            transparent 100%
+            rgba(237, 236, 237, 0.97) 0%,
+            rgba(237, 236, 237, 0.92) 32%,
+            rgba(237, 236, 237, 0.7) 52%,
+            rgba(237, 236, 237, 0.26) 72%,
+            rgba(237, 236, 237, 0.06) 100%
         );
 }
 
 
 /* =========================================================
    BOTTOM TRANSITION
-   Más corta para evitar exceso de espacio inferior
    ========================================================= */
 
 .nv-home-hero::after {
@@ -135,94 +131,53 @@
     bottom: 0;
     left: 0;
 
-    z-index: -3;
+    z-index: -4;
 
-    height: 58px;
+    height: 5rem;
 
     pointer-events: none;
 
     background:
         linear-gradient(
             180deg,
-            transparent,
-            rgba(245, 245, 241, 0.56)
+            rgba(237, 236, 237, 0),
+            var(--nv-light)
         );
 }
 
 
 /* =========================================================
-   OPTICAL DECORATION
-   ========================================================= */
-
-.nv-hero-decoration {
-    position: absolute;
-
-    top: 24%;
-    right: -7rem;
-
-    z-index: -2;
-
-    width: 29rem;
-    height: 29rem;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.27);
-
-    border-radius: 50%;
-
-    pointer-events: none;
-}
-
-.nv-hero-decoration::before,
-.nv-hero-decoration::after {
-    content: "";
-
-    position: absolute;
-
-    border:
-        1px solid
-        rgba(255, 255, 255, 0.13);
-
-    border-radius: inherit;
-}
-
-.nv-hero-decoration::before {
-    inset: 4rem;
-}
-
-.nv-hero-decoration::after {
-    inset: 8rem;
-}
-
-
-/* =========================================================
-   LAYOUT
+   HERO LAYOUT
    ========================================================= */
 
 .nv-hero-layout {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 720px)
-        minmax(0, 1fr);
+        minmax(0, 1.12fr)
+        minmax(21rem, 0.72fr);
 
     align-items: center;
 
-    min-height: 500px;
+    gap:
+        clamp(
+            2.5rem,
+            6vw,
+            6rem
+        );
+
+    min-height: 470px;
 }
 
 
 /* =========================================================
-   COPY
+   HERO COPY
    ========================================================= */
 
 .nv-hero-copy {
     position: relative;
 
     max-width: 720px;
-
-    padding: 0;
 }
 
 
@@ -232,29 +187,43 @@
 
 .nv-hero-kicker {
     display: inline-flex;
+
     align-items: center;
 
     gap: 0.75rem;
 
-    margin-bottom: 1rem;
+    margin-bottom: 1.15rem;
 
-    color: var(--nv-orange);
+    color:
+        var(--nv-orange);
 
-    font-size: 0.78rem;
-    font-weight: 800;
+    font-size:
+        0.72rem;
 
-    line-height: 1.2;
+    font-weight:
+        800;
 
-    letter-spacing: 0.14em;
+    line-height:
+        1.1;
 
-    text-transform: uppercase;
+    letter-spacing:
+        0.15em;
+
+    text-transform:
+        uppercase;
 }
 
 .nv-hero-kicker > span {
-    width: 38px;
+    width: 36px;
     height: 2px;
 
-    background: currentColor;
+    flex:
+        0
+        0
+        36px;
+
+    background:
+        var(--nv-orange);
 }
 
 
@@ -268,34 +237,34 @@
     margin:
         0
         0
-        1.25rem;
+        1.2rem;
 
-    color: var(--nv-home-deep);
+    color:
+        var(--nv-deep);
 
-    font-size: clamp(
-        3.35rem,
-        5.35vw,
-        5.7rem
-    );
+    font-size:
+        clamp(
+            3.35rem,
+            5.7vw,
+            5.85rem
+        );
 
-    font-weight: 680;
+    font-weight:
+        700;
 
-    line-height: 0.94;
+    line-height:
+        0.92;
 
-    letter-spacing: -0.06em;
+    letter-spacing:
+        -0.06em;
 
-    text-wrap: balance;
-
-    text-shadow:
-        0
-        1px
-        0
-        rgba(255, 255, 255, 0.22);
+    text-wrap:
+        balance;
 }
 
 
 /* =========================================================
-   DESCRIPTION
+   LEAD
    ========================================================= */
 
 .nv-hero-lead {
@@ -306,15 +275,15 @@
     color:
         rgba(30, 34, 38, 0.72);
 
-    font-size: clamp(
-        1.05rem,
-        1.25vw,
-        1.2rem
-    );
+    font-size:
+        clamp(
+            1rem,
+            1.25vw,
+            1.14rem
+        );
 
-    font-weight: 450;
-
-    line-height: 1.7;
+    line-height:
+        1.7;
 }
 
 
@@ -324,140 +293,528 @@
 
 .nv-hero-actions {
     display: flex;
+
     flex-wrap: wrap;
 
     gap: 0.8rem;
 
-    margin-top: 1.55rem;
+    margin-top: 1.65rem;
 }
 
 .nv-hero-actions
 .nv-button {
-    min-height: 52px;
+    min-height: 50px;
 
     padding:
-        0.9rem
-        1.45rem;
+        0.85rem
+        1.35rem;
 
-    font-size: 0.96rem;
+    border-radius:
+        999px;
+}
+
+.nv-hero-actions
+.nv-button-primary {
+    box-shadow:
+        0
+        1rem
+        2.2rem
+        rgba(234, 87, 28, 0.2);
 }
 
 
 /* =========================================================
-   SPECS
+   PRODUCT CARD
    ========================================================= */
 
-.nv-hero-trust {
+.nv-hero-product {
+    position: relative;
+
+    display: grid;
+
+    grid-template-rows:
+        auto
+        minmax(17rem, 1fr)
+        auto;
+
+    min-height: 430px;
+
+    overflow: hidden;
+
+    padding:
+        1.1rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius:
+        clamp(
+            1.45rem,
+            2.4vw,
+            1.9rem
+        );
+
+    background:
+        radial-gradient(
+            circle at 84% 8%,
+            rgba(234, 87, 28, 0.12),
+            transparent 10rem
+        ),
+        linear-gradient(
+            145deg,
+            rgba(62, 84, 71, 0.98),
+            rgba(18, 33, 33, 0.99)
+        );
+
+    box-shadow:
+        0
+        2rem
+        4.5rem
+        rgba(18, 33, 33, 0.2);
+
+    color:
+        var(--nv-white);
+
+    isolation: isolate;
+}
+
+
+/* =========================================================
+   PRODUCT TOP
+   ========================================================= */
+
+.nv-hero-product-top {
+    position: relative;
+
+    z-index: 3;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 1rem;
+
+    padding:
+        0.1rem
+        0.1rem
+        0.9rem;
+}
+
+.nv-hero-product-top > span {
+    color:
+        rgba(255, 255, 255, 0.48);
+
+    font-size:
+        0.62rem;
+
+    font-weight:
+        800;
+
+    line-height:
+        1;
+
+    letter-spacing:
+        0.13em;
+
+    text-transform:
+        uppercase;
+}
+
+.nv-hero-product-top > strong {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height: 33px;
+
+    padding:
+        0.4rem
+        0.65rem;
+
+    border:
+        1px solid
+        rgba(234, 87, 28, 0.24);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(234, 87, 28, 0.11);
+
+    color:
+        var(--nv-orange);
+
+    font-size:
+        0.7rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.05em;
+}
+
+
+/* =========================================================
+   PRODUCT MEDIA
+   ========================================================= */
+
+.nv-hero-product-media {
+    position: relative;
+
+    display: grid;
+
+    place-items: center;
+
+    min-height: 17rem;
+
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    border-radius:
+        1.25rem;
+
+    background:
+        radial-gradient(
+            circle at 50% 43%,
+            rgba(255, 255, 255, 0.09),
+            rgba(255, 255, 255, 0.025) 46%,
+            rgba(18, 33, 33, 0.1) 100%
+        );
+}
+
+.nv-hero-product-media::before {
+    content: "";
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+
+    width: 80%;
+    height: 80%;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.035);
+
+    border-radius: 50%;
+
+    transform:
+        translate(
+            -50%,
+            -50%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   IMAGE LINK
+   ========================================================= */
+
+.nv-hero-product-image-link {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 100%;
+    height: 100%;
+
+    min-height: inherit;
+
+    padding:
+        clamp(
+            1rem,
+            2vw,
+            1.75rem
+        );
+
+    text-decoration: none;
+}
+
+
+/* =========================================================
+   PRODUCT IMAGE
+   ========================================================= */
+
+.nv-hero-product-image {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    max-width: 30rem;
+    max-height: 19rem;
+
+    object-fit: contain;
+
+    object-position: center;
+
+    filter:
+        drop-shadow(
+            0
+            1.5rem
+            1.8rem
+            rgba(18, 33, 33, 0.32)
+        );
+
+    transform:
+        scale(1);
+
+    transition:
+        transform 320ms ease,
+        filter 320ms ease;
+}
+
+.nv-hero-product-image-link:hover
+.nv-hero-product-image,
+.nv-hero-product-image-link:focus-visible
+.nv-hero-product-image {
+    transform:
+        scale(1.035);
+
+    filter:
+        drop-shadow(
+            0
+            1.8rem
+            2rem
+            rgba(18, 33, 33, 0.42)
+        );
+}
+
+
+/* =========================================================
+   PRODUCT PLACEHOLDER
+   ========================================================= */
+
+.nv-hero-product-placeholder {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    justify-items: center;
+
+    gap: 0.6rem;
+
+    color:
+        var(--nv-white);
+
+    text-align: center;
+}
+
+.nv-hero-product-placeholder span {
+    color:
+        rgba(255, 255, 255, 0.42);
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.18em;
+}
+
+.nv-hero-product-placeholder strong {
+    color:
+        var(--nv-white);
+
+    font-size:
+        clamp(
+            2.2rem,
+            5vw,
+            4rem
+        );
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        -0.05em;
+}
+
+
+/* =========================================================
+   PRODUCT FOOTER
+   ========================================================= */
+
+.nv-hero-product-footer {
     display: grid;
 
     grid-template-columns:
-        repeat(
-            3,
-            minmax(0, 1fr)
-        );
+        minmax(0, 1fr)
+        auto;
 
-    max-width: 590px;
+    align-items: center;
 
-    /*
-     * Menos espacio superior que antes.
-     */
-    margin-top: 1.8rem;
+    gap: 1rem;
 
     padding:
-        0.9rem
-        0;
-
-    border-top:
-        1px solid
-        rgba(18, 33, 33, 0.15);
-
-    border-bottom:
-        1px solid
-        rgba(18, 33, 33, 0.15);
+        1rem
+        0.1rem
+        0.05rem;
 }
 
+.nv-hero-product-footer > div {
+    display: grid;
 
-/* =========================================================
-   SPEC ITEM
-   ========================================================= */
-
-.nv-hero-trust-item {
-    position: relative;
+    gap: 0.2rem;
 
     min-width: 0;
-
-    padding:
-        0
-        1.1rem;
-
-    border-right:
-        1px solid
-        rgba(18, 33, 33, 0.11);
-}
-
-.nv-hero-trust-item:first-child {
-    padding-left: 0;
-}
-
-.nv-hero-trust-item:last-child {
-    padding-right: 0;
-
-    border-right: 0;
 }
 
 
 /* =========================================================
-   SPEC NUMBER
+   PRODUCT LABEL
    ========================================================= */
 
-.nv-hero-trust-index {
-    display: block;
+.nv-hero-product-label {
+    color:
+        rgba(255, 255, 255, 0.4);
 
-    margin-bottom: 0.35rem;
+    font-size:
+        0.58rem;
 
-    color: var(--nv-orange);
+    font-weight:
+        800;
 
-    font-size: 0.64rem;
-    font-weight: 900;
+    line-height:
+        1;
 
-    line-height: 1;
+    letter-spacing:
+        0.12em;
 
-    letter-spacing: 0.1em;
+    text-transform:
+        uppercase;
 }
 
 
 /* =========================================================
-   SPEC VALUE
+   PRODUCT NAME
    ========================================================= */
 
-.nv-hero-trust strong {
-    display: block;
-
-    color: var(--nv-home-deep);
-
-    font-size: 1.05rem;
-    font-weight: 850;
-
-    line-height: 1.15;
-}
-
-
-/* =========================================================
-   SPEC DESCRIPTION
-   ========================================================= */
-
-.nv-hero-trust small {
-    display: block;
-
-    margin-top: 0.3rem;
+.nv-hero-product-footer strong {
+    overflow: hidden;
 
     color:
-        rgba(30, 34, 38, 0.6);
+        var(--nv-white);
 
-    font-size: 0.74rem;
-    font-weight: 500;
+    font-size:
+        0.96rem;
 
-    line-height: 1.35;
+    font-weight:
+        700;
+
+    line-height:
+        1.3;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   PRODUCT DESCRIPTION
+   ========================================================= */
+
+.nv-hero-product-footer small {
+    display: block;
+
+    overflow: hidden;
+
+    max-width: 24rem;
+
+    color:
+        rgba(255, 255, 255, 0.5);
+
+    font-size:
+        0.67rem;
+
+    line-height:
+        1.4;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   PRODUCT DETAIL BUTTON
+   ========================================================= */
+
+.nv-hero-product-link {
+    display: inline-grid;
+
+    place-items: center;
+
+    width: 2.65rem;
+    height: 2.65rem;
+
+    flex:
+        0
+        0
+        2.65rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(255, 255, 255, 0.055);
+
+    color:
+        var(--nv-white);
+
+    font-size:
+        0.9rem;
+
+    text-decoration:
+        none;
+
+    transition:
+        border-color var(--nv-transition),
+        background-color var(--nv-transition),
+        color var(--nv-transition),
+        transform var(--nv-transition);
+}
+
+.nv-hero-product-link:hover,
+.nv-hero-product-link:focus-visible {
+    border-color:
+        var(--nv-orange);
+
+    background:
+        var(--nv-orange);
+
+    color:
+        var(--nv-white);
+
+    transform:
+        translateY(-2px);
 }
 
 
@@ -467,24 +824,70 @@
 
 @media (min-width: 1500px) {
     .nv-home-hero {
-        min-height: 770px;
-
-        height:
-            clamp(
-                770px,
-                82svh,
-                830px
-            );
+        min-height: 670px;
     }
 
     .nv-hero-layout {
         grid-template-columns:
-            minmax(0, 750px)
-            minmax(0, 1fr);
+            minmax(0, 1.15fr)
+            minmax(23rem, 0.7fr);
+
+        min-height: 500px;
     }
 
     .nv-home-hero h1 {
-        font-size: 5.85rem;
+        font-size: 6rem;
+    }
+
+    .nv-hero-product {
+        min-height: 445px;
+    }
+}
+
+
+/* =========================================================
+   MEDIUM DESKTOP
+   ========================================================= */
+
+@media (
+    min-width: 992px
+)
+and (
+    max-width: 1199.98px
+) {
+    .nv-home-hero {
+        min-height: 620px;
+    }
+
+    .nv-hero-layout {
+        grid-template-columns:
+            minmax(0, 1fr)
+            minmax(19rem, 0.68fr);
+
+        gap: 2.5rem;
+
+        min-height: 440px;
+    }
+
+    .nv-home-hero h1 {
+        font-size:
+            clamp(
+                3.3rem,
+                5.5vw,
+                4.8rem
+            );
+    }
+
+    .nv-hero-product {
+        min-height: 400px;
+    }
+
+    .nv-hero-product-media {
+        min-height: 15.5rem;
+    }
+
+    .nv-hero-product-image {
+        max-height: 17rem;
     }
 }
 
@@ -495,19 +898,22 @@
 
 @media (max-width: 991.98px) {
     .nv-home-hero {
-        min-height: 700px;
-
-        height: auto;
+        min-height: auto;
 
         padding:
-            8.75rem
+            8rem
             0
-            2.75rem;
+            3rem;
     }
 
-    .nv-home-hero > .container {
-        padding-right: 1.5rem;
-        padding-left: 1.5rem;
+    .nv-home-hero::before {
+        background:
+            linear-gradient(
+                180deg,
+                rgba(237, 236, 237, 0.76) 0%,
+                rgba(237, 236, 237, 0.9) 46%,
+                rgba(237, 236, 237, 0.98) 100%
+            );
     }
 
     .nv-hero-background {
@@ -516,39 +922,43 @@
             center;
     }
 
-    .nv-home-hero::before {
-        background:
-            linear-gradient(
-                90deg,
-                rgba(248, 248, 244, 0.72) 0%,
-                rgba(248, 248, 244, 0.53) 47%,
-                rgba(248, 248, 244, 0.16) 78%,
-                transparent 100%
-            );
-    }
-
     .nv-hero-layout {
         grid-template-columns: 1fr;
 
-        min-height: 500px;
+        gap: 2.25rem;
+
+        min-height: 0;
     }
 
     .nv-hero-copy {
-        max-width: 650px;
+        max-width: 680px;
     }
 
     .nv-home-hero h1 {
-        font-size: clamp(
-            3.2rem,
-            8vw,
-            5rem
-        );
+        max-width: 680px;
+
+        font-size:
+            clamp(
+                3.2rem,
+                8vw,
+                5rem
+            );
     }
 
-    .nv-hero-lead {
-        max-width: 570px;
+    .nv-hero-product {
+        width: 100%;
 
-        font-size: 1.06rem;
+        max-width: 680px;
+
+        min-height: 420px;
+
+        margin:
+            0
+            auto;
+    }
+
+    .nv-hero-product-media {
+        min-height: 17rem;
     }
 }
 
@@ -559,29 +969,14 @@
 
 @media (max-width: 575.98px) {
     .nv-home-hero {
-        min-height: 690px;
-
-        height: auto;
-
-        align-items: flex-end;
-
-        /*
-         * También dejamos espacio suficiente
-         * para el navbar móvil.
-         */
         padding:
-            7.75rem
+            7.25rem
             0
-            2.25rem;
-    }
-
-    .nv-home-hero > .container {
-        padding-right: 1.25rem;
-        padding-left: 1.25rem;
+            2.5rem;
     }
 
     .nv-hero-background {
-        inset: -12px 0;
+        inset: -0.75rem;
 
         background-position:
             67%
@@ -592,45 +987,44 @@
         background:
             linear-gradient(
                 180deg,
-                rgba(248, 248, 244, 0.03) 0%,
-                rgba(248, 248, 244, 0.14) 34%,
-                rgba(248, 248, 244, 0.6) 66%,
-                rgba(248, 248, 244, 0.88) 100%
+                rgba(237, 236, 237, 0.36) 0%,
+                rgba(237, 236, 237, 0.8) 34%,
+                rgba(237, 236, 237, 0.97) 66%,
+                var(--nv-light) 100%
             );
     }
 
     .nv-home-hero::after {
-        height: 45px;
-    }
-
-    .nv-hero-decoration {
-        display: none;
-    }
-
-    .nv-hero-layout {
-        min-height: 520px;
-
-        align-items: end;
-    }
-
-    .nv-home-hero h1 {
-        font-size: clamp(
-            2.85rem,
-            12.5vw,
-            4rem
-        );
-
-        line-height: 0.95;
-    }
-
-    .nv-hero-lead {
-        font-size: 1rem;
-
-        line-height: 1.65;
+        height: 4rem;
     }
 
     .nv-hero-kicker {
-        font-size: 0.72rem;
+        margin-bottom: 1rem;
+
+        font-size: 0.67rem;
+    }
+
+    .nv-hero-kicker > span {
+        width: 30px;
+
+        flex-basis: 30px;
+    }
+
+    .nv-home-hero h1 {
+        font-size:
+            clamp(
+                2.75rem,
+                12.5vw,
+                3.9rem
+            );
+
+        line-height: 0.94;
+    }
+
+    .nv-hero-lead {
+        font-size: 0.98rem;
+
+        line-height: 1.62;
     }
 
     .nv-hero-actions {
@@ -644,34 +1038,57 @@
     .nv-hero-actions
     .nv-button {
         width: 100%;
-
-        font-size: 0.94rem;
     }
 
-    .nv-hero-trust {
-        margin-top: 1.45rem;
+    .nv-hero-product {
+        grid-template-rows:
+            auto
+            minmax(13.5rem, 1fr)
+            auto;
 
-        padding:
-            0.75rem
-            0;
+        min-height: 340px;
+
+        padding: 0.9rem;
+
+        border-radius:
+            var(--nv-radius-lg);
     }
 
-    .nv-hero-trust-item {
-        padding:
-            0
-            0.6rem;
+    .nv-hero-product-media {
+        min-height: 13.5rem;
+
+        border-radius: 1rem;
     }
 
-    .nv-hero-trust strong {
+    .nv-hero-product-image-link {
+        padding: 0.75rem;
+    }
+
+    .nv-hero-product-image {
+        max-height: 14.5rem;
+    }
+
+    .nv-hero-product-footer {
+        padding-top: 0.85rem;
+    }
+
+    .nv-hero-product-footer strong {
+        max-width: 14rem;
+
         font-size: 0.88rem;
     }
 
-    .nv-hero-trust-index {
-        font-size: 0.58rem;
+    .nv-hero-product-footer small {
+        max-width: 14rem;
+
+        font-size: 0.62rem;
     }
 
-    .nv-hero-trust small {
-        font-size: 0.64rem;
+    .nv-hero-product-link {
+        width: 2.45rem;
+        height: 2.45rem;
+
+        flex-basis: 2.45rem;
     }
 }
 
@@ -682,24 +1099,38 @@
 
 @media (max-width: 390px) {
     .nv-home-hero {
-        padding-top: 7.25rem;
+        padding-top: 6.9rem;
     }
 
     .nv-home-hero h1 {
-        font-size: 2.7rem;
+        font-size: 2.65rem;
     }
 
-    .nv-hero-lead {
-        font-size: 0.96rem;
+    .nv-hero-product {
+        min-height: 320px;
     }
 
-    .nv-hero-trust strong {
-        font-size: 0.82rem;
+    .nv-hero-product-media {
+        min-height: 12.5rem;
     }
 
-    .nv-hero-trust small {
-        font-size: 0.6rem;
+    .nv-hero-product-footer small {
+        display: none;
     }
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.nv-hero-product-image-link:focus-visible,
+.nv-hero-product-link:focus-visible {
+    outline:
+        2px solid
+        var(--nv-orange);
+
+    outline-offset: 3px;
 }
 
 
@@ -713,5 +1144,21 @@
     .nv-hero-background {
         transform:
             scale(1.025);
+    }
+
+    .nv-hero-product-image,
+    .nv-hero-product-link {
+        transition: none;
+    }
+
+    .nv-hero-product-image-link:hover
+    .nv-hero-product-image,
+    .nv-hero-product-image-link:focus-visible
+    .nv-hero-product-image {
+        transform: none;
+    }
+
+    .nv-hero-product-link:hover {
+        transform: none;
     }
 }
