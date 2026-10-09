@@ -1,167 +1,248 @@
 /* =========================================================
    NATVIEWER HOME
-   Information / contact
+   Information / commercial closing
+   Editorial journey + strategic dark panel
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
    ========================================================= */
 
 .nv-info-section {
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+
     padding-top:
+        clamp(
+            4.5rem,
+            7vw,
+            6.5rem
+        );
+
+    padding-bottom:
         clamp(
             4rem,
             6vw,
             5.5rem
         );
 
-    padding-bottom: 3rem;
-
-    background: #ffffff;
+    background:
+        linear-gradient(
+            180deg,
+            var(--nv-white) 0%,
+            #f8f8f5 62%,
+            rgba(237, 236, 237, 0.72) 100%
+        );
 }
 
 
 /* =========================================================
-   MAIN CARD
+   BACKGROUND AMBIENCE
    ========================================================= */
 
-.nv-info-card {
-    position: relative;
+.nv-info-section::before {
+    content: "";
 
+    position: absolute;
+
+    top: 4rem;
+    right: -15rem;
+
+    z-index: -2;
+
+    width: 32rem;
+    height: 32rem;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(62, 84, 71, 0.055),
+            rgba(62, 84, 71, 0.014) 48%,
+            transparent 72%
+        );
+
+    pointer-events: none;
+}
+
+.nv-info-section::after {
+    content: "";
+
+    position: absolute;
+
+    bottom: 5rem;
+    left: -8rem;
+
+    z-index: -2;
+
+    width: 17rem;
+    height: 17rem;
+
+    border:
+        1px solid
+        rgba(18, 33, 33, 0.045);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0
+        0
+        0
+        4rem
+        rgba(18, 33, 33, 0.01);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.nv-info-header {
     display: grid;
 
     grid-template-columns:
-        minmax(0, 0.95fr)
-        minmax(360px, 1.05fr);
+        minmax(0, 1.12fr)
+        minmax(18rem, 0.6fr);
+
+    align-items: end;
 
     gap:
         clamp(
             2rem,
             5vw,
-            4.5rem
+            5rem
         );
 
-    align-items: center;
-
-    padding:
+    margin-bottom:
         clamp(
-            2rem,
-            4vw,
-            3.5rem
+            3.25rem,
+            6vw,
+            5rem
         );
 
-    overflow: hidden;
+    padding-bottom:
+        1.8rem;
 
-    border-radius: 1.8rem;
-
-    background:
-        radial-gradient(
-            circle at 90% 0%,
-            rgba(234, 87, 28, 0.18),
-            transparent 20rem
-        ),
-        linear-gradient(
-            145deg,
-            #334b3e,
-            #20362d 62%,
-            #172a23
-        );
-
-    box-shadow:
-        0
-        25px
-        70px
-        rgba(18, 33, 33, 0.14);
-}
-
-.nv-info-card::before {
-    content: "";
-
-    position: absolute;
-
-    top: -10rem;
-    right: -9rem;
-
-    width: 27rem;
-    height: 27rem;
-
-    border:
+    border-bottom:
         1px solid
-        rgba(255, 255, 255, 0.07);
-
-    border-radius: 50%;
+        rgba(18, 33, 33, 0.09);
 }
 
 
 /* =========================================================
-   COPY
+   HEADING
    ========================================================= */
 
-.nv-info-copy {
-    position: relative;
-
-    z-index: 2;
+.nv-info-heading {
+    min-width: 0;
 }
 
-.nv-info-copy
-.nv-section-heading-mark {
-    margin-bottom: 1.75rem;
-}
-
-.nv-info-copy
-.nv-section-heading-mark > span {
-    color:
-        rgba(255, 255, 255, 0.34);
-}
-
-.nv-info-copy
+.nv-info-heading
 .nv-eyebrow {
-    color: #ff8c58;
+    margin-bottom: 1rem;
 }
 
-.nv-info-card h2 {
-    max-width: 590px;
-
-    margin:
-        0
-        0
-        1rem;
-
-    color: var(--nv-white);
-
-    font-size: clamp(
-        2.25rem,
-        4vw,
-        4rem
-    );
-
-    font-weight: 650;
-
-    line-height: 0.97;
-
-    letter-spacing: -0.055em;
-
-    text-wrap: balance;
-}
-
-.nv-info-card p {
-    max-width: 520px;
+.nv-info-heading h2 {
+    max-width: 850px;
 
     margin: 0;
 
     color:
-        rgba(255, 255, 255, 0.67);
+        var(--nv-deep);
 
-    font-size: 0.92rem;
+    font-size:
+        clamp(
+            3rem,
+            5.4vw,
+            5.8rem
+        );
 
-    line-height: 1.7;
+    font-weight: 700;
+
+    line-height: 0.92;
+
+    letter-spacing: -0.065em;
+
+    text-wrap: balance;
 }
 
 
 /* =========================================================
-   LIST
+   INTRO
    ========================================================= */
 
-.nv-info-list {
-    position: relative;
+.nv-info-intro {
+    display: grid;
 
-    z-index: 2;
+    grid-template-columns:
+        2px
+        minmax(0, 1fr);
+
+    gap: 1.15rem;
+
+    max-width: 31rem;
+
+    justify-self: end;
+}
+
+.nv-info-intro-line {
+    width: 2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--nv-green),
+            rgba(62, 84, 71, 0.06)
+        );
+}
+
+.nv-info-intro p {
+    margin: 0;
+
+    color:
+        rgba(30, 34, 38, 0.6);
+
+    font-size: 0.95rem;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   MAIN LAYOUT
+   ========================================================= */
+
+.nv-info-layout {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.2fr)
+        minmax(18rem, 0.55fr);
+
+    gap:
+        clamp(
+            2rem,
+            5vw,
+            5rem
+        );
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   JOURNEY
+   ========================================================= */
+
+.nv-info-journey {
+    position: relative;
 
     display: grid;
 
@@ -171,74 +252,551 @@
             minmax(0, 1fr)
         );
 
-    gap: 0.65rem;
-}
-
-.nv-info-list > span {
-    display: flex;
-    align-items: center;
-
-    min-height: 66px;
-
-    gap: 0.75rem;
+    gap:
+        0
+        clamp(
+            2rem,
+            5vw,
+            4.5rem
+        );
 
     padding:
-        0.8rem
-        0.9rem;
+        clamp(
+            1.25rem,
+            2vw,
+            1.75rem
+        )
+        0;
+}
+
+
+/* =========================================================
+   JOURNEY DIVIDER
+   ========================================================= */
+
+.nv-info-journey::before {
+    content: "";
+
+    position: absolute;
+
+    top: 1rem;
+    bottom: 1rem;
+    left: 50%;
+
+    width: 1px;
+
+    background:
+        linear-gradient(
+            180deg,
+            transparent,
+            rgba(18, 33, 33, 0.11) 14%,
+            rgba(18, 33, 33, 0.11) 86%,
+            transparent
+        );
+
+    transform:
+        translateX(-50%);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   JOURNEY COLUMN
+   ========================================================= */
+
+.nv-info-journey-column {
+    display: grid;
+
+    align-content: start;
+}
+
+
+/* =========================================================
+   JOURNEY ITEM
+   ========================================================= */
+
+.nv-info-item {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        4.25rem
+        minmax(0, 1fr);
+
+    gap: 1rem;
+
+    align-items: center;
+
+    min-height:
+        130px;
+
+    padding:
+        1.4rem
+        0;
+
+    border-top:
+        1px solid
+        rgba(18, 33, 33, 0.08);
+
+    transition:
+        padding-left 0.28s ease,
+        background-color 0.28s ease;
+}
+
+.nv-info-item:last-child {
+    border-bottom:
+        1px solid
+        rgba(18, 33, 33, 0.08);
+}
+
+.nv-info-item:hover {
+    padding-left:
+        0.8rem;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(62, 84, 71, 0.045),
+            rgba(62, 84, 71, 0.01) 65%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   ITEM INDEX
+   ========================================================= */
+
+.nv-info-item-index {
+    display: grid;
+
+    grid-template-columns:
+        auto
+        minmax(0, 1fr);
+
+    align-items: center;
+
+    gap: 0.6rem;
+}
+
+.nv-info-item-index span {
+    color:
+        var(--nv-orange);
+
+    font-size: 0.62rem;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: 0.12em;
+}
+
+.nv-info-item-index i {
+    display: block;
+
+    width: 24px;
+    height: 1px;
+
+    background:
+        rgba(62, 84, 71, 0.24);
+}
+
+
+/* =========================================================
+   ITEM TEXT
+   ========================================================= */
+
+.nv-info-item p {
+    max-width: 25rem;
+
+    margin: 0;
+
+    color:
+        var(--nv-deep);
+
+    font-size:
+        clamp(
+            0.9rem,
+            1.2vw,
+            1rem
+        );
+
+    font-weight: 650;
+
+    line-height: 1.55;
+}
+
+
+/* =========================================================
+   DARK COMMERCIAL PANEL
+   ========================================================= */
+
+.nv-info-closing {
+    position: relative;
+
+    display: flex;
+
+    min-height:
+        520px;
+
+    overflow: hidden;
+
+    padding:
+        clamp(
+            1.5rem,
+            2.5vw,
+            2rem
+        );
+
+    flex-direction: column;
+
+    justify-content: space-between;
 
     border:
         1px solid
-        rgba(255, 255, 255, 0.1);
+        rgba(255, 255, 255, 0.06);
 
-    border-radius: 1rem;
+    border-radius:
+        clamp(
+            1.5rem,
+            2.5vw,
+            2rem
+        );
 
     background:
-        rgba(255, 255, 255, 0.055);
+        radial-gradient(
+            circle at 86% 12%,
+            rgba(234, 87, 28, 0.17),
+            transparent 12rem
+        ),
+        linear-gradient(
+            150deg,
+            var(--nv-green),
+            var(--nv-deep) 74%
+        );
+
+    box-shadow:
+        0
+        2rem
+        5rem
+        rgba(18, 33, 33, 0.17);
 
     color:
-        rgba(255, 255, 255, 0.84);
+        var(--nv-white);
 
-    font-size: 0.82rem;
-    font-weight: 600;
-
-    backdrop-filter:
-        blur(14px);
-
-    -webkit-backdrop-filter:
-        blur(14px);
-
-    transition:
-        background-color var(--nv-transition),
-        transform var(--nv-transition);
+    isolation: isolate;
 }
 
-.nv-info-list > span:hover {
-    background:
-        rgba(255, 255, 255, 0.1);
+
+/* =========================================================
+   DARK PANEL DECORATION
+   ========================================================= */
+
+.nv-info-closing::before {
+    content: "";
+
+    position: absolute;
+
+    top: 48%;
+    right: -7rem;
+
+    z-index: -1;
+
+    width: 19rem;
+    height: 19rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.065);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0
+        0
+        0
+        3.5rem
+        rgba(255, 255, 255, 0.015),
+
+        0
+        0
+        0
+        7rem
+        rgba(255, 255, 255, 0.008);
 
     transform:
-        translateY(-2px);
+        translateY(-50%);
+
+    pointer-events: none;
 }
 
-.nv-info-list small {
-    display: inline-flex;
+
+/* =========================================================
+   CLOSING TOP
+   ========================================================= */
+
+.nv-info-closing-top {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
     align-items: center;
-    justify-content: center;
 
-    width: 29px;
-    height: 29px;
+    gap: 0.8rem;
+}
 
-    flex: 0 0 auto;
+.nv-info-closing-top span {
+    color:
+        rgba(255, 255, 255, 0.76);
+
+    font-size: 0.64rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+}
+
+.nv-info-closing-top i {
+    display: block;
+
+    width: 36px;
+    height: 1px;
+
+    background:
+        var(--nv-orange);
+}
+
+
+/* =========================================================
+   CLOSING MAIN
+   ========================================================= */
+
+.nv-info-closing-main {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    gap:
+        clamp(
+            1.5rem,
+            3vw,
+            2.5rem
+        );
+}
+
+
+/* =========================================================
+   MONOGRAM
+   ========================================================= */
+
+.nv-info-closing-mark {
+    display: grid;
+
+    place-items: center;
+
+    width:
+        clamp(
+            6.25rem,
+            10vw,
+            8rem
+        );
+
+    aspect-ratio: 1;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
 
     border-radius: 50%;
 
     background:
-        rgba(234, 87, 28, 0.16);
+        rgba(255, 255, 255, 0.045);
 
-    color: #ff915e;
+    color:
+        var(--nv-white);
 
-    font-size: 0.55rem;
+    font-size:
+        clamp(
+            3rem,
+            5vw,
+            4.5rem
+        );
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: -0.08em;
+
+    box-shadow:
+        inset
+        0
+        0
+        2.5rem
+        rgba(255, 255, 255, 0.025);
+}
+
+
+/* =========================================================
+   CLOSING COPY
+   ========================================================= */
+
+.nv-info-closing-copy {
+    display: grid;
+
+    gap: 0.6rem;
+}
+
+.nv-info-closing-eyebrow {
+    color:
+        var(--nv-orange);
+
+    font-size: 0.62rem;
+
     font-weight: 800;
+
+    letter-spacing: 0.14em;
+
+    text-transform: uppercase;
+}
+
+.nv-info-closing-copy strong {
+    max-width:
+        22rem;
+
+    color:
+        var(--nv-white);
+
+    font-size:
+        clamp(
+            2rem,
+            3.5vw,
+            3.3rem
+        );
+
+    font-weight: 700;
+
+    line-height: 0.98;
+
+    letter-spacing: -0.055em;
+
+    text-wrap: balance;
+}
+
+
+/* =========================================================
+   CTA
+   ========================================================= */
+
+.nv-info-closing-action {
+    position: relative;
+
+    z-index: 3;
+
+    margin-top:
+        2rem;
+}
+
+.nv-info-closing-action
+.nv-button {
+    width: 100%;
+
+    min-height: 52px;
+
+    border-radius:
+        999px;
+
+    box-shadow:
+        0
+        1rem
+        2.4rem
+        rgba(234, 87, 28, 0.2);
+}
+
+
+/* =========================================================
+   CLOSING DETAIL
+   ========================================================= */
+
+.nv-info-closing-detail {
+    position: absolute;
+
+    right: 1.6rem;
+    bottom: 1.6rem;
+
+    z-index: 1;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.45rem;
+
+    pointer-events: none;
+}
+
+.nv-info-closing-detail span {
+    display: block;
+
+    border-radius: 50%;
+}
+
+.nv-info-closing-detail span:nth-child(1) {
+    width: 6px;
+    height: 6px;
+
+    background:
+        var(--nv-orange);
+}
+
+.nv-info-closing-detail span:nth-child(2) {
+    width: 12px;
+    height: 12px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.26);
+}
+
+.nv-info-closing-detail span:nth-child(3) {
+    width: 20px;
+    height: 20px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1400px) {
+    .nv-info-layout {
+        grid-template-columns:
+            minmax(0, 1.25fr)
+            minmax(20rem, 0.52fr);
+    }
+
+    .nv-info-closing {
+        min-height:
+            550px;
+    }
+
+    .nv-info-item {
+        min-height:
+            140px;
+    }
 }
 
 
@@ -247,10 +805,49 @@
    ========================================================= */
 
 @media (max-width: 991.98px) {
-    .nv-info-card {
+    .nv-info-header {
+        grid-template-columns: 1fr;
+
+        gap: 1.6rem;
+    }
+
+    .nv-info-intro {
+        max-width: 42rem;
+
+        justify-self: start;
+    }
+
+    .nv-info-heading h2 {
+        max-width: 720px;
+
+        font-size:
+            clamp(
+                3rem,
+                8vw,
+                4.8rem
+            );
+    }
+
+    .nv-info-layout {
         grid-template-columns: 1fr;
 
         gap: 2.5rem;
+    }
+
+    .nv-info-closing {
+        min-height: 360px;
+    }
+
+    .nv-info-closing-main {
+        grid-template-columns:
+            auto
+            minmax(0, 1fr);
+
+        align-items: center;
+    }
+
+    .nv-info-closing-action {
+        max-width: 320px;
     }
 }
 
@@ -261,34 +858,160 @@
 
 @media (max-width: 575.98px) {
     .nv-info-section {
-        padding:
-            3.5rem
-            0
-            2rem;
+        padding-top:
+            3.75rem;
+
+        padding-bottom:
+            3.5rem;
     }
 
-    .nv-info-card {
-        gap: 2rem;
-
-        padding: 1.35rem;
-
-        border-radius: 1.4rem;
+    .nv-info-section::after {
+        display: none;
     }
 
-    .nv-info-card h2 {
-        font-size: clamp(
-            2.2rem,
-            10vw,
-            3.2rem
-        );
+    .nv-info-header {
+        gap: 1.25rem;
+
+        margin-bottom: 2.5rem;
+
+        padding-bottom: 1.4rem;
     }
 
-    .nv-info-list {
+    .nv-info-heading h2 {
+        font-size:
+            clamp(
+                2.65rem,
+                12vw,
+                3.7rem
+            );
+    }
+
+    .nv-info-intro {
+        grid-template-columns:
+            2px
+            minmax(0, 1fr);
+
+        gap: 0.9rem;
+    }
+
+    .nv-info-intro p {
+        font-size: 0.9rem;
+
+        line-height: 1.7;
+    }
+
+    .nv-info-layout {
+        gap: 1.75rem;
+    }
+
+    .nv-info-journey {
         grid-template-columns: 1fr;
+
+        gap: 0;
+
+        padding: 0;
     }
 
-    .nv-info-list > span {
-        min-height: 60px;
+    .nv-info-journey::before {
+        display: none;
+    }
+
+    .nv-info-journey-column
+    + .nv-info-journey-column
+    .nv-info-item:first-child {
+        border-top: 0;
+    }
+
+    .nv-info-journey-column:first-child
+    .nv-info-item:last-child {
+        border-bottom:
+            1px solid
+            rgba(18, 33, 33, 0.08);
+    }
+
+    .nv-info-item {
+        grid-template-columns:
+            3.4rem
+            minmax(0, 1fr);
+
+        min-height: 105px;
+
+        padding:
+            1.15rem
+            0;
+    }
+
+    .nv-info-item:hover {
+        padding-left: 0;
+    }
+
+    .nv-info-item p {
+        font-size: 0.9rem;
+    }
+
+    .nv-info-item-index i {
+        width: 18px;
+    }
+
+    .nv-info-closing {
+        min-height: 390px;
+
+        padding:
+            1.35rem;
+
+        border-radius:
+            1.4rem;
+    }
+
+    .nv-info-closing-main {
+        grid-template-columns: 1fr;
+
+        align-items: start;
+    }
+
+    .nv-info-closing-mark {
+        width: 5.7rem;
+
+        font-size: 2.8rem;
+    }
+
+    .nv-info-closing-copy strong {
+        max-width: 17rem;
+
+        font-size:
+            clamp(
+                2rem,
+                10vw,
+                2.8rem
+            );
+    }
+
+    .nv-info-closing-action {
+        width: 100%;
+
+        max-width: none;
+
+        padding-right: 4rem;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 390px) {
+    .nv-info-closing {
+        min-height: 365px;
+    }
+
+    .nv-info-closing-action {
+        padding-right: 3rem;
+    }
+
+    .nv-info-closing-detail {
+        right: 1.1rem;
+        bottom: 1.1rem;
     }
 }
 
@@ -300,11 +1023,11 @@
 @media (
     prefers-reduced-motion: reduce
 ) {
-    .nv-info-list > span {
+    .nv-info-item {
         transition: none;
     }
 
-    .nv-info-list > span:hover {
-        transform: none;
+    .nv-info-item:hover {
+        padding-left: 0;
     }
 }

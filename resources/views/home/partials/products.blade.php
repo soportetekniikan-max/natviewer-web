@@ -6,9 +6,7 @@
     id="products"
 >
     <div class="container">
-        @if (
-            session('quote_success')
-        )
+        @if (session('quote_success'))
             <div
                 class="
                     alert
@@ -42,16 +40,8 @@
             </div>
         @endif
 
-        <div class="nv-section-heading">
-            <div class="nv-section-heading-mark">
-                <span>
-                    02
-                </span>
-
-                <i aria-hidden="true"></i>
-            </div>
-
-            <div class="nv-section-heading-main">
+        <header class="nv-product-showcase-header">
+            <div class="nv-product-showcase-intro">
                 <span class="nv-eyebrow">
                     {{
                         __(
@@ -69,16 +59,23 @@
                 </h2>
             </div>
 
-            <p class="nv-section-heading-copy">
-                {{
-                    __(
-                        'public.products.text'
-                    )
-                }}
-            </p>
-        </div>
+            <div class="nv-product-showcase-description">
+                <span
+                    class="nv-product-showcase-line"
+                    aria-hidden="true"
+                ></span>
 
-        <div class="nv-product-grid row g-4">
+                <p>
+                    {{
+                        __(
+                            'public.products.text'
+                        )
+                    }}
+                </p>
+            </div>
+        </header>
+
+        <div class="nv-product-showcase-list">
             @forelse (
                 $catalogItems
                 as $item
@@ -87,23 +84,22 @@
                     'home.partials.product-card',
                     [
                         'item' => $item,
+                        'position' => $loop->index,
                     ]
                 )
             @empty
-                <div class="col-12">
-                    <div
-                        class="
-                            alert
-                            alert-light
-                            border
-                        "
-                    >
+                <div class="nv-product-empty">
+                    <span class="nv-product-empty-mark">
+                        Natviewer
+                    </span>
+
+                    <p>
                         {{
                             $locale === 'en'
                                 ? 'No products are currently available.'
                                 : 'No hay productos disponibles actualmente.'
                         }}
-                    </div>
+                    </p>
                 </div>
             @endforelse
         </div>

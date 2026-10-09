@@ -3,137 +3,150 @@
 return [
     'seo' => [
         'title' =>
-            'Quiénes somos | Natviewer',
+            'Sobre NatViewer | NatViewer',
 
         'description' =>
-            'Conoce Natviewer, una marca enfocada en acercar la observación de aves, naturaleza y paisajes a través de una experiencia óptica clara, práctica y confiable.',
+            'Conoce NatViewer, una marca enfocada en equipos ópticos y accesorios para observar, explorar y descubrir con claridad, funcionalidad y confianza.',
     ],
 
     'hero' => [
         'kicker' =>
-            'Conoce Natviewer',
+            'Sobre NatViewer',
 
         'title' =>
-            'Más cerca de lo que quieres observar.',
+            'Óptica para observar, explorar y descubrir.',
 
         'lead' =>
-            'Natviewer nace alrededor de una idea sencilla: disfrutar más cada momento de observación, con herramientas ópticas pensadas para acompañarte en el campo, en un viaje o en una salida espontánea a la naturaleza.',
+            'En NatViewer creemos que el equipo adecuado puede acercar a las personas al mundo que las rodea. Ofrecemos equipos ópticos y accesorios pensados para la observación, la exploración, las actividades al aire libre y diferentes tipos de aplicaciones.',
     ],
 
     'story' => [
         'kicker' =>
-            'Quiénes somos',
+            'Qué hacemos',
 
         'title' =>
-            'Una marca para quienes disfrutan mirar con más detalle.',
+            'Equipos pensados para mejorar la experiencia de observación.',
 
         'paragraphs' => [
-            'Nos enfocamos en ofrecer soluciones ópticas para la observación de aves, fauna, paisajes y experiencias al aire libre.',
+            'NatViewer reúne productos diseñados para mejorar la visibilidad, la estabilidad y la experiencia de observación en diferentes entornos.',
 
-            'Creemos que unos buenos binoculares deben sentirse naturales en las manos, ofrecer una imagen clara y permitir que la atención permanezca donde realmente importa: en lo que está ocurriendo frente a ti.',
+            'Ya sea para descubrir la naturaleza, observar fauna, viajar, explorar paisajes o simplemente encontrar el equipo óptico adecuado para una necesidad específica, buscamos ofrecer soluciones prácticas con un enfoque en desempeño, facilidad de uso y valor.',
 
-            'Por eso buscamos una propuesta equilibrada entre calidad óptica, comodidad, facilidad de uso y una experiencia de compra cercana.',
+            'A medida que NatViewer crezca, continuaremos ampliando nuestra selección de productos para responder a las nuevas necesidades de nuestros clientes.',
         ],
     ],
 
     'purpose' => [
         'kicker' =>
-            'Nuestro propósito',
+            'Nuestro objetivo',
 
         'title' =>
-            'Hacer que observar la naturaleza sea una experiencia más cercana.',
+            'Facilitar que cada cliente encuentre el equipo adecuado.',
 
         'text' =>
-            'Queremos que cada persona pueda detenerse, enfocar y descubrir detalles que a simple vista pueden pasar desapercibidos. Natviewer busca acompañar esa curiosidad con productos diseñados para observar con confianza y disfrutar del entorno.',
+            'Nuestro objetivo es sencillo: facilitar que cada cliente encuentre productos confiables que se adapten a su forma de observar, explorar, viajar y disfrutar de su entorno.',
     ],
 
     'principles' => [
         'title' =>
-            'Lo que guía nuestra forma de trabajar',
+            'Nuestro enfoque',
+
+        'intro' =>
+            'Creemos que elegir el equipo adecuado debería ser un proceso sencillo. Por eso nos enfocamos en presentar nuestros productos de manera clara, ofrecer información útil y ayudar a nuestros clientes a comprender mejor las diferentes opciones disponibles.',
 
         'items' => [
+            [
+                'title' =>
+                    'Calidad',
+
+                'text' =>
+                    'Productos seleccionados teniendo en cuenta su desempeño y funcionalidad.',
+            ],
+
             [
                 'title' =>
                     'Claridad',
 
                 'text' =>
-                    'Presentamos nuestros productos y sus características de manera comprensible, para que puedas tomar una decisión informada.',
+                    'Información útil y fácil de comprender.',
             ],
 
             [
                 'title' =>
-                    'Funcionalidad',
+                    'Practicidad',
 
                 'text' =>
-                    'Valoramos las características que aportan a la experiencia real de observación, desde la calidad de imagen hasta la comodidad de uso.',
+                    'Equipos pensados para situaciones y usos reales.',
             ],
 
             [
                 'title' =>
-                    'Cercanía',
+                    'Experiencia del cliente',
 
                 'text' =>
-                    'Buscamos que el proceso de conocer un producto, resolver dudas y solicitar una cotización sea directo y sencillo.',
+                    'Un proceso de compra sencillo y confiable.',
             ],
 
             [
                 'title' =>
-                    'Naturaleza',
+                    'Crecimiento continuo',
 
                 'text' =>
-                    'Nuestros productos están pensados para personas que encuentran valor en observar, explorar y conectarse con el entorno.',
+                    'Un catálogo que puede evolucionar junto con las nuevas tecnologías y necesidades de nuestros clientes.',
             ],
         ],
     ],
 
     'experience' => [
         'kicker' =>
-            'Nuestra manera de verlo',
+            'Diseñado para observar y explorar',
 
         'title' =>
-            'El equipo importa. La experiencia importa aún más.',
+            'Observar significa mucho más que ver a mayor distancia.',
 
         'paragraphs' => [
-            'La observación no debería sentirse complicada. Un buen instrumento óptico debe ayudarte a encontrar el sujeto, mantener una imagen cómoda y permitirte concentrarte en el momento.',
+            'Observar significa descubrir detalles, encontrar nuevas perspectivas y experimentar nuestro entorno con mayor claridad.',
 
-            'Nuestro enfoque está en construir una experiencia coherente desde el primer contacto con Natviewer hasta el uso del producto en condiciones reales.',
+            'NatViewer nace para acompañar esas experiencias mediante equipos ópticos y accesorios adecuados para diferentes usuarios, entornos y actividades.',
+
+            'Desde binoculares y telescopios terrestres hasta trípodes y futuras categorías de producto, buscamos construir una selección versátil que permita a cada persona encontrar el equipo que mejor se adapte a sus necesidades.',
         ],
     ],
 
     'catalog' => [
         'kicker' =>
-            'Nuestra propuesta',
+            'Un catálogo en crecimiento',
 
         'title' =>
-            'Óptica pensada para salir, observar y descubrir.',
+            'Equipos ópticos para diferentes formas de observar.',
 
         'text' =>
-            'Nuestro catálogo está orientado a binoculares terrestres para observación de naturaleza y aves, con opciones que responden a diferentes formas de observar y diferentes necesidades de alcance, campo de visión y manejo.',
+            'Nuestro portafolio puede incluir binoculares, telescopios terrestres, telescopios, trípodes, accesorios ópticos y otros equipos relacionados a medida que nuestro catálogo continúa creciendo.',
 
         'button' =>
-            'Conocer nuestros binoculares',
+            'Explorar productos',
     ],
 
     'commitment' => [
         'kicker' =>
-            'Nuestro compromiso',
+            'Nuestra visión',
 
         'title' =>
-            'Información clara antes de tomar una decisión.',
+            'Convertir a NatViewer en un referente confiable para encontrar equipos ópticos.',
 
         'text' =>
-            'Preferimos que conozcas las características de cada producto, compares las opciones disponibles y puedas resolver tus preguntas antes de solicitar una cotización. Nuestro objetivo es ayudarte a identificar la alternativa que mejor se ajuste a tu forma de observar.',
+            'Nuestra visión es convertir a NatViewer en un referente confiable para encontrar equipos ópticos, de observación y para actividades al aire libre, ofreciendo una selección de productos en constante crecimiento y una forma sencilla de elegir las herramientas adecuadas para cada experiencia. A medida que evolucionen la tecnología y las necesidades de nuestros clientes, NatViewer continuará explorando nuevos productos y soluciones, manteniendo siempre un enfoque en calidad, funcionalidad y experiencia de usuario.',
     ],
 
     'cta' => [
         'kicker' =>
-            '¿Quieres conocer más?',
+            'Explora más. Observa más.',
 
         'title' =>
-            'Encuentra el equipo adecuado para tu próxima observación.',
+            'Descubre el mundo desde una perspectiva diferente.',
 
         'text' =>
-            'Explora nuestros productos, revisa sus características y solicita una cotización cuando estés listo.',
+            'Ya sea que estés observando la naturaleza, descubriendo nuevos lugares o buscando un equipo que te permita ver el mundo desde una perspectiva diferente, NatViewer quiere acompañarte en la experiencia. Explora con confianza. Observa con claridad. Descubre con NatViewer.',
 
         'button' =>
             'Explorar productos',
