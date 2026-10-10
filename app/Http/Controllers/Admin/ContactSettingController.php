@@ -90,7 +90,7 @@ class ContactSettingController extends Controller
                         null,
 
                     'default_locale' =>
-                        'es',
+                        'en',
 
                     'default_currency' =>
                         'COP',

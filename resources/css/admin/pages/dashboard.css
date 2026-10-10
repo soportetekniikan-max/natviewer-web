@@ -1,0 +1,1849 @@
+/* =========================================================
+   NATVIEWER ADMIN DASHBOARD
+   Modern dashboard workspace
+   ========================================================= */
+
+
+/* =========================================================
+   DASHBOARD ROOT
+   ========================================================= */
+
+.nv-admin-dashboard {
+    display: grid;
+
+    gap:
+        clamp(
+            1.35rem,
+            2.4vw,
+            2rem
+        );
+}
+
+
+/* =========================================================
+   DASHBOARD HERO
+   ========================================================= */
+
+.nv-dashboard-hero {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+    align-items: end;
+
+    gap: 2rem;
+
+    overflow: hidden;
+
+    padding:
+        clamp(
+            1.6rem,
+            3vw,
+            2.35rem
+        );
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.09);
+
+    border-radius:
+        var(--nv-radius-lg);
+
+    background:
+        radial-gradient(
+            circle at 86% 16%,
+            rgba(234, 87, 28, 0.17),
+            transparent 13rem
+        ),
+        linear-gradient(
+            145deg,
+            var(--nv-green),
+            var(--nv-deep)
+        );
+
+    box-shadow:
+        0
+        1.5rem
+        3.5rem
+        rgba(18, 33, 33, 0.12);
+}
+
+.nv-dashboard-hero::after {
+    content: "";
+
+    position: absolute;
+
+    right: -4rem;
+    bottom: -7rem;
+
+    width: 17rem;
+    height: 17rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0
+        0
+        0
+        2.4rem
+        rgba(255, 255, 255, 0.025),
+
+        0
+        0
+        0
+        5rem
+        rgba(255, 255, 255, 0.018);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HERO COPY
+   ========================================================= */
+
+.nv-dashboard-hero-copy {
+    position: relative;
+
+    z-index: 2;
+
+    max-width: 48rem;
+}
+
+.nv-dashboard-hero
+.nv-eyebrow {
+    color:
+        var(--nv-orange);
+}
+
+.nv-dashboard-hero h1 {
+    margin:
+        0;
+
+    color:
+        var(--nv-white);
+
+    font-size:
+        clamp(
+            2.25rem,
+            5vw,
+            4.15rem
+        );
+
+    line-height:
+        0.98;
+}
+
+.nv-dashboard-hero p {
+    max-width: 42rem;
+
+    margin:
+        1rem
+        0
+        0;
+
+    color:
+        rgba(255, 255, 255, 0.7);
+
+    font-size:
+        clamp(
+            0.92rem,
+            1.2vw,
+            1.02rem
+        );
+
+    line-height:
+        1.7;
+}
+
+
+/* =========================================================
+   HERO USER
+   ========================================================= */
+
+.nv-dashboard-hero-user {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    gap: 0.2rem;
+
+    min-width: 14rem;
+
+    padding:
+        1rem
+        1.1rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.1);
+
+    border-radius:
+        var(--nv-radius-md);
+
+    background:
+        rgba(255, 255, 255, 0.06);
+
+    backdrop-filter:
+        blur(18px);
+
+    -webkit-backdrop-filter:
+        blur(18px);
+
+    box-shadow:
+        inset
+        0
+        1px
+        0
+        rgba(255, 255, 255, 0.05);
+}
+
+.nv-dashboard-hero-user-label {
+    margin-bottom:
+        0.35rem;
+
+    color:
+        rgba(255, 255, 255, 0.44);
+
+    font-size:
+        0.63rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.12em;
+
+    text-transform:
+        uppercase;
+}
+
+.nv-dashboard-hero-user strong {
+    color:
+        var(--nv-white);
+
+    font-size:
+        0.92rem;
+
+    font-weight:
+        750;
+}
+
+.nv-dashboard-hero-user > span:last-child {
+    color:
+        rgba(255, 255, 255, 0.58);
+
+    font-size:
+        0.74rem;
+}
+
+
+/* =========================================================
+   STATISTICS GRID
+   ========================================================= */
+
+.nv-dashboard-stats {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            4,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        1rem;
+}
+
+
+/* =========================================================
+   STAT CARD
+   ========================================================= */
+
+.nv-dashboard-stat {
+    position: relative;
+
+    overflow: hidden;
+
+    min-width: 0;
+
+    padding:
+        1.3rem;
+
+    border:
+        1px solid
+        rgba(30, 34, 38, 0.07);
+
+    border-radius:
+        var(--nv-radius-md);
+
+    background:
+        var(--nv-white);
+
+    box-shadow:
+        0
+        1rem
+        2.6rem
+        rgba(18, 33, 33, 0.055);
+
+    transition:
+        transform var(--nv-transition),
+        border-color var(--nv-transition),
+        box-shadow var(--nv-transition);
+}
+
+.nv-dashboard-stat::after {
+    content: "";
+
+    position: absolute;
+
+    right: -2.5rem;
+    bottom: -3rem;
+
+    width: 8rem;
+    height: 8rem;
+
+    border-radius: 50%;
+
+    background:
+        rgba(62, 84, 71, 0.04);
+
+    pointer-events: none;
+}
+
+.nv-dashboard-stat:hover {
+    border-color:
+        rgba(62, 84, 71, 0.13);
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0
+        1.3rem
+        3rem
+        rgba(18, 33, 33, 0.075);
+}
+
+
+/* =========================================================
+   STAT TOP
+   ========================================================= */
+
+.nv-dashboard-stat-top {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    gap: 0.85rem;
+}
+
+.nv-dashboard-stat-icon {
+    display: inline-grid;
+
+    place-items: center;
+
+    width: 2.75rem;
+    height: 2.75rem;
+
+    flex:
+        0
+        0
+        2.75rem;
+
+    border:
+        1px solid
+        rgba(62, 84, 71, 0.1);
+
+    border-radius:
+        0.85rem;
+
+    background:
+        rgba(62, 84, 71, 0.07);
+
+    color:
+        var(--nv-green);
+}
+
+.nv-dashboard-stat-icon svg {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+.nv-dashboard-stat-label {
+    color:
+        var(--nv-gray);
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        800;
+
+    line-height:
+        1.2;
+
+    text-align:
+        right;
+
+    text-transform:
+        uppercase;
+
+    letter-spacing:
+        0.075em;
+}
+
+
+/* =========================================================
+   STAT VALUE
+   ========================================================= */
+
+.nv-dashboard-stat-value {
+    position: relative;
+
+    z-index: 2;
+
+    display: block;
+
+    margin-top:
+        1.25rem;
+
+    color:
+        var(--nv-dark);
+
+    font-size:
+        clamp(
+            2rem,
+            4vw,
+            3.15rem
+        );
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        -0.06em;
+
+    line-height:
+        0.95;
+}
+
+.nv-dashboard-stat p {
+    position: relative;
+
+    z-index: 2;
+
+    margin:
+        0.8rem
+        0
+        0;
+
+    color:
+        var(--nv-gray);
+
+    font-size:
+        0.78rem;
+
+    line-height:
+        1.55;
+}
+
+
+/* =========================================================
+   STAT VARIATIONS
+   ========================================================= */
+
+.nv-dashboard-stat-products
+.nv-dashboard-stat-icon {
+    border-color:
+        rgba(62, 84, 71, 0.13);
+
+    background:
+        rgba(62, 84, 71, 0.09);
+
+    color:
+        var(--nv-green);
+}
+
+.nv-dashboard-stat-variants
+.nv-dashboard-stat-icon {
+    border-color:
+        rgba(30, 34, 38, 0.1);
+
+    background:
+        rgba(30, 34, 38, 0.055);
+
+    color:
+        var(--nv-dark);
+}
+
+.nv-dashboard-stat-new-quotes
+.nv-dashboard-stat-icon {
+    border-color:
+        rgba(234, 87, 28, 0.18);
+
+    background:
+        rgba(234, 87, 28, 0.09);
+
+    color:
+        var(--nv-orange);
+}
+
+.nv-dashboard-stat-total-quotes
+.nv-dashboard-stat-icon {
+    border-color:
+        rgba(18, 33, 33, 0.12);
+
+    background:
+        rgba(18, 33, 33, 0.07);
+
+    color:
+        var(--nv-deep);
+}
+
+
+/* =========================================================
+   MAIN GRID
+   ========================================================= */
+
+.nv-dashboard-main-grid {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.65fr)
+        minmax(18rem, 0.75fr);
+
+    gap:
+        1rem;
+
+    align-items: start;
+}
+
+
+/* =========================================================
+   DASHBOARD CARD
+   ========================================================= */
+
+.nv-dashboard-card {
+    overflow: hidden;
+
+    border:
+        1px solid
+        rgba(30, 34, 38, 0.07);
+
+    border-radius:
+        var(--nv-radius-lg);
+
+    background:
+        var(--nv-white);
+
+    box-shadow:
+        0
+        1rem
+        2.8rem
+        rgba(18, 33, 33, 0.055);
+}
+
+
+/* =========================================================
+   CARD HEADER
+   ========================================================= */
+
+.nv-dashboard-card-header {
+    display: flex;
+
+    align-items: flex-start;
+    justify-content: space-between;
+
+    gap:
+        1.25rem;
+
+    padding:
+        1.45rem
+        1.5rem;
+
+    border-bottom:
+        1px solid
+        rgba(30, 34, 38, 0.065);
+}
+
+.nv-dashboard-section-kicker {
+    display: block;
+
+    margin-bottom:
+        0.5rem;
+
+    color:
+        var(--nv-orange);
+
+    font-size:
+        0.63rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.11em;
+
+    text-transform:
+        uppercase;
+}
+
+.nv-dashboard-card-header h2 {
+    margin:
+        0;
+
+    color:
+        var(--nv-dark);
+
+    font-size:
+        clamp(
+            1.2rem,
+            2vw,
+            1.55rem
+        );
+
+    line-height:
+        1.15;
+}
+
+.nv-dashboard-card-header p {
+    margin:
+        0.45rem
+        0
+        0;
+
+    color:
+        var(--nv-gray);
+
+    font-size:
+        0.8rem;
+
+    line-height:
+        1.55;
+}
+
+
+/* =========================================================
+   HEADER ACTION
+   ========================================================= */
+
+.nv-dashboard-header-action {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap:
+        0.45rem;
+
+    flex:
+        0
+        0
+        auto;
+
+    min-height:
+        40px;
+
+    padding:
+        0.55rem
+        0.75rem;
+
+    border:
+        1px solid
+        rgba(234, 87, 28, 0.14);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(234, 87, 28, 0.07);
+
+    color:
+        var(--nv-orange);
+
+    font-size:
+        0.72rem;
+
+    font-weight:
+        800;
+
+    text-decoration:
+        none;
+
+    transition:
+        background-color var(--nv-transition),
+        color var(--nv-transition),
+        border-color var(--nv-transition),
+        transform var(--nv-transition);
+}
+
+.nv-dashboard-header-action svg {
+    width: 0.9rem;
+    height: 0.9rem;
+}
+
+.nv-dashboard-header-action:hover,
+.nv-dashboard-header-action:focus-visible {
+    border-color:
+        var(--nv-orange);
+
+    background:
+        var(--nv-orange);
+
+    color:
+        var(--nv-white);
+
+    transform:
+        translateY(-1px);
+}
+
+
+/* =========================================================
+   QUOTE LIST
+   ========================================================= */
+
+.nv-dashboard-quotes-list {
+    display: grid;
+}
+
+
+/* =========================================================
+   QUOTE ITEM
+   ========================================================= */
+
+.nv-dashboard-quote-item {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1fr)
+        auto;
+
+    align-items: center;
+
+    gap:
+        1rem;
+
+    padding:
+        1.05rem
+        1.5rem;
+
+    border-bottom:
+        1px solid
+        rgba(30, 34, 38, 0.055);
+
+    transition:
+        background-color var(--nv-transition);
+}
+
+.nv-dashboard-quote-item:last-child {
+    border-bottom: 0;
+}
+
+.nv-dashboard-quote-item:hover {
+    background:
+        rgba(62, 84, 71, 0.025);
+}
+
+
+/* =========================================================
+   QUOTE MAIN
+   ========================================================= */
+
+.nv-dashboard-quote-main {
+    display: grid;
+
+    grid-template-columns:
+        minmax(8rem, 0.65fr)
+        minmax(0, 1.35fr);
+
+    align-items: center;
+
+    gap:
+        1rem;
+
+    min-width: 0;
+}
+
+.nv-dashboard-quote-reference {
+    display: grid;
+
+    gap:
+        0.18rem;
+}
+
+.nv-dashboard-quote-reference span {
+    color:
+        var(--nv-gray);
+
+    font-size:
+        0.6rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.08em;
+
+    text-transform:
+        uppercase;
+}
+
+.nv-dashboard-quote-reference a {
+    width: fit-content;
+
+    color:
+        var(--nv-dark);
+
+    font-size:
+        0.82rem;
+
+    font-weight:
+        800;
+
+    text-decoration:
+        none;
+
+    transition:
+        color var(--nv-transition);
+}
+
+.nv-dashboard-quote-reference a:hover,
+.nv-dashboard-quote-reference a:focus-visible {
+    color:
+        var(--nv-orange);
+}
+
+
+/* =========================================================
+   QUOTE CUSTOMER
+   ========================================================= */
+
+.nv-dashboard-quote-customer {
+    display: grid;
+
+    gap:
+        0.2rem;
+
+    min-width: 0;
+}
+
+.nv-dashboard-quote-customer strong {
+    overflow: hidden;
+
+    color:
+        var(--nv-dark);
+
+    font-size:
+        0.84rem;
+
+    font-weight:
+        750;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+.nv-dashboard-quote-customer span {
+    overflow: hidden;
+
+    color:
+        var(--nv-gray);
+
+    font-size:
+        0.72rem;
+
+    text-overflow:
+        ellipsis;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   QUOTE META
+   ========================================================= */
+
+.nv-dashboard-quote-meta {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: flex-end;
+
+    gap:
+        0.75rem;
+}
+
+.nv-dashboard-quote-meta time {
+    color:
+        var(--nv-gray);
+
+    font-size:
+        0.7rem;
+
+    white-space:
+        nowrap;
+}
+
+
+/* =========================================================
+   QUOTE STATUS
+   ========================================================= */
+
+.nv-dashboard-status {
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-height:
+        28px;
+
+    padding:
+        0.3rem
+        0.55rem;
+
+    border:
+        1px solid
+        rgba(111, 114, 118, 0.13);
+
+    border-radius:
+        999px;
+
+    background:
+        rgba(111, 114, 118, 0.08);
+
+    color:
+        var(--nv-gray);
+
+    font-size:
+        0.63rem;
+
+    font-weight:
+        800;
+
+    line-height:
+        1;
+
+    white-space:
+        nowrap;
+
+    text-transform:
+        capitalize;
+}
+
+.nv-dashboard-status[data-status="new"] {
+    border-color:
+        rgba(234, 87, 28, 0.18);
+
+    background:
+        rgba(234, 87, 28, 0.09);
+
+    color:
+        var(--nv-orange);
+}
+
+.nv-dashboard-status[data-status="contacted"],
+.nv-dashboard-status[data-status="in_progress"] {
+    border-color:
+        rgba(62, 84, 71, 0.18);
+
+    background:
+        rgba(62, 84, 71, 0.09);
+
+    color:
+        var(--nv-green);
+}
+
+.nv-dashboard-status[data-status="closed"],
+.nv-dashboard-status[data-status="completed"] {
+    border-color:
+        rgba(18, 33, 33, 0.14);
+
+    background:
+        rgba(18, 33, 33, 0.07);
+
+    color:
+        var(--nv-deep);
+}
+
+
+/* =========================================================
+   QUOTE OPEN
+   ========================================================= */
+
+.nv-dashboard-quote-open {
+    display: inline-grid;
+
+    place-items: center;
+
+    width:
+        2rem;
+
+    height:
+        2rem;
+
+    flex:
+        0
+        0
+        2rem;
+
+    border:
+        1px solid
+        rgba(30, 34, 38, 0.09);
+
+    border-radius:
+        50%;
+
+    background:
+        var(--nv-white);
+
+    color:
+        var(--nv-dark);
+
+    text-decoration:
+        none;
+
+    transition:
+        background-color var(--nv-transition),
+        border-color var(--nv-transition),
+        color var(--nv-transition),
+        transform var(--nv-transition);
+}
+
+.nv-dashboard-quote-open svg {
+    width:
+        0.9rem;
+
+    height:
+        0.9rem;
+}
+
+.nv-dashboard-quote-open:hover,
+.nv-dashboard-quote-open:focus-visible {
+    border-color:
+        var(--nv-orange);
+
+    background:
+        var(--nv-orange);
+
+    color:
+        var(--nv-white);
+
+    transform:
+        translateX(2px);
+}
+
+
+/* =========================================================
+   EMPTY STATE
+   ========================================================= */
+
+.nv-dashboard-empty {
+    display: grid;
+
+    justify-items: center;
+
+    gap:
+        0.45rem;
+
+    padding:
+        3rem
+        1.5rem;
+
+    text-align:
+        center;
+}
+
+.nv-dashboard-empty-icon {
+    display: inline-grid;
+
+    place-items: center;
+
+    width:
+        3.4rem;
+
+    height:
+        3.4rem;
+
+    margin-bottom:
+        0.35rem;
+
+    border:
+        1px solid
+        rgba(62, 84, 71, 0.11);
+
+    border-radius:
+        50%;
+
+    background:
+        rgba(62, 84, 71, 0.07);
+
+    color:
+        var(--nv-green);
+}
+
+.nv-dashboard-empty-icon svg {
+    width:
+        1.35rem;
+
+    height:
+        1.35rem;
+}
+
+.nv-dashboard-empty strong {
+    color:
+        var(--nv-dark);
+
+    font-size:
+        0.9rem;
+}
+
+.nv-dashboard-empty p {
+    max-width:
+        26rem;
+
+    margin:
+        0;
+
+    color:
+        var(--nv-gray);
+
+    font-size:
+        0.78rem;
+}
+
+
+/* =========================================================
+   QUICK ACCESS
+   ========================================================= */
+
+.nv-dashboard-quick-access {
+    position:
+        sticky;
+
+    top:
+        94px;
+}
+
+
+/* =========================================================
+   QUICK LIST
+   ========================================================= */
+
+.nv-dashboard-quick-list {
+    display: grid;
+
+    gap:
+        0.5rem;
+
+    padding:
+        0.75rem;
+}
+
+
+/* =========================================================
+   QUICK LINK
+   ========================================================= */
+
+.nv-dashboard-quick-link {
+    display: grid;
+
+    grid-template-columns:
+        auto
+        minmax(0, 1fr)
+        auto;
+
+    align-items:
+        center;
+
+    gap:
+        0.75rem;
+
+    min-height:
+        64px;
+
+    padding:
+        0.65rem
+        0.7rem;
+
+    border:
+        1px solid
+        transparent;
+
+    border-radius:
+        0.95rem;
+
+    background:
+        transparent;
+
+    color:
+        var(--nv-dark);
+
+    text-decoration:
+        none;
+
+    transition:
+        background-color var(--nv-transition),
+        border-color var(--nv-transition),
+        transform var(--nv-transition),
+        box-shadow var(--nv-transition);
+}
+
+.nv-dashboard-quick-link:hover,
+.nv-dashboard-quick-link:focus-visible {
+    border-color:
+        rgba(62, 84, 71, 0.09);
+
+    background:
+        rgba(62, 84, 71, 0.045);
+
+    color:
+        var(--nv-dark);
+
+    transform:
+        translateX(2px);
+
+    box-shadow:
+        0
+        0.7rem
+        1.6rem
+        rgba(18, 33, 33, 0.045);
+}
+
+.nv-dashboard-quick-link-highlight {
+    border-color:
+        rgba(234, 87, 28, 0.12);
+
+    background:
+        rgba(234, 87, 28, 0.055);
+}
+
+
+/* =========================================================
+   QUICK ICON
+   ========================================================= */
+
+.nv-dashboard-quick-icon {
+    display: inline-grid;
+
+    place-items: center;
+
+    width:
+        2.65rem;
+
+    height:
+        2.65rem;
+
+    flex:
+        0
+        0
+        2.65rem;
+
+    border:
+        1px solid
+        rgba(62, 84, 71, 0.11);
+
+    border-radius:
+        0.82rem;
+
+    background:
+        rgba(62, 84, 71, 0.07);
+
+    color:
+        var(--nv-green);
+}
+
+.nv-dashboard-quick-link-highlight
+.nv-dashboard-quick-icon {
+    border-color:
+        rgba(234, 87, 28, 0.18);
+
+    background:
+        rgba(234, 87, 28, 0.1);
+
+    color:
+        var(--nv-orange);
+}
+
+.nv-dashboard-quick-icon svg {
+    width:
+        1.1rem;
+
+    height:
+        1.1rem;
+}
+
+
+/* =========================================================
+   QUICK COPY
+   ========================================================= */
+
+.nv-dashboard-quick-copy {
+    display: grid;
+
+    gap:
+        0.15rem;
+
+    min-width:
+        0;
+}
+
+.nv-dashboard-quick-copy strong {
+    color:
+        var(--nv-dark);
+
+    font-size:
+        0.8rem;
+
+    font-weight:
+        750;
+}
+
+.nv-dashboard-quick-copy small {
+    color:
+        var(--nv-gray);
+
+    font-size:
+        0.68rem;
+}
+
+
+/* =========================================================
+   QUICK ARROW
+   ========================================================= */
+
+.nv-dashboard-quick-arrow {
+    color:
+        var(--nv-gray);
+
+    font-size:
+        1rem;
+
+    transition:
+        color var(--nv-transition),
+        transform var(--nv-transition);
+}
+
+.nv-dashboard-quick-link:hover
+.nv-dashboard-quick-arrow,
+.nv-dashboard-quick-link:focus-visible
+.nv-dashboard-quick-arrow {
+    color:
+        var(--nv-orange);
+
+    transform:
+        translateX(3px);
+}
+
+
+/* =========================================================
+   OPERATIONS
+   ========================================================= */
+
+.nv-dashboard-operations {
+    display: grid;
+
+    grid-template-columns:
+        minmax(16rem, 0.85fr)
+        minmax(0, 1.5fr);
+
+    gap:
+        clamp(
+            1.5rem,
+            3vw,
+            3rem
+        );
+
+    align-items: center;
+
+    padding:
+        clamp(
+            1.5rem,
+            3vw,
+            2.2rem
+        );
+
+    border:
+        1px solid
+        rgba(30, 34, 38, 0.07);
+
+    border-radius:
+        var(--nv-radius-lg);
+
+    background:
+        linear-gradient(
+            135deg,
+            var(--nv-white),
+            var(--nv-light)
+        );
+
+    box-shadow:
+        0
+        1rem
+        2.6rem
+        rgba(18, 33, 33, 0.045);
+}
+
+
+/* =========================================================
+   OPERATIONS COPY
+   ========================================================= */
+
+.nv-dashboard-operations-copy h2 {
+    max-width:
+        30rem;
+
+    margin:
+        0;
+
+    color:
+        var(--nv-dark);
+
+    font-size:
+        clamp(
+            1.4rem,
+            2.6vw,
+            2rem
+        );
+
+    line-height:
+        1.1;
+}
+
+.nv-dashboard-operations-copy p {
+    max-width:
+        32rem;
+
+    margin:
+        0.75rem
+        0
+        0;
+
+    color:
+        var(--nv-gray);
+
+    font-size:
+        0.82rem;
+}
+
+
+/* =========================================================
+   OPERATIONS ITEMS
+   ========================================================= */
+
+.nv-dashboard-operations-items {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            2,
+            minmax(0, 1fr)
+        );
+
+    gap:
+        0.75rem;
+}
+
+.nv-dashboard-operation {
+    display: grid;
+
+    grid-template-columns:
+        auto
+        minmax(0, 1fr);
+
+    align-items: center;
+
+    gap:
+        0.75rem;
+
+    min-width:
+        0;
+
+    padding:
+        0.85rem;
+
+    border:
+        1px solid
+        rgba(30, 34, 38, 0.065);
+
+    border-radius:
+        var(--nv-radius-md);
+
+    background:
+        rgba(255, 255, 255, 0.72);
+}
+
+.nv-dashboard-operation > span {
+    display: inline-grid;
+
+    place-items: center;
+
+    width:
+        2.5rem;
+
+    height:
+        2.5rem;
+
+    border:
+        1px solid
+        rgba(234, 87, 28, 0.16);
+
+    border-radius:
+        0.75rem;
+
+    background:
+        rgba(234, 87, 28, 0.08);
+
+    color:
+        var(--nv-orange);
+
+    font-size:
+        0.68rem;
+
+    font-weight:
+        800;
+
+    letter-spacing:
+        0.05em;
+}
+
+.nv-dashboard-operation > div {
+    display: grid;
+
+    gap:
+        0.15rem;
+
+    min-width:
+        0;
+}
+
+.nv-dashboard-operation strong {
+    color:
+        var(--nv-dark);
+
+    font-size:
+        0.78rem;
+
+    font-weight:
+        750;
+}
+
+.nv-dashboard-operation small {
+    color:
+        var(--nv-gray);
+
+    font-size:
+        0.66rem;
+
+    line-height:
+        1.4;
+}
+
+
+/* =========================================================
+   ACCESSIBILITY
+   ========================================================= */
+
+.nv-dashboard-header-action:focus-visible,
+.nv-dashboard-quote-reference a:focus-visible,
+.nv-dashboard-quote-open:focus-visible,
+.nv-dashboard-quick-link:focus-visible {
+    outline:
+        2px solid
+        var(--nv-orange);
+
+    outline-offset:
+        3px;
+}
+
+
+/* =========================================================
+   LARGE TABLET
+   ========================================================= */
+
+@media (max-width: 1199.98px) {
+    .nv-dashboard-stats {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+
+    .nv-dashboard-main-grid {
+        grid-template-columns:
+            minmax(0, 1.35fr)
+            minmax(17rem, 0.65fr);
+    }
+
+    .nv-dashboard-operations {
+        grid-template-columns:
+            1fr;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .nv-dashboard-main-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+    .nv-dashboard-quick-access {
+        position:
+            static;
+    }
+
+    .nv-dashboard-quick-list {
+        grid-template-columns:
+            repeat(
+                2,
+                minmax(0, 1fr)
+            );
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 767.98px) {
+    .nv-admin-dashboard {
+        gap:
+            1rem;
+    }
+
+    .nv-dashboard-hero {
+        grid-template-columns:
+            1fr;
+
+        align-items:
+            start;
+
+        gap:
+            1.25rem;
+
+        padding:
+            1.4rem;
+    }
+
+    .nv-dashboard-hero h1 {
+        font-size:
+            clamp(
+                2rem,
+                11vw,
+                3rem
+            );
+    }
+
+    .nv-dashboard-hero-user {
+        width:
+            100%;
+
+        min-width:
+            0;
+    }
+
+    .nv-dashboard-stats {
+        grid-template-columns:
+            1fr;
+    }
+
+    .nv-dashboard-stat {
+        display: grid;
+
+        grid-template-columns:
+            minmax(0, 1fr)
+            auto;
+
+        align-items: center;
+
+        column-gap:
+            1rem;
+    }
+
+    .nv-dashboard-stat-top {
+        grid-column:
+            1;
+
+        justify-content:
+            flex-start;
+    }
+
+    .nv-dashboard-stat-label {
+        text-align:
+            left;
+    }
+
+    .nv-dashboard-stat-value {
+        grid-column:
+            2;
+
+        grid-row:
+            1 / span 2;
+
+        margin-top:
+            0;
+
+        text-align:
+            right;
+    }
+
+    .nv-dashboard-stat p {
+        grid-column:
+            1;
+
+        margin-top:
+            0.65rem;
+    }
+
+    .nv-dashboard-card-header {
+        padding:
+            1.2rem;
+    }
+
+    .nv-dashboard-quote-item {
+        grid-template-columns:
+            1fr;
+
+        padding:
+            1rem
+            1.2rem;
+    }
+
+    .nv-dashboard-quote-main {
+        grid-template-columns:
+            1fr;
+    }
+
+    .nv-dashboard-quote-meta {
+        justify-content:
+            flex-start;
+
+        flex-wrap:
+            wrap;
+    }
+
+    .nv-dashboard-quote-open {
+        margin-left:
+            auto;
+    }
+
+    .nv-dashboard-quick-list {
+        grid-template-columns:
+            1fr;
+    }
+
+    .nv-dashboard-operations-items {
+        grid-template-columns:
+            1fr;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 420px) {
+    .nv-dashboard-hero {
+        border-radius:
+            var(--nv-radius-md);
+    }
+
+    .nv-dashboard-stat {
+        padding:
+            1.05rem;
+    }
+
+    .nv-dashboard-stat-value {
+        font-size:
+            2rem;
+    }
+
+    .nv-dashboard-card {
+        border-radius:
+            var(--nv-radius-md);
+    }
+
+    .nv-dashboard-card-header {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+    }
+
+    .nv-dashboard-header-action {
+        width:
+            100%;
+    }
+
+    .nv-dashboard-quote-meta {
+        gap:
+            0.5rem;
+    }
+
+    .nv-dashboard-operations {
+        padding:
+            1.2rem;
+
+        border-radius:
+            var(--nv-radius-md);
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+    .nv-dashboard-stat,
+    .nv-dashboard-header-action,
+    .nv-dashboard-quote-item,
+    .nv-dashboard-quote-reference a,
+    .nv-dashboard-quote-open,
+    .nv-dashboard-quick-link,
+    .nv-dashboard-quick-arrow {
+        transition:
+            none;
+    }
+
+    .nv-dashboard-stat:hover,
+    .nv-dashboard-header-action:hover,
+    .nv-dashboard-quote-open:hover,
+    .nv-dashboard-quick-link:hover {
+        transform:
+            none;
+    }
+}

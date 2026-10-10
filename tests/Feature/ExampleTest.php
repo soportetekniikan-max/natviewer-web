@@ -9,7 +9,7 @@ class ExampleTest extends TestCase
 {
     use RefreshDatabase;
 
-    public function test_root_redirects_to_spanish_home(): void
+    public function test_root_redirects_to_english_home_by_default(): void
     {
         $response = $this->get('/');
 
@@ -17,7 +17,7 @@ class ExampleTest extends TestCase
             route(
                 'home',
                 [
-                    'locale' => 'es',
+                    'locale' => 'en',
                 ]
             )
         );

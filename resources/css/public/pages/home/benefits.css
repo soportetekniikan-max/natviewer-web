@@ -1,0 +1,950 @@
+/* =========================================================
+   NATVIEWER HOME
+   Benefits manifesto
+   Editorial list + strategic dark anchor
+   ========================================================= */
+
+
+/* =========================================================
+   SECTION
+   ========================================================= */
+
+.nv-home-benefits {
+    position: relative;
+
+    isolation: isolate;
+
+    overflow: hidden;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(237, 236, 237, 0.56) 0%,
+            #f8f8f5 28%,
+            var(--nv-white) 100%
+        );
+}
+
+
+/* =========================================================
+   BACKGROUND DETAIL
+   ========================================================= */
+
+.nv-home-benefits::before {
+    content: "";
+
+    position: absolute;
+
+    top: 8rem;
+    left: -14rem;
+
+    z-index: -1;
+
+    width: 30rem;
+    height: 30rem;
+
+    border-radius: 50%;
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(62, 84, 71, 0.055),
+            rgba(62, 84, 71, 0.015) 46%,
+            transparent 72%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+.nv-benefits-header {
+    display: grid;
+
+    grid-template-columns:
+        minmax(0, 1.12fr)
+        minmax(18rem, 0.6fr);
+
+    align-items: end;
+
+    gap:
+        clamp(
+            2rem,
+            5vw,
+            5rem
+        );
+
+    margin-bottom:
+        clamp(
+            3rem,
+            5vw,
+            4.75rem
+        );
+
+    padding-bottom:
+        1.8rem;
+
+    border-bottom:
+        1px solid
+        rgba(18, 33, 33, 0.09);
+}
+
+
+/* =========================================================
+   HEADING
+   ========================================================= */
+
+.nv-benefits-heading {
+    min-width: 0;
+}
+
+.nv-benefits-heading
+.nv-eyebrow {
+    margin-bottom: 1rem;
+}
+
+.nv-benefits-heading h2 {
+    max-width: 820px;
+
+    margin: 0;
+
+    color:
+        var(--nv-deep);
+
+    font-size:
+        clamp(
+            3rem,
+            5.4vw,
+            5.8rem
+        );
+
+    font-weight: 700;
+
+    line-height: 0.92;
+
+    letter-spacing: -0.065em;
+
+    text-wrap: balance;
+}
+
+
+/* =========================================================
+   INTRO
+   ========================================================= */
+
+.nv-benefits-intro {
+    display: grid;
+
+    grid-template-columns:
+        2px
+        minmax(0, 1fr);
+
+    gap: 1.15rem;
+
+    max-width: 31rem;
+
+    justify-self: end;
+}
+
+.nv-benefits-intro-line {
+    width: 2px;
+
+    background:
+        linear-gradient(
+            180deg,
+            var(--nv-green),
+            rgba(62, 84, 71, 0.06)
+        );
+}
+
+.nv-benefits-intro p {
+    margin: 0;
+
+    color:
+        rgba(30, 34, 38, 0.6);
+
+    font-size: 0.95rem;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   EXPERIENCE LAYOUT
+   ========================================================= */
+
+.nv-benefits-experience {
+    display: grid;
+
+    grid-template-columns:
+        minmax(15rem, 0.36fr)
+        minmax(0, 1fr);
+
+    gap:
+        clamp(
+            2rem,
+            5vw,
+            5rem
+        );
+
+    align-items: stretch;
+}
+
+
+/* =========================================================
+   MANIFESTO PANEL
+   ========================================================= */
+
+.nv-benefits-manifesto {
+    position: relative;
+
+    display: flex;
+
+    min-height: 640px;
+
+    overflow: hidden;
+
+    padding:
+        clamp(
+            1.5rem,
+            2.5vw,
+            2rem
+        );
+
+    flex-direction: column;
+
+    justify-content: space-between;
+
+    border-radius:
+        clamp(
+            1.5rem,
+            2.5vw,
+            2rem
+        );
+
+    background:
+        radial-gradient(
+            circle at 80% 18%,
+            rgba(234, 87, 28, 0.17),
+            transparent 11rem
+        ),
+        linear-gradient(
+            155deg,
+            var(--nv-green),
+            var(--nv-deep) 72%
+        );
+
+    box-shadow:
+        0
+        2rem
+        5rem
+        rgba(18, 33, 33, 0.18);
+
+    color:
+        var(--nv-white);
+}
+
+.nv-benefits-manifesto::before {
+    content: "";
+
+    position: absolute;
+
+    right: -7rem;
+    bottom: -7rem;
+
+    width: 19rem;
+    height: 19rem;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.07);
+
+    border-radius: 50%;
+
+    box-shadow:
+        0
+        0
+        0
+        3rem
+        rgba(255, 255, 255, 0.018),
+
+        0
+        0
+        0
+        6rem
+        rgba(255, 255, 255, 0.01);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   MANIFESTO TOP
+   ========================================================= */
+
+.nv-benefits-manifesto-top {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.8rem;
+}
+
+.nv-benefits-manifesto-top span {
+    color:
+        rgba(255, 255, 255, 0.78);
+
+    font-size: 0.65rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.16em;
+
+    text-transform: uppercase;
+}
+
+.nv-benefits-manifesto-top i {
+    display: block;
+
+    width: 38px;
+    height: 1px;
+
+    background:
+        var(--nv-orange);
+}
+
+
+/* =========================================================
+   MANIFESTO MAIN
+   ========================================================= */
+
+.nv-benefits-manifesto-main {
+    position: relative;
+
+    z-index: 2;
+
+    display: grid;
+
+    gap: 1.2rem;
+}
+
+.nv-benefits-manifesto-count {
+    display: block;
+
+    color:
+        var(--nv-orange);
+
+    font-size:
+        clamp(
+            5rem,
+            9vw,
+            8.5rem
+        );
+
+    font-weight: 700;
+
+    line-height: 0.82;
+
+    letter-spacing: -0.075em;
+}
+
+.nv-benefits-manifesto-copy {
+    display: grid;
+
+    gap: 0.25rem;
+}
+
+.nv-benefits-manifesto-copy strong {
+    color:
+        var(--nv-white);
+
+    font-size:
+        clamp(
+            1.75rem,
+            3vw,
+            2.8rem
+        );
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: -0.05em;
+}
+
+.nv-benefits-manifesto-copy span {
+    color:
+        rgba(255, 255, 255, 0.42);
+
+    font-size: 0.72rem;
+
+    font-weight: 800;
+
+    letter-spacing: 0.17em;
+
+    text-transform: uppercase;
+}
+
+
+/* =========================================================
+   MANIFESTO BOTTOM
+   ========================================================= */
+
+.nv-benefits-manifesto-bottom {
+    position: relative;
+
+    z-index: 2;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 0.55rem;
+}
+
+.nv-benefits-manifesto-bottom span {
+    display: block;
+
+    border-radius: 50%;
+}
+
+.nv-benefits-manifesto-bottom span:nth-child(1) {
+    width: 7px;
+    height: 7px;
+
+    background:
+        var(--nv-orange);
+}
+
+.nv-benefits-manifesto-bottom span:nth-child(2) {
+    width: 13px;
+    height: 13px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.3);
+}
+
+.nv-benefits-manifesto-bottom span:nth-child(3) {
+    width: 22px;
+    height: 22px;
+
+    border:
+        1px solid
+        rgba(255, 255, 255, 0.12);
+}
+
+
+/* =========================================================
+   BENEFITS LIST
+   ========================================================= */
+
+.nv-benefits-list {
+    display: grid;
+
+    grid-template-columns: 1fr;
+
+    align-content: stretch;
+}
+
+
+/* =========================================================
+   BENEFIT ROW
+   ========================================================= */
+
+.nv-benefit-card {
+    position: relative;
+
+    display: grid;
+
+    grid-template-columns:
+        4.5rem
+        minmax(0, 1fr)
+        3rem;
+
+    align-items: center;
+
+    gap:
+        clamp(
+            1rem,
+            2vw,
+            1.6rem
+        );
+
+    min-height: 150px;
+
+    padding:
+        clamp(
+            1.4rem,
+            2.5vw,
+            2rem
+        )
+        0;
+
+    border-top:
+        1px solid
+        rgba(18, 33, 33, 0.09);
+
+    background: transparent;
+
+    transition:
+        padding-left 0.28s ease,
+        background-color 0.28s ease;
+}
+
+.nv-benefit-card:last-child {
+    border-bottom:
+        1px solid
+        rgba(18, 33, 33, 0.09);
+}
+
+
+/* =========================================================
+   ROW HOVER
+   ========================================================= */
+
+.nv-benefit-card:hover {
+    padding-left:
+        1rem;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(62, 84, 71, 0.055),
+            rgba(62, 84, 71, 0.015) 58%,
+            transparent
+        );
+}
+
+
+/* =========================================================
+   FEATURED ROW
+   No card block; only a subtle accent
+   ========================================================= */
+
+.nv-benefit-card-featured {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(234, 87, 28, 0.055),
+            transparent 58%
+        );
+}
+
+
+/* =========================================================
+   INDEX
+   ========================================================= */
+
+.nv-benefit-index {
+    display: grid;
+
+    align-self: stretch;
+
+    grid-template-rows:
+        auto
+        1fr;
+
+    justify-items: start;
+
+    gap: 0.7rem;
+}
+
+.nv-benefit-index span {
+    color:
+        var(--nv-orange);
+
+    font-size: 0.64rem;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    letter-spacing: 0.13em;
+}
+
+.nv-benefit-index i {
+    display: block;
+
+    width: 1px;
+    height: 100%;
+
+    min-height: 38px;
+
+    margin-left: 0.2rem;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(62, 84, 71, 0.22),
+            rgba(62, 84, 71, 0.02)
+        );
+}
+
+
+/* =========================================================
+   CONTENT
+   ========================================================= */
+
+.nv-benefit-content {
+    min-width: 0;
+}
+
+.nv-home-page
+.nv-benefit-card h3 {
+    max-width: 580px;
+
+    margin:
+        0
+        0
+        0.55rem;
+
+    color:
+        var(--nv-deep);
+
+    font-size:
+        clamp(
+            1.55rem,
+            2.7vw,
+            2.35rem
+        );
+
+    font-weight: 700;
+
+    line-height: 1;
+
+    letter-spacing: -0.045em;
+
+    text-wrap: balance;
+}
+
+.nv-home-page
+.nv-benefit-card p {
+    max-width: 610px;
+
+    margin: 0;
+
+    color:
+        rgba(30, 34, 38, 0.56);
+
+    font-size: 0.88rem;
+
+    line-height: 1.7;
+}
+
+
+/* =========================================================
+   MARKER
+   ========================================================= */
+
+.nv-benefit-marker {
+    position: relative;
+
+    display: grid;
+
+    place-items: center;
+
+    width: 34px;
+    height: 34px;
+
+    justify-self: end;
+
+    border:
+        1px solid
+        rgba(234, 87, 28, 0.24);
+
+    border-radius: 50%;
+}
+
+.nv-benefit-marker span {
+    width: 6px;
+    height: 6px;
+
+    border-radius: 50%;
+
+    background:
+        var(--nv-orange);
+}
+
+.nv-benefit-marker-green {
+    border-color:
+        rgba(62, 84, 71, 0.24);
+}
+
+.nv-benefit-marker-green span {
+    background:
+        var(--nv-green);
+}
+
+.nv-benefit-marker-dark {
+    border-color:
+        rgba(18, 33, 33, 0.2);
+
+    background:
+        var(--nv-deep);
+}
+
+.nv-benefit-marker-dark span {
+    background:
+        var(--nv-white);
+}
+
+
+/* =========================================================
+   LARGE DESKTOP
+   ========================================================= */
+
+@media (min-width: 1400px) {
+    .nv-benefits-experience {
+        grid-template-columns:
+            minmax(17rem, 0.34fr)
+            minmax(0, 1fr);
+    }
+
+    .nv-benefits-manifesto {
+        min-height: 680px;
+    }
+
+    .nv-benefit-card {
+        min-height: 165px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 991.98px) {
+    .nv-benefits-header {
+        grid-template-columns: 1fr;
+
+        gap: 1.6rem;
+    }
+
+    .nv-benefits-intro {
+        max-width: 42rem;
+
+        justify-self: start;
+    }
+
+    .nv-benefits-heading h2 {
+        max-width: 720px;
+
+        font-size:
+            clamp(
+                3rem,
+                8vw,
+                4.8rem
+            );
+    }
+
+    .nv-benefits-experience {
+        grid-template-columns: 1fr;
+
+        gap: 2rem;
+    }
+
+    .nv-benefits-manifesto {
+        display: grid;
+
+        grid-template-columns:
+            auto
+            minmax(0, 1fr)
+            auto;
+
+        align-items: center;
+
+        min-height: 220px;
+
+        padding:
+            1.5rem;
+    }
+
+    .nv-benefits-manifesto-top {
+        align-self: start;
+    }
+
+    .nv-benefits-manifesto-main {
+        justify-self: center;
+
+        text-align: center;
+    }
+
+    .nv-benefits-manifesto-count {
+        font-size:
+            clamp(
+                4.5rem,
+                13vw,
+                7rem
+            );
+    }
+
+    .nv-benefits-manifesto-bottom {
+        align-self: end;
+    }
+}
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (max-width: 575.98px) {
+    .nv-benefits-header {
+        gap: 1.25rem;
+
+        margin-bottom: 2.5rem;
+
+        padding-bottom: 1.4rem;
+    }
+
+    .nv-benefits-heading h2 {
+        font-size:
+            clamp(
+                2.65rem,
+                12vw,
+                3.7rem
+            );
+    }
+
+    .nv-benefits-intro {
+        grid-template-columns:
+            2px
+            minmax(0, 1fr);
+
+        gap: 0.9rem;
+    }
+
+    .nv-benefits-intro p {
+        font-size: 0.9rem;
+
+        line-height: 1.7;
+    }
+
+    .nv-benefits-experience {
+        gap: 1.4rem;
+    }
+
+    .nv-benefits-manifesto {
+        grid-template-columns: 1fr;
+
+        gap: 1.5rem;
+
+        min-height: 300px;
+
+        padding:
+            1.25rem;
+
+        border-radius: 1.4rem;
+    }
+
+    .nv-benefits-manifesto-top,
+    .nv-benefits-manifesto-bottom {
+        align-self: auto;
+    }
+
+    .nv-benefits-manifesto-main {
+        justify-self: start;
+
+        text-align: left;
+    }
+
+    .nv-benefits-manifesto-count {
+        font-size:
+            5rem;
+    }
+
+    .nv-benefits-manifesto-copy strong {
+        font-size:
+            2rem;
+    }
+
+    .nv-benefit-card {
+        grid-template-columns:
+            3rem
+            minmax(0, 1fr);
+
+        gap: 0.9rem;
+
+        min-height: 0;
+
+        padding:
+            1.35rem
+            0;
+    }
+
+    .nv-benefit-card:hover {
+        padding-left: 0;
+    }
+
+    .nv-benefit-marker {
+        display: none;
+    }
+
+    .nv-benefit-index i {
+        min-height: 32px;
+    }
+
+    .nv-home-page
+    .nv-benefit-card h3 {
+        font-size:
+            clamp(
+                1.45rem,
+                7vw,
+                1.9rem
+            );
+    }
+
+    .nv-home-page
+    .nv-benefit-card p {
+        font-size: 0.83rem;
+
+        line-height: 1.65;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   ========================================================= */
+
+@media (max-width: 390px) {
+    .nv-benefits-manifesto {
+        min-height: 275px;
+    }
+
+    .nv-benefits-manifesto-count {
+        font-size: 4.4rem;
+    }
+
+    .nv-benefit-card {
+        grid-template-columns:
+            2.6rem
+            minmax(0, 1fr);
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (
+    prefers-reduced-motion: reduce
+) {
+    .nv-benefit-card {
+        transition: none;
+    }
+
+    .nv-benefit-card:hover {
+        padding-left: 0;
+    }
+}

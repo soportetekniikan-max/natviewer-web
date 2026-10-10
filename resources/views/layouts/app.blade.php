@@ -40,6 +40,13 @@
         ? $alternateEnUrl
         : $alternateEsUrl;
 
+    $showLanguageAlternates =
+        trim(
+            $__env->yieldContent(
+                'show_language_alternates'
+            )
+        ) !== 'false';
+
     $navigationUrls = [
         'home' => $homeUrl,
         'products' => $homeUrl . '#products',
@@ -57,6 +64,8 @@
             'currentLocale' => $currentLocale,
             'alternateEsUrl' => $alternateEsUrl,
             'alternateEnUrl' => $alternateEnUrl,
+            'showLanguageAlternates' =>
+                $showLanguageAlternates,
         ]
     )
 
@@ -68,6 +77,8 @@
                 'alternateLocale' => $alternateLocale,
                 'alternateLanguageUrl' => $alternateLanguageUrl,
                 'navigationUrls' => $navigationUrls,
+                'showLanguageAlternates' =>
+                    $showLanguageAlternates,
             ]
         )
 
@@ -79,6 +90,7 @@
             'layouts.partials.footer',
             [
                 'navigationUrls' => $navigationUrls,
+                'currentLocale' => $currentLocale,
             ]
         )
     </body>

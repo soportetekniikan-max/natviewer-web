@@ -5,12 +5,14 @@ namespace App\Services\Home;
 use App\Models\ContactSetting;
 use App\Models\Product;
 use App\Services\Localization\LocalizedValueResolver;
+use App\Services\ProductDetail\ProductMediaPresenter;
 
 class HomeHeroBuilder
 {
     public function __construct(
         private readonly LocalizedValueResolver $localizedValue,
-        private readonly HomeVariantFormatter $variantFormatter
+        private readonly HomeVariantFormatter $variantFormatter,
+        private readonly ProductMediaPresenter $mediaPresenter
     ) {
     }
 
@@ -25,20 +27,34 @@ class HomeHeroBuilder
                 : collect();
 
         $firstHeroVariant =
-            $featuredVariants->get(0);
+            $featuredVariants->first();
 
-        $secondHeroVariant =
-            $featuredVariants->get(1);
+        $productName =
+            $featuredProduct
+                ? $this->localizedValue->resolve(
+                    $featuredProduct,
+                    'name',
+                    $locale
+                )
+                : 'Falco UD';
+
+        $media = [
+            'primaryImageUrl' => null,
+            'primaryImageAlt' => $productName,
+        ];
+
+        if ($featuredProduct) {
+            $media =
+                $this->mediaPresenter->build(
+                    $featuredProduct,
+                    $locale,
+                    $productName
+                );
+        }
 
         return [
             'product_name' =>
-                $featuredProduct
-                    ? $this->localizedValue->resolve(
-                        $featuredProduct,
-                        'name',
-                        $locale
-                    )
-                    : 'Falco UD',
+                $productName,
 
             'short_description' =>
                 $featuredProduct
@@ -49,7 +65,7 @@ class HomeHeroBuilder
                     )
                     : __('public.hero.text'),
 
-            'first_variant_label' =>
+            'variant_label' =>
                 $firstHeroVariant
                     ? $this->variantFormatter->shortLabel(
                         $firstHeroVariant,
@@ -57,13 +73,28 @@ class HomeHeroBuilder
                     )
                     : '8×42',
 
-            'second_variant_label' =>
-                $secondHeroVariant
-                    ? $this->variantFormatter->shortLabel(
-                        $secondHeroVariant,
-                        $locale
+            'image_url' =>
+                $media[
+                    'primaryImageUrl'
+                ],
+
+            'image_alt' =>
+                $media[
+                    'primaryImageAlt'
+                ],
+
+            'detail_url' =>
+                $featuredProduct
+                    ? route(
+                        $locale === 'en'
+                            ? 'products.show.en'
+                            : 'products.show.es',
+                        [
+                            'product' =>
+                                $featuredProduct->slug,
+                        ]
                     )
-                    : '10×42',
+                    : null,
 
             'default_currency' =>
                 $contactSettings

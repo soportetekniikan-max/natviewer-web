@@ -1,4 +1,7 @@
 @php
+    $showLanguageAlternates =
+        $showLanguageAlternates ?? true;
+
     $seoTitle = trim(
         $__env->yieldContent('title')
     );
@@ -148,23 +151,25 @@
         href="{{ $canonicalUrl }}"
     >
 
-    <link
-        rel="alternate"
-        hreflang="es"
-        href="{{ $alternateEsUrl }}"
-    >
+    @if ($showLanguageAlternates)
+        <link
+            rel="alternate"
+            hreflang="es"
+            href="{{ $alternateEsUrl }}"
+        >
 
-    <link
-        rel="alternate"
-        hreflang="en"
-        href="{{ $alternateEnUrl }}"
-    >
+        <link
+            rel="alternate"
+            hreflang="en"
+            href="{{ $alternateEnUrl }}"
+        >
 
-    <link
-        rel="alternate"
-        hreflang="x-default"
-        href="{{ $xDefaultUrl }}"
-    >
+        <link
+            rel="alternate"
+            hreflang="x-default"
+            href="{{ $xDefaultUrl }}"
+        >
+    @endif
 
     <meta
         property="og:type"
@@ -206,10 +211,12 @@
         content="{{ $ogLocale }}"
     >
 
-    <meta
-        property="og:locale:alternate"
-        content="{{ $alternateOgLocale }}"
-    >
+    @if ($showLanguageAlternates)
+        <meta
+            property="og:locale:alternate"
+            content="{{ $alternateOgLocale }}"
+        >
+    @endif
 
     <meta
         name="twitter:card"

@@ -30,10 +30,7 @@
 
                 <a
                     href="{{ $navigationUrls['products'] }}"
-                    class="
-                        nv-button
-                        nv-button-primary
-                    "
+                    class="nv-button nv-button-primary"
                 >
                     {{ __('public.footer.quote_button') }}
                 </a>
@@ -45,6 +42,20 @@
                 © {{ date('Y') }} Natviewer.
                 {{ __('public.footer.rights') }}
             </span>
+
+            <a
+                href="{{ route(
+                    'privacy-policy.' . $currentLocale
+                ) }}"
+                class="
+                    link-light
+                    link-opacity-50
+                    link-opacity-100-hover
+                    text-decoration-none
+                "
+            >
+                {{ __('privacy.footer_link') }}
+            </a>
 
             <span>
                 {{ __('public.footer.version') }}
