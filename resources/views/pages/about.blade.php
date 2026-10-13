@@ -31,7 +31,7 @@
 @endsection
 
 @section('content')
-    <main class="nv-about">
+    <div class="nv-about">
 
         <section class="nv-about-hero">
             <div class="container">
@@ -102,6 +102,12 @@
                     <h2>
                         {{ __('about.principles.title') }}
                     </h2>
+
+                    <div class="nv-about-copy">
+                        <p>
+                            {{ __('about.principles.intro') }}
+                        </p>
+                    </div>
                 </div>
 
                 <div class="nv-about-principles">
@@ -267,5 +273,5 @@
             </div>
         </section>
 
-    </main>
+    </div>
 @endsection

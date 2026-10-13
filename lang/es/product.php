@@ -11,127 +11,89 @@ return [
 
     'variants_title' => 'Opciones disponibles',
 
-    'variants_heading' =>
-        'Elige la opción que mejor se adapte a tu necesidad.',
+    'variants_heading' => 'Elige la opción que mejor se adapte a tu necesidad.',
 
-    'variants_text' =>
-        'Compara las opciones disponibles y revisa sus especificaciones técnicas antes de solicitar una cotización.',
+    'variants_text' => 'Compara las opciones disponibles y revisa sus especificaciones técnicas antes de solicitar una cotización.',
 
     'default_variant' => 'Recomendada',
 
     'sku' => 'SKU',
 
-    'technical_eyebrow' =>
-        'Información técnica',
+    'technical_eyebrow' => 'Información técnica',
 
-    'specifications' =>
-        'Especificaciones técnicas',
+    'specifications' => 'Especificaciones técnicas',
 
-    'no_specifications' =>
-        'Especificaciones por confirmar.',
+    'no_specifications' => 'Especificaciones por confirmar.',
 
     'spec_labels' => [
-        'magnification' =>
-            'Aumento',
+        'magnification' => 'Aumento',
 
-        'objective_diameter' =>
-            'Diámetro del objetivo',
+        'objective_diameter' => 'Diámetro del objetivo',
 
-        'lenses' =>
-            'Lentes',
+        'lenses' => 'Lentes',
 
-        'prism' =>
-            'Prisma',
+        'prism' => 'Prisma',
 
-        'field_of_view' =>
-            'Campo visual a 1000 m',
+        'field_of_view' => 'Campo visual a 1000 m',
 
-        'minimum_focus' =>
-            'Enfoque mínimo',
+        'minimum_focus' => 'Enfoque mínimo',
 
-        'eye_relief' =>
-            'Alivio ocular',
+        'eye_relief' => 'Alivio ocular',
 
-        'exit_pupil' =>
-            'Pupila de salida',
+        'exit_pupil' => 'Pupila de salida',
 
-        'chassis' =>
-            'Chasis',
+        'chassis' => 'Chasis',
 
-        'weight' =>
-            'Peso',
+        'weight' => 'Peso',
 
-        'adjustable_eyecups' =>
-            'Copas oculares ajustables',
+        'adjustable_eyecups' => 'Copas oculares ajustables',
 
-        'diopter_adjustment' =>
-            'Ajuste de dioptría',
+        'diopter_adjustment' => 'Ajuste de dioptría',
 
-        'focus_system' =>
-            'Sistema de enfoque',
+        'focus_system' => 'Sistema de enfoque',
 
-        'weather_resistance' =>
-            'Protección ambiental',
+        'weather_resistance' => 'Protección ambiental',
 
-        'tripod_compatible' =>
-            'Compatible con trípode',
+        'tripod_compatible' => 'Compatible con trípode',
 
-        'included_accessories' =>
-            'Accesorios incluidos',
+        'included_accessories' => 'Accesorios incluidos',
 
-        'warranty' =>
-            'Garantía',
+        'warranty' => 'Garantía',
     ],
 
     'spec_values' => [
-        'coated' =>
-            'Coated',
+        'coated' => 'Coated',
 
-        'bak7_roof' =>
-            'BAK-7 tipo techo',
+        'bak7_roof' => 'BAK-7 tipo techo',
 
-        'polycarbonate' =>
-            'Policarbonato',
+        'polycarbonate' => 'Policarbonato',
 
-        'yes' =>
-            'Sí',
+        'yes' => 'Sí',
 
-        'central_wheel' =>
-            'Rueda de enfoque central',
+        'central_wheel' => 'Rueda de enfoque central',
 
-        'rain_fog_resistant' =>
-            'Resistente a lluvia y empañamiento',
+        'rain_fog_resistant' => 'Resistente a lluvia y empañamiento',
 
-        'splash_rain_fog_resistant' =>
-            'Resistente a salpicaduras, lluvia y empañamiento',
+        'splash_rain_fog_resistant' => 'Resistente a salpicaduras, lluvia y empañamiento',
 
-        'lens_caps_neck_strap_case' =>
-            'Tapas para lentes, correa de cuello y estuche de transporte',
+        'lens_caps_neck_strap_case' => 'Tapas para lentes, correa de cuello y estuche de transporte',
 
-        'manufacturing_defects_3_months' =>
-            '3 meses por defectos de fabricación',
+        'manufacturing_defects_3_months' => '3 meses por defectos de fabricación',
     ],
 
-    'description_title' =>
-        'Sobre este producto',
+    'description_title' => 'Sobre este producto',
 
-    'quote_button' =>
-        'Solicitar cotización',
+    'quote_button' => 'Solicitar cotización',
 
-    'quote_eyebrow' =>
-        'Contacto comercial',
+    'quote_eyebrow' => 'Contacto comercial',
 
-    'quote_title' =>
-        'Solicita una cotización',
+    'quote_title' => 'Solicita una cotización',
 
-    'quote_text' =>
-        'Déjanos tus datos para solicitar una cotización de este producto. La solicitud quedará registrada antes de continuar a WhatsApp.',
+    'quote_text' => 'Déjanos tus datos para solicitar una cotización de este producto. Registraremos tu solicitud y, si WhatsApp está disponible, podrás continuar allí.',
 
-    'quote_text_multiple' =>
-        'Selecciona la opción que te interesa y déjanos tus datos. La solicitud quedará registrada antes de continuar a WhatsApp.',
+    'quote_text_multiple' => 'Selecciona la opción que te interesa y déjanos tus datos. Registraremos tu solicitud y, si WhatsApp está disponible, podrás continuar allí.',
 
-    'quote_error' =>
-        'Revisa los campos del formulario de cotización.',
+    'quote_error' => 'Revisa los campos del formulario de cotización.',
 
     'variant' => 'Opción',
     'name' => 'Nombre',
@@ -140,24 +102,17 @@ return [
     'quantity' => 'Cantidad',
     'message' => 'Mensaje',
 
-    'message_placeholder' =>
-        'Cuéntanos qué más te gustaría saber.',
+    'message_placeholder' => 'Cuéntanos qué más te gustaría saber.',
 
-    'submit_quote' =>
-        'Solicitar cotización',
+    'submit_quote' => 'Solicitar cotización',
 
-    'quote_success' =>
-        'Tu solicitud de cotización fue registrada correctamente.',
+    'quote_success' => 'Tu solicitud de cotización fue registrada correctamente.',
 
-    'trust_no_payment' =>
-        'Sin pago requerido',
+    'trust_no_payment' => 'Sin pago requerido',
 
-    'trust_personal_assistance' =>
-        'Asesoría personalizada',
+    'trust_personal_assistance' => 'Asesoría personalizada',
 
-    'trust_whatsapp' =>
-        'Continuación por WhatsApp',
+    'trust_whatsapp' => 'WhatsApp opcional',
 
-    'no_variants' =>
-        'Actualmente este producto no está disponible para solicitar cotización.',
+    'no_variants' => 'Actualmente este producto no está disponible para solicitar cotización.',
 ];

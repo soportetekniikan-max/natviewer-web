@@ -79,29 +79,21 @@ class AdminContactSettingTest extends TestCase
                     'admin.contact-settings.update'
                 ),
                 [
-                    'company_name' =>
-                        'Natviewer Colombia',
+                    'company_name' => 'Natviewer Colombia',
 
-                    'whatsapp_number' =>
-                        '+57 300 123 4567',
+                    'whatsapp_number' => '+57 300 123 4567',
 
-                    'whatsapp_enabled' =>
-                        1,
+                    'whatsapp_enabled' => 1,
 
-                    'email' =>
-                        'VENTAS@NATVIEWER.COM',
+                    'email' => 'VENTAS@NATVIEWER.COM',
 
-                    'default_locale' =>
-                        'es',
+                    'default_locale' => 'es',
 
-                    'default_currency' =>
-                        'cop',
+                    'default_currency' => 'cop',
 
-                    'quote_message_es' =>
-                        'Hola, quiero información sobre :product :variant.',
+                    'quote_message_es' => 'Hola, quiero información sobre :product :variant.',
 
-                    'quote_message_en' =>
-                        'Hello, I would like information about :product :variant.',
+                    'quote_message_en' => 'Hello, I would like information about :product :variant.',
                 ]
             );
 
@@ -163,29 +155,21 @@ class AdminContactSettingTest extends TestCase
                     'admin.contact-settings.update'
                 ),
                 [
-                    'company_name' =>
-                        'Natviewer',
+                    'company_name' => 'Natviewer',
 
-                    'whatsapp_number' =>
-                        '',
+                    'whatsapp_number' => '',
 
-                    'whatsapp_enabled' =>
-                        1,
+                    'whatsapp_enabled' => 1,
 
-                    'email' =>
-                        'ventas@natviewer.com',
+                    'email' => 'ventas@natviewer.com',
 
-                    'default_locale' =>
-                        'es',
+                    'default_locale' => 'es',
 
-                    'default_currency' =>
-                        'COP',
+                    'default_currency' => 'COP',
 
-                    'quote_message_es' =>
-                        $settings->quote_message_es,
+                    'quote_message_es' => $settings->quote_message_es,
 
-                    'quote_message_en' =>
-                        $settings->quote_message_en,
+                    'quote_message_en' => $settings->quote_message_en,
                 ]
             );
 
@@ -211,29 +195,21 @@ class AdminContactSettingTest extends TestCase
                     'admin.contact-settings.update'
                 ),
                 [
-                    'company_name' =>
-                        'Natviewer',
+                    'company_name' => 'Natviewer',
 
-                    'whatsapp_number' =>
-                        '',
+                    'whatsapp_number' => '',
 
-                    'whatsapp_enabled' =>
-                        0,
+                    'whatsapp_enabled' => 0,
 
-                    'email' =>
-                        'ventas@natviewer.com',
+                    'email' => 'ventas@natviewer.com',
 
-                    'default_locale' =>
-                        'es',
+                    'default_locale' => 'es',
 
-                    'default_currency' =>
-                        'COP',
+                    'default_currency' => 'COP',
 
-                    'quote_message_es' =>
-                        'Mensaje ES',
+                    'quote_message_es' => 'Mensaje ES',
 
-                    'quote_message_en' =>
-                        'Message EN',
+                    'quote_message_en' => 'Message EN',
                 ]
             );
 
@@ -271,29 +247,21 @@ class AdminContactSettingTest extends TestCase
                     'admin.contact-settings.update'
                 ),
                 [
-                    'company_name' =>
-                        'Natviewer',
+                    'company_name' => 'Natviewer',
 
-                    'whatsapp_number' =>
-                        null,
+                    'whatsapp_number' => null,
 
-                    'whatsapp_enabled' =>
-                        0,
+                    'whatsapp_enabled' => 0,
 
-                    'email' =>
-                        'ventas@natviewer.com',
+                    'email' => 'ventas@natviewer.com',
 
-                    'default_locale' =>
-                        'fr',
+                    'default_locale' => 'fr',
 
-                    'default_currency' =>
-                        'PESO',
+                    'default_currency' => 'PESO',
 
-                    'quote_message_es' =>
-                        null,
+                    'quote_message_es' => null,
 
-                    'quote_message_en' =>
-                        null,
+                    'quote_message_en' => null,
                 ]
             );
 
@@ -328,14 +296,11 @@ class AdminContactSettingTest extends TestCase
         $this->assertDatabaseHas(
             'contact_settings',
             [
-                'company_name' =>
-                    'Natviewer',
+                'company_name' => 'Natviewer',
 
-                'default_locale' =>
-                    'en',
+                'default_locale' => 'en',
 
-                'default_currency' =>
-                    'COP',
+                'default_currency' => 'COP',
             ]
         );
 
@@ -352,20 +317,46 @@ class AdminContactSettingTest extends TestCase
         );
     }
 
+    public function test_reseeding_preserves_configured_contact_settings(): void
+    {
+        $settings = ContactSetting::query()->firstOrFail();
+        $settings->update([
+            'company_name' => 'Natviewer Comercial',
+            'whatsapp_number' => '+57 300 123 4567',
+            'whatsapp_enabled' => true,
+            'email' => 'ventas@example.com',
+            'default_locale' => 'en',
+            'default_currency' => 'USD',
+            'quote_message_es' => 'Cotización personalizada :product :variant.',
+            'quote_message_en' => 'Custom quote :product :variant.',
+        ]);
+
+        $this->seed(ContactSettingSeeder::class);
+
+        $this->assertDatabaseHas('contact_settings', [
+            'id' => $settings->id,
+            'company_name' => 'Natviewer Comercial',
+            'whatsapp_number' => '+57 300 123 4567',
+            'whatsapp_enabled' => true,
+            'email' => 'ventas@example.com',
+            'default_locale' => 'en',
+            'default_currency' => 'USD',
+            'quote_message_es' => 'Cotización personalizada :product :variant.',
+            'quote_message_en' => 'Custom quote :product :variant.',
+        ]);
+        $this->assertDatabaseCount('contact_settings', 1);
+    }
+
     private function createAdmin(): User
     {
         return User::factory()->create([
-            'name' =>
-                'Administrador Test',
+            'name' => 'Administrador Test',
 
-            'email' =>
-                'admin@example.com',
+            'email' => 'admin@example.com',
 
-            'password' =>
-                'password-seguro',
+            'password' => 'password-seguro',
 
-            'is_admin' =>
-                true,
+            'is_admin' => true,
         ]);
     }
 }
