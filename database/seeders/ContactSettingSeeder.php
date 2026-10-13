@@ -9,10 +9,8 @@ class ContactSettingSeeder extends Seeder
 {
     public function run(): void
     {
-        ContactSetting::updateOrCreate(
-            [
-                'id' => 1,
-            ],
+        ContactSetting::firstOrCreate(
+            [],
             [
                 'company_name' => 'Natviewer',
 

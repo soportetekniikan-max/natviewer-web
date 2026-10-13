@@ -468,6 +468,10 @@
     letter-spacing: -0.05em;
 }
 
+.nv-about-centered-heading .nv-about-copy {
+    margin-top: 1.5rem;
+}
+
 .nv-about-principles {
     display: grid;
 
