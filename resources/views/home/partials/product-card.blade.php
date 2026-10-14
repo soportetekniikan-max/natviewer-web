@@ -69,6 +69,10 @@
                 @if ($item['image_url'])
                     <img
                         src="{{ $item['image_url'] }}"
+                        @if ($item['image_srcset'])
+                            srcset="{{ $item['image_srcset'] }}"
+                            sizes="(max-width: 991px) calc(100vw - 48px), 600px"
+                        @endif
                         alt="{{ $item['image_alt'] }}"
                         class="nv-product-image"
                         loading="lazy"

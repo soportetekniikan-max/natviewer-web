@@ -6,6 +6,12 @@
         @if ($primaryImageUrl)
             <img
                 src="{{ $primaryImageUrl }}"
+                @if ($primaryImageSrcset)
+                    srcset="{{ $primaryImageSrcset }}"
+                    sizes="(max-width: 991px) calc(100vw - 48px), 640px"
+                @endif
+                fetchpriority="high"
+                decoding="async"
                 alt="{{ $primaryImageAlt }}"
                 data-main-product-image
             >
@@ -44,6 +50,7 @@
                     "
                     data-gallery-image
                     data-image-url="{{ $image['url'] }}"
+                    data-image-srcset="{{ $image['srcset'] }}"
                     data-image-alt="{{ $image['alt'] }}"
                     aria-label="{{ $image['alt'] }}"
                     aria-pressed="{{
@@ -54,6 +61,10 @@
                 >
                     <img
                         src="{{ $image['url'] }}"
+                        @if ($image['srcset'])
+                            srcset="{{ $image['srcset'] }}"
+                            sizes="96px"
+                        @endif
                         alt="{{ $image['alt'] }}"
                         loading="lazy"
                     >
