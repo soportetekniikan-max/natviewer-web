@@ -2,7 +2,7 @@
     width: 100%;
     min-height: 48px;
     padding: 0.8rem 0.95rem;
-    border: 1px solid rgba(30, 34, 38, 0.14);
+    border: 1px solid var(--nv-control-border);
     border-radius: var(--nv-radius-md);
     background: var(--nv-white);
     color: var(--nv-dark);
@@ -15,4 +15,28 @@
 .nv-form-control:focus {
     border-color: rgba(234, 87, 28, 0.58);
     box-shadow: 0 0 0 4px rgba(234, 87, 28, 0.12);
+}
+
+.form-control,
+.form-select,
+.form-check-input {
+    border-color: var(--nv-control-border);
+}
+
+.nv-form-control:focus-visible,
+.form-control:focus-visible,
+.form-select:focus-visible,
+.form-check-input:focus-visible,
+.nv-quote-field input:focus-visible,
+.nv-quote-field textarea:focus-visible {
+    outline: 2px solid var(--nv-accent-text);
+    outline-offset: 2px;
+}
+
+.nv-form-control::placeholder,
+.form-control::placeholder,
+.nv-quote-field input::placeholder,
+.nv-quote-field textarea::placeholder {
+    color: var(--nv-muted-text);
+    opacity: 1;
 }

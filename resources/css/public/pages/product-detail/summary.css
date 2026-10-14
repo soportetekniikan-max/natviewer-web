@@ -49,7 +49,7 @@
 
     background: transparent;
 
-    color: var(--nv-orange);
+    color: var(--nv-accent-text);
 
     font-size: 0.7rem;
     font-weight: 800;
@@ -114,7 +114,7 @@
     margin-bottom: 1.2rem;
 
     color:
-        rgba(64, 89, 74, 0.74);
+        var(--nv-green);
 
     font-size: 0.76rem;
     font-weight: 800;
@@ -138,7 +138,7 @@
         1.65rem;
 
     color:
-        rgba(30, 34, 38, 0.64);
+        var(--nv-muted-text);
 
     font-size: 1rem;
 
@@ -258,7 +258,7 @@
     margin-bottom: 0.38rem;
 
     color:
-        rgba(255, 255, 255, 0.57);
+        var(--nv-text-on-dark);
 
     font-size: 0.63rem;
     font-weight: 800;
@@ -300,7 +300,7 @@
 .nv-detail-section-label {
     margin-bottom: 0.5rem;
 
-    color: var(--nv-orange);
+    color: var(--nv-accent-text);
 
     font-size: 0.68rem;
     font-weight: 800;
@@ -341,7 +341,7 @@
         1.2rem;
 
     color:
-        rgba(30, 34, 38, 0.56);
+        var(--nv-muted-text);
 
     font-size: 0.9rem;
 
@@ -566,7 +566,7 @@
     display: block;
 
     color:
-        rgba(30, 34, 38, 0.44);
+        var(--nv-muted-text);
 
     font-size: 0.7rem;
 }
@@ -590,7 +590,7 @@
     background:
         rgba(234, 87, 28, 0.085);
 
-    color: var(--nv-orange);
+    color: var(--nv-accent-text);
 
     font-size: 0.62rem;
     font-weight: 800;
@@ -639,7 +639,7 @@
     margin-bottom: 0.22rem;
 
     color:
-        rgba(30, 34, 38, 0.43);
+        var(--nv-muted-text);
 
     font-size: 0.67rem;
 }
@@ -680,11 +680,7 @@
     border-radius: 999px;
 
     background:
-        linear-gradient(
-            135deg,
-            var(--nv-orange),
-            #ff7033
-        );
+        var(--nv-orange-strong);
 
     color: var(--nv-white);
 
@@ -711,11 +707,7 @@
 .nv-detail-cta:hover,
 .nv-detail-cta:focus-visible {
     background:
-        linear-gradient(
-            135deg,
-            #f45e23,
-            #ff783e
-        );
+        var(--nv-orange-hover);
 
     color: var(--nv-white);
 
@@ -734,8 +726,7 @@
 
 .nv-detail-cta:focus-visible {
     outline:
-        3px solid
-        rgba(234, 87, 28, 0.28);
+        3px solid var(--nv-accent-text);
 
     outline-offset: 3px;
 }

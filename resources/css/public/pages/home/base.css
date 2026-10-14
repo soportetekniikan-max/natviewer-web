@@ -12,7 +12,7 @@
     --nv-home-green: #3e5447;
 
     --nv-home-muted:
-        rgba(30, 34, 38, 0.62);
+        var(--nv-muted-text);
 
     --nv-home-line:
         rgba(18, 33, 33, 0.09);
@@ -83,7 +83,7 @@
 
     margin-bottom: 0.75rem;
 
-    color: var(--nv-orange);
+    color: var(--nv-accent-text);
 
     font-size: 0.68rem;
     font-weight: 800;
@@ -155,7 +155,7 @@
     display: block;
 
     color:
-        rgba(18, 33, 33, 0.2);
+        var(--nv-muted-text);
 
     font-size: 0.72rem;
     font-weight: 800;
@@ -339,8 +339,7 @@ a:focus-visible,
 .nv-home-page
 button:focus-visible {
     outline:
-        3px solid
-        rgba(234, 87, 28, 0.42);
+        3px solid var(--nv-accent-text);
 
     outline-offset: 3px;
 }

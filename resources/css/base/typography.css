@@ -20,7 +20,7 @@ p {
     align-items: center;
     gap: 0.65rem;
     margin-bottom: 0.85rem;
-    color: var(--nv-orange);
+    color: var(--nv-accent-text);
     font-size: 0.76rem;
     font-weight: 800;
     letter-spacing: 0.14em;

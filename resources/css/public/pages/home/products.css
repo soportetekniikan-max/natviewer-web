@@ -262,7 +262,7 @@
     margin: 0;
 
     color:
-        rgba(30, 34, 38, 0.62);
+        var(--nv-muted-text);
 
     font-size:
         0.95rem;
@@ -447,7 +447,7 @@
         0;
 
     color:
-        rgba(30, 34, 38, 0.58);
+        var(--nv-muted-text);
 
     font-size:
         0.95rem;
