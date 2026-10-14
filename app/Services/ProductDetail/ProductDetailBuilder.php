@@ -14,8 +14,7 @@ class ProductDetailBuilder
         private readonly ProductVariantPresenter $variantPresenter,
         private readonly ProductSeoBuilder $seoBuilder,
         private readonly ProductSchemaBuilder $schemaBuilder
-    ) {
-    }
+    ) {}
 
     public function build(
         Product $product,
@@ -91,72 +90,54 @@ class ProductDetailBuilder
             );
 
         return [
-            'locale' =>
-                $locale,
+            'locale' => $locale,
 
-            'productId' =>
-                $product->id,
+            'productId' => $product->id,
 
-            'productName' =>
-                $productName,
+            'productName' => $productName,
 
-            'shortDescription' =>
-                $shortDescription,
+            'shortDescription' => $shortDescription,
 
-            'description' =>
-                $description,
+            'description' => $description,
 
-            'categoryName' =>
-                $categoryName,
+            'categoryName' => $categoryName,
 
-            'brandName' =>
-                $product->brand?->name,
+            'brandName' => $product->brand?->name,
 
-            'gallery' =>
-                $media['gallery'],
+            'gallery' => $media['gallery'],
 
-            'primaryImageUrl' =>
-                $media['primaryImageUrl'],
+            'primaryImageUrl' => $media['primaryImageUrl'],
 
-            'primaryImageAlt' =>
-                $media['primaryImageAlt'],
+            'primaryImageSrcset' => $media['primaryImageSrcset'],
 
-            'variants' =>
-                $variantData['variants'],
+            'primaryImageAlt' => $media['primaryImageAlt'],
 
-            'selectedVariantId' =>
-                $variantData['selectedVariantId'],
+            'variants' => $variantData['variants'],
 
-            'selectedVariant' =>
-                $variantData['selectedVariant'],
+            'selectedVariantId' => $variantData['selectedVariantId'],
 
-            'specificationGroups' =>
-                $variantData['specificationGroups'],
+            'selectedVariant' => $variantData['selectedVariant'],
 
-            'seo' =>
-                $seo,
+            'specificationGroups' => $variantData['specificationGroups'],
 
-            'navigation' =>
-                $this->navigation(
-                    $locale
-                ),
+            'seo' => $seo,
 
-            'quoteAction' =>
-                route(
-                    'quotes.store',
-                    [
-                        'locale' =>
-                            $locale,
-                    ]
-                ),
+            'navigation' => $this->navigation(
+                $locale
+            ),
 
-            'utm' =>
-                $this->utm(
-                    $request
-                ),
+            'quoteAction' => route(
+                'quotes.store',
+                [
+                    'locale' => $locale,
+                ]
+            ),
 
-            'schemaJson' =>
-                $schemaJson,
+            'utm' => $this->utm(
+                $request
+            ),
+
+            'schemaJson' => $schemaJson,
         ];
     }
 
@@ -247,17 +228,14 @@ class ProductDetailBuilder
         $homeUrl = route(
             'home',
             [
-                'locale' =>
-                    $locale,
+                'locale' => $locale,
             ]
         );
 
         return [
-            'home' =>
-                $homeUrl,
+            'home' => $homeUrl,
 
-            'catalog' =>
-                $homeUrl . '#products',
+            'catalog' => $homeUrl.'#products',
         ];
     }
 
@@ -265,30 +243,25 @@ class ProductDetailBuilder
         Request $request
     ): array {
         return [
-            'utm_source' =>
-                $request->query(
-                    'utm_source'
-                ),
+            'utm_source' => $request->query(
+                'utm_source'
+            ),
 
-            'utm_medium' =>
-                $request->query(
-                    'utm_medium'
-                ),
+            'utm_medium' => $request->query(
+                'utm_medium'
+            ),
 
-            'utm_campaign' =>
-                $request->query(
-                    'utm_campaign'
-                ),
+            'utm_campaign' => $request->query(
+                'utm_campaign'
+            ),
 
-            'utm_term' =>
-                $request->query(
-                    'utm_term'
-                ),
+            'utm_term' => $request->query(
+                'utm_term'
+            ),
 
-            'utm_content' =>
-                $request->query(
-                    'utm_content'
-                ),
+            'utm_content' => $request->query(
+                'utm_content'
+            ),
         ];
     }
 }
