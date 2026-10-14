@@ -53,8 +53,8 @@
         ),
         linear-gradient(
             145deg,
-            #f7f8f4 0%,
-            #e9eee8 100%
+            var(--nv-white) 0%,
+            var(--nv-light) 100%
         );
 
     box-shadow:
@@ -197,9 +197,9 @@
         ),
         linear-gradient(
             145deg,
-            #40594a,
-            #253b31 55%,
-            #182b24
+            var(--nv-green),
+            var(--nv-deep) 55%,
+            var(--nv-dark)
         );
 
     box-shadow:
@@ -285,7 +285,7 @@
 
     border-radius: 1rem;
 
-    background: #f1f3ee;
+    background: var(--nv-light);
 
     cursor: pointer;
 

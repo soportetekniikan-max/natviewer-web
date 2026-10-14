@@ -329,7 +329,7 @@
     gap: 0.65rem;
 
     color:
-        #53605a;
+        var(--nv-neutral-dark);
 
     font-size: 0.6rem;
 
@@ -351,7 +351,7 @@
 .nv-tech-card-featured
 .nv-tech-card-index {
     color:
-        #dbe4df;
+        var(--nv-light);
 }
 
 
@@ -426,7 +426,7 @@
     margin-top: 1.2rem;
 
     color:
-        #e6ece8;
+        var(--nv-light);
 
     font-size:
         clamp(
@@ -655,7 +655,7 @@
     margin-top: 0.7rem;
 
     color:
-        #53605a;
+        var(--nv-neutral-dark);
 
     font-size: 0.76rem;
 

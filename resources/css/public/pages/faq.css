@@ -514,9 +514,9 @@
 
 .nv-faq-item[open]
 .nv-faq-question-number {
-    background: var(--nv-orange-strong);
+    background: var(--nv-orange);
 
-    color: var(--nv-white);
+    color: var(--nv-deep);
 }
 
 
@@ -606,7 +606,7 @@
 .nv-faq-icon {
     border-color: var(--nv-orange);
 
-    background: var(--nv-orange-strong);
+    background: var(--nv-orange);
 }
 
 .nv-faq-item[open]

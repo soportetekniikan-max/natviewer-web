@@ -1,6 +1,6 @@
 .nv-admin-body {
     min-height: 100vh;
-    background: #f1f2f1;
+    background: var(--nv-light);
 }
 
 .nv-admin-main {
