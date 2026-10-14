@@ -527,12 +527,9 @@
     transform: translateX(-50%);
     display: flex;
     align-items: center;
-    gap: 0.15rem;
-    padding: 0.2rem;
-    border: 1px solid rgba(255, 255, 255, 0.22);
-    border-radius: 999px;
-    background: var(--nv-deep);
-    box-shadow: 0 5px 18px rgba(18, 33, 33, 0.18);
+    gap: 0.35rem;
+    width: max-content;
+    max-width: calc(100% - 1rem);
 }
 
 .nv-hero-carousel-controls[hidden],
@@ -543,23 +540,22 @@
 .nv-hero-carousel-controls button {
     display: grid;
     place-items: center;
-    width: 44px;
-    height: 44px;
-    flex: 0 0 44px;
+    width: 32px;
+    height: 32px;
+    flex: 0 0 32px;
     padding: 0;
     border: 1px solid transparent;
     border-radius: 50%;
     background: transparent;
     color: var(--nv-light);
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     line-height: 1;
     cursor: pointer;
     transition: background-color var(--nv-transition), color var(--nv-transition);
 }
 
 .nv-hero-carousel-controls button:hover {
-    background: var(--nv-accent-gradient);
-    color: var(--nv-deep);
+    background: rgba(255, 255, 255, 0.1);
 }
 
 .nv-hero-carousel-controls button:focus-visible {
@@ -567,13 +563,35 @@
     outline-offset: -3px;
 }
 
-.nv-hero-carousel-count {
-    min-width: 3rem;
-    text-align: center;
-    color: var(--nv-light);
-    font-size: 0.8rem;
-    font-weight: 700;
-    font-variant-numeric: tabular-nums;
+.nv-hero-carousel-controls button[data-carousel-toggle] {
+    background: var(--nv-deep);
+    border-color: rgba(255, 255, 255, 0.18);
+}
+
+.nv-hero-carousel-dots {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    min-width: 0;
+}
+
+.nv-hero-carousel-controls .nv-hero-carousel-dot {
+    width: 28px;
+    flex-basis: 28px;
+}
+
+.nv-hero-carousel-dot span {
+    width: 5px;
+    height: 5px;
+    border-radius: 999px;
+    background: var(--nv-light);
+    box-shadow: 0 0 0 1px rgba(18, 33, 33, 0.25);
+    transition: width var(--nv-transition), background-color var(--nv-transition);
+}
+
+.nv-hero-carousel-dot[aria-pressed="true"] span {
+    width: 20px;
+    background: var(--nv-accent-gradient);
 }
 
 
