@@ -46,7 +46,7 @@
     );
 
     if ($xDefaultUrl === '') {
-        $xDefaultUrl = $alternateEsUrl;
+        $xDefaultUrl = $alternateEnUrl;
     }
 
     $seoImage = trim(

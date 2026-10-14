@@ -75,7 +75,10 @@
                         @endif
                         alt="{{ $item['image_alt'] }}"
                         class="nv-product-image"
-                        loading="lazy"
+                        loading="{{ ($prioritizeImage ?? false) ? 'eager' : 'lazy' }}"
+                        @if ($prioritizeImage ?? false)
+                            fetchpriority="high"
+                        @endif
                         decoding="async"
                     >
                 @else
@@ -95,9 +98,9 @@
             </a>
 
             <div class="nv-product-story-media-footer">
-                <span>
+                <a href="{{ $item['category_url'] }}">
                     {{ $item['category_name'] }}
-                </span>
+                </a>
 
                 <span>
                     {{ $item['sku'] }}

@@ -35,13 +35,13 @@ class ProductSeoBuilder
             : $spanishUrl;
 
         $metaTitleField =
-            'meta_title_' . $locale;
+            'meta_title_'.$locale;
 
         $metaDescriptionField =
-            'meta_description_' . $locale;
+            'meta_description_'.$locale;
 
         $title = $product->{$metaTitleField}
-            ?: $productName . ' | Natviewer';
+            ?: $productName.' | Natviewer';
 
         $seoDescription =
             $product->{$metaDescriptionField}
@@ -55,29 +55,21 @@ class ProductSeoBuilder
             );
 
         return [
-            'title' =>
-                $title,
+            'title' => $title,
 
-            'description' =>
-                $seoDescription,
+            'description' => $seoDescription,
 
-            'canonical' =>
-                $canonicalUrl,
+            'canonical' => $canonicalUrl,
 
-            'alternate_es' =>
-                $spanishUrl,
+            'alternate_es' => $spanishUrl,
 
-            'alternate_en' =>
-                $englishUrl,
+            'alternate_en' => $englishUrl,
 
-            'alternate_default' =>
-                $spanishUrl,
+            'alternate_default' => $englishUrl,
 
-            'image' =>
-                $imageUrl,
+            'image' => $imageUrl,
 
-            'image_alt' =>
-                $imageAlt,
+            'image_alt' => $imageAlt,
         ];
     }
 }

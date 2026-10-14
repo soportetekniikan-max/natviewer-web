@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Response;
 
@@ -54,7 +55,26 @@ class SeoController extends Controller
                 $spanishFaqUrl,
                 $englishFaqUrl
             ),
+
+            ...$this->localizedEntries(route('privacy-policy.es'), route('privacy-policy.en')),
         ];
+
+        $categories = Category::query()
+            ->where('is_active', true)
+            ->whereHas('products', fn ($query) => $query
+                ->where('status', Product::STATUS_PUBLISHED)
+                ->whereHas('brand', fn ($query) => $query->where('is_active', true))
+                ->whereHas('variants', fn ($query) => $query->where('is_active', true)))
+            ->orderBy('sort_order')
+            ->orderBy('id')
+            ->get(['id', 'slug']);
+
+        foreach ($categories as $category) {
+            $sitemapEntries = array_merge($sitemapEntries, $this->localizedEntries(
+                route('categories.show.es', ['category' => $category->slug]),
+                route('categories.show.en', ['category' => $category->slug])
+            ));
+        }
 
         $products = Product::query()
             ->select([
@@ -115,8 +135,7 @@ class SeoController extends Controller
             ->view(
                 'seo.sitemap',
                 [
-                    'sitemapEntries' =>
-                        $sitemapEntries,
+                    'sitemapEntries' => $sitemapEntries,
                 ]
             )
             ->header(
@@ -143,8 +162,7 @@ class SeoController extends Controller
             $content,
             200,
             [
-                'Content-Type' =>
-                    'text/plain; charset=UTF-8',
+                'Content-Type' => 'text/plain; charset=UTF-8',
             ]
         );
     }
