@@ -296,6 +296,10 @@ class ProductDetailTest extends TestCase
             $page = $schemas->firstWhere('@type', 'WebPage');
             $breadcrumbs = $schemas->firstWhere('@type', 'BreadcrumbList');
 
+            foreach ($schemas as $schema) {
+                $this->assertSame('https://schema.org', $schema['@context']);
+            }
+
             $this->assertNotNull($page);
             $this->assertSame($canonicalUrl, $page['url']);
             $this->assertSame($canonicalUrl.'#webpage', $page['@id']);
