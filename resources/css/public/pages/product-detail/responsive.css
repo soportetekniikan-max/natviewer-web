@@ -111,8 +111,8 @@
         background:
             linear-gradient(
                 180deg,
-                #f8f8f5,
-                #f1f3ee
+                var(--nv-white),
+                var(--nv-light)
             );
     }
 

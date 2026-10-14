@@ -122,8 +122,8 @@
         ),
         linear-gradient(
             145deg,
-            #f7f8f5,
-            #e9eee8
+            var(--nv-white),
+            var(--nv-light)
         );
 }
 
@@ -305,10 +305,9 @@
         rgba(234, 87, 28, 0.18);
 
     background:
-        var(--nv-orange-strong);
+        var(--nv-orange);
 
-    color:
-        var(--nv-white);
+    color: var(--nv-deep);
 
     box-shadow:
         0

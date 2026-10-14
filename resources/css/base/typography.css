@@ -32,5 +32,5 @@ p {
     content: "";
     width: 36px;
     height: 1px;
-    background: currentColor;
+    background: var(--nv-orange);
 }

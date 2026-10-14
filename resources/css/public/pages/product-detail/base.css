@@ -9,14 +9,14 @@
    ========================================================= */
 
 .nv-detail-page {
-    --nv-detail-bg: #f5f5f1;
+    --nv-detail-bg: var(--nv-light);
     --nv-detail-surface: #ffffff;
-    --nv-detail-surface-soft: #f1f3ee;
+    --nv-detail-surface-soft: var(--nv-light);
 
     --nv-detail-deep: #122121;
-    --nv-detail-green: #40594a;
-    --nv-detail-green-mid: #253b31;
-    --nv-detail-green-dark: #182b24;
+    --nv-detail-green: var(--nv-green);
+    --nv-detail-green-mid: var(--nv-deep);
+    --nv-detail-green-dark: var(--nv-dark);
 
     --nv-detail-muted:
         var(--nv-muted-text);
@@ -50,9 +50,9 @@
         ),
         linear-gradient(
             180deg,
-            #f8f8f5 0%,
+            var(--nv-white) 0%,
             var(--nv-detail-bg) 48rem,
-            #f1f3ee 100%
+            var(--nv-light) 100%
         );
 
     color: var(--nv-detail-deep);

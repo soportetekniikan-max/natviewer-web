@@ -34,7 +34,7 @@
         linear-gradient(
             180deg,
             var(--nv-white) 0%,
-            #f8f8f5 62%,
+            var(--nv-white) 62%,
             rgba(237, 236, 237, 0.72) 100%
         );
 }

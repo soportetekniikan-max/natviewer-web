@@ -61,8 +61,8 @@
 }
 
 .nv-admin-action-link:hover {
-    background: var(--nv-orange-strong);
-    color: var(--nv-white);
+    background: var(--nv-orange);
+    color: var(--nv-deep);
 }
 
 .nv-admin-status-draft {
@@ -167,7 +167,7 @@
 .nv-admin-toggle input {
     width: 18px;
     height: 18px;
-    accent-color: var(--nv-orange-strong);
+    accent-color: var(--nv-orange);
 }
 
 .nv-admin-toggle span {
@@ -186,7 +186,7 @@
     overflow: hidden;
     border: 1px solid rgba(30, 34, 38, 0.1);
     border-radius: var(--nv-radius-md);
-    background: #fafafa;
+    background: var(--nv-white);
 }
 
 .nv-admin-variant-header {
@@ -205,7 +205,7 @@
 }
 
 .nv-admin-variant-header div span {
-    color: var(--nv-gray);
+    color: var(--nv-muted-text);
     font-size: 0.68rem;
     font-weight: 800;
     letter-spacing: 0.08em;
@@ -385,8 +385,8 @@
     top: 0.75rem;
     left: 0.75rem;
     border-radius: 100px;
-    background: var(--nv-orange-strong);
-    color: var(--nv-white);
+    background: var(--nv-orange);
+    color: var(--nv-deep);
     padding: 0.35rem 0.65rem;
     font-size: 0.7rem;
     font-weight: 800;
@@ -440,8 +440,8 @@
 }
 
 .nv-admin-image-primary-button:hover {
-    background: var(--nv-orange-strong);
-    color: var(--nv-white);
+    background: var(--nv-orange);
+    color: var(--nv-deep);
 }
 
 .nv-admin-image-delete {

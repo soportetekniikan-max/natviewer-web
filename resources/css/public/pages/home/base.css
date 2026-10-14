@@ -4,9 +4,9 @@
    ========================================================= */
 
 .nv-home-page {
-    --nv-home-bg: #f5f5f1;
+    --nv-home-bg: var(--nv-light);
     --nv-home-surface: #ffffff;
-    --nv-home-soft: #edf1ec;
+    --nv-home-soft: var(--nv-light);
 
     --nv-home-deep: #122121;
     --nv-home-green: #3e5447;

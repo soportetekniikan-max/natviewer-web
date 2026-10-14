@@ -808,10 +808,9 @@
         var(--nv-orange);
 
     background:
-        var(--nv-orange-strong);
+        var(--nv-orange);
 
-    color:
-        var(--nv-white);
+    color: var(--nv-deep);
 
     transform:
         translateY(-2px);
