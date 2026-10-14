@@ -15,6 +15,12 @@ return [
     ],
 
     'hero' => [
+        'carousel' => 'carousel',
+        'photos' => 'Photos of :product',
+        'previous_photo' => 'Previous photo',
+        'next_photo' => 'Next photo',
+        'pause_photos' => 'Pause automatic photos',
+        'play_photos' => 'Resume automatic photos',
         'eyebrow' => 'Binoculars for observation',
         'title' => 'Get closer to birds and nature with Natviewer Falco.',
         'text' => 'Discover the Natviewer Falco line with a 42 mm objective, coated lenses and BAK-7 roof prisms for birdwatching, wildlife and nature observation.',

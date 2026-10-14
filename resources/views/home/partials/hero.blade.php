@@ -70,7 +70,15 @@
                     </strong>
                 </div>
 
-                <div class="nv-hero-product-media">
+                <div
+                    class="nv-hero-product-media"
+                    @if (count($hero['images']) > 1)
+                        data-hero-carousel="{{ json_encode($hero['images']) }}"
+                        role="region"
+                        aria-roledescription="{{ __('public.hero.carousel') }}"
+                        aria-label="{{ __('public.hero.photos', ['product' => $hero['product_name']]) }}"
+                    @endif
+                >
                     @if ($hero['image_url'])
                         @if ($hero['detail_url'])
                             <a
@@ -119,6 +127,24 @@
                             <strong>
                                 {{ $hero['variant_label'] }}
                             </strong>
+                        </div>
+                    @endif
+                    @if (count($hero['images']) > 1)
+                        <div class="nv-hero-carousel-controls" data-carousel-controls hidden>
+                            <button type="button" data-carousel-previous aria-label="{{ __('public.hero.previous_photo') }}">
+                                <span aria-hidden="true">←</span>
+                            </button>
+                            <span class="nv-hero-carousel-count" data-carousel-count aria-live="off">1 / {{ count($hero['images']) }}</span>
+                            <button type="button" data-carousel-next aria-label="{{ __('public.hero.next_photo') }}">
+                                <span aria-hidden="true">→</span>
+                            </button>
+                            <button
+                                type="button"
+                                data-carousel-toggle
+                                data-pause-label="{{ __('public.hero.pause_photos') }}"
+                                data-play-label="{{ __('public.hero.play_photos') }}"
+                                aria-label="{{ __('public.hero.pause_photos') }}"
+                            ><span data-carousel-toggle-icon aria-hidden="true">Ⅱ</span></button>
                         </div>
                     @endif
                 </div>

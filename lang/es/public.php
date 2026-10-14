@@ -15,6 +15,12 @@ return [
     ],
 
     'hero' => [
+        'carousel' => 'carrusel',
+        'photos' => 'Fotos de :product',
+        'previous_photo' => 'Foto anterior',
+        'next_photo' => 'Foto siguiente',
+        'pause_photos' => 'Pausar fotos automáticas',
+        'play_photos' => 'Reanudar fotos automáticas',
         'eyebrow' => 'Binoculares para observación',
         'title' => 'Acércate a las aves y la naturaleza con Natviewer Falco.',
         'text' => 'Descubre la línea Natviewer Falco con objetivo de 42 mm, lentes coated y prismas BAK-7 tipo techo para observación de aves, fauna y naturaleza.',
