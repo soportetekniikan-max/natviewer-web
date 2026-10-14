@@ -18,12 +18,9 @@ export default function initializeHeroCarousel(home) {
     }
 
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const toggle = controls.querySelector('[data-carousel-toggle]');
-    const icon = toggle.querySelector('[data-carousel-toggle-icon]');
     const dots = Array.from(controls.querySelectorAll('[data-carousel-slide]'));
     let index = 0;
     let timer;
-    let paused = false;
     let hovered = false;
     let focused = false;
     let visible = false;
@@ -32,7 +29,7 @@ export default function initializeHeroCarousel(home) {
 
     const schedule = () => {
         window.clearTimeout(timer);
-        if (!paused && !hovered && !focused && visible && !document.hidden && !motion.matches && !loading) {
+        if (!hovered && !focused && visible && !document.hidden && !motion.matches && !loading) {
             timer = window.setTimeout(() => show(index + 1), 6000);
         }
     };
@@ -76,26 +73,23 @@ export default function initializeHeroCarousel(home) {
 
     controls.hidden = false;
     carousel.classList.add('has-carousel');
-    toggle.hidden = motion.matches;
     dots.forEach((dot) => dot.addEventListener('click', () => show(Number(dot.dataset.carouselSlide))));
-    toggle.addEventListener('click', () => {
-        paused = !paused;
-        toggle.setAttribute('aria-label', paused ? toggle.dataset.playLabel : toggle.dataset.pauseLabel);
-        icon.textContent = paused ? '▶' : 'Ⅱ';
+    carousel.addEventListener('pointerenter', (event) => {
+        hovered = event.pointerType === 'mouse';
         schedule();
     });
-    carousel.addEventListener('mouseenter', () => { hovered = true; schedule(); });
-    carousel.addEventListener('mouseleave', () => { hovered = false; schedule(); });
-    carousel.addEventListener('focusin', () => { focused = true; schedule(); });
+    carousel.addEventListener('pointerleave', () => { hovered = false; schedule(); });
+    carousel.addEventListener('focusin', (event) => {
+        focused = event.target.matches(':focus-visible');
+        schedule();
+    });
     carousel.addEventListener('focusout', (event) => {
-        focused = carousel.contains(event.relatedTarget);
+        const next = event.relatedTarget;
+        focused = next instanceof Element && carousel.contains(next) && next.matches(':focus-visible');
         schedule();
     });
     document.addEventListener('visibilitychange', schedule);
-    motion.addEventListener('change', () => {
-        toggle.hidden = motion.matches;
-        schedule();
-    });
+    motion.addEventListener('change', schedule);
 
     if ('IntersectionObserver' in window) {
         new IntersectionObserver(([entry]) => {

@@ -142,13 +142,6 @@
                                     ><span aria-hidden="true"></span></button>
                                 @endforeach
                             </div>
-                            <button
-                                type="button"
-                                data-carousel-toggle
-                                data-pause-label="{{ __('public.hero.pause_photos') }}"
-                                data-play-label="{{ __('public.hero.play_photos') }}"
-                                aria-label="{{ __('public.hero.pause_photos') }}"
-                            ><span data-carousel-toggle-icon aria-hidden="true">Ⅱ</span></button>
                         </div>
                     @endif
                 </div>
