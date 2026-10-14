@@ -84,6 +84,10 @@
                             >
                                 <img
                                     src="{{ $hero['image_url'] }}"
+                                    @if ($hero['image_srcset'])
+                                        srcset="{{ $hero['image_srcset'] }}"
+                                        sizes="(max-width: 991px) calc(100vw - 64px), 460px"
+                                    @endif
                                     alt="{{ $hero['image_alt'] }}"
                                     class="nv-hero-product-image"
                                     fetchpriority="high"
@@ -93,6 +97,10 @@
                         @else
                             <img
                                 src="{{ $hero['image_url'] }}"
+                                @if ($hero['image_srcset'])
+                                    srcset="{{ $hero['image_srcset'] }}"
+                                    sizes="(max-width: 991px) calc(100vw - 64px), 460px"
+                                @endif
                                 alt="{{ $hero['image_alt'] }}"
                                 class="nv-hero-product-image"
                                 fetchpriority="high"

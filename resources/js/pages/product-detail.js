@@ -25,6 +25,9 @@ const initializeProductDetail = () => {
                     return;
                 }
 
+                mainImage.sizes = '(max-width: 991px) calc(100vw - 48px), 640px';
+                mainImage.srcset = button.dataset.imageSrcset || '';
+
                 mainImage.src =
                     button.dataset.imageUrl
                     || '';

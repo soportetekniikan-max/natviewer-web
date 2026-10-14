@@ -13,8 +13,7 @@ class HomeHeroBuilder
         private readonly LocalizedValueResolver $localizedValue,
         private readonly HomeVariantFormatter $variantFormatter,
         private readonly ProductMediaPresenter $mediaPresenter
-    ) {
-    }
+    ) {}
 
     public function build(
         ?Product $featuredProduct,
@@ -41,6 +40,7 @@ class HomeHeroBuilder
         $media = [
             'primaryImageUrl' => null,
             'primaryImageAlt' => $productName,
+            'primaryImageSrcset' => null,
         ];
 
         if ($featuredProduct) {
@@ -53,11 +53,9 @@ class HomeHeroBuilder
         }
 
         return [
-            'product_name' =>
-                $productName,
+            'product_name' => $productName,
 
-            'short_description' =>
-                $featuredProduct
+            'short_description' => $featuredProduct
                     ? $this->localizedValue->resolve(
                         $featuredProduct,
                         'short_description',
@@ -65,40 +63,36 @@ class HomeHeroBuilder
                     )
                     : __('public.hero.text'),
 
-            'variant_label' =>
-                $firstHeroVariant
+            'variant_label' => $firstHeroVariant
                     ? $this->variantFormatter->shortLabel(
                         $firstHeroVariant,
                         $locale
                     )
                     : '8×42',
 
-            'image_url' =>
-                $media[
+            'image_url' => $media[
                     'primaryImageUrl'
                 ],
 
-            'image_alt' =>
-                $media[
+            'image_alt' => $media[
                     'primaryImageAlt'
                 ],
 
-            'detail_url' =>
-                $featuredProduct
+            'image_srcset' => $media['primaryImageSrcset'],
+
+            'detail_url' => $featuredProduct
                     ? route(
                         $locale === 'en'
                             ? 'products.show.en'
                             : 'products.show.es',
                         [
-                            'product' =>
-                                $featuredProduct->slug,
+                            'product' => $featuredProduct->slug,
                         ]
                     )
                     : null,
 
-            'default_currency' =>
-                $contactSettings
-                    ?->default_currency
+            'default_currency' => $contactSettings
+                ?->default_currency
                 ?? 'COP',
         ];
     }

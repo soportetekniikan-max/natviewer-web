@@ -13,8 +13,7 @@ class ProductMediaPresenter
 {
     public function __construct(
         private readonly LocalizedValueResolver $localizedValue
-    ) {
-    }
+    ) {}
 
     public function build(
         Product $product,
@@ -54,33 +53,32 @@ class ProductMediaPresenter
                             $image
                         ),
 
+                        'srcset' => $this->imageSrcset($image),
+
                         'alt' => $this->localizedValue->resolve(
                             $image,
                             'alt',
                             $locale
                         ) ?: $productName,
 
-                        'is_primary' =>
-                            $primaryImage
+                        'is_primary' => $primaryImage
                             && $primaryImage->id === $image->id,
                     ];
                 }
             )
             ->filter(
-                fn (array $image) =>
-                    ! empty($image['url'])
+                fn (array $image) => ! empty($image['url'])
             )
             ->values();
 
         return [
-            'primaryImageUrl' =>
-                $primaryImageUrl,
+            'primaryImageUrl' => $primaryImageUrl,
 
-            'primaryImageAlt' =>
-                $primaryImageAlt,
+            'primaryImageAlt' => $primaryImageAlt,
 
-            'gallery' =>
-                $gallery,
+            'primaryImageSrcset' => $this->imageSrcset($primaryImage),
+
+            'gallery' => $gallery,
         ];
     }
 
@@ -111,6 +109,10 @@ class ProductMediaPresenter
             $diskName
         );
 
+        if ($diskName === 'public' && $filesystem->exists($path.'.960.webp')) {
+            $path .= '.960.webp';
+        }
+
         $imageUrl = $filesystem->url(
             $path
         );
@@ -128,5 +130,31 @@ class ProductMediaPresenter
         }
 
         return url($imageUrl);
+    }
+
+    private function imageSrcset(?Model $image): ?string
+    {
+        if (! $image || $image->getAttribute('disk') !== 'public') {
+            return null;
+        }
+
+        $path = (string) $image->getAttribute('path');
+
+        if ($path === '') {
+            return null;
+        }
+
+        $filesystem = Storage::disk('public');
+        $sources = [];
+
+        foreach ([480, 960, 1440] as $width) {
+            $variantPath = $path.'.'.$width.'.webp';
+
+            if ($filesystem->exists($variantPath)) {
+                $sources[] = url($filesystem->url($variantPath)).' '.$width.'w';
+            }
+        }
+
+        return $sources === [] ? null : implode(', ', $sources);
     }
 }

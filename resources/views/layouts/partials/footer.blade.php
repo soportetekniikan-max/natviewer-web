@@ -4,10 +4,13 @@
             <div>
                 <img
                     src="{{ asset(
-                        'images/logo-natviewer-white.png'
+                        'images/logo-natviewer-white.webp'
                     ) }}"
                     alt="Natviewer"
                     class="nv-footer-logo"
+                    width="648"
+                    height="94"
+                    loading="lazy"
                 >
 
                 <p>
