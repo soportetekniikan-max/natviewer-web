@@ -123,7 +123,8 @@ class ProductDetailBuilder
             'seo' => $seo,
 
             'navigation' => $this->navigation(
-                $locale
+                $locale,
+                $product
             ),
 
             'quoteAction' => route(
@@ -223,7 +224,8 @@ class ProductDetailBuilder
     }
 
     private function navigation(
-        string $locale
+        string $locale,
+        Product $product
     ): array {
         $homeUrl = route(
             'home',
@@ -235,7 +237,7 @@ class ProductDetailBuilder
         return [
             'home' => $homeUrl,
 
-            'catalog' => $homeUrl.'#products',
+            'catalog' => route('categories.show.'.$locale, ['category' => $product->category->slug]),
         ];
     }
 
