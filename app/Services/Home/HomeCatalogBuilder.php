@@ -124,6 +124,8 @@ class HomeCatalogBuilder
                                     $locale
                                 ),
 
+                                'category_url' => route('categories.show.'.$locale, ['category' => $product->category->slug]),
+
                                 'description' => $this->localizedValue->resolve(
                                     $product,
                                     'short_description',

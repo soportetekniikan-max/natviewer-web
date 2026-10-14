@@ -15,30 +15,27 @@ class ProductSchemaBuilder
         Collection $gallery
     ): string {
         $schema = [
-            '@context' =>
-                'https://schema.org',
+            '@context' => 'https://schema.org',
 
-            '@type' =>
-                'Product',
+            '@type' => 'Product',
 
-            'name' =>
-                $productName,
+            'name' => $productName,
 
-            'description' =>
-                $seoDescription,
+            'description' => $seoDescription,
 
-            'url' =>
-                $canonicalUrl,
+            'url' => $canonicalUrl,
         ];
 
         if ($product->brand?->name) {
             $schema['brand'] = [
-                '@type' =>
-                    'Brand',
+                '@type' => 'Brand',
 
-                'name' =>
-                    $product->brand->name,
+                'name' => $product->brand->name,
             ];
+        }
+
+        if ($product->variants->count() === 1) {
+            $schema['sku'] = $product->variants->first()->sku;
         }
 
         $images = $gallery

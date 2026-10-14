@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AboutPageController;
 use App\Http\Controllers\Admin\AdminUserController;
 use App\Http\Controllers\Admin\AuthController;
 use App\Http\Controllers\Admin\BrandController;
@@ -10,7 +11,7 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ProductImageController;
 use App\Http\Controllers\Admin\ProductVariantController;
 use App\Http\Controllers\Admin\QuoteController;
-use App\Http\Controllers\AboutPageController;
+use App\Http\Controllers\CategoryPageController;
 use App\Http\Controllers\DefaultLocaleController;
 use App\Http\Controllers\FaqPageController;
 use App\Http\Controllers\HomeController;
@@ -71,6 +72,14 @@ Route::get(
         'es'
     )
     ->name('products.show.es');
+
+Route::get('/es/categorias/{category:slug}', [CategoryPageController::class, 'show'])
+    ->defaults('locale', 'es')
+    ->name('categories.show.es');
+
+Route::get('/en/categories/{category:slug}', [CategoryPageController::class, 'show'])
+    ->defaults('locale', 'en')
+    ->name('categories.show.en');
 
 Route::get(
     '/en/products/{product:slug}',

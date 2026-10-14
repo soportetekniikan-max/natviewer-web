@@ -1,0 +1,20 @@
+.nv-category-page {
+    padding: clamp(7.5rem, 12vw, 9rem) 0 4rem;
+}
+
+.nv-category-header {
+    max-width: 58rem;
+    margin: 2rem 0 3rem;
+}
+
+.nv-category-header h1 {
+    font-size: clamp(2.2rem, 5vw, 4rem);
+}
+
+.nv-category-count {
+    display: block;
+    margin-top: 1rem;
+    color: var(--nv-muted-text);
+    font-size: 1rem;
+    font-weight: 500;
+}

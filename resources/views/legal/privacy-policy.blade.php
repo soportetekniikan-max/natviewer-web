@@ -23,7 +23,7 @@
 @endsection
 
 @section('alternate_default')
-    {{ route('privacy-policy.es') }}
+    {{ route('privacy-policy.en') }}
 @endsection
 
 @section('body_class')
