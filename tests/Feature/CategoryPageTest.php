@@ -46,7 +46,7 @@ class CategoryPageTest extends TestCase
         $home->assertOk()->assertSee('href="'.$categoryUrl.'"', false);
         $detail->assertOk()->assertSee('href="'.$categoryUrl.'"', false)
             ->assertSee('"@type":"BreadcrumbList"', false)
-            ->assertSee('"sku":"'.$product->variants->first()->sku.'"', false);
+            ->assertSee('"identifier":"'.$product->variants->first()->sku.'"', false);
     }
 
     public function test_sitemap_includes_nonempty_categories_and_privacy_pages_in_both_languages(): void
