@@ -1,5 +1,7 @@
 :root {
     --nv-orange: #ea571c;
+    --nv-orange-light: #ff9a5f;
+    --nv-accent-gradient: linear-gradient(90deg, var(--nv-orange), var(--nv-orange-light));
     --nv-dark: #1e2226;
     --nv-green: #3e5447;
     --nv-gray: #6f7276;

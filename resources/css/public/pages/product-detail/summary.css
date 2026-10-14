@@ -680,7 +680,7 @@
     border-radius: 999px;
 
     background:
-        var(--nv-orange);
+        var(--nv-accent-gradient);
 
     color: var(--nv-deep);
 
@@ -707,7 +707,7 @@
 .nv-detail-cta:hover,
 .nv-detail-cta:focus-visible {
     background:
-        var(--nv-orange);
+        var(--nv-accent-gradient);
 
     color: var(--nv-deep);
 
