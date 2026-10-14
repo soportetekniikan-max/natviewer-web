@@ -229,7 +229,7 @@
     gap: 0.55rem;
 
     color:
-        rgba(30, 34, 38, 0.34);
+        var(--nv-muted-text);
 
     font-size: 0.65rem;
 
@@ -253,7 +253,7 @@
 .nv-product-story.is-reverse
 .nv-product-story-number {
     color:
-        rgba(255, 255, 255, 0.42);
+        var(--nv-text-on-dark);
 }
 
 
@@ -305,7 +305,7 @@
         rgba(234, 87, 28, 0.18);
 
     background:
-        var(--nv-orange);
+        var(--nv-orange-strong);
 
     color:
         var(--nv-white);
@@ -344,7 +344,7 @@
         rgba(255, 255, 255, 0.065);
 
     color:
-        rgba(255, 255, 255, 0.78);
+        var(--nv-text-on-dark);
 }
 
 
@@ -592,7 +592,7 @@
 .nv-product-story.is-reverse
 .nv-product-image-placeholder span {
     color:
-        rgba(255, 255, 255, 0.52);
+        var(--nv-text-on-dark);
 }
 
 .nv-product-story.is-reverse
@@ -626,7 +626,7 @@
         rgba(18, 33, 33, 0.08);
 
     color:
-        rgba(30, 34, 38, 0.48);
+        var(--nv-muted-text);
 
     font-size: 0.62rem;
 
@@ -643,7 +643,7 @@
         rgba(255, 255, 255, 0.085);
 
     color:
-        rgba(255, 255, 255, 0.45);
+        var(--nv-text-on-dark);
 }
 
 
@@ -754,7 +754,7 @@
         0.75rem;
 
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 
     font-size: 0.64rem;
 
@@ -862,7 +862,7 @@
         0;
 
     color:
-        rgba(30, 34, 38, 0.61);
+        var(--nv-muted-text);
 
     font-size:
         0.94rem;
@@ -894,7 +894,7 @@
         0.7rem;
 
     color:
-        rgba(30, 34, 38, 0.45);
+        var(--nv-muted-text);
 
     font-size: 0.64rem;
 
@@ -990,7 +990,7 @@
     gap: 0.5rem;
 
     color:
-        rgba(30, 34, 38, 0.55);
+        var(--nv-muted-text);
 
     font-size: 0.69rem;
 
@@ -1104,7 +1104,7 @@
         1.7rem;
 
     color:
-        rgba(30, 34, 38, 0.34);
+        var(--nv-muted-text);
 
     font-size: 0.56rem;
 
@@ -1433,8 +1433,7 @@ and (
 
 .nv-product-image-link:focus-visible {
     outline:
-        3px solid
-        rgba(234, 87, 28, 0.42);
+        3px solid var(--nv-accent-text);
 
     outline-offset: -3px;
 }

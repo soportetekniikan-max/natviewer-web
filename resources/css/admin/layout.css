@@ -156,7 +156,7 @@
         rgba(255, 255, 255, 0.055);
 
     color:
-        rgba(255, 255, 255, 0.64);
+        var(--nv-text-on-dark);
 
     font-size:
         0.66rem;
@@ -240,7 +240,7 @@
         0.42rem;
 
     color:
-        rgba(255, 255, 255, 0.4);
+        var(--nv-text-on-dark);
 
     font-size:
         0.64rem;
@@ -286,7 +286,7 @@
         0.9rem;
 
     color:
-        rgba(255, 255, 255, 0.72);
+        var(--nv-text-on-dark);
 
     font-size:
         0.87rem;
@@ -405,7 +405,7 @@
         rgba(255, 255, 255, 0.045);
 
     color:
-        rgba(255, 255, 255, 0.7);
+        var(--nv-text-on-dark);
 
     transition:
         background-color var(--nv-transition),
@@ -443,7 +443,7 @@
         rgba(234, 87, 28, 0.14);
 
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 }
 
 
@@ -516,7 +516,7 @@
         rgba(234, 87, 28, 0.12);
 
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 
     font-size:
         0.78rem;
@@ -565,7 +565,7 @@
     overflow: hidden;
 
     color:
-        rgba(255, 255, 255, 0.5);
+        var(--nv-text-on-dark);
 
     font-size:
         0.7rem;
@@ -613,7 +613,7 @@
         transparent;
 
     color:
-        rgba(255, 255, 255, 0.58);
+        var(--nv-text-on-dark);
 
     font: inherit;
 
@@ -852,7 +852,7 @@
         rgba(234, 87, 28, 0.07);
 
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 
     transform:
         translateY(-1px);
@@ -1070,7 +1070,7 @@
 
 .nv-admin-sidebar-mobile-title {
     color:
-        rgba(255, 255, 255, 0.78);
+        var(--nv-text-on-dark);
 
     font-size:
         0.72rem;
@@ -1095,8 +1095,7 @@
 .nv-admin-view-site:focus-visible,
 .nv-admin-menu-toggle:focus-visible {
     outline:
-        2px solid
-        var(--nv-orange);
+        2px solid var(--nv-accent-text);
 
     outline-offset:
         3px;

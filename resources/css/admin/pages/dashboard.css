@@ -121,7 +121,7 @@
 .nv-dashboard-hero
 .nv-eyebrow {
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 }
 
 .nv-dashboard-hero h1 {
@@ -151,7 +151,7 @@
         0;
 
     color:
-        rgba(255, 255, 255, 0.7);
+        var(--nv-text-on-dark);
 
     font-size:
         clamp(
@@ -213,7 +213,7 @@
         0.35rem;
 
     color:
-        rgba(255, 255, 255, 0.44);
+        var(--nv-text-on-dark);
 
     font-size:
         0.63rem;
@@ -241,7 +241,7 @@
 
 .nv-dashboard-hero-user > span:last-child {
     color:
-        rgba(255, 255, 255, 0.58);
+        var(--nv-text-on-dark);
 
     font-size:
         0.74rem;
@@ -502,7 +502,7 @@
         rgba(234, 87, 28, 0.09);
 
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 }
 
 .nv-dashboard-stat-total-quotes
@@ -590,7 +590,7 @@
         0.5rem;
 
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 
     font-size:
         0.63rem;
@@ -676,7 +676,7 @@
         rgba(234, 87, 28, 0.07);
 
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 
     font-size:
         0.72rem;
@@ -705,7 +705,7 @@
         var(--nv-orange);
 
     background:
-        var(--nv-orange);
+        var(--nv-orange-strong);
 
     color:
         var(--nv-white);
@@ -827,7 +827,7 @@
 .nv-dashboard-quote-reference a:hover,
 .nv-dashboard-quote-reference a:focus-visible {
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 }
 
 
@@ -961,7 +961,7 @@
         rgba(234, 87, 28, 0.09);
 
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 }
 
 .nv-dashboard-status[data-status="contacted"],
@@ -1046,7 +1046,7 @@
         var(--nv-orange);
 
     background:
-        var(--nv-orange);
+        var(--nv-orange-strong);
 
     color:
         var(--nv-white);
@@ -1284,7 +1284,7 @@
         rgba(234, 87, 28, 0.1);
 
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 }
 
 .nv-dashboard-quick-icon svg {
@@ -1351,7 +1351,7 @@
 .nv-dashboard-quick-link:focus-visible
 .nv-dashboard-quick-arrow {
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 
     transform:
         translateX(3px);
@@ -1517,7 +1517,7 @@
         rgba(234, 87, 28, 0.08);
 
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 
     font-size:
         0.68rem;
@@ -1571,8 +1571,7 @@
 .nv-dashboard-quote-open:focus-visible,
 .nv-dashboard-quick-link:focus-visible {
     outline:
-        2px solid
-        var(--nv-orange);
+        2px solid var(--nv-accent-text);
 
     outline-offset:
         3px;

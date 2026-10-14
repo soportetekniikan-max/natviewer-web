@@ -195,7 +195,7 @@
     margin-bottom: 1.15rem;
 
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 
     font-size:
         0.72rem;
@@ -404,7 +404,7 @@
 
 .nv-hero-product-top > span {
     color:
-        rgba(255, 255, 255, 0.48);
+        var(--nv-text-on-dark);
 
     font-size:
         0.62rem;
@@ -445,7 +445,7 @@
         rgba(234, 87, 28, 0.11);
 
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 
     font-size:
         0.7rem;
@@ -618,7 +618,7 @@
 
 .nv-hero-product-placeholder span {
     color:
-        rgba(255, 255, 255, 0.42);
+        var(--nv-text-on-dark);
 
     font-size:
         0.68rem;
@@ -685,7 +685,7 @@
 
 .nv-hero-product-label {
     color:
-        rgba(255, 255, 255, 0.4);
+        var(--nv-text-on-dark);
 
     font-size:
         0.58rem;
@@ -743,7 +743,7 @@
     max-width: 24rem;
 
     color:
-        rgba(255, 255, 255, 0.5);
+        var(--nv-text-on-dark);
 
     font-size:
         0.67rem;
@@ -808,7 +808,7 @@
         var(--nv-orange);
 
     background:
-        var(--nv-orange);
+        var(--nv-orange-strong);
 
     color:
         var(--nv-white);
@@ -1131,8 +1131,7 @@ and (
 .nv-hero-product-image-link:focus-visible,
 .nv-hero-product-link:focus-visible {
     outline:
-        2px solid
-        var(--nv-orange);
+        2px solid var(--nv-accent-text);
 
     outline-offset: 3px;
 }

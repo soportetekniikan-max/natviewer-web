@@ -78,7 +78,7 @@
 .nv-quote-field input,
 .nv-quote-field textarea {
     width: 100%;
-    border: 1px solid rgba(30, 34, 38, 0.16);
+    border: 1px solid var(--nv-control-border);
     border-radius: var(--nv-radius-sm);
     background: var(--nv-white);
     color: var(--nv-dark);

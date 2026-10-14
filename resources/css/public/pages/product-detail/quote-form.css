@@ -110,7 +110,7 @@
 
     margin-bottom: 1rem;
 
-    color: #ff8c58;
+    color: #fff4eb;
 
     font-size: 0.68rem;
     font-weight: 800;
@@ -159,7 +159,7 @@
     margin: 0;
 
     color:
-        rgba(255, 255, 255, 0.68);
+        var(--nv-text-on-dark);
 
     font-size: 0.95rem;
 
@@ -200,7 +200,7 @@
         rgba(255, 255, 255, 0.055);
 
     color:
-        rgba(255, 255, 255, 0.76);
+        var(--nv-text-on-dark);
 
     font-size: 0.7rem;
     font-weight: 700;
@@ -273,7 +273,7 @@
 
     border:
         1px solid
-        rgba(18, 33, 33, 0.12);
+        var(--nv-control-border);
 
     border-radius: 0.85rem;
 
@@ -302,7 +302,7 @@ textarea.form-control {
 .nv-detail-quote-form
 .form-control::placeholder {
     color:
-        rgba(30, 34, 38, 0.36);
+        var(--nv-muted-text);
 }
 
 

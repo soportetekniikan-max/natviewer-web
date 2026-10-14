@@ -339,8 +339,7 @@
 
 .nv-detail-thumb:focus-visible {
     outline:
-        3px solid
-        rgba(234, 87, 28, 0.25);
+        3px solid var(--nv-accent-text);
 
     outline-offset: 3px;
 }

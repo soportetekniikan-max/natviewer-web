@@ -207,7 +207,7 @@
     margin: 0;
 
     color:
-        rgba(30, 34, 38, 0.6);
+        var(--nv-muted-text);
 
     font-size: 0.95rem;
 
@@ -383,7 +383,7 @@
 
 .nv-info-item-index span {
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 
     font-size: 0.62rem;
 
@@ -552,7 +552,7 @@
 
 .nv-info-closing-top span {
     color:
-        rgba(255, 255, 255, 0.76);
+        var(--nv-text-on-dark);
 
     font-size: 0.64rem;
 
@@ -658,7 +658,7 @@
 
 .nv-info-closing-eyebrow {
     color:
-        var(--nv-orange);
+        var(--nv-accent-text);
 
     font-size: 0.62rem;
 

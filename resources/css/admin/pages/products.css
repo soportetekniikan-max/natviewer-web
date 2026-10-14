@@ -12,7 +12,7 @@
 
 .nv-admin-nav a {
     border-radius: var(--nv-radius-sm);
-    color: rgba(255, 255, 255, 0.68);
+    color: var(--nv-text-on-dark);
     padding: 0.55rem 0.8rem;
     font-size: 0.85rem;
     font-weight: 700;
@@ -53,7 +53,7 @@
     border: 0;
     border-radius: var(--nv-radius-sm);
     background: rgba(234, 87, 28, 0.1);
-    color: var(--nv-orange);
+    color: var(--nv-accent-text);
     padding: 0.5rem 0.75rem;
     font-size: 0.82rem;
     font-weight: 800;
@@ -61,7 +61,7 @@
 }
 
 .nv-admin-action-link:hover {
-    background: var(--nv-orange);
+    background: var(--nv-orange-strong);
     color: var(--nv-white);
 }
 
@@ -142,7 +142,7 @@
 .nv-admin-field .form-control,
 .nv-admin-field .form-select {
     min-height: 46px;
-    border-color: rgba(30, 34, 38, 0.15);
+    border-color: var(--nv-control-border);
 }
 
 .nv-admin-field textarea.form-control {
@@ -167,7 +167,7 @@
 .nv-admin-toggle input {
     width: 18px;
     height: 18px;
-    accent-color: var(--nv-orange);
+    accent-color: var(--nv-orange-strong);
 }
 
 .nv-admin-toggle span {
@@ -252,7 +252,7 @@
 
 .nv-admin-edit-navigation a:hover {
     border-color: var(--nv-orange);
-    color: var(--nv-orange);
+    color: var(--nv-accent-text);
 }
 
 /* SPECIFICATIONS */
@@ -385,7 +385,7 @@
     top: 0.75rem;
     left: 0.75rem;
     border-radius: 100px;
-    background: var(--nv-orange);
+    background: var(--nv-orange-strong);
     color: var(--nv-white);
     padding: 0.35rem 0.65rem;
     font-size: 0.7rem;
@@ -436,11 +436,11 @@
 .nv-admin-image-primary-button {
     border: 1px solid rgba(234, 87, 28, 0.25);
     background: rgba(234, 87, 28, 0.08);
-    color: var(--nv-orange);
+    color: var(--nv-accent-text);
 }
 
 .nv-admin-image-primary-button:hover {
-    background: var(--nv-orange);
+    background: var(--nv-orange-strong);
     color: var(--nv-white);
 }
 
