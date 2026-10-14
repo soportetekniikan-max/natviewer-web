@@ -1,3 +1,5 @@
+import initializeHeroCarousel from '../components/hero-carousel.js';
+
 export default function initializeHomeExperience() {
     const home =
         document.querySelector(
@@ -7,6 +9,8 @@ export default function initializeHomeExperience() {
     if (!home) {
         return;
     }
+
+    initializeHeroCarousel(home);
 
     const body =
         document.body;
