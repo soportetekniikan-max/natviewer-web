@@ -459,6 +459,7 @@ class CatalogHomeTest extends TestCase
                 ->assertSee('data-carousel-controls hidden', false)
                 ->assertSee($locale === 'es' ? 'Mostrar foto 2' : 'Show photo 2')
                 ->assertDontSee('data-carousel-next', false)
+                ->assertDontSee('data-carousel-toggle', false)
                 ->assertViewHas('hero', function (array $hero) use ($alt): bool {
                     $this->assertCount(2, $hero['images']);
                     $this->assertStringEndsWith('/products/main.jpg', $hero['images'][0]['url']);

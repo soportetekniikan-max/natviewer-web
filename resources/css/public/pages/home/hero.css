@@ -483,12 +483,12 @@
 
     background:
         radial-gradient(
-            ellipse at 50% 44%,
-            rgba(255, 255, 255, 0.98) 0%,
-            rgba(255, 255, 255, 0.9) 25%,
-            rgba(255, 255, 255, 0.48) 49%,
-            rgba(255, 255, 255, 0.08) 72%,
-            rgba(18, 33, 33, 0.08) 100%
+            ellipse at 50% 42%,
+            rgba(255, 255, 255, 0.66) 0%,
+            rgba(255, 255, 255, 0.38) 30%,
+            rgba(255, 255, 255, 0.12) 58%,
+            rgba(255, 255, 255, 0.02) 78%,
+            transparent 100%
         );
 }
 
@@ -561,11 +561,6 @@
 .nv-hero-carousel-controls button:focus-visible {
     outline: 2px solid var(--nv-white);
     outline-offset: -3px;
-}
-
-.nv-hero-carousel-controls button[data-carousel-toggle] {
-    background: var(--nv-deep);
-    border-color: rgba(255, 255, 255, 0.18);
 }
 
 .nv-hero-carousel-dots {
