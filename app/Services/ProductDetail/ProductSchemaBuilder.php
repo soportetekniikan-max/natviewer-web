@@ -5,6 +5,9 @@ namespace App\Services\ProductDetail;
 use App\Models\Product;
 use Illuminate\Support\Collection;
 
+/**
+ * Describes quotation-only product pages without advertising a commercial offer.
+ */
 class ProductSchemaBuilder
 {
     public function buildJson(
@@ -17,7 +20,9 @@ class ProductSchemaBuilder
         $schema = [
             '@context' => 'https://schema.org',
 
-            '@type' => 'Product',
+            '@type' => 'WebPage',
+
+            '@id' => $canonicalUrl.'#webpage',
 
             'name' => $productName,
 
@@ -26,16 +31,8 @@ class ProductSchemaBuilder
             'url' => $canonicalUrl,
         ];
 
-        if ($product->brand?->name) {
-            $schema['brand'] = [
-                '@type' => 'Brand',
-
-                'name' => $product->brand->name,
-            ];
-        }
-
         if ($product->variants->count() === 1) {
-            $schema['sku'] = $product->variants->first()->sku;
+            $schema['identifier'] = $product->variants->first()->sku;
         }
 
         $images = $gallery

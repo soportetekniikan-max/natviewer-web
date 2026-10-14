@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Product;
+use App\Models\ProductImage;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Support\Facades\DB;
 use Tests\TestCase;
@@ -54,16 +55,14 @@ class ProductDetailTest extends TestCase
         $spanishUrl = route(
             'products.show.es',
             [
-                'product' =>
-                    'natviewer-falco',
+                'product' => 'natviewer-falco',
             ]
         );
 
         $englishUrl = route(
             'products.show.en',
             [
-                'product' =>
-                    'natviewer-falco',
+                'product' => 'natviewer-falco',
             ]
         );
 
@@ -129,8 +128,7 @@ class ProductDetailTest extends TestCase
             [
                 Product::STATUS_DRAFT,
                 Product::STATUS_ARCHIVED,
-            ]
-            as $status
+            ] as $status
         ) {
             $data = $this->createCatalog(
                 productStatus: $status,
@@ -139,7 +137,7 @@ class ProductDetailTest extends TestCase
 
             $response = $this->get(
                 '/es/productos/'
-                . $data['slug']
+                .$data['slug']
             );
 
             $response->assertNotFound();
@@ -155,7 +153,7 @@ class ProductDetailTest extends TestCase
 
         $this->get(
             '/es/productos/'
-            . $data['slug']
+            .$data['slug']
         )->assertNotFound();
     }
 
@@ -168,7 +166,7 @@ class ProductDetailTest extends TestCase
 
         $this->get(
             '/es/productos/'
-            . $data['slug']
+            .$data['slug']
         )->assertNotFound();
     }
 
@@ -203,32 +201,25 @@ class ProductDetailTest extends TestCase
 
         $secondVariantId =
             $this->createVariant(
-                productId:
-                    $data['product_id'],
+                productId: $data['product_id'],
 
-                sku:
-                    'FALCO-1042',
+                sku: 'FALCO-1042',
 
-                nameEs:
-                    'Falco 10×42 UD',
+                nameEs: 'Falco 10×42 UD',
 
-                nameEn:
-                    'Falco 10×42 UD EN',
+                nameEn: 'Falco 10×42 UD EN',
 
-                isActive:
-                    true,
+                isActive: true,
 
-                isDefault:
-                    false,
+                isDefault: false,
 
-                sortOrder:
-                    2
+                sortOrder: 2
             );
 
         $response = $this->get(
             '/es/productos/natviewer-falco'
-            . '?variant='
-            . $secondVariantId
+            .'?variant='
+            .$secondVariantId
         );
 
         $response
@@ -253,9 +244,12 @@ class ProductDetailTest extends TestCase
         $response
             ->assertOk()
             ->assertSee(
-                '"@type":"Product"',
+                '"@type":"WebPage"',
                 false
             )
+            ->assertDontSee('"@type":"Product"', false)
+            ->assertDontSee('"@type":"Review"', false)
+            ->assertDontSee('"@type":"AggregateRating"', false)
             ->assertSee(
                 '"name":"Natviewer Falco"',
                 false
@@ -282,6 +276,48 @@ class ProductDetailTest extends TestCase
             );
     }
 
+    public function test_quotation_page_metadata_keeps_images_canonical_urls_and_breadcrumbs(): void
+    {
+        $data = $this->createCatalog();
+        ProductImage::create([
+            'product_id' => $data['product_id'],
+            'disk' => 'public',
+            'path' => 'products/falco.jpg',
+            'is_primary' => true,
+        ]);
+
+        foreach (['es', 'en'] as $locale) {
+            $canonicalUrl = route('products.show.'.$locale, ['product' => 'natviewer-falco']);
+            $response = $this->get($canonicalUrl);
+
+            $response->assertOk()->assertSee('index,follow,max-image-preview:large', false);
+            preg_match_all('/<script\b[^>]*type="application\/ld\+json"[^>]*>(.*?)<\/script>/s', $response->getContent(), $matches);
+            $schemas = collect($matches[1])->map(fn (string $json): array => json_decode($json, true, 512, JSON_THROW_ON_ERROR));
+            $page = $schemas->firstWhere('@type', 'WebPage');
+            $breadcrumbs = $schemas->firstWhere('@type', 'BreadcrumbList');
+
+            $this->assertNotNull($page);
+            $this->assertSame($canonicalUrl, $page['url']);
+            $this->assertSame($canonicalUrl.'#webpage', $page['@id']);
+            $this->assertSame('FALCO-842', $page['identifier']);
+            $this->assertStringEndsWith('/storage/products/falco.jpg', $page['image'][0]);
+            $this->assertSame($canonicalUrl, $breadcrumbs['itemListElement'][2]['item']);
+            $this->assertNotContains('Product', $schemas->pluck('@type')->all());
+        }
+    }
+
+    public function test_quotation_page_metadata_safely_encodes_product_names(): void
+    {
+        $data = $this->createCatalog();
+        $name = '</script><script>alert("product")</script>';
+        Product::query()->findOrFail($data['product_id'])->update(['name_es' => $name]);
+
+        $response = $this->get('/es/productos/natviewer-falco');
+
+        $response->assertOk()->assertSee($name)->assertDontSee($name, false)
+            ->assertSee('"@type":"WebPage"', false);
+    }
+
     public function test_variant_without_price_still_supports_quote_flow(): void
     {
         $data = $this->createCatalog(
@@ -290,7 +326,7 @@ class ProductDetailTest extends TestCase
 
         $response = $this->get(
             '/es/productos/'
-            . $data['slug']
+            .$data['slug']
         );
 
         $response
@@ -325,7 +361,7 @@ class ProductDetailTest extends TestCase
     ): array {
         $suffixValue =
             $suffix !== ''
-                ? '-' . $suffix
+                ? '-'.$suffix
                 : '';
 
         $now = now();
@@ -333,171 +369,123 @@ class ProductDetailTest extends TestCase
         $categoryId =
             DB::table('categories')
                 ->insertGetId([
-                    'slug' =>
-                        'binoculares'
-                        . $suffixValue,
+                    'slug' => 'binoculares'
+                        .$suffixValue,
 
-                    'name_es' =>
-                        'Binoculares terrestres',
+                    'name_es' => 'Binoculares terrestres',
 
-                    'name_en' =>
-                        'Terrestrial binoculars',
+                    'name_en' => 'Terrestrial binoculars',
 
-                    'description_es' =>
-                        null,
+                    'description_es' => null,
 
-                    'description_en' =>
-                        null,
+                    'description_en' => null,
 
-                    'is_active' =>
-                        $categoryActive,
+                    'is_active' => $categoryActive,
 
-                    'sort_order' =>
-                        1,
+                    'sort_order' => 1,
 
-                    'created_at' =>
-                        $now,
+                    'created_at' => $now,
 
-                    'updated_at' =>
-                        $now,
+                    'updated_at' => $now,
                 ]);
 
         $brandId =
             DB::table('brands')
                 ->insertGetId([
-                    'slug' =>
-                        'natviewer'
-                        . $suffixValue,
+                    'slug' => 'natviewer'
+                        .$suffixValue,
 
-                    'name' =>
-                        'Natviewer',
+                    'name' => 'Natviewer',
 
-                    'description_es' =>
-                        null,
+                    'description_es' => null,
 
-                    'description_en' =>
-                        null,
+                    'description_en' => null,
 
-                    'logo_path' =>
-                        null,
+                    'logo_path' => null,
 
-                    'is_active' =>
-                        $brandActive,
+                    'is_active' => $brandActive,
 
-                    'sort_order' =>
-                        1,
+                    'sort_order' => 1,
 
-                    'created_at' =>
-                        $now,
+                    'created_at' => $now,
 
-                    'updated_at' =>
-                        $now,
+                    'updated_at' => $now,
                 ]);
 
         $slug =
             'natviewer-falco'
-            . $suffixValue;
+            .$suffixValue;
 
         $productId =
             DB::table('products')
                 ->insertGetId([
-                    'category_id' =>
-                        $categoryId,
+                    'category_id' => $categoryId,
 
-                    'brand_id' =>
-                        $brandId,
+                    'brand_id' => $brandId,
 
-                    'slug' =>
-                        $slug,
+                    'slug' => $slug,
 
-                    'name_es' =>
-                        'Natviewer Falco',
+                    'name_es' => 'Natviewer Falco',
 
-                    'name_en' =>
-                        'Natviewer Falco EN',
+                    'name_en' => 'Natviewer Falco EN',
 
-                    'short_description_es' =>
-                        'Descripción corta en español',
+                    'short_description_es' => 'Descripción corta en español',
 
-                    'short_description_en' =>
-                        'Short English description',
+                    'short_description_en' => 'Short English description',
 
-                    'description_es' =>
-                        'Descripción completa en español.',
+                    'description_es' => 'Descripción completa en español.',
 
-                    'description_en' =>
-                        'Full English description.',
+                    'description_en' => 'Full English description.',
 
-                    'status' =>
-                        $productStatus,
+                    'status' => $productStatus,
 
-                    'is_featured' =>
-                        true,
+                    'is_featured' => true,
 
-                    'meta_title_es' =>
-                        'Falco SEO ES',
+                    'meta_title_es' => 'Falco SEO ES',
 
-                    'meta_title_en' =>
-                        'Falco SEO EN',
+                    'meta_title_en' => 'Falco SEO EN',
 
-                    'meta_description_es' =>
-                        'Descripción SEO ES',
+                    'meta_description_es' => 'Descripción SEO ES',
 
-                    'meta_description_en' =>
-                        'English SEO description',
+                    'meta_description_en' => 'English SEO description',
 
-                    'created_at' =>
-                        $now,
+                    'created_at' => $now,
 
-                    'updated_at' =>
-                        $now,
+                    'updated_at' => $now,
                 ]);
 
         $variantId =
             $this->createVariant(
-                productId:
-                    $productId,
+                productId: $productId,
 
-                sku:
-                    'FALCO-842'
-                    . strtoupper(
+                sku: 'FALCO-842'
+                    .strtoupper(
                         $suffixValue
                     ),
 
-                nameEs:
-                    'Falco 8×42 UD',
+                nameEs: 'Falco 8×42 UD',
 
-                nameEn:
-                    'Falco 8×42 UD EN',
+                nameEn: 'Falco 8×42 UD EN',
 
-                price:
-                    $variantPrice,
+                price: $variantPrice,
 
-                isActive:
-                    true,
+                isActive: true,
 
-                isDefault:
-                    true,
+                isDefault: true,
 
-                sortOrder:
-                    1
+                sortOrder: 1
             );
 
         return [
-            'category_id' =>
-                $categoryId,
+            'category_id' => $categoryId,
 
-            'brand_id' =>
-                $brandId,
+            'brand_id' => $brandId,
 
-            'product_id' =>
-                $productId,
+            'product_id' => $productId,
 
-            'variant_id' =>
-                $variantId,
+            'variant_id' => $variantId,
 
-            'slug' =>
-                $slug,
+            'slug' => $slug,
         ];
     }
 
@@ -516,62 +504,43 @@ class ProductDetailTest extends TestCase
         return DB::table(
             'product_variants'
         )->insertGetId([
-            'product_id' =>
-                $productId,
+            'product_id' => $productId,
 
-            'sku' =>
-                $sku,
+            'sku' => $sku,
 
-            'name_es' =>
-                $nameEs,
+            'name_es' => $nameEs,
 
-            'name_en' =>
-                $nameEn,
+            'name_en' => $nameEn,
 
-            'price' =>
-                $price,
+            'price' => $price,
 
-            'currency' =>
-                'COP',
+            'currency' => 'COP',
 
-            'manage_stock' =>
-                true,
+            'manage_stock' => true,
 
-            'stock_quantity' =>
-                5,
+            'stock_quantity' => 5,
 
-            'stock_status' =>
-                'in_stock',
+            'stock_status' => 'in_stock',
 
-            'specifications' =>
-                json_encode([
-                    'magnification' =>
-                        '8×',
+            'specifications' => json_encode([
+                'magnification' => '8×',
 
-                    'objective_diameter' =>
-                        '42 mm',
+                'objective_diameter' => '42 mm',
 
-                    'lenses' =>
-                        'coated',
+                'lenses' => 'coated',
 
-                    'prism' =>
-                        'bak7_roof',
-                ]),
+                'prism' => 'bak7_roof',
+            ]),
 
-            'is_default' =>
-                $isDefault,
+            'is_default' => $isDefault,
 
-            'is_active' =>
-                $isActive,
+            'is_active' => $isActive,
 
-            'sort_order' =>
-                $sortOrder,
+            'sort_order' => $sortOrder,
 
-            'created_at' =>
-                $now,
+            'created_at' => $now,
 
-            'updated_at' =>
-                $now,
+            'updated_at' => $now,
         ]);
     }
 }
