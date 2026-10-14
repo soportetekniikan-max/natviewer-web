@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Product;
+use App\Models\ProductImage;
 use Database\Seeders\BrandSeeder;
 use Database\Seeders\CategorySeeder;
 use Database\Seeders\ContactSettingSeeder;
@@ -138,56 +139,44 @@ class CatalogHomeTest extends TestCase
         $this->assertDatabaseHas(
             'products',
             [
-                'id' =>
-                    $product8Id,
+                'id' => $product8Id,
 
-                'slug' =>
-                    'natviewer-falco-8x42-ud',
+                'slug' => 'natviewer-falco-8x42-ud',
 
-                'status' =>
-                    Product::STATUS_PUBLISHED,
+                'status' => Product::STATUS_PUBLISHED,
             ]
         );
 
         $this->assertDatabaseHas(
             'products',
             [
-                'id' =>
-                    $product10Id,
+                'id' => $product10Id,
 
-                'slug' =>
-                    'natviewer-falco-10x42-ud',
+                'slug' => 'natviewer-falco-10x42-ud',
 
-                'status' =>
-                    Product::STATUS_PUBLISHED,
+                'status' => Product::STATUS_PUBLISHED,
             ]
         );
 
         $this->assertDatabaseHas(
             'product_variants',
             [
-                'product_id' =>
-                    $product8Id,
+                'product_id' => $product8Id,
 
-                'sku' =>
-                    'NV-FALCO-8X42-UD',
+                'sku' => 'NV-FALCO-8X42-UD',
 
-                'is_default' =>
-                    true,
+                'is_default' => true,
             ]
         );
 
         $this->assertDatabaseHas(
             'product_variants',
             [
-                'product_id' =>
-                    $product10Id,
+                'product_id' => $product10Id,
 
-                'sku' =>
-                    'NV-FALCO-10X42-UD',
+                'sku' => 'NV-FALCO-10X42-UD',
 
-                'is_default' =>
-                    true,
+                'is_default' => true,
             ]
         );
     }
@@ -200,20 +189,15 @@ class CatalogHomeTest extends TestCase
                 'NV-FALCO-8X42-UD'
             )
             ->update([
-                'price' =>
-                    1299000,
+                'price' => 1299000,
 
-                'currency' =>
-                    'COP',
+                'currency' => 'COP',
 
-                'manage_stock' =>
-                    true,
+                'manage_stock' => true,
 
-                'stock_quantity' =>
-                    5,
+                'stock_quantity' => 5,
 
-                'stock_status' =>
-                    'in_stock',
+                'stock_status' => 'in_stock',
             ]);
 
         $response = $this->get('/es');
@@ -251,8 +235,7 @@ class CatalogHomeTest extends TestCase
                 'natviewer-falco-8x42-ud'
             )
             ->update([
-                'status' =>
-                    Product::STATUS_DRAFT,
+                'status' => Product::STATUS_DRAFT,
             ]);
 
         $response = $this->get('/es');
@@ -280,8 +263,7 @@ class CatalogHomeTest extends TestCase
                 'natviewer-falco-8x42-ud'
             )
             ->update([
-                'status' =>
-                    Product::STATUS_ARCHIVED,
+                'status' => Product::STATUS_ARCHIVED,
             ]);
 
         $response = $this->get('/es');
@@ -320,8 +302,7 @@ class CatalogHomeTest extends TestCase
                 $categoryId
             )
             ->update([
-                'is_active' =>
-                    false,
+                'is_active' => false,
             ]);
 
         $response = $this->get('/es');
@@ -360,8 +341,7 @@ class CatalogHomeTest extends TestCase
                 $brandId
             )
             ->update([
-                'is_active' =>
-                    false,
+                'is_active' => false,
             ]);
 
         $response = $this->get('/es');
@@ -389,8 +369,7 @@ class CatalogHomeTest extends TestCase
                 'NV-FALCO-10X42-UD'
             )
             ->update([
-                'is_active' =>
-                    false,
+                'is_active' => false,
             ]);
 
         $response = $this->get('/es');
@@ -466,13 +445,53 @@ class CatalogHomeTest extends TestCase
         );
     }
 
+    public function test_hero_carousel_uses_only_featured_product_photos_with_primary_first(): void
+    {
+        $product = Product::query()->where('slug', 'natviewer-falco-8x42-ud')->firstOrFail();
+        ProductImage::create(['product_id' => $product->id, 'disk' => 'public', 'path' => 'products/side.jpg', 'alt_es' => 'Vista lateral', 'alt_en' => 'Side view', 'sort_order' => 1]);
+        ProductImage::create(['product_id' => $product->id, 'disk' => 'public', 'path' => 'products/main.jpg', 'is_primary' => true, 'sort_order' => 2]);
+        $other = Product::query()->where('slug', 'natviewer-falco-10x42-ud')->firstOrFail();
+        ProductImage::create(['product_id' => $other->id, 'disk' => 'public', 'path' => 'products/other.jpg']);
+
+        foreach (['es' => 'Vista lateral', 'en' => 'Side view'] as $locale => $alt) {
+            $this->get('/'.$locale)->assertOk()
+                ->assertSee('data-hero-carousel=', false)
+                ->assertSee('data-carousel-controls hidden', false)
+                ->assertViewHas('hero', function (array $hero) use ($alt): bool {
+                    $this->assertCount(2, $hero['images']);
+                    $this->assertStringEndsWith('/products/main.jpg', $hero['images'][0]['url']);
+                    $this->assertStringEndsWith('/products/side.jpg', $hero['images'][1]['url']);
+                    $this->assertSame($hero['image_url'], $hero['images'][0]['url']);
+                    $this->assertSame($alt, $hero['images'][1]['alt']);
+
+                    return true;
+                });
+        }
+    }
+
+    public function test_hero_with_one_photo_keeps_static_image_without_carousel_controls(): void
+    {
+        $product = Product::query()->where('slug', 'natviewer-falco-8x42-ud')->firstOrFail();
+        ProductImage::create(['product_id' => $product->id, 'disk' => 'public', 'path' => 'products/only.jpg']);
+
+        $this->get('/es')->assertOk()->assertDontSee('data-hero-carousel=', false)
+            ->assertDontSee('data-carousel-controls', false)
+            ->assertViewHas('hero', fn (array $hero): bool => count($hero['images']) === 1);
+    }
+
+    public function test_hero_without_photos_keeps_placeholder_without_carousel_controls(): void
+    {
+        $this->get('/es')->assertOk()->assertSee('nv-hero-product-placeholder', false)
+            ->assertDontSee('data-carousel-controls', false)
+            ->assertViewHas('hero', fn (array $hero): bool => $hero['images'] === []);
+    }
+
     private function spanishProduct8Url(): string
     {
         return route(
             'products.show.es',
             [
-                'product' =>
-                    'natviewer-falco-8x42-ud',
+                'product' => 'natviewer-falco-8x42-ud',
             ]
         );
     }
@@ -482,8 +501,7 @@ class CatalogHomeTest extends TestCase
         return route(
             'products.show.es',
             [
-                'product' =>
-                    'natviewer-falco-10x42-ud',
+                'product' => 'natviewer-falco-10x42-ud',
             ]
         );
     }
@@ -493,8 +511,7 @@ class CatalogHomeTest extends TestCase
         return route(
             'products.show.en',
             [
-                'product' =>
-                    'natviewer-falco-8x42-ud',
+                'product' => 'natviewer-falco-8x42-ud',
             ]
         );
     }
@@ -504,8 +521,7 @@ class CatalogHomeTest extends TestCase
         return route(
             'products.show.en',
             [
-                'product' =>
-                    'natviewer-falco-10x42-ud',
+                'product' => 'natviewer-falco-10x42-ud',
             ]
         );
     }

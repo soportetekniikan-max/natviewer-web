@@ -80,6 +80,17 @@ class HomeHeroBuilder
 
             'image_srcset' => $media['primaryImageSrcset'],
 
+            'images' => collect($media['gallery'] ?? [])
+                ->sortByDesc('is_primary')
+                ->unique('url')
+                ->values()
+                ->map(fn (array $image): array => [
+                    'url' => $image['url'],
+                    'alt' => $image['alt'],
+                    'srcset' => $image['srcset'],
+                ])
+                ->all(),
+
             'detail_url' => $featuredProduct
                     ? route(
                         $locale === 'en'
