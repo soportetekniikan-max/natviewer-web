@@ -20,7 +20,7 @@ export default function initializeHeroCarousel(home) {
     const motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     const toggle = controls.querySelector('[data-carousel-toggle]');
     const icon = toggle.querySelector('[data-carousel-toggle-icon]');
-    const counter = controls.querySelector('[data-carousel-count]');
+    const dots = Array.from(controls.querySelectorAll('[data-carousel-slide]'));
     let index = 0;
     let timer;
     let paused = false;
@@ -59,7 +59,7 @@ export default function initializeHeroCarousel(home) {
             image.alt = slide.alt;
             image.fetchPriority = 'auto';
             index = next;
-            counter.textContent = `${index + 1} / ${slides.length}`;
+            dots.forEach((dot, slideIndex) => dot.setAttribute('aria-pressed', String(slideIndex === index)));
             if (!motion.matches) {
                 image.getAnimations().forEach((animation) => animation.cancel());
                 image.animate([{ opacity: 0.2 }, { opacity: 1 }], { duration: 420, easing: 'ease-out' });
@@ -77,8 +77,7 @@ export default function initializeHeroCarousel(home) {
     controls.hidden = false;
     carousel.classList.add('has-carousel');
     toggle.hidden = motion.matches;
-    controls.querySelector('[data-carousel-previous]').addEventListener('click', () => show(index - 1));
-    controls.querySelector('[data-carousel-next]').addEventListener('click', () => show(index + 1));
+    dots.forEach((dot) => dot.addEventListener('click', () => show(Number(dot.dataset.carouselSlide))));
     toggle.addEventListener('click', () => {
         paused = !paused;
         toggle.setAttribute('aria-label', paused ? toggle.dataset.playLabel : toggle.dataset.pauseLabel);

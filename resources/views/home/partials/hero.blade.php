@@ -131,13 +131,17 @@
                     @endif
                     @if (count($hero['images']) > 1)
                         <div class="nv-hero-carousel-controls" data-carousel-controls hidden>
-                            <button type="button" data-carousel-previous aria-label="{{ __('public.hero.previous_photo') }}">
-                                <span aria-hidden="true">←</span>
-                            </button>
-                            <span class="nv-hero-carousel-count" data-carousel-count aria-live="off">1 / {{ count($hero['images']) }}</span>
-                            <button type="button" data-carousel-next aria-label="{{ __('public.hero.next_photo') }}">
-                                <span aria-hidden="true">→</span>
-                            </button>
+                            <div class="nv-hero-carousel-dots">
+                                @foreach ($hero['images'] as $image)
+                                    <button
+                                        type="button"
+                                        class="nv-hero-carousel-dot"
+                                        data-carousel-slide="{{ $loop->index }}"
+                                        aria-pressed="{{ $loop->first ? 'true' : 'false' }}"
+                                        aria-label="{{ __('public.hero.show_photo', ['number' => $loop->iteration]) }}"
+                                    ><span aria-hidden="true"></span></button>
+                                @endforeach
+                            </div>
                             <button
                                 type="button"
                                 data-carousel-toggle
