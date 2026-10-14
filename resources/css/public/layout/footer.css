@@ -4,6 +4,7 @@
    ========================================================= */
 
 .nv-site-footer {
+    --nv-accent-on-dark: #fff4eb;
     position: relative;
 
     overflow: hidden;
@@ -145,7 +146,7 @@
     margin: 0;
 
     color:
-        rgba(255, 255, 255, 0.65);
+        var(--nv-text-on-dark);
 
     font-size: 0.88rem;
 
@@ -254,7 +255,7 @@
 
     margin-bottom: 0.55rem;
 
-    color: #ff8c58;
+    color: var(--nv-accent-on-dark);
 
     font-size: 0.62rem;
     font-weight: 800;
@@ -306,7 +307,7 @@ span::before {
     max-width: 27rem;
 
     color:
-        rgba(255, 255, 255, 0.68);
+        var(--nv-text-on-dark);
 
     font-size: 0.82rem;
 }
@@ -346,7 +347,7 @@ span::before {
         rgba(255, 255, 255, 0.08);
 
     color:
-        rgba(255, 255, 255, 0.43);
+        var(--nv-text-on-dark);
 
     font-size: 0.72rem;
 }
@@ -386,8 +387,7 @@ span:last-child::before {
 .nv-site-footer
 a:focus-visible {
     outline:
-        3px solid
-        rgba(234, 87, 28, 0.48);
+        3px solid var(--nv-accent-text);
 
     outline-offset: 3px;
 }

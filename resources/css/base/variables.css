@@ -2,7 +2,16 @@
     --nv-orange: #ea571c;
     --nv-dark: #1e2226;
     --nv-green: #3e5447;
-    --nv-gray: #6f7276;
+    --nv-gray: #49564f;
+    --nv-muted-text: #49564f;
+    --nv-text-on-dark: #ffffff;
+    --nv-accent-text: #a93710;
+    --nv-accent-on-dark: #ffcfb5;
+    --nv-orange-strong: #b33b10;
+    --nv-orange-hover: #982d07;
+    --nv-control-border: #7b8580;
+    --nv-outline-text: var(--nv-deep);
+    --nv-outline-border: var(--nv-control-border);
     --nv-light: #edeced;
     --nv-deep: #122121;
     --nv-white: #ffffff;
@@ -19,4 +28,31 @@
     --nv-shadow-strong: 0 28px 80px rgba(18, 33, 33, 0.22);
 
     --nv-transition: 0.22s ease;
+}
+
+.nv-navbar,
+.nv-nav-dropdown,
+.nv-site-footer,
+.nv-admin-sidebar,
+.nv-admin-header,
+.nv-admin-login-brand,
+.nv-dashboard-hero,
+.nv-about-hero,
+.nv-about-section-dark,
+.nv-about-cta-card,
+.nv-faq-hero,
+.nv-faq-cta-card,
+.nv-hero-product,
+.nv-tech-card-featured,
+.nv-product-story.is-reverse .nv-product-story-media,
+.nv-benefits-manifesto,
+.nv-info-closing,
+.nv-detail-highlight,
+.nv-detail-spec-header,
+.nv-detail-quote-intro,
+.nv-detail-main-image-placeholder,
+.nv-quote-modal .modal-header {
+    --nv-accent-text: var(--nv-accent-on-dark);
+    --nv-outline-text: var(--nv-white);
+    --nv-outline-border: var(--nv-text-on-dark);
 }

@@ -52,8 +52,6 @@
                 ) }}"
                 class="
                     link-light
-                    link-opacity-50
-                    link-opacity-100-hover
                     text-decoration-none
                 "
             >

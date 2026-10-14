@@ -61,7 +61,7 @@
     flex-wrap: wrap;
     gap: 0.6rem 2rem;
     margin-bottom: 2.25rem;
-    color: #647675;
+    color: var(--nv-muted-text);
     font-size: 0.88rem;
     line-height: 1.6;
 }
@@ -127,7 +127,7 @@
 
 .nv-privacy-toc li {
     min-width: 0;
-    color: #72817f;
+    color: var(--nv-muted-text);
     font-size: 0.88rem;
     line-height: 1.5;
 }
@@ -220,7 +220,7 @@
 }
 
 .nv-privacy-section li::marker {
-    color: #7b8b89;
+    color: var(--nv-muted-text);
 }
 
 .nv-privacy-section strong {

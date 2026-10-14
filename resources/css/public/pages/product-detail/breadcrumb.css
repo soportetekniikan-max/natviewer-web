@@ -13,7 +13,7 @@
     margin-bottom: 1.35rem;
 
     color:
-        rgba(30, 34, 38, 0.46);
+        var(--nv-muted-text);
 
     font-size: 0.8rem;
     font-weight: 500;
@@ -28,7 +28,7 @@
     position: relative;
 
     color:
-        rgba(18, 33, 33, 0.68);
+        var(--nv-muted-text);
 
     font-weight: 700;
 
@@ -40,7 +40,7 @@
 
 .nv-detail-breadcrumb a:hover,
 .nv-detail-breadcrumb a:focus-visible {
-    color: var(--nv-orange);
+    color: var(--nv-accent-text);
 }
 
 
@@ -70,7 +70,7 @@ span[aria-current="page"] {
 
 .nv-detail-breadcrumb-separator {
     color:
-        rgba(18, 33, 33, 0.25);
+        var(--nv-muted-text);
 
     opacity: 1;
 }

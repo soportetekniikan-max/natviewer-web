@@ -14,8 +14,7 @@
 .nv-detail-page select:focus-visible,
 .nv-detail-page textarea:focus-visible {
     outline:
-        3px solid
-        rgba(234, 87, 28, 0.42);
+        3px solid var(--nv-accent-text);
 
     outline-offset: 3px;
 }
