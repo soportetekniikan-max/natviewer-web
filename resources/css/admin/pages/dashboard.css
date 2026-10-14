@@ -705,10 +705,9 @@
         var(--nv-orange);
 
     background:
-        var(--nv-orange-strong);
+        var(--nv-orange);
 
-    color:
-        var(--nv-white);
+    color: var(--nv-deep);
 
     transform:
         translateY(-1px);
@@ -1046,10 +1045,9 @@
         var(--nv-orange);
 
     background:
-        var(--nv-orange-strong);
+        var(--nv-orange);
 
-    color:
-        var(--nv-white);
+    color: var(--nv-deep);
 
     transform:
         translateX(2px);
@@ -1442,7 +1440,7 @@
         0;
 
     color:
-        var(--nv-gray);
+        var(--nv-muted-text);
 
     font-size:
         0.82rem;

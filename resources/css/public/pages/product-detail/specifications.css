@@ -102,9 +102,9 @@
         ),
         linear-gradient(
             145deg,
-            #40594a,
-            #253b31 55%,
-            #182b24
+            var(--nv-green),
+            var(--nv-deep) 55%,
+            var(--nv-dark)
         );
 
     color: var(--nv-white);

@@ -31,7 +31,7 @@
     align-items: center;
     gap: 0.65rem;
     margin: 0 0 1rem;
-    color: #526968;
+    color: var(--nv-neutral-dark);
     font-size: 0.76rem;
     font-weight: 700;
     letter-spacing: 0.18em;
@@ -71,7 +71,7 @@
 }
 
 .nv-privacy-meta strong {
-    color: #263b3a;
+    color: var(--nv-deep);
     font-weight: 600;
 }
 
@@ -83,7 +83,7 @@
 
 .nv-privacy-intro p {
     margin: 0 0 1.1rem;
-    color: #506260;
+    color: var(--nv-neutral-dark);
     font-size: 1.03rem;
     line-height: 1.85;
 }
@@ -134,7 +134,7 @@
 
 .nv-privacy-toc a {
     display: inline;
-    color: #405452;
+    color: var(--nv-neutral-dark);
     text-decoration: none;
     text-decoration-thickness: 1px;
     text-underline-offset: 0.2em;
@@ -187,7 +187,7 @@
 .nv-privacy-section h3 {
     max-width: 820px;
     margin: 2.25rem 0 0.75rem;
-    color: #263b3a;
+    color: var(--nv-deep);
     font-size: 1.02rem;
     font-weight: 700;
     line-height: 1.4;
@@ -196,7 +196,7 @@
 .nv-privacy-section p {
     max-width: 820px;
     margin: 0 0 1.15rem;
-    color: #536462;
+    color: var(--nv-neutral-dark);
     font-size: 0.98rem;
     line-height: 1.85;
 }
@@ -209,7 +209,7 @@
     max-width: 820px;
     margin: 0 0 1.4rem;
     padding-left: 1.4rem;
-    color: #536462;
+    color: var(--nv-neutral-dark);
 }
 
 .nv-privacy-section li {
@@ -224,7 +224,7 @@
 }
 
 .nv-privacy-section strong {
-    color: #263b3a;
+    color: var(--nv-deep);
     font-weight: 650;
 }
 
@@ -254,7 +254,7 @@
     width: 34px;
     height: 2px;
     margin-bottom: 1.4rem;
-    background: #78908d;
+    background: var(--nv-gray);
     content: "";
 }
 

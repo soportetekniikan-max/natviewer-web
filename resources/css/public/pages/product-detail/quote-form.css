@@ -44,9 +44,9 @@
         ),
         linear-gradient(
             145deg,
-            #40594a,
-            #253b31 55%,
-            #182b24
+            var(--nv-green),
+            var(--nv-deep) 55%,
+            var(--nv-dark)
         );
 
     box-shadow:
@@ -110,7 +110,7 @@
 
     margin-bottom: 1rem;
 
-    color: #fff4eb;
+    color: var(--nv-light);
 
     font-size: 0.68rem;
     font-weight: 800;
@@ -278,7 +278,7 @@
     border-radius: 0.85rem;
 
     background-color:
-        #f7f8f5;
+        var(--nv-white);
 
     color: var(--nv-detail-deep);
 
@@ -378,9 +378,9 @@ textarea.form-control {
         rgba(64, 89, 74, 0.18);
 
     background:
-        #edf3ee;
+        var(--nv-light);
 
-    color: #253b31;
+    color: var(--nv-deep);
 }
 
 .nv-detail-page

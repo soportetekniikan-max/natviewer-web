@@ -349,9 +349,9 @@
             ),
             linear-gradient(
                 145deg,
-                #385143,
-                #223a2f 56%,
-                #172c24
+                var(--nv-green),
+                var(--nv-deep) 56%,
+                var(--nv-dark)
             );
     }
 
@@ -359,8 +359,8 @@
         background:
             linear-gradient(
                 145deg,
-                #243c31,
-                #14271f
+                var(--nv-green),
+                var(--nv-dark)
             );
     }
 }

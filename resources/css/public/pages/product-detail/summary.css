@@ -174,9 +174,9 @@
         ),
         linear-gradient(
             145deg,
-            #40594a,
-            #253b31 55%,
-            #182b24
+            var(--nv-green),
+            var(--nv-deep) 55%,
+            var(--nv-dark)
         );
 
     box-shadow:
@@ -680,9 +680,9 @@
     border-radius: 999px;
 
     background:
-        var(--nv-orange-strong);
+        var(--nv-orange);
 
-    color: var(--nv-white);
+    color: var(--nv-deep);
 
     box-shadow:
         0
@@ -707,9 +707,9 @@
 .nv-detail-cta:hover,
 .nv-detail-cta:focus-visible {
     background:
-        var(--nv-orange-hover);
+        var(--nv-orange);
 
-    color: var(--nv-white);
+    color: var(--nv-deep);
 
     box-shadow:
         0
