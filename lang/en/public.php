@@ -17,8 +17,7 @@ return [
     'hero' => [
         'carousel' => 'carousel',
         'photos' => 'Photos of :product',
-        'previous_photo' => 'Previous photo',
-        'next_photo' => 'Next photo',
+        'show_photo' => 'Show photo :number',
         'pause_photos' => 'Pause automatic photos',
         'play_photos' => 'Resume automatic photos',
         'eyebrow' => 'Binoculars for observation',
