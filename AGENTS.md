@@ -156,3 +156,10 @@ This project has domain-specific skills available in `**/skills/**`. You MUST ac
 - Run `vendor/bin/phpunit` to call the test runner directly. It accepts the same file path and `--filter=testName` arguments.
 
 </laravel-boost-guidelines>
+
+## Arquitecto Full Stack: delivery workflow
+
+- Use the `arquitecto-full-stack` skill for substantial web changes, cross-layer debugging, production-readiness reviews, and coordinated improvements to design and behavior. Resolve it from the current skills catalog. If absent from the catalog, check the user's skills directory (`$CODEX_HOME/skills/arquitecto-full-stack/SKILL.md`, or `~/.codex/skills/arquitecto-full-stack/SKILL.md` when `CODEX_HOME` is unset). If unavailable, continue with this project's existing guidance and mention the limitation when relevant.
+- Apply it as a delivery workflow alongside Laravel Boost and the relevant Laravel, testing, or frontend skills. Keep Natviewer as a Laravel catalog with quotation requests; preserve the user's latest approved design and contact settings.
+- The original Arquitecto Full Stack Pro plugin remains an optional source of general architecture guidance when requested. Its WordPress and WooCommerce templates do not apply to Natviewer; do not copy them into this project.
+- Scale verification to the actual change and distinguish implemented, packaged, uploaded, installed, and verified in production. A local test result or successful command is not evidence that the whole site is error-free.
